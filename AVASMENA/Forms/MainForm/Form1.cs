@@ -12,32 +12,15 @@ using System.Windows.Forms;
 using Excel;
 using FormsSetting;
 using TelegramCode;
+using jsonData;
 
 namespace AVASMENA
 {
     public partial class MainForm : MaterialForm
     {
         //листы
-        private readonly Dictionary<string, long> users = new Dictionary<string, long>
-        {
-            {"Ярый", 1972629490 },
-            {"Серый", 986504267 },
-            {"Вова", 5784613858},
-            {"Егор",  917263855},
-            {"Дима По", 1497063301 },
-            {"Али",  5540567292},
-            {"Илья",  5107083008}
-        };
-        private readonly Dictionary<string, int> names = new Dictionary<string, int>
-        {
-            { "Вова", 6 },
-            { "Ярый", 178 },
-            { "Серый", 448 },
-            { "Егор", 12 },
-            { "Дима По", 913 },
-            { "Али", 11 },
-            { "Илья", 10 }
-        };
+        private readonly Dictionary<string, long> users;
+        private readonly Dictionary<string, int> names;
         //по екселю
         private readonly string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Documents", "excel", "itog.xlsx");
         //по форме
@@ -51,6 +34,12 @@ namespace AVASMENA
         private const string CorrectPassword = "238384";
         public MainForm()
         {
+            // Загрузка данных из JSON-файла
+            string jsonFilePath = "JSON\\userData.json";
+            UserDataLoader dataLoader = UserDataLoader.LoadFromFile(jsonFilePath);
+            users = dataLoader.Users;
+            names = dataLoader.Names;
+
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
@@ -61,16 +50,9 @@ namespace AVASMENA
             Forms.LoadItemsToListBox(listBox5);
             Forms.InitializeListBox(listBoxNameInv);
 
-            Forms.SetupListBox(listBox1);
-            Forms.SetupListBox(listBox2);
-            Forms.SetupListBox(listBox3);
-            Forms.SetupListBox(listBoxRas);
-            Forms.SetupListBox(listBoxNameInv);
-
+            Forms.SetupListBox(listBox1, listBox2, listBox3, listBoxRas, listBoxNameInv);
             Forms.SetupButton1(button1, button2);
-
             Forms.SetupTabPage(tabPage1, tabPage2, tabPage3, tabPage4, tabPage5, tabPage6, tabPage7);
-
             Forms.Setup1(label1, label2, label3, label4, label5, label6, label7, label8, label9, label10, label11, label12, label13, label14, label15, label16, label17, label18, label21);
             Forms.Setup2(label19, label20);
 

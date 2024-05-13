@@ -1,5 +1,6 @@
 ﻿// Excel.cs
 using ClosedXML.Excel;
+using jsonData;
 using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
@@ -20,26 +21,17 @@ namespace Excel
         private static readonly string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Documents\\excel");
         private static readonly string ZPfolder = "excel\\ZP\\";
         private static readonly string pather = $"{ZPfolder}\\ZP.xlsx";
-        private static readonly Dictionary<string, long> nameZP = new Dictionary<string, long>
+        private static readonly Dictionary<string, int> nameZP;
+        private static readonly Dictionary<string, int> names;
+
+        static ExcelHelper()
         {
-            {"Вова", 1},
-            {"Егор", 3},
-            {"Дима По", 5},
-            {"Али", 7},
-            {"Илья", 9},
-            {"Серый",11},
-            {"Ярый",13}
-        };
-        private static readonly Dictionary<string, int> names = new Dictionary<string, int>
-        {
-            { "Вова", 6 },
-            { "Ярый", 178 },
-            { "Серый", 448 },
-            { "Егор", 12 },
-            { "Дима По", 913 },
-            { "Али", 11 },
-            { "Илья", 10 }
-        };
+            // Загрузка данных из JSON-файла
+            string jsonFilePath = "JSON\\userData.json";
+            UserDataLoader dataLoader = UserDataLoader.LoadFromFile(jsonFilePath);
+            nameZP = dataLoader.NamesZP;
+            names = dataLoader.Names;
+        }
         //Заполнение Ексаль по Отчёту за смену
         public static Task UpdateExcel(int itog, int viruchka)
         {
@@ -100,17 +92,17 @@ namespace Excel
                 string name1 = NameBox1.Text;
 
                 // Проверяем, есть ли такое имя в словаре nameZP
-                if (nameZP.TryGetValue(name1, out long nameColl1))
+                if (nameZP.TryGetValue(name1, out int nameColl1))
                 {
 
                     // Находим следующую пустую строку в столбце NameColl1
-                    int emptyRowNameColl1 = worksheet.Column((int)nameColl1).CellsUsed().Count() + 1;
+                    int emptyRowNameColl1 = worksheet.Column(nameColl1).CellsUsed().Count() + 1;
 
                     // Заполняем новую строку в столбце NameColl1 (zrp1)
-                    worksheet.Cell(emptyRowNameColl1, (int)nameColl1).Value = zrp1;
+                    worksheet.Cell(emptyRowNameColl1, nameColl1).Value = zrp1;
 
                     // Обновляем формулу в первой строке для столбца NameColl1 (zrp1)
-                    worksheet.Cell(1, (int)nameColl1 + 1).FormulaA1 = $"SUM({worksheet.Column((int)nameColl1).FirstCell().Address}:{worksheet.Cell(emptyRowNameColl1, (int)nameColl1).Address})";
+                    worksheet.Cell(1, nameColl1 + 1).FormulaA1 = $"SUM({worksheet.Column(nameColl1).FirstCell().Address}:{worksheet.Cell(emptyRowNameColl1, nameColl1).Address})";
                 }
 
                 // Если MinusBox не видим, то добавляем только в NameColl1
@@ -124,16 +116,16 @@ namespace Excel
                 string name2 = NameBox2.Text;
 
                 // Проверяем, есть ли такое имя в словаре nameZP
-                if (nameZP.TryGetValue(name2, out long nameColl2))
+                if (nameZP.TryGetValue(name2, out int nameColl2))
                 {
                     // Находим следующую пустую строку в столбце NameColl2
-                    int emptyRowNameColl2 = worksheet.Column((int)nameColl2).CellsUsed().Count() + 1;
+                    int emptyRowNameColl2 = worksheet.Column(nameColl2).CellsUsed().Count() + 1;
 
                     // Заполняем новую строку в столбце NameColl2 (zrp2)
-                    worksheet.Cell(emptyRowNameColl2, (int)nameColl2).Value = zrp2;
+                    worksheet.Cell(emptyRowNameColl2, nameColl2).Value = zrp2;
 
                     // Обновляем формулу в первой строке для столбца NameColl2 (zrp2)
-                    worksheet.Cell(1, (int)nameColl2 + 1).FormulaA1 = $"SUM({worksheet.Column((int)nameColl2).FirstCell().Address}:{worksheet.Cell(emptyRowNameColl2, (int)nameColl2).Address})";
+                    worksheet.Cell(1, nameColl2 + 1).FormulaA1 = $"SUM({worksheet.Column(nameColl2).FirstCell().Address}:{worksheet.Cell(emptyRowNameColl2, nameColl2).Address})";
                 }
 
                 workbook.Save();
@@ -199,7 +191,7 @@ namespace Excel
                 using (Graphics graphics = Graphics.FromImage(screenshot))
                 {
                     // Определяем шрифт для содержимого ячеек (можно настроить по вашему желанию)
-                    Font cellFont = new Font("Arial", 12);
+                    System.Drawing.Font cellFont = new System.Drawing.Font("Arial", 12);
 
                     // Инициализируем максимальные размеры ячеек
                     int maxWidth = 0;
@@ -232,11 +224,11 @@ namespace Excel
                     // Задаем белый фон
                     using (Graphics g = Graphics.FromImage(screenshot))
                     {
-                        g.Clear(Color.White);
+                        g.Clear(System.Drawing.Color.White);
                     }
 
                     // Задаем шрифт для ячеек
-                    using (Font font = new Font("Arial", 12))
+                    using (System.Drawing.Font font = new System.Drawing.Font("Arial", 12))
                     {
                         // Заполняем ячейки таблицы
                         for (int row = 1; row <= height; row++)
@@ -294,13 +286,13 @@ namespace Excel
                         foreach (var name in nameZP)
                         {
                             string currentName = name.Key;
-                            long columnNumber = name.Value;
+                            int columnNumber = name.Value;
 
                             // Заполняем столбец именами
-                            worksheet.Cell(1, (int)columnNumber).Value = currentName;
+                            worksheet.Cell(1, columnNumber).Value = currentName;
 
-                            string sumColumnAddress = worksheet.Cell(2, (int)columnNumber).Address.ColumnLetter;
-                            worksheet.Cell(1, (int)columnNumber + 1).FormulaA1 = $"SUM({sumColumnAddress}:{sumColumnAddress})";
+                            string sumColumnAddress = worksheet.Cell(2, columnNumber).Address.ColumnLetter;
+                            worksheet.Cell(1, columnNumber + 1).FormulaA1 = $"SUM({sumColumnAddress}:{sumColumnAddress})";
                         }
 
                         // Сохраняем книгу Excel
@@ -503,15 +495,15 @@ namespace Excel
                 {
                     string name = selectedItem.ToString();
 
-                    if (nameZP.TryGetValue(name, out long columnNumber))
+                    if (nameZP.TryGetValue(name, out int columnNumber))
                     {
                         int lastRow = worksheet.LastRowUsed()?.RowNumber() + 1 ?? 1;
 
                         // Записываем значение в ячейку
-                        worksheet.Cell(lastRow, (int)columnNumber).Value = inventSum;
+                        worksheet.Cell(lastRow, columnNumber).Value = inventSum;
 
                         // Обновляем формулу суммирования
-                        worksheet.Cell(1, (int)columnNumber + 1).FormulaA1 = $"SUM({worksheet.Column((int)columnNumber).FirstCell().Address}:{worksheet.Cell(lastRow, (int)columnNumber).Address})";
+                        worksheet.Cell(1, columnNumber + 1).FormulaA1 = $"SUM({worksheet.Column(columnNumber).FirstCell().Address}:{worksheet.Cell(lastRow, columnNumber).Address})";
                     }
                     else
                     {
@@ -521,10 +513,10 @@ namespace Excel
 
                 foreach (var name in nameZP.Keys)
                 {
-                    if (nameZP.TryGetValue(name, out long columnNumber))
+                    if (nameZP.TryGetValue(name, out int columnNumber))
                     {
                         // Получаем значение из соседнего столбца для текущего имени
-                        var cell = worksheet.Cell(1, (int)columnNumber + 1); // Общий итог в соседнем столбце
+                        var cell = worksheet.Cell(1, columnNumber + 1); // Общий итог в соседнем столбце
                         int total = cell.GetValue<int>();
 
                         // Формирование сообщения с общим итогом
@@ -563,13 +555,13 @@ namespace Excel
                 foreach (var name in nameZP)
                 {
                     string currentName = name.Key;
-                    long columnNumber = name.Value;
+                    int columnNumber = name.Value;
 
                     // Заполняем столбец именами
-                    worksheet.Cell(1, (int)columnNumber).Value = currentName;
+                    worksheet.Cell(1, columnNumber).Value = currentName;
 
-                    string sumColumnAddress = worksheet.Cell(2, (int)columnNumber).Address.ColumnLetter;
-                    worksheet.Cell(1, (int)columnNumber + 1).FormulaA1 = $"SUM({sumColumnAddress}:{sumColumnAddress})";
+                    string sumColumnAddress = worksheet.Cell(2, columnNumber).Address.ColumnLetter;
+                    worksheet.Cell(1, columnNumber + 1).FormulaA1 = $"SUM({sumColumnAddress}:{sumColumnAddress})";
                 }
 
                 // Сохраняем книгу Excel
@@ -585,15 +577,15 @@ namespace Excel
             {
                 // Получаем последний лист в книге или создаем новый, если листов нет
                 var worksheet = workbook.Worksheets.LastOrDefault();
-                if (nameZP.TryGetValue(name, out long columnNumber))
+                if (nameZP.TryGetValue(name, out int columnNumber))
                 {
                     int lastRow = worksheet.LastRowUsed()?.RowNumber() + 1 ?? 1;
 
                     // Записываем значение в ячейку
-                    worksheet.Cell(lastRow, (int)columnNumber).Value = inventSum;
+                    worksheet.Cell(lastRow, columnNumber).Value = inventSum;
 
                     // Обновляем формулу суммирования
-                    worksheet.Cell(1, (int)columnNumber + 1).FormulaA1 = $"SUM({worksheet.Column((int)columnNumber).FirstCell().Address}:{worksheet.Cell(lastRow, (int)columnNumber).Address})";
+                    worksheet.Cell(1, columnNumber + 1).FormulaA1 = $"SUM({worksheet.Column(columnNumber).FirstCell().Address}:{worksheet.Cell(lastRow, columnNumber).Address})";
                 }
                 else
                 {

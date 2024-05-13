@@ -2,14 +2,22 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using jsonData;
 using MaterialSkin.Controls;
 
 namespace FormsSetting
 {
     public static class Forms
     {
-        private static readonly List<string> namesList = new List<string> { "Вова", "Егор", "Дима По", "Али", "Илья", "Серый", "Ярый" };
+        private static readonly List<string> namesList;
 
+        static Forms()
+        {
+            // Загрузка данных из JSON-файла
+            string jsonFilePath = "JSON\\userData.json";
+            UserDataLoader dataLoader = UserDataLoader.LoadFromFile(jsonFilePath);
+            namesList = dataLoader.NameList;
+        }
         public static Task Setup1(params Label[] labels)
         {
             foreach (var label in labels)
@@ -45,12 +53,14 @@ namespace FormsSetting
             button2.Location = new System.Drawing.Point(647, 687);
             return Task.FromResult(new Tuple<System.Drawing.Point, System.Drawing.Point>(button1.Location, button2.Location));
         }
-        public static Task SetupListBox(ListBox listBox)
+        public static Task SetupListBox(params ListBox[] listBox)
         {
-            listBox.ForeColor = System.Drawing.Color.LawnGreen;
-            listBox.BackColor = System.Drawing.Color.FromArgb(25, 0, 64);
-            listBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F);
-
+            foreach(var box in listBox)
+            {
+                box.ForeColor = System.Drawing.Color.LawnGreen;
+                box.BackColor = System.Drawing.Color.FromArgb(25, 0, 64);
+                box.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F);
+            }
             return Task.FromResult(listBox);
         }
         public static Task SetupMaterialSwitch(MaterialSwitch materialSwitch)
@@ -85,7 +95,7 @@ namespace FormsSetting
         public static Task LoadItemsToListBox(ListBox list)
         {
             // Путь к текстовому файлу с пунктами
-            string filePath = "shtraph.txt";
+            string filePath = "forms\\files\\shtraph.txt";
 
             try
             {
