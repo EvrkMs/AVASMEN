@@ -1,6 +1,5 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
-using PasswordFormExample;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -32,10 +31,11 @@ namespace AVASMENA
         private readonly long chatID = -1001990911245;
         // Установите ваш пароль здесь
         private const string CorrectPassword = "238384";
+        private static string jsonFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Documents", "Config", "userData.json");
+
         public MainForm()
         {
-            // Загрузка данных из JSON-файла
-            string jsonFilePath = "JSON\\userData.json";
+            UserDataLoader.CreateJsonIfNotExists();
             UserDataLoader dataLoader = UserDataLoader.LoadFromFile(jsonFilePath);
             users = dataLoader.Users;
             names = dataLoader.Names;
@@ -47,27 +47,111 @@ namespace AVASMENA
 
 
             InitializeComponent();
+            Forms.InitializedataGrid(dataGridViewJson);
+            Forms.HideShowSelector(materialTabSelector1, false);
+            Forms.PasswordBoxText(PasswordTextBox, false);
             Forms.LoadItemsToListBox(listBox5);
             Forms.InitializeListBox(listBoxNameInv);
 
             Forms.SetupListBox(listBox1, listBox2, listBox3, listBoxRas, listBoxNameInv);
             Forms.SetupButton1(button1, button2);
-            Forms.SetupTabPage(tabPage1, tabPage2, tabPage3, tabPage4, tabPage5, tabPage6, tabPage7);
+            Forms.SetupTabPage(tabPage1, tabPage3, tabPage5, tabPage2, tabPage4, tabPage7, tabPage6, tabPage0, tabPage8);
             Forms.Setup1(label1, label2, label3, label4, label5, label6, label7, label8, label9, label10, label11, label12, label13, label14, label15, label16, label17, label18, label21);
             Forms.Setup2(label19, label20);
-
+            Forms.SetupComBox(LoginBox);
+            LoginBox.Text = "Admin";
 
             Forms.SetupMaterialSwitch(materialSwitch1);
             Forms.SetupComboBoxes(comboBox1, materialComboBox1, materialComboBox2, materialComboBox3, materialComboBox4, comboBoxNameRas);
             materialComboBox3.Items.Add("нет");
             materialComboBox4.Items.Add("нет");
 
-            this.ClientSize = new System.Drawing.Size(1680, 802);
+            this.ClientSize = new System.Drawing.Size(1680, 800);
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MinimumSize = this.MaximumSize = this.Size;
 
             SetupEvents();
             SetupTimer();
+        }
+        private void LoadButton_Click(object sender, EventArgs e)
+        {
+            UserDataLoader.SaveBttn(dataGridViewJson);
+        }
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            UserDataLoader dataLoader = UserDataLoader.LoadFromFile(jsonFilePath);
+
+            dataLoader.NameList.Clear();
+            dataLoader.Users.Clear();
+            dataLoader.Names.Clear();
+            dataLoader.NamesZP.Clear();
+
+            foreach (DataGridViewRow row in dataGridViewJson.Rows)
+            {
+                if (row.IsNewRow) continue;
+
+                var name = row.Cells["Name"].Value?.ToString();
+                if (string.IsNullOrEmpty(name)) continue;
+
+                dataLoader.NameList.Add(name);
+
+                if (long.TryParse(row.Cells["Users"].Value?.ToString(), out long userValue))
+                {
+                    dataLoader.Users[name] = userValue;
+                }
+
+                if (int.TryParse(row.Cells["Names"].Value?.ToString(), out int nameValue))
+                {
+                    dataLoader.Names[name] = nameValue;
+                }
+
+                if (int.TryParse(row.Cells["NamesZP"].Value?.ToString(), out int nameZPValue))
+                {
+                    dataLoader.NamesZP[name] = nameZPValue;
+                }
+            }
+
+            dataLoader.SaveToFile(jsonFilePath);
+        }
+        public void LoginBox_SelectedIndex(object sender, EventArgs e)
+        {
+            if(LoginBox.Text == "Root")
+            {
+                Forms.PasswordBoxText(PasswordTextBox, true);
+            }
+            else
+            {
+                Forms.PasswordBoxText(PasswordTextBox, false);
+            }
+        }
+        private void materialButton7_Click(object sender, EventArgs e)
+        {
+            Logining();
+        }
+        private void PasswordTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Logining();
+            }
+        }
+        private void Logining()
+        {
+            if (PasswordTextBox.Visible)
+            {
+                if (PasswordTextBox.Text != CorrectPassword)
+                {
+                    MessageBox.Show("Incorrect password");
+                    return;
+                }
+            }
+            materialTabControl1.SelectedTab = tabPage1;
+            if (LoginBox.Text == "Admin")
+            {
+                Forms.RemoveTabPage(materialTabControl1, tabPage6, tabPage7, tabPage6, tabPage8);
+            }
+            Forms.RemoveTabPage(materialTabControl1, tabPage0);
+            Forms.HideShowSelector(materialTabSelector1, true);
         }
         private void SetupEvents()
         {
@@ -132,23 +216,11 @@ namespace AVASMENA
             // Проверяем, что выбранное значение не равно null
             if (materialComboBox3.SelectedItem != null && materialComboBox3.SelectedItem.ToString() != "нет")
             {
-                // Показываем текстовые поля
-                Minus1.Visible = true;
-                Minus2.Visible = true;
-                // Показываем лейблы
-                label19.Visible = true;
-                label20.Visible = true;
-                // Показываем MaterialTextBox24
-                materialTextBox24.Visible = true;
+                VisibleBox(true);
             }
             else
             {
-                // Если выбрано null, скрываем элементы
-                Minus1.Visible = false;
-                Minus2.Visible = false;
-                label19.Visible = false;
-                label20.Visible = false;
-                materialTextBox24.Visible = false;
+                VisibleBox(false);
             }
         }
         private void BoxesMinus()
@@ -171,6 +243,14 @@ namespace AVASMENA
                 return;
             }
 
+        }
+        private void VisibleBox(bool i)
+        {
+            Minus1.Visible = i;
+            Minus2.Visible = i;
+            label19.Visible = i;
+            label20.Visible = i;
+            materialTextBox24.Visible = i;
         }
         private void Button1_Click(object sender, EventArgs e)
         {
@@ -430,11 +510,7 @@ namespace AVASMENA
         {
             await ExcelHelper.ExcelCreated();
             await ExcelHelper.LoadSheet(comboBoxExcel);
-            Minus1.Visible = false;
-            Minus2.Visible = false;
-            label19.Visible = false;
-            label20.Visible = false;
-            materialTextBox24.Visible = false;
+            VisibleBox(false);
             materialTextBox24.Text = "0";
             materialTextBox1.Text = "0";
             try
@@ -452,6 +528,7 @@ namespace AVASMENA
                     listBox2.Items.Add($"Error removing webhook: {ex.Message}");
                 });
             }
+            UserDataLoader.SaveBttn(dataGridViewJson);
             return;
         }
         private void ComboBoxExcel_SelectedIndexChanged(object sender, EventArgs e)
@@ -575,20 +652,6 @@ namespace AVASMENA
         }
         private async void InventBTN_Click(object sender, EventArgs e)
         {
-            using (var passwordInputForm = new PasswordInputForm())
-            {
-                if (passwordInputForm.ShowDialog() == DialogResult.OK)
-                {
-                    string enteredPassword = passwordInputForm.EnteredPassword;
-
-                    if (enteredPassword != CorrectPassword)
-                    {
-                        MessageBox.Show("Пароль не верный.");
-                        return; // Метод завершается полностью здесь, если пароль неверен
-                    }
-                }
-            }
-
             // Парсим значение из InventSum
             if (!int.TryParse(InventSum.Text, out int inventSum))
             {

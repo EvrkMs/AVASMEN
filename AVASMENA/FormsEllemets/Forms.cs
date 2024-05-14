@@ -10,6 +10,7 @@ namespace FormsSetting
     public static class Forms
     {
         private static readonly List<string> namesList;
+        private static readonly List<string> Login = new List<string> { "Admin", "Root" };
 
         static Forms()
         {
@@ -118,6 +119,45 @@ namespace FormsSetting
             }
             return Task.FromResult(list);
         }
+        public static Task RemoveTabPage(MaterialTabControl TabC, params TabPage[] tabs)
+        {
+            foreach (var tab in tabs)
+            {
+                TabC.TabPages.Remove(tab);
+            }
+            return Task.CompletedTask;
+        }
+        public static Task SetupComBox(MaterialComboBox ComBox)
+        {
+            ComBox.Items.Clear();
+            foreach (var name in Login)
+            {
+                ComBox.Items.Add(name);
+            }
+            return Task.CompletedTask;
+        }
+        public static Task PasswordBoxText(MaterialTextBox2 PasswordBox, bool i)
+        {
+            PasswordBox.Visible = i;
+            return Task.CompletedTask;
+        }
+        public static Task HideShowSelector(MaterialTabSelector TabSel, bool i)
+        {
+            TabSel.Visible = i;
+            return Task.CompletedTask;
+        }
+        public static Task InitializedataGrid(DataGridView dataGridViewJson)
+        {
+            dataGridViewJson.Columns.Clear();
+            // Настройка DataGridView для работы с данными
+            dataGridViewJson.Columns.Add("Name", "Name");
+            dataGridViewJson.Columns.Add("Users", "Users");
+            dataGridViewJson.Columns.Add("Names", "Names");
+            dataGridViewJson.Columns.Add("NamesZP", "NamesZP");
 
+            dataGridViewJson.AllowUserToAddRows = true;
+            dataGridViewJson.AllowUserToDeleteRows = true;
+            return Task.CompletedTask;
+        }
     }
 }

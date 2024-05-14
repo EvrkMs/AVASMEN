@@ -31,12 +31,19 @@ namespace AVASMENA
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.materialButton2 = new MaterialSkin.Controls.MaterialButton();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
+            this.tabPage0 = new System.Windows.Forms.TabPage();
+            this.PasswordTextBox = new MaterialSkin.Controls.MaterialTextBox2();
+            this.materialButton7 = new MaterialSkin.Controls.MaterialButton();
+            this.LoginBox = new MaterialSkin.Controls.MaterialComboBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button1 = new MaterialSkin.Controls.MaterialButton();
             this.button2 = new MaterialSkin.Controls.MaterialButton();
@@ -64,7 +71,7 @@ namespace AVASMENA
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.materialCheckbox6 = new MaterialSkin.Controls.MaterialCheckbox();
             this.materialCheckbox4 = new MaterialSkin.Controls.MaterialCheckbox();
             this.listBoxRas = new System.Windows.Forms.ListBox();
@@ -75,7 +82,7 @@ namespace AVASMENA
             this.label9 = new System.Windows.Forms.Label();
             this.materialTextBox26 = new MaterialSkin.Controls.MaterialTextBox2();
             this.materialTextBox25 = new MaterialSkin.Controls.MaterialTextBox2();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
             this.label6 = new System.Windows.Forms.Label();
             this.materialComboBox4 = new MaterialSkin.Controls.MaterialComboBox();
             this.listBox4 = new System.Windows.Forms.ListBox();
@@ -85,17 +92,13 @@ namespace AVASMENA
             this.listBox5 = new System.Windows.Forms.ListBox();
             this.materialButton3 = new MaterialSkin.Controls.MaterialButton();
             this.materialComboBox1 = new MaterialSkin.Controls.MaterialComboBox();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.materialButton4 = new MaterialSkin.Controls.MaterialButton();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.materialTextBox23 = new MaterialSkin.Controls.MaterialTextBox2();
             this.materialComboBox2 = new MaterialSkin.Controls.MaterialComboBox();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.listBoxNameInv = new System.Windows.Forms.ListBox();
-            this.InventBTN = new MaterialSkin.Controls.MaterialButton();
-            this.InventSum = new MaterialSkin.Controls.MaterialTextBox2();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label12 = new System.Windows.Forms.Label();
             this.materialCheckbox1 = new MaterialSkin.Controls.MaterialCheckbox();
             this.materialSwitch1 = new MaterialSkin.Controls.MaterialSwitch();
@@ -107,20 +110,35 @@ namespace AVASMENA
             this.materialTextBox22 = new MaterialSkin.Controls.MaterialTextBox2();
             this.materialTextBox21 = new MaterialSkin.Controls.MaterialTextBox2();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.listBoxNameInv = new System.Windows.Forms.ListBox();
+            this.InventBTN = new MaterialSkin.Controls.MaterialButton();
+            this.InventSum = new MaterialSkin.Controls.MaterialTextBox2();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
             this.btnSaveExcel = new MaterialSkin.Controls.MaterialButton();
             this.PopravkaDa = new MaterialSkin.Controls.MaterialCheckbox();
             this.materialButton6 = new MaterialSkin.Controls.MaterialButton();
             this.dataGridViewExcel = new System.Windows.Forms.DataGridView();
             this.comboBoxExcel = new MaterialSkin.Controls.MaterialComboBox();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.saveButton = new MaterialSkin.Controls.MaterialButton();
+            this.loadButton = new MaterialSkin.Controls.MaterialButton();
+            this.dataGridViewJson = new System.Windows.Forms.DataGridView();
+            this.Namess = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TelegramId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TelegramTopic = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ZpColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.materialTabControl1.SuspendLayout();
+            this.tabPage0.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage5.SuspendLayout();
-            this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
-            this.tabPage7.SuspendLayout();
+            this.tabPage5.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.tabPage6.SuspendLayout();
+            this.tabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExcel)).BeginInit();
+            this.tabPage8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewJson)).BeginInit();
             this.SuspendLayout();
             // 
             // materialButton2
@@ -154,30 +172,116 @@ namespace AVASMENA
             this.materialTabSelector1.Name = "materialTabSelector1";
             this.materialTabSelector1.Size = new System.Drawing.Size(1749, 51);
             this.materialTabSelector1.TabIndex = 1;
-            this.materialTabSelector1.Text = "materialTabSelector1";
             // 
             // materialTabControl1
             // 
             this.materialTabControl1.Alignment = System.Windows.Forms.TabAlignment.Left;
+            this.materialTabControl1.Controls.Add(this.tabPage0);
             this.materialTabControl1.Controls.Add(this.tabPage1);
-            this.materialTabControl1.Controls.Add(this.tabPage5);
+            this.materialTabControl1.Controls.Add(this.tabPage2);
             this.materialTabControl1.Controls.Add(this.tabPage3);
             this.materialTabControl1.Controls.Add(this.tabPage4);
-            this.materialTabControl1.Controls.Add(this.tabPage7);
-            this.materialTabControl1.Controls.Add(this.tabPage2);
+            this.materialTabControl1.Controls.Add(this.tabPage5);
             this.materialTabControl1.Controls.Add(this.tabPage6);
+            this.materialTabControl1.Controls.Add(this.tabPage7);
+            this.materialTabControl1.Controls.Add(this.tabPage8);
             this.materialTabControl1.Depth = 0;
             this.materialTabControl1.Location = new System.Drawing.Point(-1, 21);
             this.materialTabControl1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialTabControl1.Multiline = true;
             this.materialTabControl1.Name = "materialTabControl1";
             this.materialTabControl1.SelectedIndex = 0;
-            this.materialTabControl1.Size = new System.Drawing.Size(1756, 781);
+            this.materialTabControl1.Size = new System.Drawing.Size(1756, 819);
             this.materialTabControl1.TabIndex = 0;
+            // 
+            // tabPage0
+            // 
+            this.tabPage0.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.tabPage0.Controls.Add(this.PasswordTextBox);
+            this.tabPage0.Controls.Add(this.materialButton7);
+            this.tabPage0.Controls.Add(this.LoginBox);
+            this.tabPage0.Location = new System.Drawing.Point(23, 4);
+            this.tabPage0.Name = "tabPage0";
+            this.tabPage0.Size = new System.Drawing.Size(1729, 811);
+            this.tabPage0.TabIndex = 7;
+            this.tabPage0.Text = "Авторизация";
+            // 
+            // PasswordTextBox
+            // 
+            this.PasswordTextBox.AnimateReadOnly = false;
+            this.PasswordTextBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.PasswordTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.PasswordTextBox.Depth = 0;
+            this.PasswordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.PasswordTextBox.HideSelection = true;
+            this.PasswordTextBox.LeadingIcon = null;
+            this.PasswordTextBox.Location = new System.Drawing.Point(629, 334);
+            this.PasswordTextBox.MaxLength = 32767;
+            this.PasswordTextBox.MouseState = MaterialSkin.MouseState.OUT;
+            this.PasswordTextBox.Name = "PasswordTextBox";
+            this.PasswordTextBox.PasswordChar = '●';
+            this.PasswordTextBox.PrefixSuffixText = null;
+            this.PasswordTextBox.ReadOnly = false;
+            this.PasswordTextBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.PasswordTextBox.SelectedText = "";
+            this.PasswordTextBox.SelectionLength = 0;
+            this.PasswordTextBox.SelectionStart = 0;
+            this.PasswordTextBox.ShortcutsEnabled = true;
+            this.PasswordTextBox.Size = new System.Drawing.Size(231, 48);
+            this.PasswordTextBox.TabIndex = 2;
+            this.PasswordTextBox.TabStop = false;
+            this.PasswordTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.PasswordTextBox.TrailingIcon = null;
+            this.PasswordTextBox.UseSystemPasswordChar = true;
+            this.PasswordTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PasswordTextBox_KeyDown);
+            // 
+            // materialButton7
+            // 
+            this.materialButton7.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton7.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton7.Depth = 0;
+            this.materialButton7.HighEmphasis = true;
+            this.materialButton7.Icon = null;
+            this.materialButton7.Location = new System.Drawing.Point(685, 391);
+            this.materialButton7.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton7.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton7.Name = "materialButton7";
+            this.materialButton7.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton7.Size = new System.Drawing.Size(125, 36);
+            this.materialButton7.TabIndex = 1;
+            this.materialButton7.Text = "Продолжить";
+            this.materialButton7.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButton7.UseAccentColor = false;
+            this.materialButton7.UseVisualStyleBackColor = true;
+            this.materialButton7.Click += new System.EventHandler(this.materialButton7_Click);
+            // 
+            // LoginBox
+            // 
+            this.LoginBox.AutoResize = false;
+            this.LoginBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.LoginBox.Depth = 0;
+            this.LoginBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.LoginBox.DropDownHeight = 174;
+            this.LoginBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.LoginBox.DropDownWidth = 121;
+            this.LoginBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.LoginBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.LoginBox.FormattingEnabled = true;
+            this.LoginBox.IntegralHeight = false;
+            this.LoginBox.ItemHeight = 43;
+            this.LoginBox.Location = new System.Drawing.Point(588, 279);
+            this.LoginBox.MaxDropDownItems = 4;
+            this.LoginBox.MouseState = MaterialSkin.MouseState.OUT;
+            this.LoginBox.Name = "LoginBox";
+            this.LoginBox.Size = new System.Drawing.Size(318, 49);
+            this.LoginBox.StartIndex = 0;
+            this.LoginBox.TabIndex = 0;
+            this.LoginBox.SelectedIndexChanged += new System.EventHandler(this.LoginBox_SelectedIndex);
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.tabPage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.label20);
@@ -208,7 +312,7 @@ namespace AVASMENA
             this.tabPage1.Location = new System.Drawing.Point(23, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1729, 773);
+            this.tabPage1.Size = new System.Drawing.Size(1729, 811);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Отчет по смене";
             // 
@@ -429,7 +533,7 @@ namespace AVASMENA
             this.listBox2.FormattingEnabled = true;
             this.listBox2.HorizontalScrollbar = true;
             this.listBox2.ItemHeight = 29;
-            this.listBox2.Location = new System.Drawing.Point(621, 504);
+            this.listBox2.Location = new System.Drawing.Point(621, 503);
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(874, 174);
             this.listBox2.TabIndex = 48;
@@ -444,7 +548,7 @@ namespace AVASMENA
             this.listBox1.FormattingEnabled = true;
             this.listBox1.HorizontalScrollbar = true;
             this.listBox1.ItemHeight = 29;
-            this.listBox1.Location = new System.Drawing.Point(621, 66);
+            this.listBox1.Location = new System.Drawing.Point(621, 65);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(873, 377);
             this.listBox1.TabIndex = 45;
@@ -658,7 +762,7 @@ namespace AVASMENA
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label8.Location = new System.Drawing.Point(349, 469);
+            this.label8.Location = new System.Drawing.Point(349, 468);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(178, 29);
             this.label8.TabIndex = 49;
@@ -670,7 +774,7 @@ namespace AVASMENA
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Microsoft New Tai Lue", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label7.Location = new System.Drawing.Point(349, 388);
+            this.label7.Location = new System.Drawing.Point(349, 387);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(111, 30);
             this.label7.TabIndex = 44;
@@ -682,7 +786,7 @@ namespace AVASMENA
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft New Tai Lue", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label5.Location = new System.Drawing.Point(349, 306);
+            this.label5.Location = new System.Drawing.Point(349, 305);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(190, 27);
             this.label5.TabIndex = 42;
@@ -694,7 +798,7 @@ namespace AVASMENA
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft New Tai Lue", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label4.Location = new System.Drawing.Point(349, 223);
+            this.label4.Location = new System.Drawing.Point(349, 222);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(212, 30);
             this.label4.TabIndex = 41;
@@ -706,7 +810,7 @@ namespace AVASMENA
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft New Tai Lue", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(349, 142);
+            this.label3.Location = new System.Drawing.Point(349, 141);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(210, 30);
             this.label3.TabIndex = 40;
@@ -718,7 +822,7 @@ namespace AVASMENA
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft New Tai Lue", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(349, 61);
+            this.label2.Location = new System.Drawing.Point(349, 60);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(216, 30);
             this.label2.TabIndex = 39;
@@ -730,30 +834,30 @@ namespace AVASMENA
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft New Tai Lue", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(44, 58);
+            this.label1.Location = new System.Drawing.Point(44, 57);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 40);
             this.label1.TabIndex = 38;
             this.label1.Text = "Имя";
             // 
-            // tabPage5
+            // tabPage4
             // 
-            this.tabPage5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.tabPage5.Controls.Add(this.materialCheckbox6);
-            this.tabPage5.Controls.Add(this.materialCheckbox4);
-            this.tabPage5.Controls.Add(this.listBoxRas);
-            this.tabPage5.Controls.Add(this.comboBoxNameRas);
-            this.tabPage5.Controls.Add(this.materialCheckbox2);
-            this.tabPage5.Controls.Add(this.materialButton5);
-            this.tabPage5.Controls.Add(this.label21);
-            this.tabPage5.Controls.Add(this.label9);
-            this.tabPage5.Controls.Add(this.materialTextBox26);
-            this.tabPage5.Controls.Add(this.materialTextBox25);
-            this.tabPage5.Location = new System.Drawing.Point(23, 4);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(1729, 773);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "Расход";
+            this.tabPage4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.tabPage4.Controls.Add(this.materialCheckbox6);
+            this.tabPage4.Controls.Add(this.materialCheckbox4);
+            this.tabPage4.Controls.Add(this.listBoxRas);
+            this.tabPage4.Controls.Add(this.comboBoxNameRas);
+            this.tabPage4.Controls.Add(this.materialCheckbox2);
+            this.tabPage4.Controls.Add(this.materialButton5);
+            this.tabPage4.Controls.Add(this.label21);
+            this.tabPage4.Controls.Add(this.label9);
+            this.tabPage4.Controls.Add(this.materialTextBox26);
+            this.tabPage4.Controls.Add(this.materialTextBox25);
+            this.tabPage4.Location = new System.Drawing.Point(23, 4);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(1729, 811);
+            this.tabPage4.TabIndex = 4;
+            this.tabPage4.Text = "Расход";
             // 
             // materialCheckbox6
             // 
@@ -797,7 +901,7 @@ namespace AVASMENA
             this.listBoxRas.FormattingEnabled = true;
             this.listBoxRas.HorizontalScrollbar = true;
             this.listBoxRas.ItemHeight = 29;
-            this.listBoxRas.Location = new System.Drawing.Point(434, 183);
+            this.listBoxRas.Location = new System.Drawing.Point(434, 182);
             this.listBoxRas.Name = "listBoxRas";
             this.listBoxRas.Size = new System.Drawing.Size(941, 290);
             this.listBoxRas.TabIndex = 49;
@@ -938,24 +1042,24 @@ namespace AVASMENA
             this.materialTextBox25.TrailingIcon = null;
             this.materialTextBox25.UseSystemPasswordChar = false;
             // 
-            // tabPage3
+            // tabPage5
             // 
-            this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.tabPage3.Controls.Add(this.label6);
-            this.tabPage3.Controls.Add(this.materialComboBox4);
-            this.tabPage3.Controls.Add(this.listBox4);
-            this.tabPage3.Controls.Add(this.label15);
-            this.tabPage3.Controls.Add(this.label14);
-            this.tabPage3.Controls.Add(this.materialTextBox2);
-            this.tabPage3.Controls.Add(this.listBox5);
-            this.tabPage3.Controls.Add(this.materialButton3);
-            this.tabPage3.Controls.Add(this.materialComboBox1);
-            this.tabPage3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.tabPage3.Location = new System.Drawing.Point(23, 4);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1729, 773);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Штрафы";
+            this.tabPage5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.tabPage5.Controls.Add(this.label6);
+            this.tabPage5.Controls.Add(this.materialComboBox4);
+            this.tabPage5.Controls.Add(this.listBox4);
+            this.tabPage5.Controls.Add(this.label15);
+            this.tabPage5.Controls.Add(this.label14);
+            this.tabPage5.Controls.Add(this.materialTextBox2);
+            this.tabPage5.Controls.Add(this.listBox5);
+            this.tabPage5.Controls.Add(this.materialButton3);
+            this.tabPage5.Controls.Add(this.materialComboBox1);
+            this.tabPage5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.tabPage5.Location = new System.Drawing.Point(23, 4);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(1729, 811);
+            this.tabPage5.TabIndex = 2;
+            this.tabPage5.Text = "Штрафы";
             // 
             // label6
             // 
@@ -1093,19 +1197,19 @@ namespace AVASMENA
             this.materialComboBox1.StartIndex = 0;
             this.materialComboBox1.TabIndex = 0;
             // 
-            // tabPage4
+            // tabPage2
             // 
-            this.tabPage4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.tabPage4.Controls.Add(this.materialButton4);
-            this.tabPage4.Controls.Add(this.label17);
-            this.tabPage4.Controls.Add(this.label16);
-            this.tabPage4.Controls.Add(this.materialTextBox23);
-            this.tabPage4.Controls.Add(this.materialComboBox2);
-            this.tabPage4.Location = new System.Drawing.Point(23, 4);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1729, 773);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Аванс";
+            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.tabPage2.Controls.Add(this.materialButton4);
+            this.tabPage2.Controls.Add(this.label17);
+            this.tabPage2.Controls.Add(this.label16);
+            this.tabPage2.Controls.Add(this.materialTextBox23);
+            this.tabPage2.Controls.Add(this.materialComboBox2);
+            this.tabPage2.Location = new System.Drawing.Point(23, 4);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Size = new System.Drawing.Size(1729, 811);
+            this.tabPage2.TabIndex = 3;
+            this.tabPage2.Text = "Аванс";
             // 
             // materialButton4
             // 
@@ -1197,97 +1301,25 @@ namespace AVASMENA
             this.materialComboBox2.StartIndex = 0;
             this.materialComboBox2.TabIndex = 0;
             // 
-            // tabPage7
+            // tabPage3
             // 
-            this.tabPage7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(46)))));
-            this.tabPage7.Controls.Add(this.listBoxNameInv);
-            this.tabPage7.Controls.Add(this.InventBTN);
-            this.tabPage7.Controls.Add(this.InventSum);
-            this.tabPage7.ForeColor = System.Drawing.Color.White;
-            this.tabPage7.Location = new System.Drawing.Point(23, 4);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(1729, 773);
-            this.tabPage7.TabIndex = 6;
-            this.tabPage7.Text = "Инвентаризация";
-            // 
-            // listBoxNameInv
-            // 
-            this.listBoxNameInv.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F);
-            this.listBoxNameInv.FormattingEnabled = true;
-            this.listBoxNameInv.ItemHeight = 29;
-            this.listBoxNameInv.Location = new System.Drawing.Point(105, 219);
-            this.listBoxNameInv.Name = "listBoxNameInv";
-            this.listBoxNameInv.Size = new System.Drawing.Size(405, 294);
-            this.listBoxNameInv.TabIndex = 2;
-            // 
-            // InventBTN
-            // 
-            this.InventBTN.AutoSize = false;
-            this.InventBTN.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.InventBTN.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.InventBTN.Depth = 0;
-            this.InventBTN.HighEmphasis = true;
-            this.InventBTN.Icon = null;
-            this.InventBTN.Location = new System.Drawing.Point(105, 609);
-            this.InventBTN.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.InventBTN.MouseState = MaterialSkin.MouseState.HOVER;
-            this.InventBTN.Name = "InventBTN";
-            this.InventBTN.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.InventBTN.Size = new System.Drawing.Size(170, 31);
-            this.InventBTN.TabIndex = 1;
-            this.InventBTN.Text = "materialButton7";
-            this.InventBTN.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.InventBTN.UseAccentColor = false;
-            this.InventBTN.UseVisualStyleBackColor = true;
-            this.InventBTN.Click += new System.EventHandler(this.InventBTN_Click);
-            // 
-            // InventSum
-            // 
-            this.InventSum.AnimateReadOnly = false;
-            this.InventSum.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.InventSum.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.InventSum.Depth = 0;
-            this.InventSum.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.InventSum.HideSelection = true;
-            this.InventSum.LeadingIcon = null;
-            this.InventSum.Location = new System.Drawing.Point(105, 75);
-            this.InventSum.MaxLength = 32767;
-            this.InventSum.MouseState = MaterialSkin.MouseState.OUT;
-            this.InventSum.Name = "InventSum";
-            this.InventSum.PasswordChar = '\0';
-            this.InventSum.PrefixSuffixText = null;
-            this.InventSum.ReadOnly = false;
-            this.InventSum.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.InventSum.SelectedText = "";
-            this.InventSum.SelectionLength = 0;
-            this.InventSum.SelectionStart = 0;
-            this.InventSum.ShortcutsEnabled = true;
-            this.InventSum.Size = new System.Drawing.Size(170, 48);
-            this.InventSum.TabIndex = 0;
-            this.InventSum.TabStop = false;
-            this.InventSum.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.InventSum.TrailingIcon = null;
-            this.InventSum.UseSystemPasswordChar = false;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(0)))), ((int)(((byte)(170)))));
-            this.tabPage2.Controls.Add(this.label12);
-            this.tabPage2.Controls.Add(this.materialCheckbox1);
-            this.tabPage2.Controls.Add(this.materialSwitch1);
-            this.tabPage2.Controls.Add(this.label13);
-            this.tabPage2.Controls.Add(this.listBox3);
-            this.tabPage2.Controls.Add(this.materialButton1);
-            this.tabPage2.Controls.Add(this.label11);
-            this.tabPage2.Controls.Add(this.label10);
-            this.tabPage2.Controls.Add(this.materialTextBox22);
-            this.tabPage2.Controls.Add(this.materialTextBox21);
-            this.tabPage2.Location = new System.Drawing.Point(23, 4);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1729, 773);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Отчет по сейфу";
+            this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(0)))), ((int)(((byte)(170)))));
+            this.tabPage3.Controls.Add(this.label12);
+            this.tabPage3.Controls.Add(this.materialCheckbox1);
+            this.tabPage3.Controls.Add(this.materialSwitch1);
+            this.tabPage3.Controls.Add(this.label13);
+            this.tabPage3.Controls.Add(this.listBox3);
+            this.tabPage3.Controls.Add(this.materialButton1);
+            this.tabPage3.Controls.Add(this.label11);
+            this.tabPage3.Controls.Add(this.label10);
+            this.tabPage3.Controls.Add(this.materialTextBox22);
+            this.tabPage3.Controls.Add(this.materialTextBox21);
+            this.tabPage3.Location = new System.Drawing.Point(23, 4);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(1729, 811);
+            this.tabPage3.TabIndex = 1;
+            this.tabPage3.Text = "Отчет по сейфу";
             // 
             // label12
             // 
@@ -1448,17 +1480,89 @@ namespace AVASMENA
             // 
             // tabPage6
             // 
-            this.tabPage6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.tabPage6.Controls.Add(this.btnSaveExcel);
-            this.tabPage6.Controls.Add(this.PopravkaDa);
-            this.tabPage6.Controls.Add(this.materialButton6);
-            this.tabPage6.Controls.Add(this.dataGridViewExcel);
-            this.tabPage6.Controls.Add(this.comboBoxExcel);
+            this.tabPage6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(46)))));
+            this.tabPage6.Controls.Add(this.listBoxNameInv);
+            this.tabPage6.Controls.Add(this.InventBTN);
+            this.tabPage6.Controls.Add(this.InventSum);
+            this.tabPage6.ForeColor = System.Drawing.Color.White;
             this.tabPage6.Location = new System.Drawing.Point(23, 4);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(1729, 773);
-            this.tabPage6.TabIndex = 5;
-            this.tabPage6.Text = "Проверка отчетов";
+            this.tabPage6.Size = new System.Drawing.Size(1729, 811);
+            this.tabPage6.TabIndex = 6;
+            this.tabPage6.Text = "Инвентаризация";
+            // 
+            // listBoxNameInv
+            // 
+            this.listBoxNameInv.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F);
+            this.listBoxNameInv.FormattingEnabled = true;
+            this.listBoxNameInv.ItemHeight = 29;
+            this.listBoxNameInv.Location = new System.Drawing.Point(105, 219);
+            this.listBoxNameInv.Name = "listBoxNameInv";
+            this.listBoxNameInv.Size = new System.Drawing.Size(405, 294);
+            this.listBoxNameInv.TabIndex = 2;
+            // 
+            // InventBTN
+            // 
+            this.InventBTN.AutoSize = false;
+            this.InventBTN.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.InventBTN.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.InventBTN.Depth = 0;
+            this.InventBTN.HighEmphasis = true;
+            this.InventBTN.Icon = null;
+            this.InventBTN.Location = new System.Drawing.Point(105, 609);
+            this.InventBTN.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.InventBTN.MouseState = MaterialSkin.MouseState.HOVER;
+            this.InventBTN.Name = "InventBTN";
+            this.InventBTN.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.InventBTN.Size = new System.Drawing.Size(170, 31);
+            this.InventBTN.TabIndex = 1;
+            this.InventBTN.Text = "materialButton7";
+            this.InventBTN.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.InventBTN.UseAccentColor = false;
+            this.InventBTN.UseVisualStyleBackColor = true;
+            this.InventBTN.Click += new System.EventHandler(this.InventBTN_Click);
+            // 
+            // InventSum
+            // 
+            this.InventSum.AnimateReadOnly = false;
+            this.InventSum.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.InventSum.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.InventSum.Depth = 0;
+            this.InventSum.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.InventSum.HideSelection = true;
+            this.InventSum.LeadingIcon = null;
+            this.InventSum.Location = new System.Drawing.Point(105, 75);
+            this.InventSum.MaxLength = 32767;
+            this.InventSum.MouseState = MaterialSkin.MouseState.OUT;
+            this.InventSum.Name = "InventSum";
+            this.InventSum.PasswordChar = '\0';
+            this.InventSum.PrefixSuffixText = null;
+            this.InventSum.ReadOnly = false;
+            this.InventSum.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.InventSum.SelectedText = "";
+            this.InventSum.SelectionLength = 0;
+            this.InventSum.SelectionStart = 0;
+            this.InventSum.ShortcutsEnabled = true;
+            this.InventSum.Size = new System.Drawing.Size(170, 48);
+            this.InventSum.TabIndex = 0;
+            this.InventSum.TabStop = false;
+            this.InventSum.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.InventSum.TrailingIcon = null;
+            this.InventSum.UseSystemPasswordChar = false;
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.tabPage7.Controls.Add(this.btnSaveExcel);
+            this.tabPage7.Controls.Add(this.PopravkaDa);
+            this.tabPage7.Controls.Add(this.materialButton6);
+            this.tabPage7.Controls.Add(this.dataGridViewExcel);
+            this.tabPage7.Controls.Add(this.comboBoxExcel);
+            this.tabPage7.Location = new System.Drawing.Point(23, 4);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Size = new System.Drawing.Size(1729, 811);
+            this.tabPage7.TabIndex = 5;
+            this.tabPage7.Text = "Проверка отчетов";
             // 
             // btnSaveExcel
             // 
@@ -1523,34 +1627,34 @@ namespace AVASMENA
             // 
             this.dataGridViewExcel.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridViewExcel.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewExcel.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewExcel.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewExcel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewExcel.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewExcel.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewExcel.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dataGridViewExcel.Location = new System.Drawing.Point(31, 134);
             this.dataGridViewExcel.Name = "dataGridViewExcel";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewExcel.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewExcel.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridViewExcel.Size = new System.Drawing.Size(1678, 493);
             this.dataGridViewExcel.TabIndex = 1;
             // 
@@ -1577,13 +1681,129 @@ namespace AVASMENA
             this.comboBoxExcel.TabIndex = 0;
             this.comboBoxExcel.SelectedIndexChanged += new System.EventHandler(this.ComboBoxExcel_SelectedIndexChanged);
             // 
+            // tabPage8
+            // 
+            this.tabPage8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.tabPage8.Controls.Add(this.saveButton);
+            this.tabPage8.Controls.Add(this.loadButton);
+            this.tabPage8.Controls.Add(this.dataGridViewJson);
+            this.tabPage8.Location = new System.Drawing.Point(23, 4);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Size = new System.Drawing.Size(1729, 811);
+            this.tabPage8.TabIndex = 8;
+            this.tabPage8.Text = "Сотрудники";
+            // 
+            // saveButton
+            // 
+            this.saveButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.saveButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.saveButton.Depth = 0;
+            this.saveButton.HighEmphasis = true;
+            this.saveButton.Icon = null;
+            this.saveButton.Location = new System.Drawing.Point(917, 599);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.saveButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.saveButton.Name = "saveButton";
+            this.saveButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.saveButton.Size = new System.Drawing.Size(109, 36);
+            this.saveButton.TabIndex = 2;
+            this.saveButton.Text = "Сохранить";
+            this.saveButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.saveButton.UseAccentColor = false;
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            // 
+            // loadButton
+            // 
+            this.loadButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.loadButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.loadButton.Depth = 0;
+            this.loadButton.HighEmphasis = true;
+            this.loadButton.Icon = null;
+            this.loadButton.Location = new System.Drawing.Point(622, 599);
+            this.loadButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.loadButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.loadButton.Name = "loadButton";
+            this.loadButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.loadButton.Size = new System.Drawing.Size(90, 36);
+            this.loadButton.TabIndex = 1;
+            this.loadButton.Text = "Открыть";
+            this.loadButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.loadButton.UseAccentColor = false;
+            this.loadButton.UseVisualStyleBackColor = true;
+            this.loadButton.Click += new System.EventHandler(this.LoadButton_Click);
+            // 
+            // dataGridViewJson
+            // 
+            this.dataGridViewJson.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewJson.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            this.dataGridViewJson.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewJson.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Namess,
+            this.TelegramId,
+            this.TelegramTopic,
+            this.ZpColumn});
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.InfoText;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewJson.DefaultCellStyle = dataGridViewCellStyle11;
+            this.dataGridViewJson.GridColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.dataGridViewJson.Location = new System.Drawing.Point(452, 139);
+            this.dataGridViewJson.Name = "dataGridViewJson";
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewJson.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            this.dataGridViewJson.Size = new System.Drawing.Size(862, 356);
+            this.dataGridViewJson.TabIndex = 0;
+            // 
+            // Namess
+            // 
+            this.Namess.Frozen = true;
+            this.Namess.HeaderText = "Name";
+            this.Namess.Name = "Namess";
+            // 
+            // TelegramId
+            // 
+            this.TelegramId.Frozen = true;
+            this.TelegramId.HeaderText = "TelegramId";
+            this.TelegramId.Name = "TelegramId";
+            // 
+            // TelegramTopic
+            // 
+            this.TelegramTopic.Frozen = true;
+            this.TelegramTopic.HeaderText = "TelegramTopic";
+            this.TelegramTopic.Name = "TelegramTopic";
+            // 
+            // ZpColumn
+            // 
+            this.ZpColumn.Frozen = true;
+            this.ZpColumn.HeaderText = "ZpColumn";
+            this.ZpColumn.Name = "ZpColumn";
+            this.ZpColumn.ReadOnly = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Fuchsia;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1744, 842);
+            this.ClientSize = new System.Drawing.Size(1777, 841);
             this.Controls.Add(this.materialTabSelector1);
             this.Controls.Add(this.materialTabControl1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -1598,20 +1818,25 @@ namespace AVASMENA
             this.TransparencyKey = System.Drawing.Color.LightGoldenrodYellow;
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.materialTabControl1.ResumeLayout(false);
+            this.tabPage0.ResumeLayout(false);
+            this.tabPage0.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.tabPage5.ResumeLayout(false);
-            this.tabPage5.PerformLayout();
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
-            this.tabPage7.ResumeLayout(false);
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.tabPage6.ResumeLayout(false);
-            this.tabPage6.PerformLayout();
+            this.tabPage7.ResumeLayout(false);
+            this.tabPage7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExcel)).EndInit();
+            this.tabPage8.ResumeLayout(false);
+            this.tabPage8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewJson)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1637,7 +1862,7 @@ namespace AVASMENA
         private Label label3;
         private Label label2;
         private Label label1;
-        private TabPage tabPage2;
+        private TabPage tabPage3;
         private MaterialCheckbox materialCheckbox1;
         private MaterialSwitch materialSwitch1;
         private Label label13;
@@ -1648,10 +1873,10 @@ namespace AVASMENA
         private Label label10;
         private MaterialTextBox2 materialTextBox22;
         private MaterialTextBox2 materialTextBox21;
-        private TabPage tabPage3;
+        private TabPage tabPage5;
         private MaterialComboBox materialComboBox1;
         private MaterialButton materialButton3;
-        private TabPage tabPage4;
+        private TabPage tabPage2;
         private ListBox listBox5;
         private Label label15;
         private Label label14;
@@ -1671,7 +1896,7 @@ namespace AVASMENA
         private MaterialTextBox2 Minus1;
         private MaterialComboBox materialComboBox4;
         private Label label6;
-        private TabPage tabPage5;
+        private TabPage tabPage4;
         private MaterialButton materialButton4;
         private MaterialButton materialButton5;
         private Label label21;
@@ -1682,7 +1907,7 @@ namespace AVASMENA
         private MaterialComboBox comboBoxNameRas;
         private ListBox listBoxRas;
         private MaterialCheckbox materialCheckbox4;
-        private TabPage tabPage6;
+        private TabPage tabPage7;
         private MaterialComboBox comboBoxExcel;
         private DataGridView dataGridViewExcel;
         private MaterialCheckbox materialCheckbox6;
@@ -1691,9 +1916,21 @@ namespace AVASMENA
         private MaterialButton button1;
         private MaterialCheckbox PopravkaDa;
         private MaterialButton btnSaveExcel;
-        private TabPage tabPage7;
+        private TabPage tabPage6;
         private MaterialButton InventBTN;
         private MaterialTextBox2 InventSum;
         private ListBox listBoxNameInv;
+        private TabPage tabPage0;
+        private MaterialButton materialButton7;
+        private MaterialComboBox LoginBox;
+        private MaterialTextBox2 PasswordTextBox;
+        private TabPage tabPage8;
+        private DataGridView dataGridViewJson;
+        private MaterialButton loadButton;
+        private MaterialButton saveButton;
+        private DataGridViewTextBoxColumn Namess;
+        private DataGridViewTextBoxColumn TelegramId;
+        private DataGridViewTextBoxColumn TelegramTopic;
+        private DataGridViewTextBoxColumn ZpColumn;
     }
 }
