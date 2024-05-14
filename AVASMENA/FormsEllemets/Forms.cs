@@ -119,12 +119,13 @@ namespace FormsSetting
             }
             return Task.FromResult(list);
         }
-        public static Task RemoveTabPage(MaterialTabControl TabC, params TabPage[] tabs)
+        public static Task RemoveTabPage(MaterialTabControl TabC, List<TabPage> tabs)
         {
-            foreach (var tab in tabs)
-            {
-                TabC.TabPages.Remove(tab);
-            }
+                foreach (var tab in tabs)
+                {
+                    if (TabC.TabPages.Contains(tab))
+                        TabC.TabPages.Remove(tab);
+                }
             return Task.CompletedTask;
         }
         public static Task SetupComBox(MaterialComboBox ComBox)

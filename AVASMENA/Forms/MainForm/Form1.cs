@@ -12,6 +12,7 @@ using Excel;
 using FormsSetting;
 using TelegramCode;
 using jsonData;
+using AVASMENA;
 
 namespace AVASMENA
 {
@@ -32,6 +33,9 @@ namespace AVASMENA
         // Установите ваш пароль здесь
         private const string CorrectPassword = "238384";
         private static string jsonFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Documents", "Config", "userData.json");
+        private bool RemoveDa = false;
+        List<TabPage> _RootList = new List<TabPage>();
+        List<TabPage> _Auth = new List<TabPage>();
 
         public MainForm()
         {
@@ -43,10 +47,13 @@ namespace AVASMENA
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.Blue800, Primary.Blue900, Primary.Purple400, Accent.Purple700, TextShade.WHITE);
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.Blue600, Primary.Blue900, Primary.Purple400, Accent.Purple700, TextShade.WHITE);
 
 
             InitializeComponent();
+            _RootList = new List<TabPage> { tabPage5, tabPage6, tabPage7, tabPage8 };
+            _Auth = new List<TabPage> { tabPage0};
+            ExitBtn.Visible = false;
             Forms.InitializedataGrid(dataGridViewJson);
             Forms.HideShowSelector(materialTabSelector1, false);
             Forms.PasswordBoxText(PasswordTextBox, false);
@@ -113,9 +120,11 @@ namespace AVASMENA
 
             dataLoader.SaveToFile(jsonFilePath);
         }
+
+
         public void LoginBox_SelectedIndex(object sender, EventArgs e)
         {
-            if(LoginBox.Text == "Root")
+            if (LoginBox.Text == "Root")
             {
                 Forms.PasswordBoxText(PasswordTextBox, true);
             }
@@ -144,15 +153,38 @@ namespace AVASMENA
                     MessageBox.Show("Incorrect password");
                     return;
                 }
+                RemoveDa = false;
             }
             materialTabControl1.SelectedTab = tabPage1;
             if (LoginBox.Text == "Admin")
             {
-                Forms.RemoveTabPage(materialTabControl1, tabPage6, tabPage7, tabPage6, tabPage8);
+                RemoveDa = true;
+                Forms.RemoveTabPage(materialTabControl1, _RootList);
             }
-            Forms.RemoveTabPage(materialTabControl1, tabPage0);
+            Forms.RemoveTabPage(materialTabControl1, _Auth);
             Forms.HideShowSelector(materialTabSelector1, true);
+            ExitBtn.Visible = true;
         }
+        private void RestoreTabs()
+        {
+            if(RemoveDa == true)
+            {
+                foreach(var tab in _RootList)
+                {
+                    materialTabControl1.TabPages.Add(tab);
+                }
+            }
+        }
+        private void ExitBtn_Click(object sender, EventArgs e)
+        {
+            RestoreTabs();
+            materialTabControl1.TabPages.Insert(0, tabPage0);
+            materialTabControl1.SelectedTab = tabPage0;
+            materialTabSelector1.Visible = false;
+            ExitBtn.Visible = false;
+        }
+
+
         private void SetupEvents()
         {
             textBox2.TextChanged += UpdateListBox5;
