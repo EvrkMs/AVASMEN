@@ -12,15 +12,14 @@ using Excel;
 using FormsSetting;
 using TelegramCode;
 using jsonData;
-using AVASMENA;
 
 namespace AVASMENA
 {
     public partial class MainForm : MaterialForm
     {
         //листы
-        private readonly Dictionary<string, long> users;
-        private readonly Dictionary<string, int> names;
+        private readonly Dictionary<string, long> users = UserDataLoader.LoadFromFile().Users;
+        private static readonly Dictionary<string, int> names = UserDataLoader.LoadFromFile().Names;
         //по екселю
         private readonly string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Documents", "excel", "itog.xlsx");
         //по форме
@@ -39,10 +38,6 @@ namespace AVASMENA
 
         public MainForm()
         {
-            UserDataLoader.CreateJsonIfNotExists();
-            UserDataLoader dataLoader = UserDataLoader.LoadFromFile(jsonFilePath);
-            users = dataLoader.Users;
-            names = dataLoader.Names;
 
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
@@ -86,7 +81,7 @@ namespace AVASMENA
         }
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            UserDataLoader dataLoader = UserDataLoader.LoadFromFile(jsonFilePath);
+            UserDataLoader dataLoader = UserDataLoader.LoadFromFile();
 
             dataLoader.NameList.Clear();
             dataLoader.Users.Clear();
@@ -118,7 +113,7 @@ namespace AVASMENA
                 }
             }
 
-            dataLoader.SaveToFile(jsonFilePath);
+            dataLoader.SaveToFile();
         }
 
 
@@ -540,6 +535,7 @@ namespace AVASMENA
         }
         private async void MainForm_Load(object sender, EventArgs e)
         {
+            materialTabControl1.SelectedTab = tabPage0;
             await ExcelHelper.ExcelCreated();
             await ExcelHelper.LoadSheet(comboBoxExcel);
             VisibleBox(false);

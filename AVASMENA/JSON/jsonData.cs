@@ -4,7 +4,6 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
-using Telegram.Bot.Types;
 
 namespace jsonData
 {
@@ -57,11 +56,11 @@ namespace jsonData
             return Task.CompletedTask;
         }
 
-        public static UserDataLoader LoadFromFile(string filePath)
+        public static UserDataLoader LoadFromFile()
         {
             try
             {
-                var jsonData = System.IO.File.ReadAllText(filePath);
+                var jsonData = System.IO.File.ReadAllText(jsonFilePath);
                 return JsonConvert.DeserializeObject<UserDataLoader>(jsonData);
             }
             catch (Exception ex)
@@ -71,12 +70,12 @@ namespace jsonData
             }
         }
 
-        public void SaveToFile(string filePath)
+        public void SaveToFile()
         {
             try
             {
                 var jsonData = JsonConvert.SerializeObject(this, Formatting.Indented);
-                System.IO.File.WriteAllText(filePath, jsonData);
+                System.IO.File.WriteAllText(jsonFilePath, jsonData);
             }
             catch (Exception ex)
             {
@@ -86,7 +85,7 @@ namespace jsonData
 
         public static void SaveBttn(DataGridView dataGrid)
         {
-            UserDataLoader dataLoader = LoadFromFile(jsonFilePath);
+            UserDataLoader dataLoader = LoadFromFile();
 
             dataGrid.Rows.Clear();
 

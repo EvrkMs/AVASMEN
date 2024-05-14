@@ -1,4 +1,5 @@
-﻿using MaterialSkin.Controls;
+﻿using jsonData;
+using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,26 +14,8 @@ namespace TelegramCode
     public static class Telegrame
     {
         private static readonly Dictionary<string, int> userOffsets = new Dictionary<string, int>();
-        private static readonly Dictionary<string, long> users = new Dictionary<string, long>
-        {
-            {"Ярый", 1972629490 },
-            {"Серый", 986504267 },
-            {"Вова", 5784613858},
-            {"Егор",  917263855},
-            {"Дима По", 1497063301 },
-            {"Али",  5540567292},
-            {"Илья",  5107083008}
-        };
-        private static readonly Dictionary<string, int> names = new Dictionary<string, int>
-        {
-            { "Вова", 6 },
-            { "Ярый", 178 },
-            { "Серый", 448 },
-            { "Егор", 12 },
-            { "Дима По", 913 },
-            { "Али", 11 },
-            { "Илья", 10 }
-        };
+        private static readonly Dictionary<string, long> users = UserDataLoader.LoadFromFile().Users;
+        private static readonly Dictionary<string, int> names = UserDataLoader.LoadFromFile().Names;
 
         private static bool isSending = false;
         private static readonly Telegram.Bot.TelegramBotClient bot = new Telegram.Bot.TelegramBotClient("6375453330:AAFIKOIwAztwY4__CF2c_vZvzcNuUf4l3KM");

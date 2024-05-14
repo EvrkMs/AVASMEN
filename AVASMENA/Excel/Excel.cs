@@ -21,16 +21,14 @@ namespace Excel
         private static readonly string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Documents\\excel");
         private static readonly string ZPfolder = "excel\\ZP\\";
         private static readonly string pather = $"{ZPfolder}\\ZP.xlsx";
-        private static readonly Dictionary<string, int> nameZP;
-        private static readonly Dictionary<string, int> names;
+        private static readonly Dictionary<string, int> nameZP = UserDataLoader.LoadFromFile().NamesZP;
+        private static readonly Dictionary<string, int> names = UserDataLoader.LoadFromFile().Names;
 
         static ExcelHelper()
         {
-            // Загрузка данных из JSON-файла
-            string jsonFilePath = "JSON\\userData.json";
-            UserDataLoader dataLoader = UserDataLoader.LoadFromFile(jsonFilePath);
-            nameZP = dataLoader.NamesZP;
-            names = dataLoader.Names;
+            //UserDataLoader dataLoader = UserDataLoader.LoadFromFile();
+            //nameZP = dataLoader.NamesZP;
+            //names = dataLoader.Names;
         }
         //Заполнение Ексаль по Отчёту за смену
         public static Task UpdateExcel(int itog, int viruchka)
@@ -215,18 +213,16 @@ namespace Excel
                     }
 
                     // Определяем размеры изображения с учетом содержимого ячеек
-                    int cellWidth = maxWidth + 20; // Добавляем немного запаса
+                    int cellWidth = maxWidth + 10; // Добавляем немного запаса
                     int cellHeight = maxHeight + 10; // Добавляем немного запаса
 
                     // Создаем новый Bitmap с размерами таблицы
                     screenshot = new Bitmap(width * cellWidth, (height + 1) * cellHeight); // +1 для заголовка
-
                     // Задаем белый фон
                     using (Graphics g = Graphics.FromImage(screenshot))
                     {
                         g.Clear(System.Drawing.Color.White);
                     }
-
                     // Задаем шрифт для ячеек
                     using (System.Drawing.Font font = new System.Drawing.Font("Arial", 12))
                     {

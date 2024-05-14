@@ -42,11 +42,6 @@ namespace AVASMENA
             this.materialButton2 = new MaterialSkin.Controls.MaterialButton();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
-            this.tabPage0 = new System.Windows.Forms.TabPage();
-            this.ExitBtn = new MaterialSkin.Controls.MaterialButton();
-            this.PasswordTextBox = new MaterialSkin.Controls.MaterialTextBox2();
-            this.materialButton7 = new MaterialSkin.Controls.MaterialButton();
-            this.LoginBox = new MaterialSkin.Controls.MaterialComboBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button1 = new MaterialSkin.Controls.MaterialButton();
             this.button2 = new MaterialSkin.Controls.MaterialButton();
@@ -130,8 +125,12 @@ namespace AVASMENA
             this.TelegramId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TelegramTopic = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ZpColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPage0 = new System.Windows.Forms.TabPage();
+            this.PasswordTextBox = new MaterialSkin.Controls.MaterialTextBox2();
+            this.materialButton7 = new MaterialSkin.Controls.MaterialButton();
+            this.LoginBox = new MaterialSkin.Controls.MaterialComboBox();
+            this.ExitBtn = new MaterialSkin.Controls.MaterialButton();
             this.materialTabControl1.SuspendLayout();
-            this.tabPage0.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -142,6 +141,7 @@ namespace AVASMENA
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExcel)).BeginInit();
             this.tabPage8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewJson)).BeginInit();
+            this.tabPage0.SuspendLayout();
             this.SuspendLayout();
             // 
             // materialButton2
@@ -179,6 +179,7 @@ namespace AVASMENA
             // materialTabControl1
             // 
             this.materialTabControl1.Alignment = System.Windows.Forms.TabAlignment.Left;
+            this.materialTabControl1.Controls.Add(this.tabPage0);
             this.materialTabControl1.Controls.Add(this.tabPage1);
             this.materialTabControl1.Controls.Add(this.tabPage2);
             this.materialTabControl1.Controls.Add(this.tabPage3);
@@ -187,7 +188,6 @@ namespace AVASMENA
             this.materialTabControl1.Controls.Add(this.tabPage6);
             this.materialTabControl1.Controls.Add(this.tabPage7);
             this.materialTabControl1.Controls.Add(this.tabPage8);
-            this.materialTabControl1.Controls.Add(this.tabPage0);
             this.materialTabControl1.Depth = 0;
             this.materialTabControl1.Location = new System.Drawing.Point(6, 23);
             this.materialTabControl1.MouseState = MaterialSkin.MouseState.HOVER;
@@ -196,112 +196,6 @@ namespace AVASMENA
             this.materialTabControl1.SelectedIndex = 0;
             this.materialTabControl1.Size = new System.Drawing.Size(1756, 823);
             this.materialTabControl1.TabIndex = 0;
-            // 
-            // tabPage0
-            // 
-            this.tabPage0.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.tabPage0.Controls.Add(this.PasswordTextBox);
-            this.tabPage0.Controls.Add(this.materialButton7);
-            this.tabPage0.Controls.Add(this.LoginBox);
-            this.tabPage0.Location = new System.Drawing.Point(23, 4);
-            this.tabPage0.Name = "tabPage0";
-            this.tabPage0.Size = new System.Drawing.Size(1729, 815);
-            this.tabPage0.TabIndex = 7;
-            this.tabPage0.Text = "Авторизация";
-            // 
-            // ExitBtn
-            // 
-            this.ExitBtn.AutoSize = false;
-            this.ExitBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ExitBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.ExitBtn.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.ExitBtn.Depth = 0;
-            this.ExitBtn.HighEmphasis = true;
-            this.ExitBtn.Icon = null;
-            this.ExitBtn.Location = new System.Drawing.Point(1516, 23);
-            this.ExitBtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.ExitBtn.MouseState = MaterialSkin.MouseState.HOVER;
-            this.ExitBtn.Name = "ExitBtn";
-            this.ExitBtn.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.ExitBtn.Size = new System.Drawing.Size(70, 23);
-            this.ExitBtn.TabIndex = 3;
-            this.ExitBtn.Text = "Выход";
-            this.ExitBtn.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.ExitBtn.UseAccentColor = false;
-            this.ExitBtn.UseVisualStyleBackColor = false;
-            this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
-            // 
-            // PasswordTextBox
-            // 
-            this.PasswordTextBox.AnimateReadOnly = false;
-            this.PasswordTextBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.PasswordTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.PasswordTextBox.Depth = 0;
-            this.PasswordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.PasswordTextBox.HideSelection = true;
-            this.PasswordTextBox.LeadingIcon = null;
-            this.PasswordTextBox.Location = new System.Drawing.Point(629, 334);
-            this.PasswordTextBox.MaxLength = 32767;
-            this.PasswordTextBox.MouseState = MaterialSkin.MouseState.OUT;
-            this.PasswordTextBox.Name = "PasswordTextBox";
-            this.PasswordTextBox.PasswordChar = '●';
-            this.PasswordTextBox.PrefixSuffixText = null;
-            this.PasswordTextBox.ReadOnly = false;
-            this.PasswordTextBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.PasswordTextBox.SelectedText = "";
-            this.PasswordTextBox.SelectionLength = 0;
-            this.PasswordTextBox.SelectionStart = 0;
-            this.PasswordTextBox.ShortcutsEnabled = true;
-            this.PasswordTextBox.Size = new System.Drawing.Size(231, 48);
-            this.PasswordTextBox.TabIndex = 2;
-            this.PasswordTextBox.TabStop = false;
-            this.PasswordTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.PasswordTextBox.TrailingIcon = null;
-            this.PasswordTextBox.UseSystemPasswordChar = true;
-            this.PasswordTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PasswordTextBox_KeyDown);
-            // 
-            // materialButton7
-            // 
-            this.materialButton7.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton7.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.materialButton7.Depth = 0;
-            this.materialButton7.HighEmphasis = true;
-            this.materialButton7.Icon = null;
-            this.materialButton7.Location = new System.Drawing.Point(685, 391);
-            this.materialButton7.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialButton7.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton7.Name = "materialButton7";
-            this.materialButton7.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton7.Size = new System.Drawing.Size(125, 36);
-            this.materialButton7.TabIndex = 1;
-            this.materialButton7.Text = "Продолжить";
-            this.materialButton7.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.materialButton7.UseAccentColor = false;
-            this.materialButton7.UseVisualStyleBackColor = true;
-            this.materialButton7.Click += new System.EventHandler(this.materialButton7_Click);
-            // 
-            // LoginBox
-            // 
-            this.LoginBox.AutoResize = false;
-            this.LoginBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.LoginBox.Depth = 0;
-            this.LoginBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.LoginBox.DropDownHeight = 174;
-            this.LoginBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.LoginBox.DropDownWidth = 121;
-            this.LoginBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.LoginBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.LoginBox.FormattingEnabled = true;
-            this.LoginBox.IntegralHeight = false;
-            this.LoginBox.ItemHeight = 43;
-            this.LoginBox.Location = new System.Drawing.Point(588, 279);
-            this.LoginBox.MaxDropDownItems = 4;
-            this.LoginBox.MouseState = MaterialSkin.MouseState.OUT;
-            this.LoginBox.Name = "LoginBox";
-            this.LoginBox.Size = new System.Drawing.Size(318, 49);
-            this.LoginBox.StartIndex = 0;
-            this.LoginBox.TabIndex = 0;
-            this.LoginBox.SelectedIndexChanged += new System.EventHandler(this.LoginBox_SelectedIndex);
             // 
             // tabPage1
             // 
@@ -1822,13 +1716,119 @@ namespace AVASMENA
             this.ZpColumn.Name = "ZpColumn";
             this.ZpColumn.ReadOnly = true;
             // 
+            // tabPage0
+            // 
+            this.tabPage0.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.tabPage0.Controls.Add(this.PasswordTextBox);
+            this.tabPage0.Controls.Add(this.materialButton7);
+            this.tabPage0.Controls.Add(this.LoginBox);
+            this.tabPage0.Location = new System.Drawing.Point(23, 4);
+            this.tabPage0.Name = "tabPage0";
+            this.tabPage0.Size = new System.Drawing.Size(1729, 815);
+            this.tabPage0.TabIndex = 7;
+            this.tabPage0.Text = "Авторизация";
+            // 
+            // PasswordTextBox
+            // 
+            this.PasswordTextBox.AnimateReadOnly = false;
+            this.PasswordTextBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.PasswordTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.PasswordTextBox.Depth = 0;
+            this.PasswordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.PasswordTextBox.HideSelection = true;
+            this.PasswordTextBox.LeadingIcon = null;
+            this.PasswordTextBox.Location = new System.Drawing.Point(629, 334);
+            this.PasswordTextBox.MaxLength = 32767;
+            this.PasswordTextBox.MouseState = MaterialSkin.MouseState.OUT;
+            this.PasswordTextBox.Name = "PasswordTextBox";
+            this.PasswordTextBox.PasswordChar = '●';
+            this.PasswordTextBox.PrefixSuffixText = null;
+            this.PasswordTextBox.ReadOnly = false;
+            this.PasswordTextBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.PasswordTextBox.SelectedText = "";
+            this.PasswordTextBox.SelectionLength = 0;
+            this.PasswordTextBox.SelectionStart = 0;
+            this.PasswordTextBox.ShortcutsEnabled = true;
+            this.PasswordTextBox.Size = new System.Drawing.Size(231, 48);
+            this.PasswordTextBox.TabIndex = 2;
+            this.PasswordTextBox.TabStop = false;
+            this.PasswordTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.PasswordTextBox.TrailingIcon = null;
+            this.PasswordTextBox.UseSystemPasswordChar = true;
+            this.PasswordTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PasswordTextBox_KeyDown);
+            // 
+            // materialButton7
+            // 
+            this.materialButton7.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton7.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton7.Depth = 0;
+            this.materialButton7.HighEmphasis = true;
+            this.materialButton7.Icon = null;
+            this.materialButton7.Location = new System.Drawing.Point(685, 391);
+            this.materialButton7.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton7.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton7.Name = "materialButton7";
+            this.materialButton7.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton7.Size = new System.Drawing.Size(125, 36);
+            this.materialButton7.TabIndex = 1;
+            this.materialButton7.Text = "Продолжить";
+            this.materialButton7.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButton7.UseAccentColor = false;
+            this.materialButton7.UseVisualStyleBackColor = true;
+            this.materialButton7.Click += new System.EventHandler(this.materialButton7_Click);
+            // 
+            // LoginBox
+            // 
+            this.LoginBox.AutoResize = false;
+            this.LoginBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.LoginBox.Depth = 0;
+            this.LoginBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.LoginBox.DropDownHeight = 174;
+            this.LoginBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.LoginBox.DropDownWidth = 121;
+            this.LoginBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.LoginBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.LoginBox.FormattingEnabled = true;
+            this.LoginBox.IntegralHeight = false;
+            this.LoginBox.ItemHeight = 43;
+            this.LoginBox.Location = new System.Drawing.Point(588, 279);
+            this.LoginBox.MaxDropDownItems = 4;
+            this.LoginBox.MouseState = MaterialSkin.MouseState.OUT;
+            this.LoginBox.Name = "LoginBox";
+            this.LoginBox.Size = new System.Drawing.Size(318, 49);
+            this.LoginBox.StartIndex = 0;
+            this.LoginBox.TabIndex = 0;
+            this.LoginBox.SelectedIndexChanged += new System.EventHandler(this.LoginBox_SelectedIndex);
+            // 
+            // ExitBtn
+            // 
+            this.ExitBtn.AutoSize = false;
+            this.ExitBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ExitBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.ExitBtn.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.ExitBtn.Depth = 0;
+            this.ExitBtn.HighEmphasis = true;
+            this.ExitBtn.Icon = null;
+            this.ExitBtn.Location = new System.Drawing.Point(1516, 23);
+            this.ExitBtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.ExitBtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.ExitBtn.Name = "ExitBtn";
+            this.ExitBtn.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.ExitBtn.Size = new System.Drawing.Size(70, 23);
+            this.ExitBtn.TabIndex = 3;
+            this.ExitBtn.Text = "Выход";
+            this.ExitBtn.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.ExitBtn.UseAccentColor = false;
+            this.ExitBtn.UseVisualStyleBackColor = false;
+            this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Fuchsia;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1763, 843);
+            this.ClientSize = new System.Drawing.Size(1758, 842);
             this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.materialTabSelector1);
             this.Controls.Add(this.materialTabControl1);
@@ -1844,8 +1844,6 @@ namespace AVASMENA
             this.TransparencyKey = System.Drawing.Color.LightGoldenrodYellow;
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.materialTabControl1.ResumeLayout(false);
-            this.tabPage0.ResumeLayout(false);
-            this.tabPage0.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
@@ -1863,6 +1861,8 @@ namespace AVASMENA
             this.tabPage8.ResumeLayout(false);
             this.tabPage8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewJson)).EndInit();
+            this.tabPage0.ResumeLayout(false);
+            this.tabPage0.PerformLayout();
             this.ResumeLayout(false);
 
         }

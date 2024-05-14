@@ -9,16 +9,9 @@ namespace FormsSetting
 {
     public static class Forms
     {
-        private static readonly List<string> namesList;
+        private static readonly List<string> namesList = UserDataLoader.LoadFromFile().NameList;
         private static readonly List<string> Login = new List<string> { "Admin", "Root" };
 
-        static Forms()
-        {
-            // Загрузка данных из JSON-файла
-            string jsonFilePath = "JSON\\userData.json";
-            UserDataLoader dataLoader = UserDataLoader.LoadFromFile(jsonFilePath);
-            namesList = dataLoader.NameList;
-        }
         public static Task Setup1(params Label[] labels)
         {
             foreach (var label in labels)
