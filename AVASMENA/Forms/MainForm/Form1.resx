@@ -117,12 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;InventSum.Parent" xml:space="preserve">
-    <value>InventPage</value>
+  <data name="&gt;&gt;materialTextBox21.Name" xml:space="preserve">
+    <value>materialTextBox21</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="RashodPage.Size" type="System.Drawing.Size, System.Drawing">
     <value>1729, 815</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 29</value>
   </data>
   <data name="SeyfRasHod.Location" type="System.Drawing.Point, System.Drawing">
     <value>66, 305</value>
@@ -174,8 +177,8 @@
   <data name="PlusSeyf.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 36</value>
   </data>
-  <data name="&gt;&gt;textBox7.Name" xml:space="preserve">
-    <value>textBox7</value>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>23</value>
   </data>
   <data name="textBox7.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>No</value>
@@ -215,9 +218,6 @@
   </data>
   <data name="materialTextBox2.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
-  </data>
-  <data name="&gt;&gt;PlusSeyf.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="&gt;&gt;label17.Parent" xml:space="preserve">
     <value>AvansPage</value>
@@ -261,8 +261,14 @@
   <data name="label8.Text" xml:space="preserve">
     <value>Почему минус</value>
   </data>
+  <data name="materialComboBox3.IntegralHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;ManPage.ZOrder" xml:space="preserve">
     <value>8</value>
+  </data>
+  <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 17.25pt</value>
   </data>
   <data name="materialTextBox1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 16px</value>
@@ -273,14 +279,17 @@
   <data name="&gt;&gt;RashodPage.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft New Tai Lue, 17pt</value>
+  <data name="&gt;&gt;InventSum.Parent" xml:space="preserve">
+    <value>InventPage</value>
   </data>
   <data name="listBoxNameInv.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 17pt</value>
   </data>
   <data name="label21.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
+  </data>
+  <data name="&gt;&gt;textBox3.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;InventSum.Name" xml:space="preserve">
     <value>InventSum</value>
@@ -357,11 +366,14 @@
   <data name="label5.TabIndex" type="System.Int32, mscorlib">
     <value>42</value>
   </data>
+  <data name="&gt;&gt;comboBox1.Parent" xml:space="preserve">
+    <value>OtchetPage</value>
+  </data>
   <data name="&gt;&gt;PasswordTextBox.Name" xml:space="preserve">
     <value>PasswordTextBox</value>
   </data>
-  <data name="&gt;&gt;LoginBox.Name" xml:space="preserve">
-    <value>LoginBox</value>
+  <data name="&gt;&gt;RashodPage.Name" xml:space="preserve">
+    <value>RashodPage</value>
   </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft New Tai Lue, 17pt</value>
@@ -420,14 +432,17 @@
   <data name="&gt;&gt;AuthBtn.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="comboBox1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 18pt, style=Bold</value>
+  <data name="Minus1.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
   </data>
   <data name="materialTextBox24.Size" type="System.Drawing.Size, System.Drawing">
     <value>73, 48</value>
   </data>
   <data name="Отправить.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;materialTextBox21.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;label3.Parent" xml:space="preserve">
     <value>OtchetPage</value>
@@ -450,6 +465,9 @@
   <data name="&gt;&gt;materialTextBox25.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
+  <data name="comboBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 18pt, style=Bold</value>
+  </data>
   <data name="textBox7.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 18pt, style=Bold</value>
   </data>
@@ -462,8 +480,8 @@
   <data name="&gt;&gt;materialTextBox25.Name" xml:space="preserve">
     <value>materialTextBox25</value>
   </data>
-  <data name="materialTextBox22.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 17.25pt</value>
+  <data name="&gt;&gt;textBox7.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="Аванс.Location" type="System.Drawing.Point, System.Drawing">
     <value>86, 681</value>
@@ -486,14 +504,11 @@
   <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
     <value>70, 16</value>
   </data>
-  <data name="&gt;&gt;comboBox1.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
   <data name="&gt;&gt;PopravkaDa.Parent" xml:space="preserve">
     <value>PravkaItogPage</value>
   </data>
-  <data name="listBox1.HorizontalScrollbar" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="TextBox8.PrefixSuffixText" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
   <data name="textBox7.PrefixSuffixText" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
@@ -528,9 +543,6 @@
   <data name="PhotoMessageRashod.Size" type="System.Drawing.Size, System.Drawing">
     <value>167, 37</value>
   </data>
-  <data name="dataGridViewExcel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1678, 493</value>
-  </data>
   <data name="listBox4.Location" type="System.Drawing.Point, System.Drawing">
     <value>515, 18</value>
   </data>
@@ -546,8 +558,8 @@
   <data name="materialButton2.Size" type="System.Drawing.Size, System.Drawing">
     <value>269, 36</value>
   </data>
-  <data name="&gt;&gt;materialTextBox21.Name" xml:space="preserve">
-    <value>materialTextBox21</value>
+  <data name="&gt;&gt;label17.Name" xml:space="preserve">
+    <value>label17</value>
   </data>
   <data name="&gt;&gt;RashodPage.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -558,8 +570,8 @@
   <data name="materialTextBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 48</value>
   </data>
-  <data name="TextBox8.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+  <data name="Расчитать.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="materialComboBox3.Size" type="System.Drawing.Size, System.Drawing">
     <value>176, 49</value>
@@ -591,9 +603,6 @@
   <data name="Minus1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 16px</value>
   </data>
-  <data name="&gt;&gt;listBox4.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="&gt;&gt;SeyfPlusPage.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
@@ -611,6 +620,9 @@
   </data>
   <data name="btnSaveExcel.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
+  </data>
+  <data name="materialTextBox22.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 17.25pt</value>
   </data>
   <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 17pt</value>
@@ -636,9 +648,6 @@
   <data name="OtchetPage.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>None</value>
   </data>
-  <data name="PasswordTextBox.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>No</value>
-  </data>
   <data name="SeyfRasHod.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
@@ -650,6 +659,9 @@
   </data>
   <data name="InventSum.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>No</value>
+  </data>
+  <data name="PopravkaDa.Text" xml:space="preserve">
+    <value>Поправка</value>
   </data>
   <data name="materialTextBox23.PrefixSuffixText" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
@@ -665,9 +677,6 @@
   </data>
   <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
     <value>6</value>
-  </data>
-  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 33</value>
   </data>
   <data name="&gt;&gt;materialTabControl1.Name" xml:space="preserve">
     <value>materialTabControl1</value>
@@ -719,6 +728,9 @@
   </data>
   <data name="&gt;&gt;SeyfRasHod.Name" xml:space="preserve">
     <value>SeyfRasHod</value>
+  </data>
+  <data name="comboBox1.ItemHeight" type="System.Int32, mscorlib">
+    <value>43</value>
   </data>
   <data name="&gt;&gt;listBox5.ZOrder" xml:space="preserve">
     <value>6</value>
@@ -864,14 +876,14 @@
   <data name="&gt;&gt;materialTextBox22.Type" xml:space="preserve">
     <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;InventPage.Name" xml:space="preserve">
-    <value>InventPage</value>
-  </data>
   <data name="InventBTN.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="dataGridViewExcel.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="PostavkaRashod.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -885,11 +897,8 @@
   <data name="&gt;&gt;materialTabControl1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="textBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>354, 334</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox1.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;listBox4.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="PhotoMessageRashod.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -899,9 +908,6 @@
   </data>
   <data name="AutherPage.Location" type="System.Drawing.Point, System.Drawing">
     <value>23, 4</value>
-  </data>
-  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
-    <value>OtchetPage</value>
   </data>
   <data name="materialTextBox23.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>No</value>
@@ -917,9 +923,6 @@
   </data>
   <data name="dataGridViewJson.Size" type="System.Drawing.Size, System.Drawing">
     <value>862, 356</value>
-  </data>
-  <data name="ExitBtn.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 6, 4, 6</value>
   </data>
   <data name="materialButton2.Text" xml:space="preserve">
     <value>сформировать график месяца</value>
@@ -951,9 +954,6 @@
   <data name="materialTextBox24.PrefixSuffixText" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <data name="comboBoxExcel.MaxDropDownItems" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
   <data name="materialTextBox25.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>No</value>
   </data>
@@ -984,14 +984,14 @@
   <data name="materialComboBox4.IntegralHeight" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="&gt;&gt;LoginBox.Name" xml:space="preserve">
+    <value>LoginBox</value>
+  </data>
   <data name="saveButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>109, 36</value>
   </data>
   <data name="label21.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopLeft</value>
-  </data>
-  <data name="materialTextBox2.Text" xml:space="preserve">
-    <value />
   </data>
   <data name="Расчитать.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -1077,9 +1077,6 @@
   <data name="&gt;&gt;listBox3.Name" xml:space="preserve">
     <value>listBox3</value>
   </data>
-  <data name="PasswordTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
   <data name="&gt;&gt;PhotoMessageRashod.Name" xml:space="preserve">
     <value>PhotoMessageRashod</value>
   </data>
@@ -1100,9 +1097,6 @@
   </data>
   <data name="&gt;&gt;saveButton.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="&gt;&gt;label4.Name" xml:space="preserve">
-    <value>label4</value>
   </data>
   <data name="label16.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1133,9 +1127,6 @@
   </data>
   <data name="textBox3.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>None</value>
-  </data>
-  <data name="listBoxNameInv.Location" type="System.Drawing.Point, System.Drawing">
-    <value>105, 219</value>
   </data>
   <data name="materialTextBox21.Location" type="System.Drawing.Point, System.Drawing">
     <value>421, 27</value>
@@ -1197,9 +1188,6 @@
   <data name="Расчитать.Text" xml:space="preserve">
     <value>Расчитать</value>
   </data>
-  <data name="&gt;&gt;textBox7.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="label20.Text" xml:space="preserve">
     <value>Минус второго</value>
   </data>
@@ -1236,8 +1224,8 @@
   <data name="&gt;&gt;listBox2.Type" xml:space="preserve">
     <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="comboBoxExcel.IntegralHeight" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="&gt;&gt;InventPage.Name" xml:space="preserve">
+    <value>InventPage</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Сколько факт нала</value>
@@ -1247,6 +1235,9 @@
   </data>
   <data name="loadButton.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
+  </data>
+  <data name="label21.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 17pt</value>
   </data>
   <data name="materialTextBox2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 16px</value>
@@ -1274,9 +1265,6 @@
   </data>
   <data name="listBox2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 17pt</value>
-  </data>
-  <data name="Отправить.Size" type="System.Drawing.Size, System.Drawing">
-    <value>873, 27</value>
   </data>
   <data name="&gt;&gt;label15.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1323,14 +1311,14 @@
   <data name="label19.Location" type="System.Drawing.Point, System.Drawing">
     <value>58, 253</value>
   </data>
-  <data name="&gt;&gt;Штраф.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;label10.Parent" xml:space="preserve">
     <value>SeyfPlusPage</value>
   </data>
   <data name="AutherPage.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
+  </data>
+  <data name="materialComboBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>55, 50</value>
   </data>
   <data name="&gt;&gt;PostavkaRashod.Parent" xml:space="preserve">
     <value>RashodPage</value>
@@ -1359,14 +1347,11 @@
   <data name="&gt;&gt;AvansPage.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;TelegramId.Name" xml:space="preserve">
-    <value>TelegramId</value>
+  <data name="materialTextBox21.PrefixSuffixText" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
   <data name="PlusSeyf.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 6, 4, 6</value>
-  </data>
-  <data name="&gt;&gt;OtchetPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label15.Parent" xml:space="preserve">
     <value>ShtraphPage</value>
@@ -1443,9 +1428,6 @@
   <data name="&gt;&gt;Расход.Type" xml:space="preserve">
     <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;ОткрытьИтог.Name" xml:space="preserve">
-    <value>ОткрытьИтог</value>
-  </data>
   <data name="label3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -1457,6 +1439,9 @@
   </data>
   <data name="TextBox8.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>None</value>
+  </data>
+  <data name="materialCheckbox1.Text" xml:space="preserve">
+    <value>Подтвердить отправку</value>
   </data>
   <data name="ManPage.Location" type="System.Drawing.Point, System.Drawing">
     <value>23, 4</value>
@@ -1512,9 +1497,6 @@
   <data name="Аванс.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 36</value>
   </data>
-  <data name="&gt;&gt;PravkaItogPage.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
   <data name="label18.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 17pt</value>
   </data>
@@ -1527,8 +1509,8 @@
   <data name="&gt;&gt;listBox2.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
-  <data name="&gt;&gt;comboBoxExcel.Name" xml:space="preserve">
-    <value>comboBoxExcel</value>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>212, 30</value>
   </data>
   <data name="materialCheckbox1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1575,9 +1557,6 @@
   <data name="label16.Text" xml:space="preserve">
     <value>Сумма</value>
   </data>
-  <data name="label5.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>None</value>
-  </data>
   <data name="&gt;&gt;materialTabSelector1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
@@ -1602,9 +1581,6 @@
   <data name="comboBoxExcel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;RashodPage.Name" xml:space="preserve">
-    <value>RashodPage</value>
-  </data>
   <data name="&gt;&gt;Отправить.Type" xml:space="preserve">
     <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
@@ -1613,9 +1589,6 @@
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
     <value>177, 29</value>
-  </data>
-  <data name="&gt;&gt;OtchetPage.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="Отправить.TabIndex" type="System.Int32, mscorlib">
     <value>60</value>
@@ -1626,6 +1599,9 @@
   <data name="Minus1.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>None</value>
   </data>
+  <data name="&gt;&gt;label21.Name" xml:space="preserve">
+    <value>label21</value>
+  </data>
   <data name="label7.TabIndex" type="System.Int32, mscorlib">
     <value>44</value>
   </data>
@@ -1634,6 +1610,9 @@
   </data>
   <data name="label21.Size" type="System.Drawing.Size, System.Drawing">
     <value>94, 29</value>
+  </data>
+  <data name="&gt;&gt;SeyfRasHod.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialCheckbox, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;textBox2.Parent" xml:space="preserve">
     <value>OtchetPage</value>
@@ -1683,9 +1662,6 @@
   <data name="LoginBox.MaxDropDownItems" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="Minus1.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>No</value>
-  </data>
   <data name="materialComboBox4.Size" type="System.Drawing.Size, System.Drawing">
     <value>262, 49</value>
   </data>
@@ -1722,11 +1698,14 @@
   <data name="materialTextBox25.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
+  <data name="Расход.Location" type="System.Drawing.Point, System.Drawing">
+    <value>66, 685</value>
+  </data>
   <data name="label16.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 17.25pt</value>
   </data>
-  <data name="SeyfRasHod.TabIndex" type="System.Int32, mscorlib">
-    <value>51</value>
+  <data name="&gt;&gt;comboBoxNameRas.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialComboBox, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;comboBoxNameRas.Name" xml:space="preserve">
     <value>comboBoxNameRas</value>
@@ -1800,6 +1779,9 @@
   <data name="AvansPage.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
+  <data name="&gt;&gt;TextBox8.Name" xml:space="preserve">
+    <value>TextBox8</value>
+  </data>
   <data name="&gt;&gt;label9.Name" xml:space="preserve">
     <value>label9</value>
   </data>
@@ -1836,6 +1818,9 @@
   <data name="&gt;&gt;Расход.Parent" xml:space="preserve">
     <value>RashodPage</value>
   </data>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft New Tai Lue, 17pt</value>
   </data>
@@ -1869,6 +1854,9 @@
   <data name="comboBoxExcel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14px, style=Bold</value>
   </data>
+  <data name="materialComboBox4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14px, style=Bold</value>
+  </data>
   <data name="&gt;&gt;materialComboBox1.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
@@ -1884,6 +1872,12 @@
   <data name="Аванс.Text" xml:space="preserve">
     <value>Отправить</value>
   </data>
+  <data name="comboBoxExcel.IntegralHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;ОткрытьИтог.Parent" xml:space="preserve">
+    <value>PravkaItogPage</value>
+  </data>
   <data name="Minus1.Location" type="System.Drawing.Point, System.Drawing">
     <value>61, 283</value>
   </data>
@@ -1896,8 +1890,8 @@
   <data name="label18.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
   </data>
-  <data name="Расчитать.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>179, 33</value>
   </data>
   <data name="InventPage.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -1917,8 +1911,8 @@
   <data name="dataGridViewJson.Location" type="System.Drawing.Point, System.Drawing">
     <value>452, 139</value>
   </data>
-  <data name="materialComboBox4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 14px, style=Bold</value>
+  <data name="&gt;&gt;PlusSeyf.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="&gt;&gt;label20.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1974,8 +1968,14 @@
   <data name="&gt;&gt;listBoxRas.Type" xml:space="preserve">
     <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;AuthBtn.Name" xml:space="preserve">
+    <value>AuthBtn</value>
+  </data>
   <data name="ShtraphPage.Text" xml:space="preserve">
     <value>Штрафы</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewExcel.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="materialTextBox24.TabIndex" type="System.Int32, mscorlib">
     <value>52</value>
@@ -1992,14 +1992,14 @@
   <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="Namess.HeaderText" xml:space="preserve">
-    <value>Name</value>
-  </data>
   <data name="&gt;&gt;AutherPage.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label11.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
+  </data>
+  <data name="listBox2.ItemHeight" type="System.Int32, mscorlib">
+    <value>29</value>
   </data>
   <data name="InventPage.Text" xml:space="preserve">
     <value>Инвентаризация</value>
@@ -2049,11 +2049,8 @@
   <data name="label15.Text" xml:space="preserve">
     <value>Сумма</value>
   </data>
-  <data name="Аванс.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExcel.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="Отправить.Size" type="System.Drawing.Size, System.Drawing">
+    <value>873, 27</value>
   </data>
   <data name="&gt;&gt;dataGridViewJson.Parent" xml:space="preserve">
     <value>ManPage</value>
@@ -2079,6 +2076,9 @@
   <data name="materialTextBox1.PrefixSuffixText" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
+  <data name="&gt;&gt;materialTextBox1.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
   <data name="textBox4.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
@@ -2097,6 +2097,9 @@
   <data name="textBox3.Location" type="System.Drawing.Point, System.Drawing">
     <value>354, 172</value>
   </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 40</value>
+  </data>
   <data name="materialComboBox3.ItemHeight" type="System.Int32, mscorlib">
     <value>43</value>
   </data>
@@ -2112,8 +2115,8 @@
   <data name="&gt;&gt;saveButton.Name" xml:space="preserve">
     <value>saveButton</value>
   </data>
-  <data name="&gt;&gt;materialTextBox21.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="comboBoxExcel.MaxDropDownItems" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
   <data name="materialButton2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 6, 4, 6</value>
@@ -2142,17 +2145,11 @@
   <data name="&gt;&gt;materialComboBox3.Parent" xml:space="preserve">
     <value>OtchetPage</value>
   </data>
-  <data name="&gt;&gt;materialTabSelector1.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTabSelector, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;label10.Name" xml:space="preserve">
     <value>label10</value>
   </data>
-  <data name="label19.TabIndex" type="System.Int32, mscorlib">
-    <value>58</value>
-  </data>
-  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 29</value>
+  <data name="ExitBtn.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 6, 4, 6</value>
   </data>
   <data name="comboBoxNameRas.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -2241,11 +2238,11 @@
   <data name="materialTextBox24.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 16px</value>
   </data>
-  <data name="&gt;&gt;comboBox1.Parent" xml:space="preserve">
-    <value>OtchetPage</value>
+  <data name="label19.TabIndex" type="System.Int32, mscorlib">
+    <value>58</value>
   </data>
-  <data name="&gt;&gt;textBox3.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="textBox5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>354, 334</value>
   </data>
   <data name="&gt;&gt;label5.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2253,8 +2250,8 @@
   <data name="InventBTN.Text" xml:space="preserve">
     <value>Выписать Инвент</value>
   </data>
-  <data name="comboBox1.ItemHeight" type="System.Int32, mscorlib">
-    <value>43</value>
+  <data name="materialTextBox2.Text" xml:space="preserve">
+    <value />
   </data>
   <data name="materialTextBox25.Size" type="System.Drawing.Size, System.Drawing">
     <value>217, 48</value>
@@ -2301,20 +2298,23 @@
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>39</value>
   </data>
+  <data name="&gt;&gt;materialTextBox25.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
   <data name="&gt;&gt;PopravkaDa.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;label9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="PasswordTextBox.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
   </data>
-  <data name="materialCheckbox1.Text" xml:space="preserve">
-    <value>Подтвердить отправку</value>
+  <data name="listBox1.HorizontalScrollbar" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="InventBTN.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="Расход.Location" type="System.Drawing.Point, System.Drawing">
-    <value>66, 685</value>
+  <data name="SeyfRasHod.TabIndex" type="System.Int32, mscorlib">
+    <value>51</value>
   </data>
   <data name="materialCheckbox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>1096, 216</value>
@@ -2355,8 +2355,8 @@
   <data name="&gt;&gt;LoginBox.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;AuthBtn.Name" xml:space="preserve">
-    <value>AuthBtn</value>
+  <data name="Аванс.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
   <data name="comboBoxExcel.Size" type="System.Drawing.Size, System.Drawing">
     <value>323, 49</value>
@@ -2373,14 +2373,11 @@
   <data name="label8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="AuthBtn.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 6, 4, 6</value>
-  </data>
   <data name="&gt;&gt;InventPage.Parent" xml:space="preserve">
     <value>materialTabControl1</value>
   </data>
-  <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;Штраф.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="textBox2.Location" type="System.Drawing.Point, System.Drawing">
     <value>354, 91</value>
@@ -2394,8 +2391,8 @@
   <data name="textBox7.Size" type="System.Drawing.Size, System.Drawing">
     <value>185, 48</value>
   </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 40</value>
+  <data name="label5.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
   </data>
   <data name="PlusSeyf.Text" xml:space="preserve">
     <value>отправить</value>
@@ -2409,20 +2406,20 @@
   <data name="listBoxNameInv.Size" type="System.Drawing.Size, System.Drawing">
     <value>405, 294</value>
   </data>
-  <data name="&gt;&gt;ОткрытьИтог.Parent" xml:space="preserve">
-    <value>PravkaItogPage</value>
+  <data name="&gt;&gt;PravkaItogPage.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
-  <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 17.25pt</value>
+  <data name="dataGridViewExcel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1678, 493</value>
   </data>
   <data name="textBox7.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
-  <data name="&gt;&gt;TextBox8.Name" xml:space="preserve">
-    <value>TextBox8</value>
+  <data name="&gt;&gt;TelegramId.Name" xml:space="preserve">
+    <value>TelegramId</value>
   </data>
-  <data name="&gt;&gt;materialTextBox25.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="listBoxNameInv.Location" type="System.Drawing.Point, System.Drawing">
+    <value>105, 219</value>
   </data>
   <data name="comboBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>61, 90</value>
@@ -2436,14 +2433,14 @@
   <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
     <value>416, 78</value>
   </data>
-  <data name="TextBox8.PrefixSuffixText" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="&gt;&gt;textBox7.Name" xml:space="preserve">
+    <value>textBox7</value>
   </data>
   <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;SeyfRasHod.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialCheckbox, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;comboBoxExcel.Name" xml:space="preserve">
+    <value>comboBoxExcel</value>
   </data>
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
     <value>21</value>
@@ -2454,8 +2451,8 @@
   <data name="&gt;&gt;Minus1.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="materialComboBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>55, 50</value>
+  <data name="Namess.HeaderText" xml:space="preserve">
+    <value>Name</value>
   </data>
   <data name="&gt;&gt;InventBTN.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -2472,6 +2469,9 @@
   <data name="Minus2.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>No</value>
   </data>
+  <data name="&gt;&gt;textBox5.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
   <data name="Расход.Text" xml:space="preserve">
     <value>Отправить</value>
   </data>
@@ -2487,8 +2487,8 @@
   <data name="materialButton2.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="&gt;&gt;textBox5.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;ОткрытьИтог.Name" xml:space="preserve">
+    <value>ОткрытьИтог</value>
   </data>
   <data name="&gt;&gt;materialComboBox2.Type" xml:space="preserve">
     <value>MaterialSkin.Controls.MaterialComboBox, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
@@ -2517,14 +2517,14 @@
   <data name="materialComboBox1.IntegralHeight" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="PopravkaDa.Text" xml:space="preserve">
-    <value>Поправка</value>
+  <data name="TextBox8.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
   </data>
   <data name="PhotoMessageRashod.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label21.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 17pt</value>
+  <data name="AuthBtn.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 6, 4, 6</value>
   </data>
   <data name="PostavkaRashod.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -2535,8 +2535,8 @@
   <data name="materialTabSelector1.Size" type="System.Drawing.Size, System.Drawing">
     <value>1749, 51</value>
   </data>
-  <data name="materialComboBox3.IntegralHeight" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft New Tai Lue, 17pt</value>
   </data>
   <data name="&gt;&gt;PostavkaRashod.Type" xml:space="preserve">
     <value>MaterialSkin.Controls.MaterialCheckbox, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
@@ -2544,8 +2544,8 @@
   <data name="textBox3.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="listBox2.ItemHeight" type="System.Int32, mscorlib">
-    <value>29</value>
+  <data name="&gt;&gt;comboBox1.ZOrder" xml:space="preserve">
+    <value>12</value>
   </data>
   <data name="materialComboBox2.MaxDropDownItems" type="System.Int32, mscorlib">
     <value>4</value>
@@ -2583,8 +2583,8 @@
   <data name="&gt;&gt;PlusSeyf.Parent" xml:space="preserve">
     <value>SeyfPlusPage</value>
   </data>
-  <data name="&gt;&gt;label17.Name" xml:space="preserve">
-    <value>label17</value>
+  <data name="&gt;&gt;OtchetPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
     <value>340, 33</value>
@@ -2598,8 +2598,8 @@
   <data name="&gt;&gt;label21.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>23</value>
+  <data name="&gt;&gt;materialTabSelector1.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialTabSelector, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;materialComboBox2.Parent" xml:space="preserve">
     <value>AvansPage</value>
@@ -2610,8 +2610,8 @@
   <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
     <value>94, 29</value>
   </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 30</value>
+  <data name="&gt;&gt;OtchetPage.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="textBox4.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>None</value>
@@ -2634,8 +2634,8 @@
   <data name="label21.Location" type="System.Drawing.Point, System.Drawing">
     <value>61, 33</value>
   </data>
-  <data name="materialTextBox21.PrefixSuffixText" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="PasswordTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>210, 30</value>
@@ -2667,8 +2667,8 @@
   <data name="&gt;&gt;label18.Name" xml:space="preserve">
     <value>label18</value>
   </data>
-  <data name="&gt;&gt;comboBoxNameRas.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialComboBox, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
   </data>
   <data name="&gt;&gt;TelegramTopic.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2676,8 +2676,8 @@
   <data name="listBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>621, 65</value>
   </data>
-  <data name="&gt;&gt;label21.Name" xml:space="preserve">
-    <value>label21</value>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>OtchetPage</value>
   </data>
   <data name="LoginBox.IntegralHeight" type="System.Boolean, mscorlib">
     <value>False</value>

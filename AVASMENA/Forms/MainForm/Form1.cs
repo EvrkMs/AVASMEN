@@ -356,7 +356,7 @@ namespace AVASMENA
             long userId = users[selectedName];
             int TredID = 2;
 
-            await Telegrame.ProcessUpdates(userId, TredID, selectedName, listBox2, Отправить, ifSending);
+            await Telegrame.ProcessUpdates(userId, TredID, selectedName, listBox2, Отправить);
 
             var zp1 = $"{DateTime.Now:yyyy.MM.dd}\n+{values.zarp1}p";
             var zp2 = $"{DateTime.Now:yyyy.MM.dd}\n+{values.zarp2}p";
@@ -536,7 +536,7 @@ namespace AVASMENA
             // Call the method
             if (PhotoMessageRashod.Checked)
             {
-                await Telegrame.ProcessUpdates(userId, TredID, selectedName, listBoxRas, Расход, ifSending);
+                await Telegrame.ProcessUpdates(userId, TredID, selectedName, listBoxRas, Расход);
             }
             await ExcelHelper.UpdateExlel2(summ);
             await bot.SendTextMessageAsync(forwardChatId, message, replyToMessageId: TredID);
