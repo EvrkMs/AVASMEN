@@ -169,7 +169,7 @@ namespace Excel
             using (var workbook = new XLWorkbook(path))
             {
                 var worksheet = workbook.Worksheets.LastOrDefault();
-                Console.WriteLine("Приступаем к переаода в png");
+                Console.WriteLine("Приступаем к переавда в png");
                 // Получаем размеры таблицы Excel
                 int width = worksheet.ColumnsUsed().Count() + 1;
                 int height = worksheet.RowsUsed().Count();
@@ -507,6 +507,21 @@ namespace Excel
         //Заполнение ексель если аванс
         public static Task AvansExcel(string name, int inventSum)
         {
+            using (var workbook = new XLWorkbook(filePath))
+            {
+                // Получаем последний лист в книге или создаем новый, если листов нет
+                var worksheet = workbook.Worksheet($"{DateTime.Now.Year}.{DateTime.Now:MM}");
+                int lastRow = worksheet.LastRowUsed()?.RowNumber() + 1 ?? 1;
+
+                // Записываем значение в ячейку
+                worksheet.Cell(lastRow, 1).Value = "_";
+                worksheet.Cell(lastRow, 1).Value = "_";
+                worksheet.Cell(lastRow, 1).Value = "_";
+                worksheet.Cell(lastRow, 1).Value = inventSum;
+                worksheet.Cell(lastRow, 1).Value = $"Аванс {name}";
+
+                workbook.Save();
+            }
             using (var workbook = new XLWorkbook(pather))
             {
                 // Получаем последний лист в книге или создаем новый, если листов нет
@@ -520,10 +535,6 @@ namespace Excel
 
                     // Обновляем формулу суммирования
                     worksheet.Cell(1, columnNumber + 1).FormulaA1 = $"SUM({worksheet.Column(columnNumber).FirstCell().Address}:{worksheet.Cell(lastRow, columnNumber).Address})";
-                }
-                else
-                {
-                    MessageBox.Show($"Столбец для имени {name} не найден в словаре nameZP.");
                 }
                 workbook.Save();
             }
