@@ -15,9 +15,9 @@ namespace jsonData
         public List<string> NameList { get; set; }
         public string TokenBot { get; set; }
 
-        private static string jsonReserv = "JSON\\userData.json";
-        private static string jsonPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Documents", "Config");
-        private static string jsonFilePath = $"{jsonPath}\\userData.json";
+        private static readonly string jsonReserv = "JSON\\userData.json";
+        private static readonly string jsonPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Documents", "Config");
+        private static readonly string jsonFilePath = $"{jsonPath}\\userData.json";
         public UserDataLoader()
         {
             CreateJsonIfNotExists();
@@ -102,7 +102,7 @@ namespace jsonData
                     row.Cells["NamesZP"].Value = dataLoader.NamesZP.ContainsKey(name) ? dataLoader.NamesZP[name].ToString() : string.Empty;
                 }
             }
-        public static void SaveButton_Click(object sender, EventArgs e, DataGridView dataGrid)
+        public static void SaveButton_Click(DataGridView dataGrid)
         {
             UserDataLoader dataLoader = UserDataLoader.LoadFromFile();
 

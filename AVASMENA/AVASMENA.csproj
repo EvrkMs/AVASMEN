@@ -215,6 +215,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="FormsEllemets\Forms.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="JSON\jsonData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -33,9 +33,9 @@ namespace AVASMENA
         // Установите ваш пароль здесь
         private const string CorrectPassword = "238384";
         private bool RemoveDa = false;
-        List<TabPage> _RootList = new List<TabPage>();
-        List<TabPage> _Auth = new List<TabPage>();
-        List<Label> _labelList = new List<Label>();
+        public List<TabPage> _RootList = new List<TabPage>();
+        public List<TabPage> _Auth = new List<TabPage>();
+        public List<Label> _labelList = new List<Label>();
 
         public MainForm()
         {
@@ -81,9 +81,8 @@ namespace AVASMENA
         }
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            UserDataLoader.SaveButton_Click(sender, e, dataGridViewJson);
+            UserDataLoader.SaveButton_Click(dataGridViewJson);
         }
-
 
         public void LoginBox_SelectedIndex(object sender, EventArgs e)
         {

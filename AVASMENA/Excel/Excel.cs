@@ -22,7 +22,6 @@ namespace Excel
         private static readonly string ZPfolder = "excel\\ZP\\";
         private static readonly string pather = $"{ZPfolder}\\ZP.xlsx";
         private static readonly Dictionary<string, int> nameZP = UserDataLoader.LoadFromFile().NamesZP;
-        private static readonly Dictionary<string, int> names = UserDataLoader.LoadFromFile().Names;
         //Заполнение Ексаль по Отчёту за смену
         public static Task UpdateExcel(int itog, int viruchka)
         {
