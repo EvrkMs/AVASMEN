@@ -128,7 +128,6 @@ namespace Excel
         {
             try
             {
-
                 // Открытие существующего файла Excel
                 using (var workbook = new XLWorkbook(filePath))
                 {
