@@ -16,9 +16,10 @@ namespace TelegramCode
         private static readonly Dictionary<string, int> userOffsets = new Dictionary<string, int>();
         private static readonly Dictionary<string, long> users = UserDataLoader.LoadFromFile().Users;
         private static readonly Dictionary<string, int> names = UserDataLoader.LoadFromFile().Names;
+        private static readonly string token = UserDataLoader.LoadFromFile().TokenBot;
 
-        private static bool isSending = false;
-        private static readonly Telegram.Bot.TelegramBotClient bot = new Telegram.Bot.TelegramBotClient("6375453330:AAFIKOIwAztwY4__CF2c_vZvzcNuUf4l3KM");
+        private static bool isSending = false;  
+        private static readonly Telegram.Bot.TelegramBotClient bot = new Telegram.Bot.TelegramBotClient(token);
         private static readonly long forwardChatId = -1002066018588;
         private static readonly long chatID = -1001990911245;
 
@@ -138,6 +139,16 @@ namespace TelegramCode
             using (var stream = new MemoryStream(System.IO.File.ReadAllBytes(screenshotPath)))
             {
                 await bot.SendPhotoAsync(forwardChatId, new InputOnlineFile(stream, "excel_table_screenshot.png"));
+            }
+        }
+        public static async void SendMessageToSelectedNames(List<string> selectedNames, string message)
+        {
+            foreach (var name in selectedNames)
+            {
+                if (names.TryGetValue(name, out int id))
+                {
+                    await bot.SendTextMessageAsync(chatID, message, replyToMessageId: id);
+                }
             }
         }
 

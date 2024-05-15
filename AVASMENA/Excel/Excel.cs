@@ -23,13 +23,6 @@ namespace Excel
         private static readonly string pather = $"{ZPfolder}\\ZP.xlsx";
         private static readonly Dictionary<string, int> nameZP = UserDataLoader.LoadFromFile().NamesZP;
         private static readonly Dictionary<string, int> names = UserDataLoader.LoadFromFile().Names;
-
-        static ExcelHelper()
-        {
-            //UserDataLoader dataLoader = UserDataLoader.LoadFromFile();
-            //nameZP = dataLoader.NamesZP;
-            //names = dataLoader.Names;
-        }
         //Заполнение Ексаль по Отчёту за смену
         public static Task UpdateExcel(int itog, int viruchka)
         {
@@ -480,7 +473,7 @@ namespace Excel
             return Task.CompletedTask;
         }
         //Заполнение ексель таблицы по Инаенту
-        public static async Task ЗаполнениеExcelInvent(int inventSum, ListBox listBoxNameInv, Action<string, int> sendMessageToChat)
+        public static async Task ЗаполнениеExcelInvent(int inventSum, ListBox listBoxNameInv)
         {
             using (var workbook = new XLWorkbook(pather))
             {
@@ -507,61 +500,7 @@ namespace Excel
                     }
                 }
 
-                foreach (var name in nameZP.Keys)
-                {
-                    if (nameZP.TryGetValue(name, out int columnNumber))
-                    {
-                        // Получаем значение из соседнего столбца для текущего имени
-                        var cell = worksheet.Cell(1, columnNumber + 1); // Общий итог в соседнем столбце
-                        int total = cell.GetValue<int>();
-
-                        // Формирование сообщения с общим итогом
-                        string message = $"{DateTime.Now:yyyy.MM HH:mm}\nИтог: {total}р";
-
-                        // Отправка сообщения с общим итогом на текущее имя в Telegram
-                        if (names.TryGetValue(name, out int id))
-                        {
-                            sendMessageToChat(message, id);
-                        }
-                        else
-                        {
-                            MessageBox.Show($"ID для имени {name} не найден.");
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show($"Столбец для имени {name} не найден в словаре nameZP.");
-                    }
-                }
-
                 workbook.Save();
-            }
-            using (var workbook = new XLWorkbook(pather))
-            {
-                // Получаем последний лист в книге или создаем новый, если листов нет
-                var lastSheet = workbook.Worksheets.LastOrDefault();
-
-                // Определяем номер нового листа
-                int newSheetNumber = int.TryParse(lastSheet.Name, out int lastSheetNumber) ? lastSheetNumber + 1 : 1;
-
-                // Создаем новый лист с номером newSheetNumber
-                var worksheet = workbook.Worksheets.Add(newSheetNumber.ToString());
-
-                // Заполняем столбцы по указанным именам и добавляем формулы суммирования
-                foreach (var name in nameZP)
-                {
-                    string currentName = name.Key;
-                    int columnNumber = name.Value;
-
-                    // Заполняем столбец именами
-                    worksheet.Cell(1, columnNumber).Value = currentName;
-
-                    string sumColumnAddress = worksheet.Cell(2, columnNumber).Address.ColumnLetter;
-                    worksheet.Cell(1, columnNumber + 1).FormulaA1 = $"SUM({sumColumnAddress}:{sumColumnAddress})";
-                }
-
-                // Сохраняем книгу Excel
-                workbook.SaveAs(pather);
             }
 
             await ScreenExcel(pather);
