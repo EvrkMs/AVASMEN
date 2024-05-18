@@ -4,12 +4,16 @@ using System.Windows.Forms;
 using jsonData;
 using MaterialSkin.Controls;
 
-namespace FormsSetting
+namespace AVASMENA
 {
-    public static class Forms   
+    public partial class MainForm
     {
         private static readonly List<string> namesList = UserDataLoader.LoadFromFile().NameList;
         private static readonly List<string> Login = new List<string> { "Admin", "Root" };
+        private static List<Label> _labelList;
+        public List<TabPage> _RootList;
+        public List<TabPage> _Auth;
+        public List<MaterialCheckbox> _labelPopravka;
 
         public static void Setup1(List<Label> labels)
         {
@@ -17,7 +21,7 @@ namespace FormsSetting
             {
                 label.BackColor = System.Drawing.Color.Transparent;
                 label.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F);
-                label.Size = new System.Drawing.Size(230, 40);
+                label.AutoSize = true;
                 label.ForeColor = System.Drawing.Color.LimeGreen;
             }
         }
@@ -27,7 +31,7 @@ namespace FormsSetting
             {
                 label.BackColor = System.Drawing.Color.Transparent;
                 label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-                label.Size = new System.Drawing.Size(230, 40);
+                label.AutoSize = true;
                 label.ForeColor = System.Drawing.Color.LimeGreen;
             }
         }
@@ -35,11 +39,6 @@ namespace FormsSetting
         {
             foreach (var tab in tabPage)
                 tab.BackColor = System.Drawing.Color.FromArgb(64, 0, 64);
-        }
-        public static void SetupButton1(MaterialButton button1, MaterialButton button2)
-        {
-            button1.Location = new System.Drawing.Point(647, 452);
-            button2.Location = new System.Drawing.Point(647, 687);
         }
         public static void SetupListBox(params ListBox[] listBox)
         {
@@ -125,6 +124,9 @@ namespace FormsSetting
             dataGridViewJson.Columns.Add("Users", "Телеграм Id");
             dataGridViewJson.Columns.Add("Names", "Топик в чате ЗП");
             dataGridViewJson.Columns.Add("NamesZP", "Столбец в эксель зп");
+            dataGridViewJson.Columns.Add("ForwardChat", "Основной час");
+            dataGridViewJson.Columns.Add("ChatId", "Чат с зп");
+            dataGridViewJson.Columns.Add("TokenBot", "Токен бота");
 
             dataGridViewJson.AllowUserToAddRows = true;
             dataGridViewJson.AllowUserToDeleteRows = true;

@@ -1,5 +1,4 @@
 ﻿using Excel;
-using FormsSetting;
 using jsonData;
 using MaterialSkin;
 using MaterialSkin.Controls;
@@ -26,15 +25,11 @@ namespace AVASMENA
         private readonly Timer timer = new Timer();
         private static readonly string token = UserDataLoader.LoadFromFile().TokenBot;
         private readonly Telegram.Bot.TelegramBotClient bot = new Telegram.Bot.TelegramBotClient(token);
-        private readonly long forwardChatId = -1002066018588;
-        private readonly long chatID = -1001990911245;
+        private readonly long forwardChatId = UserDataLoader.LoadFromFile().ForwardChat;
+        private readonly long chatID = UserDataLoader.LoadFromFile().ChatId;
         // Установите ваш пароль здесь
         private const string CorrectPassword = "238384";
         private bool RemoveDa = false;
-        public List<TabPage> _RootList = new List<TabPage>();
-        public List<TabPage> _Auth = new List<TabPage>();
-        public List<Label> _labelList = new List<Label>();
-        public List<MaterialCheckbox> _labelPopravka = new List<MaterialCheckbox>();
         public MainForm()
         {
             var materialSkinManager = MaterialSkinManager.Instance;
@@ -55,27 +50,21 @@ namespace AVASMENA
             _labelPopravka = new List<MaterialCheckbox> { PopravkaDa, ZpPopravka, PopravkaSeyf };
 
             ExitBtn.Visible = false;
-            Forms.InitializedataGrid(dataGridViewJson);
-            Forms.HideShowSelector(materialTabSelector1, false);
-            Forms.PasswordBoxText(PasswordTextBox, false);
-            Forms.LoadItemsToListBox(listBox5);
-            Forms.InitializeListBox(listBoxNameInv);
+            InitializedataGrid(dataGridViewJson);
+            HideShowSelector(materialTabSelector1, false);
+            PasswordBoxText(PasswordTextBox, false);
+            LoadItemsToListBox(listBox5);
+            InitializeListBox(listBoxNameInv);
 
-            Forms.SetupListBox(listBox1, listBox2, listBox3, listBoxRas, listBoxNameInv);
-            Forms.SetupButton1(Расчитать, Отправить);
-            Forms.SetupTabPage(AutherPage, OtchetPage, AvansPage, SeyfPlusPage, RashodPage, ShtraphPage, InventPage, PravkaItogPage, ManPage, ZpPage, SeyfExcel);
-            Forms.Setup1(_labelList);
-            Forms.Setup2(label19, label20);
-            Forms.SetupComBox(LoginBox);
+            SetupListBox(listBox1, listBox2, listBox3, listBoxRas, listBoxNameInv);
+            SetupTabPage(AutherPage, OtchetPage, AvansPage, SeyfPlusPage, RashodPage, ShtraphPage, InventPage, PravkaItogPage, ManPage, ZpPage, SeyfExcel);
+            Setup1(_labelList);
+            Setup2(label19, label20);
+            SetupComBox(LoginBox);
             LoginBox.Text = "Admin";
-            Forms.SetupComboBoxes(comboBox1, materialComboBox1, materialComboBox2, materialComboBox3, materialComboBox4, comboBoxNameRas);
-            materialComboBox3.Items.Add("нет");
-            materialComboBox4.Items.Add("нет");
-
-            this.ClientSize = new System.Drawing.Size(1680, 800);
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
-            this.MinimumSize = this.MaximumSize = this.Size;
-
+            SetupComboBoxes(NameComboBoxOtchet, KtoVipisal, materialComboBox2, SecondComboBoxNameOtchet, WhoVipisl, comboBoxNameRas);
+            SecondComboBoxNameOtchet.Items.Add("нет");
+            WhoVipisl.Items.Add("нет");
             SetupTimer();
         }
         private void LoadButton_Click(object sender, EventArgs e)
@@ -91,11 +80,11 @@ namespace AVASMENA
         {
             if (LoginBox.Text == "Root")
             {
-                Forms.PasswordBoxText(PasswordTextBox, true);
+                PasswordBoxText(PasswordTextBox, true);
             }
             else
             {
-                Forms.PasswordBoxText(PasswordTextBox, false);
+                PasswordBoxText(PasswordTextBox, false);
             }
         }
         private void AuthBtn_Click(object sender, EventArgs e)
@@ -124,10 +113,10 @@ namespace AVASMENA
             if (LoginBox.Text == "Admin")
             {
                 RemoveDa = true;
-                Forms.RemoveTabPage(materialTabControl1, _RootList);
+                RemoveTabPage(materialTabControl1, _RootList);
             }
-            Forms.RemoveTabPage(materialTabControl1, _Auth);
-            Forms.HideShowSelector(materialTabSelector1, true);
+            RemoveTabPage(materialTabControl1, _Auth);
+            HideShowSelector(materialTabSelector1, true);
             ExitBtn.Visible = true;
         }
         private void RestoreTabs()
@@ -164,7 +153,7 @@ namespace AVASMENA
 
         private void ListBox5_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Forms.ShtraphBox(listBox4, listBox5);
+            ShtraphBox(listBox4, listBox5);
         }
 
         private void TextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -182,7 +171,7 @@ namespace AVASMENA
         private void MaterialComboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Проверяем, что выбранное значение не равно null
-            if (materialComboBox3.SelectedItem != null && materialComboBox3.SelectedItem.ToString() != "нет")
+            if (SecondComboBoxNameOtchet.SelectedItem != null && SecondComboBoxNameOtchet.SelectedItem.ToString() != "нет")
             {
                 VisibleBox(true);
             }
@@ -206,8 +195,8 @@ namespace AVASMENA
              int zarp1, int zarp2, string name, string name2, int minus1, int minus2)
             GetValues()
         {
-            string name = comboBox1.Text;
-            string name2 = materialComboBox3.Text;
+            string name = NameComboBoxOtchet.Text;
+            string name2 = SecondComboBoxNameOtchet.Text;
 
             int.TryParse(textBox2.Text, out int nalf);
             int.TryParse(textBox3.Text, out int bnf);
@@ -236,7 +225,7 @@ namespace AVASMENA
             int zarp1 = 0;
             int zarp2 = 0;
 
-            if (!string.IsNullOrWhiteSpace(materialComboBox3.Text) && materialComboBox3.Text != "нет")
+            if (!string.IsNullOrWhiteSpace(SecondComboBoxNameOtchet.Text) && SecondComboBoxNameOtchet.Text != "нет")
             {
                 zarp1 = zp * hours1 + (-1 * minus1);
                 zarp2 = zp * hours2 + (-1 * minus2);
@@ -257,7 +246,7 @@ namespace AVASMENA
         }
         private void UpdateAndButton1(int prov)
         {
-            if (string.IsNullOrWhiteSpace(comboBox1.Text))
+            if (string.IsNullOrWhiteSpace(NameComboBoxOtchet.Text))
             {
                 MessageBox.Show("Вы забыли имя");
                 return;
@@ -281,10 +270,10 @@ namespace AVASMENA
         }
         private void PopulateListBox(int nalf, int bnf, int viruchka, int minus, int zp4, int itog, int seyfEnd, int nalp, int bnp)
         {
-            string name = comboBox1.Text;
+            string name = NameComboBoxOtchet.Text;
 
-            if (!string.IsNullOrWhiteSpace(materialComboBox3.Text) && materialComboBox3.Text != "нет")
-                name = $"{name}/{materialComboBox3.Text}";
+            if (!string.IsNullOrWhiteSpace(SecondComboBoxNameOtchet.Text) && SecondComboBoxNameOtchet.Text != "нет")
+                name = $"{name}/{SecondComboBoxNameOtchet.Text}";
 
             listBox1.Items.Add($"ДАТА: {DateTime.Now:yyyy.MM.dd HH:mm:ss}");
             listBox1.Items.Add($"{name}\n");
@@ -315,7 +304,7 @@ namespace AVASMENA
                     return;
                 }
             }
-            string selectedName = comboBox1.SelectedItem?.ToString();
+            string selectedName = NameComboBoxOtchet.SelectedItem?.ToString();
             long userId = users[selectedName];
             int TredID = 2;
 
@@ -335,7 +324,7 @@ namespace AVASMENA
 
             await ExcelHelper.UpdateExcel(values.viruchka, values.itog);
             await ExcelHelper.ScreenExcel(filePath);
-            await ExcelHelper.ZPexcelОтчет(values.zarp1, values.zarp2, comboBox1, materialComboBox3, Minus2);
+            await ExcelHelper.ZPexcelОтчет(values.zarp1, values.zarp2, NameComboBoxOtchet, SecondComboBoxNameOtchet, Minus2);
             int Seyf = values.nalf - 1000;
             await ExcelHelper.SeyfMinus(Seyf);
             LoudAuto();
@@ -482,15 +471,15 @@ namespace AVASMENA
 
         private async void Штраф_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(materialComboBox4.Text) || materialComboBox4.Text == "нет")
+            if (string.IsNullOrEmpty(WhoVipisl.Text) || WhoVipisl.Text == "нет")
             {
                 MessageBox.Show("Укажите кто выписывает");
                 return;
             }
             var messag = string.Join(Environment.NewLine, listBox4.Items.Cast<string>());
-            var name = materialComboBox1.Text;
+            var name = KtoVipisal.Text;
             var syu = materialTextBox2.Text;
-            var nameVipi = materialComboBox4.Text;
+            var nameVipi = WhoVipisl.Text;
             var message = $"Выписал: {nameVipi}\n\n{name}\n\n{messag}\n\n-{syu}";
 
             await bot.SendTextMessageAsync(forwardChatId, message, replyToMessageId: 3);

@@ -17,8 +17,8 @@ namespace Excel
 {
     public static class ExcelHelper
     {
-        private static readonly string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Documents", "excel", "itog.xlsx");
-        private static readonly string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Documents\\excel");
+        private static readonly string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Documents\\AVASMENA\\excel");
+        private static readonly string filePath = Path.Combine(folderPath, "itog.xlsx");
         private static readonly string pather = $"{folderPath}\\ZP.xlsx";
         private static readonly string patherSeyf = $"{folderPath}\\seyf.xlsx";
         private static readonly Dictionary<string, int> nameZP = UserDataLoader.LoadFromFile().NamesZP;
@@ -604,10 +604,11 @@ namespace Excel
                                 string currentName = name.Key;
                                 int columnNumber = name.Value;
 
-                                string columnName = GetColumnName(columnNumber + 1); // Получаем буквенное обозначение столбца
-                                int lastRow = worksheet.LastRowUsed()?.RowNumber() + 1 ?? 1;
+                                // Заполняем столбец именами
+                                worksheet.Cell(1, columnNumber).Value = currentName;
 
-                                worksheet.Cell(1, columnNumber + 1).FormulaA1 = $"=SUM({columnName}2:{columnName}{lastRow})";
+                                string sumColumnAddress = worksheet.Cell(2, columnNumber).Address.ColumnLetter;
+                                worksheet.Cell(1, columnNumber + 1).FormulaA1 = $"SUM({sumColumnAddress}:{sumColumnAddress})";
                             }
                         }
                         if(i == 3)
@@ -634,23 +635,6 @@ namespace Excel
             }
             return Task.CompletedTask;
         }
-        // Метод для получения буквенного обозначения столбца по его номеру
-        private static string GetColumnName(int columnNumber)
-        {
-            int dividend = columnNumber;
-            string columnName = String.Empty;
-            int modulo;
-
-            while (dividend > 0)
-            {
-                modulo = (dividend - 1) % 26;
-                columnName = Convert.ToChar(65 + modulo).ToString() + columnName;
-                dividend = (int)((dividend - modulo) / 26);
-            }
-
-            return columnName;
-        }
-
         public static Task LoadGrindSheet(DataGridView dataGrid, string selectedSheetName, int i)
         {
             string path = "non";
@@ -696,7 +680,6 @@ namespace Excel
 
             return Task.CompletedTask;
         }
-
         public static Task SeyfMinus(int PlusSeyf)
         {
             using (XLWorkbook workbook = new XLWorkbook(patherSeyf))

@@ -250,7 +250,7 @@
     <value>4, 22</value>
   </data>
   <data name="AutherPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1748, 797</value>
+    <value>1677, 850</value>
   </data>
   <data name="AutherPage.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -273,1257 +273,6 @@
   <data name="OtchetPage.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>None</value>
   </data>
-  <data name="&gt;&gt;Расчитать.Name" xml:space="preserve">
-    <value>Расчитать</value>
-  </data>
-  <data name="&gt;&gt;Расчитать.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;Расчитать.Parent" xml:space="preserve">
-    <value>OtchetPage</value>
-  </data>
-  <data name="&gt;&gt;Расчитать.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;Отправить.Name" xml:space="preserve">
-    <value>Отправить</value>
-  </data>
-  <data name="&gt;&gt;Отправить.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;Отправить.Parent" xml:space="preserve">
-    <value>OtchetPage</value>
-  </data>
-  <data name="&gt;&gt;Отправить.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;label20.Name" xml:space="preserve">
-    <value>label20</value>
-  </data>
-  <data name="&gt;&gt;label20.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label20.Parent" xml:space="preserve">
-    <value>OtchetPage</value>
-  </data>
-  <data name="&gt;&gt;label20.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;label19.Name" xml:space="preserve">
-    <value>label19</value>
-  </data>
-  <data name="&gt;&gt;label19.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label19.Parent" xml:space="preserve">
-    <value>OtchetPage</value>
-  </data>
-  <data name="&gt;&gt;label19.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;Minus2.Name" xml:space="preserve">
-    <value>Minus2</value>
-  </data>
-  <data name="&gt;&gt;Minus2.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;Minus2.Parent" xml:space="preserve">
-    <value>OtchetPage</value>
-  </data>
-  <data name="&gt;&gt;Minus2.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;Minus1.Name" xml:space="preserve">
-    <value>Minus1</value>
-  </data>
-  <data name="&gt;&gt;Minus1.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;Minus1.Parent" xml:space="preserve">
-    <value>OtchetPage</value>
-  </data>
-  <data name="&gt;&gt;Minus1.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;label18.Name" xml:space="preserve">
-    <value>label18</value>
-  </data>
-  <data name="&gt;&gt;label18.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label18.Parent" xml:space="preserve">
-    <value>OtchetPage</value>
-  </data>
-  <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox1.Name" xml:space="preserve">
-    <value>materialTextBox1</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox1.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox1.Parent" xml:space="preserve">
-    <value>OtchetPage</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox1.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;materialComboBox3.Name" xml:space="preserve">
-    <value>materialComboBox3</value>
-  </data>
-  <data name="&gt;&gt;materialComboBox3.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialComboBox, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;materialComboBox3.Parent" xml:space="preserve">
-    <value>OtchetPage</value>
-  </data>
-  <data name="&gt;&gt;materialComboBox3.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox24.Name" xml:space="preserve">
-    <value>materialTextBox24</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox24.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox24.Parent" xml:space="preserve">
-    <value>OtchetPage</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox24.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;listBox2.Name" xml:space="preserve">
-    <value>listBox2</value>
-  </data>
-  <data name="&gt;&gt;listBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;listBox2.Parent" xml:space="preserve">
-    <value>OtchetPage</value>
-  </data>
-  <data name="&gt;&gt;listBox2.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;listBox1.Name" xml:space="preserve">
-    <value>listBox1</value>
-  </data>
-  <data name="&gt;&gt;listBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;listBox1.Parent" xml:space="preserve">
-    <value>OtchetPage</value>
-  </data>
-  <data name="&gt;&gt;listBox1.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;comboBox1.Name" xml:space="preserve">
-    <value>comboBox1</value>
-  </data>
-  <data name="&gt;&gt;comboBox1.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialComboBox, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;comboBox1.Parent" xml:space="preserve">
-    <value>OtchetPage</value>
-  </data>
-  <data name="&gt;&gt;comboBox1.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;TextBox8.Name" xml:space="preserve">
-    <value>TextBox8</value>
-  </data>
-  <data name="&gt;&gt;TextBox8.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;TextBox8.Parent" xml:space="preserve">
-    <value>OtchetPage</value>
-  </data>
-  <data name="&gt;&gt;TextBox8.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;textBox7.Name" xml:space="preserve">
-    <value>textBox7</value>
-  </data>
-  <data name="&gt;&gt;textBox7.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;textBox7.Parent" xml:space="preserve">
-    <value>OtchetPage</value>
-  </data>
-  <data name="&gt;&gt;textBox7.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;textBox5.Name" xml:space="preserve">
-    <value>textBox5</value>
-  </data>
-  <data name="&gt;&gt;textBox5.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;textBox5.Parent" xml:space="preserve">
-    <value>OtchetPage</value>
-  </data>
-  <data name="&gt;&gt;textBox5.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;textBox4.Name" xml:space="preserve">
-    <value>textBox4</value>
-  </data>
-  <data name="&gt;&gt;textBox4.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;textBox4.Parent" xml:space="preserve">
-    <value>OtchetPage</value>
-  </data>
-  <data name="&gt;&gt;textBox4.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="&gt;&gt;textBox3.Name" xml:space="preserve">
-    <value>textBox3</value>
-  </data>
-  <data name="&gt;&gt;textBox3.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;textBox3.Parent" xml:space="preserve">
-    <value>OtchetPage</value>
-  </data>
-  <data name="&gt;&gt;textBox3.ZOrder" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="&gt;&gt;textBox2.Name" xml:space="preserve">
-    <value>textBox2</value>
-  </data>
-  <data name="&gt;&gt;textBox2.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;textBox2.Parent" xml:space="preserve">
-    <value>OtchetPage</value>
-  </data>
-  <data name="&gt;&gt;textBox2.ZOrder" xml:space="preserve">
-    <value>18</value>
-  </data>
-  <data name="&gt;&gt;label8.Name" xml:space="preserve">
-    <value>label8</value>
-  </data>
-  <data name="&gt;&gt;label8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
-    <value>OtchetPage</value>
-  </data>
-  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>19</value>
-  </data>
-  <data name="&gt;&gt;label7.Name" xml:space="preserve">
-    <value>label7</value>
-  </data>
-  <data name="&gt;&gt;label7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
-    <value>OtchetPage</value>
-  </data>
-  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>20</value>
-  </data>
-  <data name="&gt;&gt;label5.Name" xml:space="preserve">
-    <value>label5</value>
-  </data>
-  <data name="&gt;&gt;label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
-    <value>OtchetPage</value>
-  </data>
-  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>21</value>
-  </data>
-  <data name="&gt;&gt;label4.Name" xml:space="preserve">
-    <value>label4</value>
-  </data>
-  <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
-    <value>OtchetPage</value>
-  </data>
-  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>22</value>
-  </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
-  </data>
-  <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
-    <value>OtchetPage</value>
-  </data>
-  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>23</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>OtchetPage</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>24</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>OtchetPage</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>25</value>
-  </data>
-  <data name="OtchetPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="OtchetPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="OtchetPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1748, 797</value>
-  </data>
-  <data name="OtchetPage.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="OtchetPage.Text" xml:space="preserve">
-    <value>Отчет по смене</value>
-  </data>
-  <data name="&gt;&gt;OtchetPage.Name" xml:space="preserve">
-    <value>OtchetPage</value>
-  </data>
-  <data name="&gt;&gt;OtchetPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;OtchetPage.Parent" xml:space="preserve">
-    <value>materialTabControl1</value>
-  </data>
-  <data name="&gt;&gt;OtchetPage.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;Аванс.Name" xml:space="preserve">
-    <value>Аванс</value>
-  </data>
-  <data name="&gt;&gt;Аванс.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;Аванс.Parent" xml:space="preserve">
-    <value>AvansPage</value>
-  </data>
-  <data name="&gt;&gt;Аванс.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;label17.Name" xml:space="preserve">
-    <value>label17</value>
-  </data>
-  <data name="&gt;&gt;label17.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label17.Parent" xml:space="preserve">
-    <value>AvansPage</value>
-  </data>
-  <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;label16.Name" xml:space="preserve">
-    <value>label16</value>
-  </data>
-  <data name="&gt;&gt;label16.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label16.Parent" xml:space="preserve">
-    <value>AvansPage</value>
-  </data>
-  <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox23.Name" xml:space="preserve">
-    <value>materialTextBox23</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox23.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox23.Parent" xml:space="preserve">
-    <value>AvansPage</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox23.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;materialComboBox2.Name" xml:space="preserve">
-    <value>materialComboBox2</value>
-  </data>
-  <data name="&gt;&gt;materialComboBox2.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialComboBox, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;materialComboBox2.Parent" xml:space="preserve">
-    <value>AvansPage</value>
-  </data>
-  <data name="&gt;&gt;materialComboBox2.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="AvansPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="AvansPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1748, 797</value>
-  </data>
-  <data name="AvansPage.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="AvansPage.Text" xml:space="preserve">
-    <value>Аванс</value>
-  </data>
-  <data name="&gt;&gt;AvansPage.Name" xml:space="preserve">
-    <value>AvansPage</value>
-  </data>
-  <data name="&gt;&gt;AvansPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;AvansPage.Parent" xml:space="preserve">
-    <value>materialTabControl1</value>
-  </data>
-  <data name="&gt;&gt;AvansPage.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;materialCheckbox1.Name" xml:space="preserve">
-    <value>materialCheckbox1</value>
-  </data>
-  <data name="&gt;&gt;materialCheckbox1.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialCheckbox, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;materialCheckbox1.Parent" xml:space="preserve">
-    <value>SeyfPlusPage</value>
-  </data>
-  <data name="&gt;&gt;materialCheckbox1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;listBox3.Name" xml:space="preserve">
-    <value>listBox3</value>
-  </data>
-  <data name="&gt;&gt;listBox3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;listBox3.Parent" xml:space="preserve">
-    <value>SeyfPlusPage</value>
-  </data>
-  <data name="&gt;&gt;listBox3.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;PlusSeyf.Name" xml:space="preserve">
-    <value>PlusSeyf</value>
-  </data>
-  <data name="&gt;&gt;PlusSeyf.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;PlusSeyf.Parent" xml:space="preserve">
-    <value>SeyfPlusPage</value>
-  </data>
-  <data name="&gt;&gt;PlusSeyf.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;label11.Name" xml:space="preserve">
-    <value>label11</value>
-  </data>
-  <data name="&gt;&gt;label11.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
-    <value>SeyfPlusPage</value>
-  </data>
-  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;label10.Name" xml:space="preserve">
-    <value>label10</value>
-  </data>
-  <data name="&gt;&gt;label10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
-    <value>SeyfPlusPage</value>
-  </data>
-  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox22.Name" xml:space="preserve">
-    <value>materialTextBox22</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox22.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox22.Parent" xml:space="preserve">
-    <value>SeyfPlusPage</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox22.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox21.Name" xml:space="preserve">
-    <value>materialTextBox21</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox21.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox21.Parent" xml:space="preserve">
-    <value>SeyfPlusPage</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox21.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="SeyfPlusPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="SeyfPlusPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="SeyfPlusPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1748, 797</value>
-  </data>
-  <data name="SeyfPlusPage.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="SeyfPlusPage.Text" xml:space="preserve">
-    <value>Отчет по сейфу</value>
-  </data>
-  <data name="&gt;&gt;SeyfPlusPage.Name" xml:space="preserve">
-    <value>SeyfPlusPage</value>
-  </data>
-  <data name="&gt;&gt;SeyfPlusPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SeyfPlusPage.Parent" xml:space="preserve">
-    <value>materialTabControl1</value>
-  </data>
-  <data name="&gt;&gt;SeyfPlusPage.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;PostavkaRashod.Name" xml:space="preserve">
-    <value>PostavkaRashod</value>
-  </data>
-  <data name="&gt;&gt;PostavkaRashod.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialCheckbox, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;PostavkaRashod.Parent" xml:space="preserve">
-    <value>RashodPage</value>
-  </data>
-  <data name="&gt;&gt;PostavkaRashod.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;SeyfRasHod.Name" xml:space="preserve">
-    <value>SeyfRasHod</value>
-  </data>
-  <data name="&gt;&gt;SeyfRasHod.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialCheckbox, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;SeyfRasHod.Parent" xml:space="preserve">
-    <value>RashodPage</value>
-  </data>
-  <data name="&gt;&gt;SeyfRasHod.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;listBoxRas.Name" xml:space="preserve">
-    <value>listBoxRas</value>
-  </data>
-  <data name="&gt;&gt;listBoxRas.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;listBoxRas.Parent" xml:space="preserve">
-    <value>RashodPage</value>
-  </data>
-  <data name="&gt;&gt;listBoxRas.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;comboBoxNameRas.Name" xml:space="preserve">
-    <value>comboBoxNameRas</value>
-  </data>
-  <data name="&gt;&gt;comboBoxNameRas.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialComboBox, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;comboBoxNameRas.Parent" xml:space="preserve">
-    <value>RashodPage</value>
-  </data>
-  <data name="&gt;&gt;comboBoxNameRas.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;PhotoMessageRashod.Name" xml:space="preserve">
-    <value>PhotoMessageRashod</value>
-  </data>
-  <data name="&gt;&gt;PhotoMessageRashod.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialCheckbox, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;PhotoMessageRashod.Parent" xml:space="preserve">
-    <value>RashodPage</value>
-  </data>
-  <data name="&gt;&gt;PhotoMessageRashod.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;Расход.Name" xml:space="preserve">
-    <value>Расход</value>
-  </data>
-  <data name="&gt;&gt;Расход.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;Расход.Parent" xml:space="preserve">
-    <value>RashodPage</value>
-  </data>
-  <data name="&gt;&gt;Расход.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;label21.Name" xml:space="preserve">
-    <value>label21</value>
-  </data>
-  <data name="&gt;&gt;label21.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label21.Parent" xml:space="preserve">
-    <value>RashodPage</value>
-  </data>
-  <data name="&gt;&gt;label21.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;label9.Name" xml:space="preserve">
-    <value>label9</value>
-  </data>
-  <data name="&gt;&gt;label9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
-    <value>RashodPage</value>
-  </data>
-  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox26.Name" xml:space="preserve">
-    <value>materialTextBox26</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox26.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox26.Parent" xml:space="preserve">
-    <value>RashodPage</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox26.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox25.Name" xml:space="preserve">
-    <value>materialTextBox25</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox25.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox25.Parent" xml:space="preserve">
-    <value>RashodPage</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox25.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="RashodPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="RashodPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1748, 797</value>
-  </data>
-  <data name="RashodPage.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="RashodPage.Text" xml:space="preserve">
-    <value>Расход</value>
-  </data>
-  <data name="&gt;&gt;RashodPage.Name" xml:space="preserve">
-    <value>RashodPage</value>
-  </data>
-  <data name="&gt;&gt;RashodPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RashodPage.Parent" xml:space="preserve">
-    <value>materialTabControl1</value>
-  </data>
-  <data name="&gt;&gt;RashodPage.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;label6.Name" xml:space="preserve">
-    <value>label6</value>
-  </data>
-  <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
-    <value>ShtraphPage</value>
-  </data>
-  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;materialComboBox4.Name" xml:space="preserve">
-    <value>materialComboBox4</value>
-  </data>
-  <data name="&gt;&gt;materialComboBox4.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialComboBox, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;materialComboBox4.Parent" xml:space="preserve">
-    <value>ShtraphPage</value>
-  </data>
-  <data name="&gt;&gt;materialComboBox4.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;listBox4.Name" xml:space="preserve">
-    <value>listBox4</value>
-  </data>
-  <data name="&gt;&gt;listBox4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;listBox4.Parent" xml:space="preserve">
-    <value>ShtraphPage</value>
-  </data>
-  <data name="&gt;&gt;listBox4.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;label15.Name" xml:space="preserve">
-    <value>label15</value>
-  </data>
-  <data name="&gt;&gt;label15.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label15.Parent" xml:space="preserve">
-    <value>ShtraphPage</value>
-  </data>
-  <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;label14.Name" xml:space="preserve">
-    <value>label14</value>
-  </data>
-  <data name="&gt;&gt;label14.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
-    <value>ShtraphPage</value>
-  </data>
-  <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox2.Name" xml:space="preserve">
-    <value>materialTextBox2</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox2.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox2.Parent" xml:space="preserve">
-    <value>ShtraphPage</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox2.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;listBox5.Name" xml:space="preserve">
-    <value>listBox5</value>
-  </data>
-  <data name="&gt;&gt;listBox5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;listBox5.Parent" xml:space="preserve">
-    <value>ShtraphPage</value>
-  </data>
-  <data name="&gt;&gt;listBox5.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;Штраф.Name" xml:space="preserve">
-    <value>Штраф</value>
-  </data>
-  <data name="&gt;&gt;Штраф.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;Штраф.Parent" xml:space="preserve">
-    <value>ShtraphPage</value>
-  </data>
-  <data name="&gt;&gt;Штраф.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;materialComboBox1.Name" xml:space="preserve">
-    <value>materialComboBox1</value>
-  </data>
-  <data name="&gt;&gt;materialComboBox1.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialComboBox, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;materialComboBox1.Parent" xml:space="preserve">
-    <value>ShtraphPage</value>
-  </data>
-  <data name="&gt;&gt;materialComboBox1.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="ShtraphPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="ShtraphPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1748, 797</value>
-  </data>
-  <data name="ShtraphPage.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="ShtraphPage.Text" xml:space="preserve">
-    <value>Штрафы</value>
-  </data>
-  <data name="&gt;&gt;ShtraphPage.Name" xml:space="preserve">
-    <value>ShtraphPage</value>
-  </data>
-  <data name="&gt;&gt;ShtraphPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ShtraphPage.Parent" xml:space="preserve">
-    <value>materialTabControl1</value>
-  </data>
-  <data name="&gt;&gt;ShtraphPage.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;listBoxNameInv.Name" xml:space="preserve">
-    <value>listBoxNameInv</value>
-  </data>
-  <data name="&gt;&gt;listBoxNameInv.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;listBoxNameInv.Parent" xml:space="preserve">
-    <value>InventPage</value>
-  </data>
-  <data name="&gt;&gt;listBoxNameInv.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;InventBTN.Name" xml:space="preserve">
-    <value>InventBTN</value>
-  </data>
-  <data name="&gt;&gt;InventBTN.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;InventBTN.Parent" xml:space="preserve">
-    <value>InventPage</value>
-  </data>
-  <data name="&gt;&gt;InventBTN.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;InventSum.Name" xml:space="preserve">
-    <value>InventSum</value>
-  </data>
-  <data name="&gt;&gt;InventSum.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;InventSum.Parent" xml:space="preserve">
-    <value>InventPage</value>
-  </data>
-  <data name="&gt;&gt;InventSum.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="InventPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="InventPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1748, 797</value>
-  </data>
-  <data name="InventPage.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="InventPage.Text" xml:space="preserve">
-    <value>Инвентаризация</value>
-  </data>
-  <data name="&gt;&gt;InventPage.Name" xml:space="preserve">
-    <value>InventPage</value>
-  </data>
-  <data name="&gt;&gt;InventPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;InventPage.Parent" xml:space="preserve">
-    <value>materialTabControl1</value>
-  </data>
-  <data name="&gt;&gt;InventPage.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;btnSaveExcel.Name" xml:space="preserve">
-    <value>btnSaveExcel</value>
-  </data>
-  <data name="&gt;&gt;btnSaveExcel.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;btnSaveExcel.Parent" xml:space="preserve">
-    <value>PravkaItogPage</value>
-  </data>
-  <data name="&gt;&gt;btnSaveExcel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;PopravkaDa.Name" xml:space="preserve">
-    <value>PopravkaDa</value>
-  </data>
-  <data name="&gt;&gt;PopravkaDa.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialCheckbox, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;PopravkaDa.Parent" xml:space="preserve">
-    <value>PravkaItogPage</value>
-  </data>
-  <data name="&gt;&gt;PopravkaDa.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;ОткрытьИтог.Name" xml:space="preserve">
-    <value>ОткрытьИтог</value>
-  </data>
-  <data name="&gt;&gt;ОткрытьИтог.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;ОткрытьИтог.Parent" xml:space="preserve">
-    <value>PravkaItogPage</value>
-  </data>
-  <data name="&gt;&gt;ОткрытьИтог.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExcel.Name" xml:space="preserve">
-    <value>dataGridViewExcel</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExcel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExcel.Parent" xml:space="preserve">
-    <value>PravkaItogPage</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExcel.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;comboBoxExcel.Name" xml:space="preserve">
-    <value>comboBoxExcel</value>
-  </data>
-  <data name="&gt;&gt;comboBoxExcel.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialComboBox, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;comboBoxExcel.Parent" xml:space="preserve">
-    <value>PravkaItogPage</value>
-  </data>
-  <data name="&gt;&gt;comboBoxExcel.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="PravkaItogPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="PravkaItogPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1748, 797</value>
-  </data>
-  <data name="PravkaItogPage.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="PravkaItogPage.Text" xml:space="preserve">
-    <value>Проверка отчетов</value>
-  </data>
-  <data name="&gt;&gt;PravkaItogPage.Name" xml:space="preserve">
-    <value>PravkaItogPage</value>
-  </data>
-  <data name="&gt;&gt;PravkaItogPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PravkaItogPage.Parent" xml:space="preserve">
-    <value>materialTabControl1</value>
-  </data>
-  <data name="&gt;&gt;PravkaItogPage.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;saveButton.Name" xml:space="preserve">
-    <value>saveButton</value>
-  </data>
-  <data name="&gt;&gt;saveButton.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;saveButton.Parent" xml:space="preserve">
-    <value>ManPage</value>
-  </data>
-  <data name="&gt;&gt;saveButton.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;loadButton.Name" xml:space="preserve">
-    <value>loadButton</value>
-  </data>
-  <data name="&gt;&gt;loadButton.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;loadButton.Parent" xml:space="preserve">
-    <value>ManPage</value>
-  </data>
-  <data name="&gt;&gt;loadButton.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewJson.Name" xml:space="preserve">
-    <value>dataGridViewJson</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewJson.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewJson.Parent" xml:space="preserve">
-    <value>ManPage</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewJson.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="ManPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="ManPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1748, 797</value>
-  </data>
-  <data name="ManPage.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="ManPage.Text" xml:space="preserve">
-    <value>Сотрудники</value>
-  </data>
-  <data name="&gt;&gt;ManPage.Name" xml:space="preserve">
-    <value>ManPage</value>
-  </data>
-  <data name="&gt;&gt;ManPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ManPage.Parent" xml:space="preserve">
-    <value>materialTabControl1</value>
-  </data>
-  <data name="&gt;&gt;ManPage.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;ZpPopravka.Name" xml:space="preserve">
-    <value>ZpPopravka</value>
-  </data>
-  <data name="&gt;&gt;ZpPopravka.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialCheckbox, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;ZpPopravka.Parent" xml:space="preserve">
-    <value>ZpPage</value>
-  </data>
-  <data name="&gt;&gt;ZpPopravka.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;ZpExcelSheet.Name" xml:space="preserve">
-    <value>ZpExcelSheet</value>
-  </data>
-  <data name="&gt;&gt;ZpExcelSheet.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialComboBox, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;ZpExcelSheet.Parent" xml:space="preserve">
-    <value>ZpPage</value>
-  </data>
-  <data name="&gt;&gt;ZpExcelSheet.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;ZpSave.Name" xml:space="preserve">
-    <value>ZpSave</value>
-  </data>
-  <data name="&gt;&gt;ZpSave.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;ZpSave.Parent" xml:space="preserve">
-    <value>ZpPage</value>
-  </data>
-  <data name="&gt;&gt;ZpSave.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;ZpVeiw.Name" xml:space="preserve">
-    <value>ZpVeiw</value>
-  </data>
-  <data name="&gt;&gt;ZpVeiw.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;ZpVeiw.Parent" xml:space="preserve">
-    <value>ZpPage</value>
-  </data>
-  <data name="&gt;&gt;ZpVeiw.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;label12.Name" xml:space="preserve">
-    <value>label12</value>
-  </data>
-  <data name="&gt;&gt;label12.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
-    <value>ZpPage</value>
-  </data>
-  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewZp.Name" xml:space="preserve">
-    <value>dataGridViewZp</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewZp.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewZp.Parent" xml:space="preserve">
-    <value>ZpPage</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewZp.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="ZpPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="ZpPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1748, 797</value>
-  </data>
-  <data name="ZpPage.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="ZpPage.Text" xml:space="preserve">
-    <value>Зп ексель</value>
-  </data>
-  <data name="&gt;&gt;ZpPage.Name" xml:space="preserve">
-    <value>ZpPage</value>
-  </data>
-  <data name="&gt;&gt;ZpPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ZpPage.Parent" xml:space="preserve">
-    <value>materialTabControl1</value>
-  </data>
-  <data name="&gt;&gt;ZpPage.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;SaveBtnSeyf.Name" xml:space="preserve">
-    <value>SaveBtnSeyf</value>
-  </data>
-  <data name="&gt;&gt;SaveBtnSeyf.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;SaveBtnSeyf.Parent" xml:space="preserve">
-    <value>SeyfExcel</value>
-  </data>
-  <data name="&gt;&gt;SaveBtnSeyf.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;PopravkaSeyf.Name" xml:space="preserve">
-    <value>PopravkaSeyf</value>
-  </data>
-  <data name="&gt;&gt;PopravkaSeyf.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialCheckbox, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;PopravkaSeyf.Parent" xml:space="preserve">
-    <value>SeyfExcel</value>
-  </data>
-  <data name="&gt;&gt;PopravkaSeyf.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;SeyfExcelBox.Name" xml:space="preserve">
-    <value>SeyfExcelBox</value>
-  </data>
-  <data name="&gt;&gt;SeyfExcelBox.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialComboBox, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;SeyfExcelBox.Parent" xml:space="preserve">
-    <value>SeyfExcel</value>
-  </data>
-  <data name="&gt;&gt;SeyfExcelBox.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;LoadSeyfExcel.Name" xml:space="preserve">
-    <value>LoadSeyfExcel</value>
-  </data>
-  <data name="&gt;&gt;LoadSeyfExcel.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;LoadSeyfExcel.Parent" xml:space="preserve">
-    <value>SeyfExcel</value>
-  </data>
-  <data name="&gt;&gt;LoadSeyfExcel.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;label13.Name" xml:space="preserve">
-    <value>label13</value>
-  </data>
-  <data name="&gt;&gt;label13.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
-    <value>SeyfExcel</value>
-  </data>
-  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewSeyfExcel.Name" xml:space="preserve">
-    <value>dataGridViewSeyfExcel</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewSeyfExcel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewSeyfExcel.Parent" xml:space="preserve">
-    <value>SeyfExcel</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewSeyfExcel.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="SeyfExcel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="SeyfExcel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1748, 797</value>
-  </data>
-  <data name="SeyfExcel.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="SeyfExcel.Text" xml:space="preserve">
-    <value>Сейф Ексель</value>
-  </data>
-  <data name="&gt;&gt;SeyfExcel.Name" xml:space="preserve">
-    <value>SeyfExcel</value>
-  </data>
-  <data name="&gt;&gt;SeyfExcel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SeyfExcel.Parent" xml:space="preserve">
-    <value>materialTabControl1</value>
-  </data>
-  <data name="&gt;&gt;SeyfExcel.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="materialTabControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 23</value>
-  </data>
-  <data name="materialTabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1756, 823</value>
-  </data>
-  <data name="materialTabControl1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;materialTabControl1.Name" xml:space="preserve">
-    <value>materialTabControl1</value>
-  </data>
-  <data name="&gt;&gt;materialTabControl1.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTabControl, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;materialTabControl1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;materialTabControl1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="materialTabSelector1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Roboto, 14px</value>
-  </data>
-  <data name="materialTabSelector1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-1, 790</value>
-  </data>
-  <data name="materialTabSelector1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1749, 51</value>
-  </data>
-  <data name="materialTabSelector1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;materialTabSelector1.Name" xml:space="preserve">
-    <value>materialTabSelector1</value>
-  </data>
-  <data name="&gt;&gt;materialTabSelector1.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTabSelector, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;materialTabSelector1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;materialTabSelector1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="Расчитать.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -1534,7 +283,7 @@
     <value>NoControl</value>
   </data>
   <data name="Расчитать.Location" type="System.Drawing.Point, System.Drawing">
-    <value>621, 452</value>
+    <value>660, 442</value>
   </data>
   <data name="Расчитать.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 6, 4, 6</value>
@@ -1570,7 +319,7 @@
     <value>NoControl</value>
   </data>
   <data name="Отправить.Location" type="System.Drawing.Point, System.Drawing">
-    <value>621, 687</value>
+    <value>659, 677</value>
   </data>
   <data name="Отправить.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 6, 4, 6</value>
@@ -1603,7 +352,7 @@
     <value>NoControl</value>
   </data>
   <data name="label20.Location" type="System.Drawing.Point, System.Drawing">
-    <value>217, 253</value>
+    <value>217, 267</value>
   </data>
   <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
     <value>82, 13</value>
@@ -1636,7 +385,7 @@
     <value>NoControl</value>
   </data>
   <data name="label19.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 253</value>
+    <value>58, 267</value>
   </data>
   <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 13</value>
@@ -1735,7 +484,7 @@
     <value>NoControl</value>
   </data>
   <data name="label18.Location" type="System.Drawing.Point, System.Drawing">
-    <value>243, 56</value>
+    <value>243, 60</value>
   </data>
   <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
     <value>82, 29</value>
@@ -1791,37 +540,37 @@
   <data name="&gt;&gt;materialTextBox1.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="materialComboBox3.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="SecondComboBoxNameOtchet.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14px, style=Bold</value>
   </data>
-  <data name="materialComboBox3.IntegralHeight" type="System.Boolean, mscorlib">
+  <data name="SecondComboBoxNameOtchet.IntegralHeight" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="materialComboBox3.ItemHeight" type="System.Int32, mscorlib">
+  <data name="SecondComboBoxNameOtchet.ItemHeight" type="System.Int32, mscorlib">
     <value>43</value>
   </data>
-  <data name="materialComboBox3.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="SecondComboBoxNameOtchet.Location" type="System.Drawing.Point, System.Drawing">
     <value>61, 155</value>
   </data>
-  <data name="materialComboBox3.MaxDropDownItems" type="System.Int32, mscorlib">
+  <data name="SecondComboBoxNameOtchet.MaxDropDownItems" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="materialComboBox3.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="SecondComboBoxNameOtchet.Size" type="System.Drawing.Size, System.Drawing">
     <value>176, 49</value>
   </data>
-  <data name="materialComboBox3.TabIndex" type="System.Int32, mscorlib">
+  <data name="SecondComboBoxNameOtchet.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
   </data>
-  <data name="&gt;&gt;materialComboBox3.Name" xml:space="preserve">
-    <value>materialComboBox3</value>
+  <data name="&gt;&gt;SecondComboBoxNameOtchet.Name" xml:space="preserve">
+    <value>SecondComboBoxNameOtchet</value>
   </data>
-  <data name="&gt;&gt;materialComboBox3.Type" xml:space="preserve">
+  <data name="&gt;&gt;SecondComboBoxNameOtchet.Type" xml:space="preserve">
     <value>MaterialSkin.Controls.MaterialComboBox, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;materialComboBox3.Parent" xml:space="preserve">
+  <data name="&gt;&gt;SecondComboBoxNameOtchet.Parent" xml:space="preserve">
     <value>OtchetPage</value>
   </data>
-  <data name="&gt;&gt;materialComboBox3.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;SecondComboBoxNameOtchet.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
   <data name="materialTextBox24.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
@@ -1857,9 +606,6 @@
   <data name="&gt;&gt;materialTextBox24.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="listBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Right</value>
-  </data>
   <data name="listBox2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 17pt</value>
   </data>
@@ -1889,9 +635,6 @@
   </data>
   <data name="&gt;&gt;listBox2.ZOrder" xml:space="preserve">
     <value>10</value>
-  </data>
-  <data name="listBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Right</value>
   </data>
   <data name="listBox1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 17pt</value>
@@ -1923,37 +666,37 @@
   <data name="&gt;&gt;listBox1.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
-  <data name="comboBox1.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="NameComboBoxOtchet.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 18pt, style=Bold</value>
   </data>
-  <data name="comboBox1.IntegralHeight" type="System.Boolean, mscorlib">
+  <data name="NameComboBoxOtchet.IntegralHeight" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="comboBox1.ItemHeight" type="System.Int32, mscorlib">
+  <data name="NameComboBoxOtchet.ItemHeight" type="System.Int32, mscorlib">
     <value>43</value>
   </data>
-  <data name="comboBox1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="NameComboBoxOtchet.Location" type="System.Drawing.Point, System.Drawing">
     <value>61, 90</value>
   </data>
-  <data name="comboBox1.MaxDropDownItems" type="System.Int32, mscorlib">
+  <data name="NameComboBoxOtchet.MaxDropDownItems" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="comboBox1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="NameComboBoxOtchet.Size" type="System.Drawing.Size, System.Drawing">
     <value>176, 49</value>
   </data>
-  <data name="comboBox1.TabIndex" type="System.Int32, mscorlib">
+  <data name="NameComboBoxOtchet.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;comboBox1.Name" xml:space="preserve">
-    <value>comboBox1</value>
+  <data name="&gt;&gt;NameComboBoxOtchet.Name" xml:space="preserve">
+    <value>NameComboBoxOtchet</value>
   </data>
-  <data name="&gt;&gt;comboBox1.Type" xml:space="preserve">
+  <data name="&gt;&gt;NameComboBoxOtchet.Type" xml:space="preserve">
     <value>MaterialSkin.Controls.MaterialComboBox, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;comboBox1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;NameComboBoxOtchet.Parent" xml:space="preserve">
     <value>OtchetPage</value>
   </data>
-  <data name="&gt;&gt;comboBox1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;NameComboBoxOtchet.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
   <data name="TextBox8.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
@@ -1966,7 +709,7 @@
     <value>Почему минус</value>
   </data>
   <data name="TextBox8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>354, 501</value>
+    <value>354, 514</value>
   </data>
   <data name="TextBox8.PrefixSuffixText" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
@@ -1975,7 +718,7 @@
     <value>No</value>
   </data>
   <data name="TextBox8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 48</value>
+    <value>225, 48</value>
   </data>
   <data name="TextBox8.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -1999,7 +742,7 @@
     <value>Microsoft Sans Serif, 18pt, style=Bold</value>
   </data>
   <data name="textBox7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>354, 418</value>
+    <value>354, 431</value>
   </data>
   <data name="textBox7.PrefixSuffixText" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
@@ -2008,7 +751,7 @@
     <value>No</value>
   </data>
   <data name="textBox7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 48</value>
+    <value>225, 48</value>
   </data>
   <data name="textBox7.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -2032,7 +775,7 @@
     <value>Microsoft Sans Serif, 18pt, style=Bold</value>
   </data>
   <data name="textBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>354, 334</value>
+    <value>354, 346</value>
   </data>
   <data name="textBox5.PrefixSuffixText" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
@@ -2041,7 +784,7 @@
     <value>No</value>
   </data>
   <data name="textBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 48</value>
+    <value>225, 48</value>
   </data>
   <data name="textBox5.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -2065,7 +808,7 @@
     <value>Microsoft Sans Serif, 18pt, style=Bold</value>
   </data>
   <data name="textBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>354, 253</value>
+    <value>354, 261</value>
   </data>
   <data name="textBox4.PrefixSuffixText" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
@@ -2074,7 +817,7 @@
     <value>No</value>
   </data>
   <data name="textBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 48</value>
+    <value>225, 48</value>
   </data>
   <data name="textBox4.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -2098,7 +841,7 @@
     <value>Microsoft Sans Serif, 18pt, style=Bold</value>
   </data>
   <data name="textBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>354, 172</value>
+    <value>354, 176</value>
   </data>
   <data name="textBox3.PrefixSuffixText" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
@@ -2107,7 +850,7 @@
     <value>No</value>
   </data>
   <data name="textBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 48</value>
+    <value>225, 48</value>
   </data>
   <data name="textBox3.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2140,7 +883,7 @@
     <value>No</value>
   </data>
   <data name="textBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 48</value>
+    <value>225, 48</value>
   </data>
   <data name="textBox2.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2157,9 +900,6 @@
   <data name="&gt;&gt;textBox2.ZOrder" xml:space="preserve">
     <value>18</value>
   </data>
-  <data name="label8.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>None</value>
-  </data>
   <data name="label8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2170,7 +910,7 @@
     <value>NoControl</value>
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>368, 459</value>
+    <value>349, 482</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
     <value>178, 29</value>
@@ -2193,8 +933,8 @@
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
     <value>19</value>
   </data>
-  <data name="label7.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>None</value>
+  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft New Tai Lue, 17pt</value>
@@ -2203,10 +943,10 @@
     <value>NoControl</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>368, 378</value>
+    <value>348, 397</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 30</value>
+    <value>112, 31</value>
   </data>
   <data name="label7.TabIndex" type="System.Int32, mscorlib">
     <value>44</value>
@@ -2226,8 +966,8 @@
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
     <value>20</value>
   </data>
-  <data name="label5.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>None</value>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft New Tai Lue, 17pt</value>
@@ -2236,10 +976,10 @@
     <value>NoControl</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>368, 296</value>
+    <value>349, 312</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 27</value>
+    <value>214, 31</value>
   </data>
   <data name="label5.TabIndex" type="System.Int32, mscorlib">
     <value>42</value>
@@ -2259,8 +999,8 @@
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
     <value>21</value>
   </data>
-  <data name="label4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>None</value>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft New Tai Lue, 17pt</value>
@@ -2269,10 +1009,10 @@
     <value>NoControl</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>368, 213</value>
+    <value>348, 227</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 30</value>
+    <value>228, 31</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>41</value>
@@ -2292,8 +1032,8 @@
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
     <value>22</value>
   </data>
-  <data name="label3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>None</value>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft New Tai Lue, 17pt</value>
@@ -2302,10 +1042,10 @@
     <value>NoControl</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>368, 132</value>
+    <value>348, 142</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 30</value>
+    <value>221, 31</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>40</value>
@@ -2325,8 +1065,8 @@
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
     <value>23</value>
   </data>
-  <data name="label2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>None</value>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft New Tai Lue, 17pt</value>
@@ -2335,10 +1075,10 @@
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>368, 51</value>
+    <value>348, 56</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 30</value>
+    <value>231, 31</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>39</value>
@@ -2358,8 +1098,8 @@
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>24</value>
   </data>
-  <data name="label1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>None</value>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft New Tai Lue, 17pt</value>
@@ -2368,10 +1108,10 @@
     <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>63, 48</value>
+    <value>55, 56</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 40</value>
+    <value>65, 31</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>38</value>
@@ -2390,6 +1130,33 @@
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>25</value>
+  </data>
+  <data name="OtchetPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="OtchetPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="OtchetPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1677, 850</value>
+  </data>
+  <data name="OtchetPage.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="OtchetPage.Text" xml:space="preserve">
+    <value>Отчет по смене</value>
+  </data>
+  <data name="&gt;&gt;OtchetPage.Name" xml:space="preserve">
+    <value>OtchetPage</value>
+  </data>
+  <data name="&gt;&gt;OtchetPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;OtchetPage.Parent" xml:space="preserve">
+    <value>materialTabControl1</value>
+  </data>
+  <data name="&gt;&gt;OtchetPage.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="Аванс.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -2497,7 +1264,7 @@
     <value>Microsoft Sans Serif, 16px</value>
   </data>
   <data name="materialTextBox23.Location" type="System.Drawing.Point, System.Drawing">
-    <value>365, 48</value>
+    <value>365, 47</value>
   </data>
   <data name="materialTextBox23.PrefixSuffixText" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
@@ -2533,7 +1300,7 @@
     <value>43</value>
   </data>
   <data name="materialComboBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>86, 48</value>
+    <value>75, 47</value>
   </data>
   <data name="materialComboBox2.MaxDropDownItems" type="System.Int32, mscorlib">
     <value>4</value>
@@ -2555,6 +1322,30 @@
   </data>
   <data name="&gt;&gt;materialComboBox2.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="AvansPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="AvansPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1677, 850</value>
+  </data>
+  <data name="AvansPage.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="AvansPage.Text" xml:space="preserve">
+    <value>Аванс</value>
+  </data>
+  <data name="&gt;&gt;AvansPage.Name" xml:space="preserve">
+    <value>AvansPage</value>
+  </data>
+  <data name="&gt;&gt;AvansPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AvansPage.Parent" xml:space="preserve">
+    <value>materialTabControl1</value>
+  </data>
+  <data name="&gt;&gt;AvansPage.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="materialCheckbox1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2656,7 +1447,7 @@
     <value>NoControl</value>
   </data>
   <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>416, 78</value>
+    <value>466, 78</value>
   </data>
   <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
     <value>179, 33</value>
@@ -2679,6 +1470,9 @@
   <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="label10.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 17.25pt</value>
   </data>
@@ -2689,7 +1483,7 @@
     <value>114, 78</value>
   </data>
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>239, 98</value>
+    <value>315, 29</value>
   </data>
   <data name="label10.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2749,7 +1543,7 @@
     <value>Microsoft Sans Serif, 17.25pt</value>
   </data>
   <data name="materialTextBox21.Location" type="System.Drawing.Point, System.Drawing">
-    <value>421, 27</value>
+    <value>471, 27</value>
   </data>
   <data name="materialTextBox21.PrefixSuffixText" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
@@ -2774,6 +1568,33 @@
   </data>
   <data name="&gt;&gt;materialTextBox21.ZOrder" xml:space="preserve">
     <value>6</value>
+  </data>
+  <data name="SeyfPlusPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="SeyfPlusPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="SeyfPlusPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1677, 850</value>
+  </data>
+  <data name="SeyfPlusPage.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="SeyfPlusPage.Text" xml:space="preserve">
+    <value>Отчет по сейфу</value>
+  </data>
+  <data name="&gt;&gt;SeyfPlusPage.Name" xml:space="preserve">
+    <value>SeyfPlusPage</value>
+  </data>
+  <data name="&gt;&gt;SeyfPlusPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SeyfPlusPage.Parent" xml:space="preserve">
+    <value>materialTabControl1</value>
+  </data>
+  <data name="&gt;&gt;SeyfPlusPage.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="PostavkaRashod.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2854,7 +1675,7 @@
     <value>29</value>
   </data>
   <data name="listBoxRas.Location" type="System.Drawing.Point, System.Drawing">
-    <value>472, 173</value>
+    <value>401, 184</value>
   </data>
   <data name="listBoxRas.Size" type="System.Drawing.Size, System.Drawing">
     <value>941, 290</value>
@@ -3108,6 +1929,30 @@
   <data name="&gt;&gt;materialTextBox25.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
+  <data name="RashodPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="RashodPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1677, 850</value>
+  </data>
+  <data name="RashodPage.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="RashodPage.Text" xml:space="preserve">
+    <value>Расход</value>
+  </data>
+  <data name="&gt;&gt;RashodPage.Name" xml:space="preserve">
+    <value>RashodPage</value>
+  </data>
+  <data name="&gt;&gt;RashodPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RashodPage.Parent" xml:space="preserve">
+    <value>materialTabControl1</value>
+  </data>
+  <data name="&gt;&gt;RashodPage.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3141,37 +1986,37 @@
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="materialComboBox4.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="WhoVipisl.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14px, style=Bold</value>
   </data>
-  <data name="materialComboBox4.IntegralHeight" type="System.Boolean, mscorlib">
+  <data name="WhoVipisl.IntegralHeight" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="materialComboBox4.ItemHeight" type="System.Int32, mscorlib">
+  <data name="WhoVipisl.ItemHeight" type="System.Int32, mscorlib">
     <value>43</value>
   </data>
-  <data name="materialComboBox4.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="WhoVipisl.Location" type="System.Drawing.Point, System.Drawing">
     <value>44, 669</value>
   </data>
-  <data name="materialComboBox4.MaxDropDownItems" type="System.Int32, mscorlib">
+  <data name="WhoVipisl.MaxDropDownItems" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="materialComboBox4.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="WhoVipisl.Size" type="System.Drawing.Size, System.Drawing">
     <value>262, 49</value>
   </data>
-  <data name="materialComboBox4.TabIndex" type="System.Int32, mscorlib">
+  <data name="WhoVipisl.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
-  <data name="&gt;&gt;materialComboBox4.Name" xml:space="preserve">
-    <value>materialComboBox4</value>
+  <data name="&gt;&gt;WhoVipisl.Name" xml:space="preserve">
+    <value>WhoVipisl</value>
   </data>
-  <data name="&gt;&gt;materialComboBox4.Type" xml:space="preserve">
+  <data name="&gt;&gt;WhoVipisl.Type" xml:space="preserve">
     <value>MaterialSkin.Controls.MaterialComboBox, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;materialComboBox4.Parent" xml:space="preserve">
+  <data name="&gt;&gt;WhoVipisl.Parent" xml:space="preserve">
     <value>ShtraphPage</value>
   </data>
-  <data name="&gt;&gt;materialComboBox4.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;WhoVipisl.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="listBox4.Location" type="System.Drawing.Point, System.Drawing">
@@ -3348,38 +2193,62 @@
   <data name="&gt;&gt;Штраф.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="materialComboBox1.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="KtoVipisal.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 17px, style=Bold</value>
   </data>
-  <data name="materialComboBox1.IntegralHeight" type="System.Boolean, mscorlib">
+  <data name="KtoVipisal.IntegralHeight" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="materialComboBox1.ItemHeight" type="System.Int32, mscorlib">
+  <data name="KtoVipisal.ItemHeight" type="System.Int32, mscorlib">
     <value>43</value>
   </data>
-  <data name="materialComboBox1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="KtoVipisal.Location" type="System.Drawing.Point, System.Drawing">
     <value>55, 50</value>
   </data>
-  <data name="materialComboBox1.MaxDropDownItems" type="System.Int32, mscorlib">
+  <data name="KtoVipisal.MaxDropDownItems" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="materialComboBox1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="KtoVipisal.Size" type="System.Drawing.Size, System.Drawing">
     <value>220, 49</value>
   </data>
-  <data name="materialComboBox1.TabIndex" type="System.Int32, mscorlib">
+  <data name="KtoVipisal.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;materialComboBox1.Name" xml:space="preserve">
-    <value>materialComboBox1</value>
+  <data name="&gt;&gt;KtoVipisal.Name" xml:space="preserve">
+    <value>KtoVipisal</value>
   </data>
-  <data name="&gt;&gt;materialComboBox1.Type" xml:space="preserve">
+  <data name="&gt;&gt;KtoVipisal.Type" xml:space="preserve">
     <value>MaterialSkin.Controls.MaterialComboBox, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;materialComboBox1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;KtoVipisal.Parent" xml:space="preserve">
     <value>ShtraphPage</value>
   </data>
-  <data name="&gt;&gt;materialComboBox1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;KtoVipisal.ZOrder" xml:space="preserve">
     <value>8</value>
+  </data>
+  <data name="ShtraphPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="ShtraphPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1677, 850</value>
+  </data>
+  <data name="ShtraphPage.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="ShtraphPage.Text" xml:space="preserve">
+    <value>Штрафы</value>
+  </data>
+  <data name="&gt;&gt;ShtraphPage.Name" xml:space="preserve">
+    <value>ShtraphPage</value>
+  </data>
+  <data name="&gt;&gt;ShtraphPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ShtraphPage.Parent" xml:space="preserve">
+    <value>materialTabControl1</value>
+  </data>
+  <data name="&gt;&gt;ShtraphPage.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="listBoxNameInv.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 17pt</value>
@@ -3476,6 +2345,30 @@
   </data>
   <data name="&gt;&gt;InventSum.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="InventPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="InventPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1677, 850</value>
+  </data>
+  <data name="InventPage.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="InventPage.Text" xml:space="preserve">
+    <value>Инвентаризация</value>
+  </data>
+  <data name="&gt;&gt;InventPage.Name" xml:space="preserve">
+    <value>InventPage</value>
+  </data>
+  <data name="&gt;&gt;InventPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;InventPage.Parent" xml:space="preserve">
+    <value>materialTabControl1</value>
+  </data>
+  <data name="&gt;&gt;InventPage.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <data name="btnSaveExcel.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -3636,6 +2529,30 @@
   <data name="&gt;&gt;comboBoxExcel.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="PravkaItogPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="PravkaItogPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1677, 850</value>
+  </data>
+  <data name="PravkaItogPage.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="PravkaItogPage.Text" xml:space="preserve">
+    <value>Проверка отчетов</value>
+  </data>
+  <data name="&gt;&gt;PravkaItogPage.Name" xml:space="preserve">
+    <value>PravkaItogPage</value>
+  </data>
+  <data name="&gt;&gt;PravkaItogPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PravkaItogPage.Parent" xml:space="preserve">
+    <value>materialTabControl1</value>
+  </data>
+  <data name="&gt;&gt;PravkaItogPage.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
   <data name="saveButton.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -3643,7 +2560,7 @@
     <value>NoControl</value>
   </data>
   <data name="saveButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>917, 599</value>
+    <value>756, 587</value>
   </data>
   <data name="saveButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 6, 4, 6</value>
@@ -3676,7 +2593,7 @@
     <value>NoControl</value>
   </data>
   <data name="loadButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>622, 599</value>
+    <value>4, 587</value>
   </data>
   <data name="loadButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 6, 4, 6</value>
@@ -3702,35 +2619,11 @@
   <data name="&gt;&gt;loadButton.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="Namess.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="Namess.HeaderText" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <metadata name="TelegramId.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="TelegramId.HeaderText" xml:space="preserve">
-    <value>TelegramId</value>
-  </data>
-  <metadata name="TelegramTopic.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="TelegramTopic.HeaderText" xml:space="preserve">
-    <value>TelegramTopic</value>
-  </data>
-  <metadata name="ZpColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="ZpColumn.HeaderText" xml:space="preserve">
-    <value>ZpColumn</value>
-  </data>
   <data name="dataGridViewJson.Location" type="System.Drawing.Point, System.Drawing">
-    <value>452, 139</value>
+    <value>4, 222</value>
   </data>
   <data name="dataGridViewJson.Size" type="System.Drawing.Size, System.Drawing">
-    <value>862, 356</value>
+    <value>1047, 356</value>
   </data>
   <data name="dataGridViewJson.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -3746,6 +2639,30 @@
   </data>
   <data name="&gt;&gt;dataGridViewJson.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="ManPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="ManPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1677, 850</value>
+  </data>
+  <data name="ManPage.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="ManPage.Text" xml:space="preserve">
+    <value>Сотрудники</value>
+  </data>
+  <data name="&gt;&gt;ManPage.Name" xml:space="preserve">
+    <value>ManPage</value>
+  </data>
+  <data name="&gt;&gt;ManPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ManPage.Parent" xml:space="preserve">
+    <value>materialTabControl1</value>
+  </data>
+  <data name="&gt;&gt;ManPage.ZOrder" xml:space="preserve">
+    <value>8</value>
   </data>
   <data name="ZpPopravka.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3826,13 +2743,13 @@
     <value>4, 6, 4, 6</value>
   </data>
   <data name="ZpSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 36</value>
+    <value>109, 36</value>
   </data>
   <data name="ZpSave.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
   <data name="ZpSave.Text" xml:space="preserve">
-    <value>materialButton1</value>
+    <value>Сохранить</value>
   </data>
   <data name="&gt;&gt;ZpSave.Name" xml:space="preserve">
     <value>ZpSave</value>
@@ -3859,13 +2776,13 @@
     <value>4, 6, 4, 6</value>
   </data>
   <data name="ZpVeiw.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 36</value>
+    <value>90, 36</value>
   </data>
   <data name="ZpVeiw.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
   <data name="ZpVeiw.Text" xml:space="preserve">
-    <value>materialButton1</value>
+    <value>Открыть</value>
   </data>
   <data name="&gt;&gt;ZpVeiw.Name" xml:space="preserve">
     <value>ZpVeiw</value>
@@ -3932,6 +2849,30 @@
   </data>
   <data name="&gt;&gt;dataGridViewZp.ZOrder" xml:space="preserve">
     <value>5</value>
+  </data>
+  <data name="ZpPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="ZpPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1677, 850</value>
+  </data>
+  <data name="ZpPage.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="ZpPage.Text" xml:space="preserve">
+    <value>Зп ексель</value>
+  </data>
+  <data name="&gt;&gt;ZpPage.Name" xml:space="preserve">
+    <value>ZpPage</value>
+  </data>
+  <data name="&gt;&gt;ZpPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ZpPage.Parent" xml:space="preserve">
+    <value>materialTabControl1</value>
+  </data>
+  <data name="&gt;&gt;ZpPage.ZOrder" xml:space="preserve">
+    <value>9</value>
   </data>
   <data name="SaveBtnSeyf.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -4119,26 +3060,74 @@
   <data name="&gt;&gt;dataGridViewSeyfExcel.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="verticalTab.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="SeyfExcel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
   </data>
-  <data name="verticalTab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 48</value>
+  <data name="SeyfExcel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1677, 850</value>
   </data>
-  <data name="verticalTab.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="SeyfExcel.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
   </data>
-  <data name="&gt;&gt;verticalTab.Name" xml:space="preserve">
-    <value>verticalTab</value>
+  <data name="SeyfExcel.Text" xml:space="preserve">
+    <value>Сейф Ексель</value>
   </data>
-  <data name="&gt;&gt;verticalTab.Type" xml:space="preserve">
-    <value>MaterialSkin1.Controls1.MaterialVerticalTabSelector, MaterialSkin1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;SeyfExcel.Name" xml:space="preserve">
+    <value>SeyfExcel</value>
   </data>
-  <data name="&gt;&gt;verticalTab.Parent" xml:space="preserve">
+  <data name="&gt;&gt;SeyfExcel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SeyfExcel.Parent" xml:space="preserve">
+    <value>materialTabControl1</value>
+  </data>
+  <data name="&gt;&gt;SeyfExcel.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="materialTabControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-1, 25</value>
+  </data>
+  <data name="materialTabControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1685, 876</value>
+  </data>
+  <data name="materialTabControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;materialTabControl1.Name" xml:space="preserve">
+    <value>materialTabControl1</value>
+  </data>
+  <data name="&gt;&gt;materialTabControl1.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialTabControl, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;materialTabControl1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;verticalTab.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;materialTabControl1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="materialTabSelector1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Roboto, 14px</value>
+  </data>
+  <data name="materialTabSelector1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-1, 850</value>
+  </data>
+  <data name="materialTabSelector1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1749, 51</value>
+  </data>
+  <data name="materialTabSelector1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;materialTabSelector1.Name" xml:space="preserve">
+    <value>materialTabSelector1</value>
+  </data>
+  <data name="&gt;&gt;materialTabSelector1.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialTabSelector, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;materialTabSelector1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;materialTabSelector1.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="ExitBtn.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -4186,40 +3175,22 @@
     <value>None</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1831, 835</value>
+    <value>1680, 900</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
+  <data name="$this.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1680, 900</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1680, 900</value>
   </data>
   <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 24, 3, 3</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>AVA SMENA</value>
-  </data>
-  <data name="&gt;&gt;Namess.Name" xml:space="preserve">
-    <value>Namess</value>
-  </data>
-  <data name="&gt;&gt;Namess.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TelegramId.Name" xml:space="preserve">
-    <value>TelegramId</value>
-  </data>
-  <data name="&gt;&gt;TelegramId.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TelegramTopic.Name" xml:space="preserve">
-    <value>TelegramTopic</value>
-  </data>
-  <data name="&gt;&gt;TelegramTopic.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ZpColumn.Name" xml:space="preserve">
-    <value>ZpColumn</value>
-  </data>
-  <data name="&gt;&gt;ZpColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

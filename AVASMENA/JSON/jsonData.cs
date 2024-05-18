@@ -14,9 +14,11 @@ namespace jsonData
         public Dictionary<string, int> NamesZP { get; set; }
         public List<string> NameList { get; set; }
         public string TokenBot { get; set; }
+        public long ForwardChat {  get; set; }
+        public long ChatId { get; set; }
 
         private static readonly string jsonReserv = "JSON\\userData.json";
-        private static readonly string jsonPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Documents", "Config");
+        private static readonly string jsonPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Documents", "AVASMENA", "Config");
         private static readonly string jsonFilePath = $"{jsonPath}\\userData.json";
         public UserDataLoader()
         {
@@ -86,22 +88,25 @@ namespace jsonData
                 }
             }
         public static void SaveBttn(DataGridView dataGrid)
+        {
+            UserDataLoader dataLoader = LoadFromFile();
+
+            dataGrid.Rows.Clear();
+            foreach (var name in dataLoader.NameList)
             {
-                UserDataLoader dataLoader = LoadFromFile();
-
-                dataGrid.Rows.Clear();
-
-                foreach (var name in dataLoader.NameList)
-                {
-                    var rowIndex = dataGrid.Rows.Add();
-                    var row = dataGrid.Rows[rowIndex];
-
-                    row.Cells["Name"].Value = name;
-                    row.Cells["Users"].Value = dataLoader.Users.ContainsKey(name) ? dataLoader.Users[name].ToString() : string.Empty;
-                    row.Cells["Names"].Value = dataLoader.Names.ContainsKey(name) ? dataLoader.Names[name].ToString() : string.Empty;
-                    row.Cells["NamesZP"].Value = dataLoader.NamesZP.ContainsKey(name) ? dataLoader.NamesZP[name].ToString() : string.Empty;
-                }
+                var rowIndex = dataGrid.Rows.Add();
+                var row = dataGrid.Rows[rowIndex];
+                row.Cells["Name"].Value = name;
+                row.Cells["Users"].Value = dataLoader.Users.ContainsKey(name) ? dataLoader.Users[name].ToString() : string.Empty;
+                row.Cells["Names"].Value = dataLoader.Names.ContainsKey(name) ? dataLoader.Names[name].ToString() : string.Empty;
+                row.Cells["NamesZP"].Value = dataLoader.NamesZP.ContainsKey(name) ? dataLoader.NamesZP[name].ToString() : string.Empty;
             }
+            var rowЫ = dataGrid.Rows[0];
+            rowЫ.Cells["ForwardChat"].Value = dataLoader.ForwardChat; // Вывод ForwardChat
+            rowЫ.Cells["ChatId"].Value = dataLoader.ChatId; // Вывод ChatId
+            rowЫ.Cells["TokenBot"].Value = dataLoader.TokenBot; // Вывод ChatId
+
+        }
         public static void SaveButton_Click(DataGridView dataGrid)
         {
             UserDataLoader dataLoader = UserDataLoader.LoadFromFile();
@@ -135,6 +140,17 @@ namespace jsonData
                     dataLoader.NamesZP[name] = nameZPValue;
                 }
             }
+            DataGridViewRow rows = dataGrid.Rows[0];
+            if (long.TryParse(rows.Cells["ForwardChat"].Value?.ToString(), out long forwardChatValue))
+            {
+                dataLoader.ForwardChat = forwardChatValue;
+            }
+            if (long.TryParse(rows.Cells["ChatId"].Value?.ToString(), out long ChatIdValue))
+            {
+                dataLoader.ChatId = ChatIdValue;
+            }
+            string TokenBotValue = rows.Cells["TokenBot"].Value?.ToString();
+            dataLoader.TokenBot = TokenBotValue;
 
             dataLoader.SaveToFile();
         }

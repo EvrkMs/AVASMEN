@@ -20,8 +20,8 @@ namespace TelegramCode
 
         private static bool isSending = false;  
         private static readonly Telegram.Bot.TelegramBotClient bot = new Telegram.Bot.TelegramBotClient(token);
-        private static readonly long forwardChatId = -1002066018588;
-        private static readonly long chatID = -1001990911245;
+        private static  long forwardChatId = UserDataLoader.LoadFromFile().ForwardChat;
+        private static readonly long chatID = UserDataLoader.LoadFromFile().ChatId;
 
         public static async Task ProcessUpdates(long userId, int TredID, string selectedName, ListBox listBox, MaterialButton button)
         {
