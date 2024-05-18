@@ -1,6 +1,9 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing.Text;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace AVASMENA
@@ -34,9 +37,9 @@ namespace AVASMENA
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.materialButton2 = new MaterialSkin.Controls.MaterialButton();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
@@ -124,6 +127,20 @@ namespace AVASMENA
             this.TelegramId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TelegramTopic = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ZpColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ZpPage = new System.Windows.Forms.TabPage();
+            this.ZpPopravka = new MaterialSkin.Controls.MaterialCheckbox();
+            this.ZpExcelSheet = new MaterialSkin.Controls.MaterialComboBox();
+            this.ZpSave = new MaterialSkin.Controls.MaterialButton();
+            this.ZpVeiw = new MaterialSkin.Controls.MaterialButton();
+            this.label12 = new System.Windows.Forms.Label();
+            this.dataGridViewZp = new System.Windows.Forms.DataGridView();
+            this.SeyfExcel = new System.Windows.Forms.TabPage();
+            this.SaveBtnSeyf = new MaterialSkin.Controls.MaterialButton();
+            this.PopravkaSeyf = new MaterialSkin.Controls.MaterialCheckbox();
+            this.SeyfExcelBox = new MaterialSkin.Controls.MaterialComboBox();
+            this.LoadSeyfExcel = new MaterialSkin.Controls.MaterialButton();
+            this.label13 = new System.Windows.Forms.Label();
+            this.dataGridViewSeyfExcel = new System.Windows.Forms.DataGridView();
             this.ExitBtn = new MaterialSkin.Controls.MaterialButton();
             this.materialTabControl1.SuspendLayout();
             this.AutherPage.SuspendLayout();
@@ -137,6 +154,10 @@ namespace AVASMENA
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExcel)).BeginInit();
             this.ManPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewJson)).BeginInit();
+            this.ZpPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewZp)).BeginInit();
+            this.SeyfExcel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSeyfExcel)).BeginInit();
             this.SuspendLayout();
             // 
             // materialButton2
@@ -155,17 +176,16 @@ namespace AVASMENA
             // 
             // materialTabSelector1
             // 
-            resources.ApplyResources(this.materialTabSelector1, "materialTabSelector1");
             this.materialTabSelector1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.materialTabSelector1.BaseTabControl = this.materialTabControl1;
             this.materialTabSelector1.CharacterCasing = MaterialSkin.Controls.MaterialTabSelector.CustomCharacterCasing.Normal;
             this.materialTabSelector1.Depth = 0;
+            resources.ApplyResources(this.materialTabSelector1, "materialTabSelector1");
             this.materialTabSelector1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialTabSelector1.Name = "materialTabSelector1";
             // 
             // materialTabControl1
             // 
-            resources.ApplyResources(this.materialTabControl1, "materialTabControl1");
             this.materialTabControl1.Controls.Add(this.AutherPage);
             this.materialTabControl1.Controls.Add(this.OtchetPage);
             this.materialTabControl1.Controls.Add(this.AvansPage);
@@ -175,7 +195,10 @@ namespace AVASMENA
             this.materialTabControl1.Controls.Add(this.InventPage);
             this.materialTabControl1.Controls.Add(this.PravkaItogPage);
             this.materialTabControl1.Controls.Add(this.ManPage);
+            this.materialTabControl1.Controls.Add(this.ZpPage);
+            this.materialTabControl1.Controls.Add(this.SeyfExcel);
             this.materialTabControl1.Depth = 0;
+            resources.ApplyResources(this.materialTabControl1, "materialTabControl1");
             this.materialTabControl1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialTabControl1.Multiline = true;
             this.materialTabControl1.Name = "materialTabControl1";
@@ -183,17 +206,17 @@ namespace AVASMENA
             // 
             // AutherPage
             // 
-            resources.ApplyResources(this.AutherPage, "AutherPage");
             this.AutherPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.AutherPage.Controls.Add(this.PasswordTextBox);
             this.AutherPage.Controls.Add(this.AuthBtn);
             this.AutherPage.Controls.Add(this.LoginBox);
+            resources.ApplyResources(this.AutherPage, "AutherPage");
             this.AutherPage.Name = "AutherPage";
             // 
             // PasswordTextBox
             // 
-            resources.ApplyResources(this.PasswordTextBox, "PasswordTextBox");
             this.PasswordTextBox.AnimateReadOnly = false;
+            resources.ApplyResources(this.PasswordTextBox, "PasswordTextBox");
             this.PasswordTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.PasswordTextBox.Depth = 0;
             this.PasswordTextBox.HideSelection = true;
@@ -230,7 +253,6 @@ namespace AVASMENA
             // 
             // LoginBox
             // 
-            resources.ApplyResources(this.LoginBox, "LoginBox");
             this.LoginBox.AutoResize = false;
             this.LoginBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.LoginBox.Depth = 0;
@@ -238,6 +260,7 @@ namespace AVASMENA
             this.LoginBox.DropDownHeight = 174;
             this.LoginBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.LoginBox.DropDownWidth = 121;
+            resources.ApplyResources(this.LoginBox, "LoginBox");
             this.LoginBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.LoginBox.FormattingEnabled = true;
             this.LoginBox.MouseState = MaterialSkin.MouseState.OUT;
@@ -247,8 +270,8 @@ namespace AVASMENA
             // 
             // OtchetPage
             // 
-            resources.ApplyResources(this.OtchetPage, "OtchetPage");
             this.OtchetPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            resources.ApplyResources(this.OtchetPage, "OtchetPage");
             this.OtchetPage.Controls.Add(this.Расчитать);
             this.OtchetPage.Controls.Add(this.Отправить);
             this.OtchetPage.Controls.Add(this.label20);
@@ -320,8 +343,8 @@ namespace AVASMENA
             // 
             // Minus2
             // 
-            resources.ApplyResources(this.Minus2, "Minus2");
             this.Minus2.AnimateReadOnly = false;
+            resources.ApplyResources(this.Minus2, "Minus2");
             this.Minus2.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.Minus2.Depth = 0;
             this.Minus2.HideSelection = true;
@@ -342,8 +365,8 @@ namespace AVASMENA
             // 
             // Minus1
             // 
-            resources.ApplyResources(this.Minus1, "Minus1");
             this.Minus1.AnimateReadOnly = false;
+            resources.ApplyResources(this.Minus1, "Minus1");
             this.Minus1.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.Minus1.Depth = 0;
             this.Minus1.HideSelection = true;
@@ -369,8 +392,8 @@ namespace AVASMENA
             // 
             // materialTextBox1
             // 
-            resources.ApplyResources(this.materialTextBox1, "materialTextBox1");
             this.materialTextBox1.AnimateReadOnly = false;
+            resources.ApplyResources(this.materialTextBox1, "materialTextBox1");
             this.materialTextBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.materialTextBox1.Depth = 0;
             this.materialTextBox1.HideSelection = true;
@@ -391,7 +414,6 @@ namespace AVASMENA
             // 
             // materialComboBox3
             // 
-            resources.ApplyResources(this.materialComboBox3, "materialComboBox3");
             this.materialComboBox3.AutoResize = false;
             this.materialComboBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.materialComboBox3.Depth = 0;
@@ -399,6 +421,7 @@ namespace AVASMENA
             this.materialComboBox3.DropDownHeight = 174;
             this.materialComboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.materialComboBox3.DropDownWidth = 121;
+            resources.ApplyResources(this.materialComboBox3, "materialComboBox3");
             this.materialComboBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialComboBox3.FormattingEnabled = true;
             this.materialComboBox3.MouseState = MaterialSkin.MouseState.OUT;
@@ -408,8 +431,8 @@ namespace AVASMENA
             // 
             // materialTextBox24
             // 
-            resources.ApplyResources(this.materialTextBox24, "materialTextBox24");
             this.materialTextBox24.AnimateReadOnly = false;
+            resources.ApplyResources(this.materialTextBox24, "materialTextBox24");
             this.materialTextBox24.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.materialTextBox24.Depth = 0;
             this.materialTextBox24.HideSelection = true;
@@ -449,7 +472,6 @@ namespace AVASMENA
             // 
             // comboBox1
             // 
-            resources.ApplyResources(this.comboBox1, "comboBox1");
             this.comboBox1.AutoResize = false;
             this.comboBox1.BackColor = System.Drawing.Color.DarkGray;
             this.comboBox1.Depth = 0;
@@ -457,6 +479,7 @@ namespace AVASMENA
             this.comboBox1.DropDownHeight = 174;
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.DropDownWidth = 121;
+            resources.ApplyResources(this.comboBox1, "comboBox1");
             this.comboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.MouseState = MaterialSkin.MouseState.OUT;
@@ -465,8 +488,8 @@ namespace AVASMENA
             // 
             // TextBox8
             // 
-            resources.ApplyResources(this.TextBox8, "TextBox8");
             this.TextBox8.AnimateReadOnly = true;
+            resources.ApplyResources(this.TextBox8, "TextBox8");
             this.TextBox8.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.TextBox8.Depth = 0;
             this.TextBox8.HideSelection = true;
@@ -489,8 +512,8 @@ namespace AVASMENA
             // 
             // textBox7
             // 
-            resources.ApplyResources(this.textBox7, "textBox7");
             this.textBox7.AnimateReadOnly = true;
+            resources.ApplyResources(this.textBox7, "textBox7");
             this.textBox7.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.textBox7.Depth = 0;
             this.textBox7.HideSelection = true;
@@ -514,8 +537,8 @@ namespace AVASMENA
             // 
             // textBox5
             // 
-            resources.ApplyResources(this.textBox5, "textBox5");
             this.textBox5.AnimateReadOnly = true;
+            resources.ApplyResources(this.textBox5, "textBox5");
             this.textBox5.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.textBox5.Depth = 0;
             this.textBox5.HideSelection = true;
@@ -539,8 +562,8 @@ namespace AVASMENA
             // 
             // textBox4
             // 
-            resources.ApplyResources(this.textBox4, "textBox4");
             this.textBox4.AnimateReadOnly = true;
+            resources.ApplyResources(this.textBox4, "textBox4");
             this.textBox4.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.textBox4.Depth = 0;
             this.textBox4.HideSelection = true;
@@ -564,8 +587,8 @@ namespace AVASMENA
             // 
             // textBox3
             // 
-            resources.ApplyResources(this.textBox3, "textBox3");
             this.textBox3.AnimateReadOnly = true;
+            resources.ApplyResources(this.textBox3, "textBox3");
             this.textBox3.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.textBox3.Depth = 0;
             this.textBox3.HideSelection = true;
@@ -589,8 +612,8 @@ namespace AVASMENA
             // 
             // textBox2
             // 
-            resources.ApplyResources(this.textBox2, "textBox2");
             this.textBox2.AnimateReadOnly = true;
+            resources.ApplyResources(this.textBox2, "textBox2");
             this.textBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.textBox2.Depth = 0;
             this.textBox2.HideSelection = true;
@@ -663,13 +686,13 @@ namespace AVASMENA
             // 
             // AvansPage
             // 
-            resources.ApplyResources(this.AvansPage, "AvansPage");
             this.AvansPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.AvansPage.Controls.Add(this.Аванс);
             this.AvansPage.Controls.Add(this.label17);
             this.AvansPage.Controls.Add(this.label16);
             this.AvansPage.Controls.Add(this.materialTextBox23);
             this.AvansPage.Controls.Add(this.materialComboBox2);
+            resources.ApplyResources(this.AvansPage, "AvansPage");
             this.AvansPage.Name = "AvansPage";
             // 
             // Аванс
@@ -699,8 +722,8 @@ namespace AVASMENA
             // 
             // materialTextBox23
             // 
-            resources.ApplyResources(this.materialTextBox23, "materialTextBox23");
             this.materialTextBox23.AnimateReadOnly = false;
+            resources.ApplyResources(this.materialTextBox23, "materialTextBox23");
             this.materialTextBox23.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.materialTextBox23.Depth = 0;
             this.materialTextBox23.HideSelection = true;
@@ -721,7 +744,6 @@ namespace AVASMENA
             // 
             // materialComboBox2
             // 
-            resources.ApplyResources(this.materialComboBox2, "materialComboBox2");
             this.materialComboBox2.AutoResize = false;
             this.materialComboBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.materialComboBox2.Depth = 0;
@@ -729,6 +751,7 @@ namespace AVASMENA
             this.materialComboBox2.DropDownHeight = 174;
             this.materialComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.materialComboBox2.DropDownWidth = 121;
+            resources.ApplyResources(this.materialComboBox2, "materialComboBox2");
             this.materialComboBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialComboBox2.FormattingEnabled = true;
             this.materialComboBox2.MouseState = MaterialSkin.MouseState.OUT;
@@ -737,7 +760,6 @@ namespace AVASMENA
             // 
             // SeyfPlusPage
             // 
-            resources.ApplyResources(this.SeyfPlusPage, "SeyfPlusPage");
             this.SeyfPlusPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(0)))), ((int)(((byte)(170)))));
             this.SeyfPlusPage.Controls.Add(this.materialCheckbox1);
             this.SeyfPlusPage.Controls.Add(this.listBox3);
@@ -746,6 +768,7 @@ namespace AVASMENA
             this.SeyfPlusPage.Controls.Add(this.label10);
             this.SeyfPlusPage.Controls.Add(this.materialTextBox22);
             this.SeyfPlusPage.Controls.Add(this.materialTextBox21);
+            resources.ApplyResources(this.SeyfPlusPage, "SeyfPlusPage");
             this.SeyfPlusPage.Name = "SeyfPlusPage";
             // 
             // materialCheckbox1
@@ -762,9 +785,9 @@ namespace AVASMENA
             // 
             // listBox3
             // 
-            resources.ApplyResources(this.listBox3, "listBox3");
             this.listBox3.BackColor = System.Drawing.Color.DimGray;
             this.listBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.listBox3, "listBox3");
             this.listBox3.FormattingEnabled = true;
             this.listBox3.Name = "listBox3";
             // 
@@ -795,8 +818,8 @@ namespace AVASMENA
             // 
             // materialTextBox22
             // 
-            resources.ApplyResources(this.materialTextBox22, "materialTextBox22");
             this.materialTextBox22.AnimateReadOnly = false;
+            resources.ApplyResources(this.materialTextBox22, "materialTextBox22");
             this.materialTextBox22.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.materialTextBox22.Depth = 0;
             this.materialTextBox22.HideSelection = true;
@@ -819,8 +842,8 @@ namespace AVASMENA
             // 
             // materialTextBox21
             // 
-            resources.ApplyResources(this.materialTextBox21, "materialTextBox21");
             this.materialTextBox21.AnimateReadOnly = false;
+            resources.ApplyResources(this.materialTextBox21, "materialTextBox21");
             this.materialTextBox21.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.materialTextBox21.Depth = 0;
             this.materialTextBox21.HideSelection = true;
@@ -842,7 +865,6 @@ namespace AVASMENA
             // 
             // RashodPage
             // 
-            resources.ApplyResources(this.RashodPage, "RashodPage");
             this.RashodPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.RashodPage.Controls.Add(this.PostavkaRashod);
             this.RashodPage.Controls.Add(this.SeyfRasHod);
@@ -854,6 +876,7 @@ namespace AVASMENA
             this.RashodPage.Controls.Add(this.label9);
             this.RashodPage.Controls.Add(this.materialTextBox26);
             this.RashodPage.Controls.Add(this.materialTextBox25);
+            resources.ApplyResources(this.RashodPage, "RashodPage");
             this.RashodPage.Name = "RashodPage";
             // 
             // PostavkaRashod
@@ -889,7 +912,6 @@ namespace AVASMENA
             // 
             // comboBoxNameRas
             // 
-            resources.ApplyResources(this.comboBoxNameRas, "comboBoxNameRas");
             this.comboBoxNameRas.AutoResize = false;
             this.comboBoxNameRas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.comboBoxNameRas.Depth = 0;
@@ -897,6 +919,7 @@ namespace AVASMENA
             this.comboBoxNameRas.DropDownHeight = 174;
             this.comboBoxNameRas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxNameRas.DropDownWidth = 121;
+            resources.ApplyResources(this.comboBoxNameRas, "comboBoxNameRas");
             this.comboBoxNameRas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.comboBoxNameRas.FormattingEnabled = true;
             this.comboBoxNameRas.MouseState = MaterialSkin.MouseState.OUT;
@@ -942,8 +965,8 @@ namespace AVASMENA
             // 
             // materialTextBox26
             // 
-            resources.ApplyResources(this.materialTextBox26, "materialTextBox26");
             this.materialTextBox26.AnimateReadOnly = false;
+            resources.ApplyResources(this.materialTextBox26, "materialTextBox26");
             this.materialTextBox26.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.materialTextBox26.Depth = 0;
             this.materialTextBox26.HideSelection = true;
@@ -964,8 +987,8 @@ namespace AVASMENA
             // 
             // materialTextBox25
             // 
-            resources.ApplyResources(this.materialTextBox25, "materialTextBox25");
             this.materialTextBox25.AnimateReadOnly = false;
+            resources.ApplyResources(this.materialTextBox25, "materialTextBox25");
             this.materialTextBox25.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.materialTextBox25.Depth = 0;
             this.materialTextBox25.HideSelection = true;
@@ -986,7 +1009,6 @@ namespace AVASMENA
             // 
             // ShtraphPage
             // 
-            resources.ApplyResources(this.ShtraphPage, "ShtraphPage");
             this.ShtraphPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.ShtraphPage.Controls.Add(this.label6);
             this.ShtraphPage.Controls.Add(this.materialComboBox4);
@@ -998,6 +1020,7 @@ namespace AVASMENA
             this.ShtraphPage.Controls.Add(this.Штраф);
             this.ShtraphPage.Controls.Add(this.materialComboBox1);
             this.ShtraphPage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            resources.ApplyResources(this.ShtraphPage, "ShtraphPage");
             this.ShtraphPage.Name = "ShtraphPage";
             // 
             // label6
@@ -1009,7 +1032,6 @@ namespace AVASMENA
             // 
             // materialComboBox4
             // 
-            resources.ApplyResources(this.materialComboBox4, "materialComboBox4");
             this.materialComboBox4.AutoResize = false;
             this.materialComboBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.materialComboBox4.Depth = 0;
@@ -1017,6 +1039,7 @@ namespace AVASMENA
             this.materialComboBox4.DropDownHeight = 174;
             this.materialComboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.materialComboBox4.DropDownWidth = 121;
+            resources.ApplyResources(this.materialComboBox4, "materialComboBox4");
             this.materialComboBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialComboBox4.FormattingEnabled = true;
             this.materialComboBox4.MouseState = MaterialSkin.MouseState.OUT;
@@ -1025,8 +1048,8 @@ namespace AVASMENA
             // 
             // listBox4
             // 
-            resources.ApplyResources(this.listBox4, "listBox4");
             this.listBox4.FormattingEnabled = true;
+            resources.ApplyResources(this.listBox4, "listBox4");
             this.listBox4.Name = "listBox4";
             this.listBox4.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.listBox4.TabStop = false;
@@ -1045,10 +1068,10 @@ namespace AVASMENA
             // 
             // materialTextBox2
             // 
-            resources.ApplyResources(this.materialTextBox2, "materialTextBox2");
             this.materialTextBox2.AnimateReadOnly = false;
             this.materialTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.materialTextBox2.Depth = 0;
+            resources.ApplyResources(this.materialTextBox2, "materialTextBox2");
             this.materialTextBox2.LeadingIcon = null;
             this.materialTextBox2.MouseState = MaterialSkin.MouseState.OUT;
             this.materialTextBox2.Name = "materialTextBox2";
@@ -1056,8 +1079,8 @@ namespace AVASMENA
             // 
             // listBox5
             // 
-            resources.ApplyResources(this.listBox5, "listBox5");
             this.listBox5.FormattingEnabled = true;
+            resources.ApplyResources(this.listBox5, "listBox5");
             this.listBox5.Name = "listBox5";
             this.listBox5.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.listBox5.TabStop = false;
@@ -1080,7 +1103,6 @@ namespace AVASMENA
             // 
             // materialComboBox1
             // 
-            resources.ApplyResources(this.materialComboBox1, "materialComboBox1");
             this.materialComboBox1.AutoResize = false;
             this.materialComboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.materialComboBox1.Depth = 0;
@@ -1088,6 +1110,7 @@ namespace AVASMENA
             this.materialComboBox1.DropDownHeight = 174;
             this.materialComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.materialComboBox1.DropDownWidth = 121;
+            resources.ApplyResources(this.materialComboBox1, "materialComboBox1");
             this.materialComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialComboBox1.FormattingEnabled = true;
             this.materialComboBox1.MouseState = MaterialSkin.MouseState.OUT;
@@ -1096,12 +1119,12 @@ namespace AVASMENA
             // 
             // InventPage
             // 
-            resources.ApplyResources(this.InventPage, "InventPage");
             this.InventPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(46)))));
             this.InventPage.Controls.Add(this.listBoxNameInv);
             this.InventPage.Controls.Add(this.InventBTN);
             this.InventPage.Controls.Add(this.InventSum);
             this.InventPage.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.InventPage, "InventPage");
             this.InventPage.Name = "InventPage";
             // 
             // listBoxNameInv
@@ -1127,8 +1150,8 @@ namespace AVASMENA
             // 
             // InventSum
             // 
-            resources.ApplyResources(this.InventSum, "InventSum");
             this.InventSum.AnimateReadOnly = false;
+            resources.ApplyResources(this.InventSum, "InventSum");
             this.InventSum.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.InventSum.Depth = 0;
             this.InventSum.HideSelection = true;
@@ -1149,13 +1172,13 @@ namespace AVASMENA
             // 
             // PravkaItogPage
             // 
-            resources.ApplyResources(this.PravkaItogPage, "PravkaItogPage");
             this.PravkaItogPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.PravkaItogPage.Controls.Add(this.btnSaveExcel);
             this.PravkaItogPage.Controls.Add(this.PopravkaDa);
             this.PravkaItogPage.Controls.Add(this.ОткрытьИтог);
             this.PravkaItogPage.Controls.Add(this.dataGridViewExcel);
             this.PravkaItogPage.Controls.Add(this.comboBoxExcel);
+            resources.ApplyResources(this.PravkaItogPage, "PravkaItogPage");
             this.PravkaItogPage.Name = "PravkaItogPage";
             // 
             // btnSaveExcel
@@ -1202,16 +1225,15 @@ namespace AVASMENA
             // 
             // dataGridViewExcel
             // 
-            resources.ApplyResources(this.dataGridViewExcel, "dataGridViewExcel");
             this.dataGridViewExcel.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridViewExcel.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.dataGridViewExcel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewExcel.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
+            resources.ApplyResources(this.dataGridViewExcel, "dataGridViewExcel");
             this.dataGridViewExcel.Name = "dataGridViewExcel";
             // 
             // comboBoxExcel
             // 
-            resources.ApplyResources(this.comboBoxExcel, "comboBoxExcel");
             this.comboBoxExcel.AutoResize = false;
             this.comboBoxExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.comboBoxExcel.Depth = 0;
@@ -1219,6 +1241,7 @@ namespace AVASMENA
             this.comboBoxExcel.DropDownHeight = 174;
             this.comboBoxExcel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxExcel.DropDownWidth = 121;
+            resources.ApplyResources(this.comboBoxExcel, "comboBoxExcel");
             this.comboBoxExcel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.comboBoxExcel.FormattingEnabled = true;
             this.comboBoxExcel.MouseState = MaterialSkin.MouseState.OUT;
@@ -1228,11 +1251,11 @@ namespace AVASMENA
             // 
             // ManPage
             // 
-            resources.ApplyResources(this.ManPage, "ManPage");
             this.ManPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.ManPage.Controls.Add(this.saveButton);
             this.ManPage.Controls.Add(this.loadButton);
             this.ManPage.Controls.Add(this.dataGridViewJson);
+            resources.ApplyResources(this.ManPage, "ManPage");
             this.ManPage.Name = "ManPage";
             // 
             // saveButton
@@ -1267,40 +1290,40 @@ namespace AVASMENA
             // 
             // dataGridViewJson
             // 
-            resources.ApplyResources(this.dataGridViewJson, "dataGridViewJson");
             this.dataGridViewJson.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewJson.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewJson.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewJson.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewJson.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Namess,
             this.TelegramId,
             this.TelegramTopic,
             this.ZpColumn});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.InfoText;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewJson.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.InfoText;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewJson.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewJson.GridColor = System.Drawing.SystemColors.ControlDarkDark;
+            resources.ApplyResources(this.dataGridViewJson, "dataGridViewJson");
             this.dataGridViewJson.Name = "dataGridViewJson";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewJson.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewJson.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             // 
             // Namess
             // 
@@ -1327,23 +1350,188 @@ namespace AVASMENA
             this.ZpColumn.Name = "ZpColumn";
             this.ZpColumn.ReadOnly = true;
             // 
+            // ZpPage
+            // 
+            this.ZpPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.ZpPage.Controls.Add(this.ZpPopravka);
+            this.ZpPage.Controls.Add(this.ZpExcelSheet);
+            this.ZpPage.Controls.Add(this.ZpSave);
+            this.ZpPage.Controls.Add(this.ZpVeiw);
+            this.ZpPage.Controls.Add(this.label12);
+            this.ZpPage.Controls.Add(this.dataGridViewZp);
+            resources.ApplyResources(this.ZpPage, "ZpPage");
+            this.ZpPage.Name = "ZpPage";
+            // 
+            // ZpPopravka
+            // 
+            resources.ApplyResources(this.ZpPopravka, "ZpPopravka");
+            this.ZpPopravka.Depth = 0;
+            this.ZpPopravka.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.ZpPopravka.MouseState = MaterialSkin.MouseState.HOVER;
+            this.ZpPopravka.Name = "ZpPopravka";
+            this.ZpPopravka.ReadOnly = false;
+            this.ZpPopravka.Ripple = true;
+            this.ZpPopravka.UseVisualStyleBackColor = true;
+            this.ZpPopravka.CheckedChanged += new System.EventHandler(this.ZpPopravka_CheckedChanged);
+            // 
+            // ZpExcelSheet
+            // 
+            this.ZpExcelSheet.AutoResize = false;
+            this.ZpExcelSheet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.ZpExcelSheet.Depth = 0;
+            this.ZpExcelSheet.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.ZpExcelSheet.DropDownHeight = 174;
+            this.ZpExcelSheet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ZpExcelSheet.DropDownWidth = 121;
+            resources.ApplyResources(this.ZpExcelSheet, "ZpExcelSheet");
+            this.ZpExcelSheet.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.ZpExcelSheet.FormattingEnabled = true;
+            this.ZpExcelSheet.MouseState = MaterialSkin.MouseState.OUT;
+            this.ZpExcelSheet.Name = "ZpExcelSheet";
+            this.ZpExcelSheet.StartIndex = 0;
+            this.ZpExcelSheet.SelectedIndexChanged += new System.EventHandler(this.ZpExcelSheet_SelectedIndexChanged);
+            // 
+            // ZpSave
+            // 
+            resources.ApplyResources(this.ZpSave, "ZpSave");
+            this.ZpSave.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.ZpSave.Depth = 0;
+            this.ZpSave.HighEmphasis = true;
+            this.ZpSave.Icon = null;
+            this.ZpSave.MouseState = MaterialSkin.MouseState.HOVER;
+            this.ZpSave.Name = "ZpSave";
+            this.ZpSave.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.ZpSave.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.ZpSave.UseAccentColor = false;
+            this.ZpSave.UseVisualStyleBackColor = true;
+            this.ZpSave.Click += new System.EventHandler(this.ZpSave_Click);
+            // 
+            // ZpVeiw
+            // 
+            resources.ApplyResources(this.ZpVeiw, "ZpVeiw");
+            this.ZpVeiw.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.ZpVeiw.Depth = 0;
+            this.ZpVeiw.HighEmphasis = true;
+            this.ZpVeiw.Icon = null;
+            this.ZpVeiw.MouseState = MaterialSkin.MouseState.HOVER;
+            this.ZpVeiw.Name = "ZpVeiw";
+            this.ZpVeiw.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.ZpVeiw.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.ZpVeiw.UseAccentColor = false;
+            this.ZpVeiw.UseVisualStyleBackColor = true;
+            this.ZpVeiw.Click += new System.EventHandler(this.ZpVeiw_Click);
+            // 
+            // label12
+            // 
+            resources.ApplyResources(this.label12, "label12");
+            this.label12.Name = "label12";
+            // 
+            // dataGridViewZp
+            // 
+            this.dataGridViewZp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resources.ApplyResources(this.dataGridViewZp, "dataGridViewZp");
+            this.dataGridViewZp.Name = "dataGridViewZp";
+            // 
+            // SeyfExcel
+            // 
+            this.SeyfExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.SeyfExcel.Controls.Add(this.SaveBtnSeyf);
+            this.SeyfExcel.Controls.Add(this.PopravkaSeyf);
+            this.SeyfExcel.Controls.Add(this.SeyfExcelBox);
+            this.SeyfExcel.Controls.Add(this.LoadSeyfExcel);
+            this.SeyfExcel.Controls.Add(this.label13);
+            this.SeyfExcel.Controls.Add(this.dataGridViewSeyfExcel);
+            resources.ApplyResources(this.SeyfExcel, "SeyfExcel");
+            this.SeyfExcel.Name = "SeyfExcel";
+            // 
+            // SaveBtnSeyf
+            // 
+            resources.ApplyResources(this.SaveBtnSeyf, "SaveBtnSeyf");
+            this.SaveBtnSeyf.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.SaveBtnSeyf.Depth = 0;
+            this.SaveBtnSeyf.HighEmphasis = true;
+            this.SaveBtnSeyf.Icon = null;
+            this.SaveBtnSeyf.MouseState = MaterialSkin.MouseState.HOVER;
+            this.SaveBtnSeyf.Name = "SaveBtnSeyf";
+            this.SaveBtnSeyf.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.SaveBtnSeyf.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.SaveBtnSeyf.UseAccentColor = false;
+            this.SaveBtnSeyf.UseVisualStyleBackColor = true;
+            this.SaveBtnSeyf.Click += new System.EventHandler(this.SaveSeyfExcel_Click);
+            // 
+            // PopravkaSeyf
+            // 
+            resources.ApplyResources(this.PopravkaSeyf, "PopravkaSeyf");
+            this.PopravkaSeyf.Depth = 0;
+            this.PopravkaSeyf.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.PopravkaSeyf.MouseState = MaterialSkin.MouseState.HOVER;
+            this.PopravkaSeyf.Name = "PopravkaSeyf";
+            this.PopravkaSeyf.ReadOnly = false;
+            this.PopravkaSeyf.Ripple = true;
+            this.PopravkaSeyf.UseVisualStyleBackColor = true;
+            this.PopravkaSeyf.CheckedChanged += new System.EventHandler(this.PopravkaSeyf_CheckedChanged);
+            // 
+            // SeyfExcelBox
+            // 
+            this.SeyfExcelBox.AutoResize = false;
+            this.SeyfExcelBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.SeyfExcelBox.Depth = 0;
+            this.SeyfExcelBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.SeyfExcelBox.DropDownHeight = 174;
+            this.SeyfExcelBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SeyfExcelBox.DropDownWidth = 121;
+            resources.ApplyResources(this.SeyfExcelBox, "SeyfExcelBox");
+            this.SeyfExcelBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.SeyfExcelBox.FormattingEnabled = true;
+            this.SeyfExcelBox.MouseState = MaterialSkin.MouseState.OUT;
+            this.SeyfExcelBox.Name = "SeyfExcelBox";
+            this.SeyfExcelBox.StartIndex = 0;
+            this.SeyfExcelBox.SelectedIndexChanged += new System.EventHandler(this.SeyfExcelBox_SelectedIndexChanged);
+            // 
+            // LoadSeyfExcel
+            // 
+            resources.ApplyResources(this.LoadSeyfExcel, "LoadSeyfExcel");
+            this.LoadSeyfExcel.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.LoadSeyfExcel.Depth = 0;
+            this.LoadSeyfExcel.HighEmphasis = true;
+            this.LoadSeyfExcel.Icon = null;
+            this.LoadSeyfExcel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.LoadSeyfExcel.Name = "LoadSeyfExcel";
+            this.LoadSeyfExcel.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.LoadSeyfExcel.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.LoadSeyfExcel.UseAccentColor = false;
+            this.LoadSeyfExcel.UseVisualStyleBackColor = true;
+            this.LoadSeyfExcel.Click += new System.EventHandler(this.LoadSeyfExcel_Click);
+            // 
+            // label13
+            // 
+            resources.ApplyResources(this.label13, "label13");
+            this.label13.Name = "label13";
+            // 
+            // dataGridViewSeyfExcel
+            // 
+            this.dataGridViewSeyfExcel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resources.ApplyResources(this.dataGridViewSeyfExcel, "dataGridViewSeyfExcel");
+            this.dataGridViewSeyfExcel.Name = "dataGridViewSeyfExcel";
+            // 
             // ExitBtn
             // 
-            resources.ApplyResources(this.ExitBtn, "ExitBtn");
+            this.ExitBtn.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.ExitBtn.AllowDrop = true;
+            resources.ApplyResources(this.ExitBtn, "ExitBtn");
             this.ExitBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.ExitBtn.CausesValidation = false;
-            this.ExitBtn.CharacterCasing = MaterialSkin.Controls.MaterialButton.CharacterCasingEnum.Title;
             this.ExitBtn.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.ExitBtn.Depth = 0;
             this.ExitBtn.DrawShadows = false;
+            this.ExitBtn.ForeColor = System.Drawing.Color.White;
             this.ExitBtn.HighEmphasis = true;
             this.ExitBtn.Icon = null;
             this.ExitBtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.ExitBtn.Name = "ExitBtn";
             this.ExitBtn.NoAccentTextColor = System.Drawing.Color.Empty;
             this.ExitBtn.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            this.ExitBtn.UseAccentColor = false;
+            this.ExitBtn.UseAccentColor = true;
             this.ExitBtn.UseVisualStyleBackColor = false;
             this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
             // 
@@ -1352,7 +1540,7 @@ namespace AVASMENA
             this.AcceptButton = this.AuthBtn;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Fuchsia;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.materialTabSelector1);
             this.Controls.Add(this.materialTabControl1);
@@ -1385,6 +1573,12 @@ namespace AVASMENA
             this.ManPage.ResumeLayout(false);
             this.ManPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewJson)).EndInit();
+            this.ZpPage.ResumeLayout(false);
+            this.ZpPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewZp)).EndInit();
+            this.SeyfExcel.ResumeLayout(false);
+            this.SeyfExcel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSeyfExcel)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1454,6 +1648,7 @@ namespace AVASMENA
         private Label label6;
         private Label label21;
         private Label label9;
+        private Label label12;
         private ListBox listBox2;
         private ListBox listBox1;
         private ListBox listBox3;
@@ -1472,11 +1667,24 @@ namespace AVASMENA
         private TabPage InventPage;
         private TabPage AutherPage;
         private TabPage ManPage;
+        private TabPage ZpPage;
         private DataGridView dataGridViewExcel;
         private DataGridView dataGridViewJson;
+        private DataGridView dataGridViewZp;
         private DataGridViewTextBoxColumn Namess;
         private DataGridViewTextBoxColumn TelegramId;
         private DataGridViewTextBoxColumn TelegramTopic;
         private DataGridViewTextBoxColumn ZpColumn;
+        private MaterialButton ZpVeiw;
+        private MaterialButton ZpSave;
+        private MaterialComboBox ZpExcelSheet;
+        private TabPage SeyfExcel;
+        private DataGridView dataGridViewSeyfExcel;
+        private Label label13;
+        private MaterialButton LoadSeyfExcel;
+        private MaterialComboBox SeyfExcelBox;
+        private MaterialCheckbox ZpPopravka;
+        private MaterialCheckbox PopravkaSeyf;
+        private MaterialButton SaveBtnSeyf;
     }
 }

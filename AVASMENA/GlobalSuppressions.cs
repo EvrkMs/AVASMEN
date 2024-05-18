@@ -5,7 +5,8 @@
 
 using System.Diagnostics.CodeAnalysis;
 
-[assembly: SuppressMessage("Style", "IDE0042:Деконструировать объявление переменной", Justification = "<Ожидание>", Scope = "member", Target = "~M:AVASMENA.MainForm.BoxesMinus")]
 [assembly: SuppressMessage("Style", "IDE0059:Ненужное присваивание значения", Justification = "<Ожидание>", Scope = "member", Target = "~M:AVASMENA.MainForm.GetValues~System.ValueTuple{System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.ValueTuple{System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.ValueTuple{System.String,System.String,System.Int32,System.Int32}}}")]
 [assembly: SuppressMessage("Style", "IDE0042:Деконструировать объявление переменной", Justification = "<Ожидание>", Scope = "member", Target = "~M:AVASMENA.MainForm.Button2_Click(System.Object,System.EventArgs)")]
 [assembly: SuppressMessage("Style", "IDE0042:Деконструировать объявление переменной", Justification = "<Ожидание>", Scope = "member", Target = "~M:AVASMENA.MainForm.UpdateAndButton1(System.Int32)")]
+[assembly: SuppressMessage("Style", "IDE0042:Деконструировать объявление переменной", Justification = "<Ожидание>", Scope = "member", Target = "~M:AVASMENA.MainForm.PlusSeyf_Click(System.Object,System.EventArgs)")]
+[assembly: SuppressMessage("Style", "IDE0042:Деконструировать объявление переменной", Justification = "<Ожидание>", Scope = "member", Target = "~M:AVASMENA.MainForm.UpdateListBox2")]

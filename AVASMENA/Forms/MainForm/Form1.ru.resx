@@ -118,6 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="PasswordTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>630, 334</value>
+  </data>
   <data name="Расчитать.Size" type="System.Drawing.Size, System.Drawing">
     <value>873, 36</value>
   </data>
@@ -130,6 +133,12 @@
   <data name="InventBTN.Size" type="System.Drawing.Size, System.Drawing">
     <value>170, 36</value>
   </data>
+  <data name="SeyfZp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1729, 815</value>
+  </data>
+  <data name="SeyfZp.Text" xml:space="preserve">
+    <value>Поправка сейф/ЗП</value>
+  </data>
   <data name="materialTabSelector1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Roboto, 14px</value>
   </data>
@@ -141,6 +150,6 @@
     <value>70, 36</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1808, 838</value>
+    <value>1751, 843</value>
   </data>
 </root>

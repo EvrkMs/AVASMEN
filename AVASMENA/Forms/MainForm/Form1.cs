@@ -1,4 +1,7 @@
-﻿using MaterialSkin;
+﻿using Excel;
+using FormsSetting;
+using jsonData;
+using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
@@ -8,24 +11,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Excel;
-using FormsSetting;
 using TelegramCode;
-using jsonData;
 
 namespace AVASMENA
 {
     public partial class MainForm : MaterialForm
     {
-        //листы
+        //листыы
         private readonly Dictionary<string, long> users = UserDataLoader.LoadFromFile().Users;
         private static readonly Dictionary<string, int> names = UserDataLoader.LoadFromFile().Names;
         //по екселю
         private readonly string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Documents", "excel", "itog.xlsx");
         //по форме
         private readonly Timer timer = new Timer();
-        //по боту
-        private readonly bool ifSending = false;
         private static readonly string token = UserDataLoader.LoadFromFile().TokenBot;
         private readonly Telegram.Bot.TelegramBotClient bot = new Telegram.Bot.TelegramBotClient(token);
         private readonly long forwardChatId = -1002066018588;
@@ -36,7 +34,7 @@ namespace AVASMENA
         public List<TabPage> _RootList = new List<TabPage>();
         public List<TabPage> _Auth = new List<TabPage>();
         public List<Label> _labelList = new List<Label>();
-
+        public List<MaterialCheckbox> _labelPopravka = new List<MaterialCheckbox>();
         public MainForm()
         {
             var materialSkinManager = MaterialSkinManager.Instance;
@@ -46,11 +44,16 @@ namespace AVASMENA
 
 
             InitializeComponent();
-            _RootList = new List<TabPage> { ShtraphPage, InventPage, PravkaItogPage, ManPage };
-            _Auth = new List<TabPage> { AutherPage};
+            //лист вкладок доступных только админу
+            _RootList = new List<TabPage> { ShtraphPage, InventPage, PravkaItogPage, ManPage, ZpPage, SeyfExcel};
+            //вкладка аунтификации
+            _Auth = new List<TabPage> { AutherPage };
+            //лист текстов
             _labelList = new List<Label> { label1, label2, label3, label4, label5, label6, label7, label8,
-                label9, label10, label11, label14, label15, label16, label17, label18, label21 };
-            
+                label9, label10, label11, label12, label13, label14, label15, label16, label17, label18, label21 };
+            //лис чекбоксов для правки эксель
+            _labelPopravka = new List<MaterialCheckbox> { PopravkaDa, ZpPopravka, PopravkaSeyf };
+
             ExitBtn.Visible = false;
             Forms.InitializedataGrid(dataGridViewJson);
             Forms.HideShowSelector(materialTabSelector1, false);
@@ -60,7 +63,7 @@ namespace AVASMENA
 
             Forms.SetupListBox(listBox1, listBox2, listBox3, listBoxRas, listBoxNameInv);
             Forms.SetupButton1(Расчитать, Отправить);
-            Forms.SetupTabPage (AutherPage,OtchetPage, AvansPage, SeyfPlusPage, RashodPage, ShtraphPage, InventPage, PravkaItogPage, ManPage);
+            Forms.SetupTabPage(AutherPage, OtchetPage, AvansPage, SeyfPlusPage, RashodPage, ShtraphPage, InventPage, PravkaItogPage, ManPage, ZpPage, SeyfExcel);
             Forms.Setup1(_labelList);
             Forms.Setup2(label19, label20);
             Forms.SetupComBox(LoginBox);
@@ -129,9 +132,9 @@ namespace AVASMENA
         }
         private void RestoreTabs()
         {
-            if(RemoveDa == true)
+            if (RemoveDa == true)
             {
-                foreach(var tab in _RootList)
+                foreach (var tab in _RootList)
                 {
                     materialTabControl1.TabPages.Add(tab);
                 }
@@ -188,21 +191,6 @@ namespace AVASMENA
                 VisibleBox(false);
             }
         }
-        private void BoxesMinus()
-        {
-            var value = GetValues();
-
-            if (value.minus > 0)
-            {
-                value.minus = 0;
-            }
-            if (-1 * (value.minus1 + value.minus2) != value.minus)
-            {
-                MessageBox.Show($"ваша сумма минуса не равна общему минусу, вами указанно {-1 * (value.minus1 + value.minus2)}, а надо {value.minus}");
-                return;
-            }
-
-        }   
         private void VisibleBox(bool i)
         {
             Minus1.Visible = i;
@@ -212,10 +200,10 @@ namespace AVASMENA
             materialTextBox24.Visible = i;
         }
 
-        private 
-            (int nalf, int bnf, int nalp, int bnp, int seyf, int minus, int zp, 
-             int haurs, int zp4, int seyfEnd, int viruchka, int itog, 
-             int zarp1, int zarp2,  string name, string name2, int minus1,  int minus2)
+        private
+            (int nalf, int bnf, int nalp, int bnp, int seyf, int minus, int zp,
+             int haurs, int zp4, int seyfEnd, int viruchka, int itog,
+             int zarp1, int zarp2, string name, string name2, int minus1, int minus2)
             GetValues()
         {
             string name = comboBox1.Text;
@@ -247,7 +235,7 @@ namespace AVASMENA
             //для ДляButton2 далее
             int zarp1 = 0;
             int zarp2 = 0;
-                
+
             if (!string.IsNullOrWhiteSpace(materialComboBox3.Text) && materialComboBox3.Text != "нет")
             {
                 zarp1 = zp * hours1 + (-1 * minus1);
@@ -268,7 +256,7 @@ namespace AVASMENA
             UpdateAndButton1(0);
         }
         private void UpdateAndButton1(int prov)
-        {       
+        {
             if (string.IsNullOrWhiteSpace(comboBox1.Text))
             {
                 MessageBox.Show("Вы забыли имя");
@@ -277,46 +265,19 @@ namespace AVASMENA
 
             SetDefaultValuesAndTextBoxes(materialTextBox1, materialTextBox24, textBox2, textBox3, textBox4, textBox5, textBox7);
 
+            var values = GetValues();
 
             if (prov == 1 && Minus1.Visible == true)
             {
-                BoxesMinus();
+                if (-1 * (values.minus1 + values.minus2) != values.minus)
+                {
+                    MessageBox.Show($"ваша сумма минуса не равна общему минусу, вами указанно {-1 * (values.minus1 + values.minus2)}, а надо {values.minus}");
+                    return;
+                }
             }
-            var values = GetValues();
             UpdateTextBoxes2(textBox2, textBox3, textBox4, textBox5, textBox7);
             listBox1.Items.Clear();
             PopulateListBox(values.nalf, values.bnf, values.viruchka, values.minus, values.zp4, values.itog, values.seyfEnd, values.nalp, values.bnp);
-        }
-
-        private void SetDefaultValuesAndTextBoxes(MaterialTextBox2 textBox1, MaterialTextBox2 textBox2, params MaterialTextBox2[] textBoxes)
-        {
-            foreach (var textBox in textBoxes)
-            {
-                if (string.IsNullOrWhiteSpace(textBox.Text))
-                    textBox.Text = "0";
-            }
-
-            if (string.IsNullOrWhiteSpace(textBox1.Text))
-                textBox1.Text = "";
-            if (string.IsNullOrWhiteSpace(textBox2.Text))
-                textBox2.Text = "";
-        }
-        private int CalculateHaurs(params MaterialTextBox2[] textBoxes)
-        {
-            int total = 0;
-            foreach (var textBox in textBoxes)
-            {
-                total += int.Parse(textBox.Text);
-            }
-            return total;
-        }
-        private void UpdateTextBoxes2(params MaterialTextBox2[] textBoxes)
-        {
-            foreach (var textBox in textBoxes)
-            {
-                if (string.IsNullOrWhiteSpace(textBox.Text))
-                    textBox.Text = "0";
-            }
         }
         private void PopulateListBox(int nalf, int bnf, int viruchka, int minus, int zp4, int itog, int seyfEnd, int nalp, int bnp)
         {
@@ -345,22 +306,21 @@ namespace AVASMENA
         }
         private async void Button2_Click(object sender, EventArgs e)
         {
-            if (ifSending)
-            {
-
-            }
             var values = GetValues();
-
+            if (Minus1.Visible)
+            {
+                if (-1 * (values.minus1 + values.minus2) != values.minus)
+                {
+                    MessageBox.Show($"ваша сумма минуса не равна общему минусу, вами указанно {-1 * (values.minus1 + values.minus2)}, а надо {values.minus}");
+                    return;
+                }
+            }
             string selectedName = comboBox1.SelectedItem?.ToString();
             long userId = users[selectedName];
             int TredID = 2;
 
-            await Telegrame.ProcessUpdates(userId, TredID, selectedName, listBox2, Отправить);
-
             var zp1 = $"{DateTime.Now:yyyy.MM.dd}\n+{values.zarp1}p";
             var zp2 = $"{DateTime.Now:yyyy.MM.dd}\n+{values.zarp2}p";
-
-            await Telegrame.SendMessageAsync(zp1, zp2, values.name, values.name2, Отправить);
 
             StringBuilder listBox1StringBuilder = new StringBuilder();
             listBox1.Invoke((MethodInvoker)delegate
@@ -368,16 +328,60 @@ namespace AVASMENA
                 foreach (var item in listBox1.Items)
                     listBox1StringBuilder.AppendLine(item.ToString());
             });
+            await Telegrame.ProcessUpdates(userId, TredID, selectedName, listBox2, Отправить);
+            await Telegrame.SendMessageAsync(zp1, zp2, values.name, values.name2, Отправить);
 
             await bot.SendTextMessageAsync(forwardChatId, listBox1StringBuilder.ToString(), replyToMessageId: TredID);
 
             await ExcelHelper.UpdateExcel(values.viruchka, values.itog);
             await ExcelHelper.ScreenExcel(filePath);
-            await ExcelHelper.ExcelViewer(dataGridViewExcel, comboBoxExcel);
             await ExcelHelper.ZPexcelОтчет(values.zarp1, values.zarp2, comboBox1, materialComboBox3, Minus2);
-
-            PopravkaDa.Checked = false;
+            int Seyf = values.nalf - 1000;
+            await ExcelHelper.SeyfMinus(Seyf);
+            LoudAuto();
+            foreach (var i in _labelPopravka)
+            {
+                i.Checked = false;
+            }
             return;
+        }
+
+        private async void LoudAuto()
+        {
+            await ExcelHelper.ExcelViewer(dataGridViewExcel, comboBoxExcel, 0);
+            await ExcelHelper.ExcelViewer(dataGridViewZp, ZpExcelSheet, 1);
+            await ExcelHelper.ExcelViewer(dataGridViewSeyfExcel, SeyfExcelBox, 3);
+        }
+
+        private void SetDefaultValuesAndTextBoxes(MaterialTextBox2 textBox1, MaterialTextBox2 textBox2, params MaterialTextBox2[] textBoxes)
+        {
+            foreach (var textBox in textBoxes)
+            {
+                if (string.IsNullOrWhiteSpace(textBox.Text))
+                    textBox.Text = "";
+            }
+
+            if (string.IsNullOrWhiteSpace(textBox1.Text))
+                textBox1.Text = "";
+            if (string.IsNullOrWhiteSpace(textBox2.Text))
+                textBox2.Text = "";
+        }
+        private int CalculateHaurs(params MaterialTextBox2[] textBoxes)
+        {
+            int total = 0;
+            foreach (var textBox in textBoxes)
+            {
+                total += int.Parse(textBox.Text);
+            }
+            return total;
+        }
+        private void UpdateTextBoxes2(params MaterialTextBox2[] textBoxes)
+        {
+            foreach (var textBox in textBoxes)
+            {
+                if (string.IsNullOrWhiteSpace(textBox.Text))
+                    textBox.Text = "";
+            }
         }
 
         private async void PlusSeyf_Click(object sender, EventArgs e)
@@ -388,9 +392,10 @@ namespace AVASMENA
                 materialCheckbox1.Checked = false; // Снимаем галочку
                 return; // Прекращаем выполнение метода, если поле не заполнено
             }
-            string message = CalculetMessagePageSeyfPlus();
+            var value = CalculetMessagePageSeyfPlus();
 
-            await bot.SendTextMessageAsync(forwardChatId, message, replyToMessageId: 2);
+            await bot.SendTextMessageAsync(forwardChatId, value.message, replyToMessageId: 2);
+            await ExcelHelper.SeyfMinus(value.Qwerty2);
             PlusSeyf.Enabled = false;
             await Task.Delay(5000);
             PlusSeyf.Enabled = true;
@@ -402,24 +407,26 @@ namespace AVASMENA
         }
         private void UpdateListBox2()
         {
-            string message = CalculetMessagePageSeyfPlus();
+            var value = CalculetMessagePageSeyfPlus();
 
             listBox3.Items.Clear();
-            listBox3.Items.Add($"{message}");
+            listBox3.Items.Add($"{value.message}");
         }
-        private string CalculetMessagePageSeyfPlus()
+        private (string message, int Qwerty2) CalculetMessagePageSeyfPlus()
         {
             string Qwerty = materialTextBox21.Text;
             int Qwerty2 = int.Parse(materialTextBox22.Text);
             string message = $"+{Qwerty2} {Qwerty}";
-            return message;
+            return (message, Qwerty2);
         }
 
         private async void MainForm_Load(object sender, EventArgs e)
         {
             materialTabControl1.SelectedTab = AutherPage;
             await ExcelHelper.ExcelCreated();
-            await ExcelHelper.LoadSheet(comboBoxExcel);
+            await ExcelHelper.LoadSheet(comboBoxExcel, 0);
+            await ExcelHelper.LoadSheet(ZpExcelSheet, 1);
+            await ExcelHelper.LoadSheet(SeyfExcelBox, 3);
             VisibleBox(false);
             materialTextBox24.Text = "0";
             materialTextBox1.Text = "0";
@@ -447,31 +454,29 @@ namespace AVASMENA
             // Проверяем выбранное имя листа
             string selectedSheetName = comboBoxExcel.SelectedItem.ToString();
             // Загружаем данные из выбранного листа Excel в DataGridView
-            ExcelHelper.LoadGrindSheet(dataGridViewExcel, selectedSheetName);
+            ExcelHelper.LoadGrindSheet(dataGridViewExcel, selectedSheetName, 0);
         }
         private void ОткрытьИтог_Click(object sender, EventArgs e)
         {
-            ExcelHelper.ExcelViewer(dataGridViewExcel, comboBoxExcel);
-            PopravkaDa.Checked = false;
+            ExcelHelper.ExcelViewer(dataGridViewExcel, comboBoxExcel, 0);
+            foreach (var i in _labelPopravka)
+            {
+                i.Checked = false;
+            };
         }
         private void PravkaCheackBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (PopravkaDa.Checked == true)
-            {
-                dataGridViewExcel.ReadOnly = false;
-            }
-            else
-            {
-                dataGridViewExcel.ReadOnly = true;
-            }
-
+            ChekedPopravka(dataGridViewExcel, PopravkaDa);
         }
         private void BtnSaveExcel_Click(object sender, EventArgs e)
         {
             string selectedSheetName = comboBoxExcel.SelectedItem.ToString();
-            ExcelHelper.SaveDataToExcel(selectedSheetName, dataGridViewExcel);
-            ExcelHelper.ExcelViewer(dataGridViewExcel, comboBoxExcel);
-            PopravkaDa.Checked = false;
+            ExcelHelper.SaveDataToExcel(selectedSheetName, dataGridViewExcel, 0);
+            ExcelHelper.ExcelViewer(dataGridViewExcel, comboBoxExcel, 0);
+            foreach (var i in _labelPopravka)
+            {
+                i.Checked = false;
+            }
         }
 
 
@@ -506,12 +511,17 @@ namespace AVASMENA
             if (names.ContainsKey(name))
                 await bot.SendTextMessageAsync(chatID, message, replyToMessageId: names[name]);
             await ExcelHelper.AvansExcel(name, summa);
+            await ExcelHelper.SeyfMinus(summa);
+            LoudAuto();
             return;
         }
 
         private async void Расход_Click(object sender, EventArgs e)
         {
-            PopravkaDa.Checked = false;
+            foreach (var i in _labelPopravka)
+            {
+                i.Checked = false;
+            }
             if (string.IsNullOrWhiteSpace(materialTextBox25.Text) || string.IsNullOrWhiteSpace(materialTextBox26.Text) || string.IsNullOrWhiteSpace(comboBoxNameRas.Text))
             {
                 MessageBox.Show("Вы заполнели не все поля");
@@ -529,8 +539,8 @@ namespace AVASMENA
             }
 
             int.TryParse(materialTextBox25.Text, out int summ);
-            int sum = summ * -1;
-            string message = $"{sum} {materialTextBox26.Text}";
+            summ *= -1;
+            string message = $"{summ} {materialTextBox26.Text}";
 
             // Call the method
             if (PhotoMessageRashod.Checked)
@@ -539,12 +549,13 @@ namespace AVASMENA
             }
             await ExcelHelper.UpdateExlel2(summ);
             await bot.SendTextMessageAsync(forwardChatId, message, replyToMessageId: TredID);
-            await ExcelHelper.ExcelViewer(dataGridViewExcel, comboBoxExcel);
             if (SeyfRasHod.Checked)
             {
-                var messag = $"-{summ} {materialTextBox26.Text}";
+                var messag = $"{summ} {materialTextBox26.Text}";
                 await bot.SendTextMessageAsync(forwardChatId, messag, replyToMessageId: 2);
+                await ExcelHelper.SeyfMinus(summ);
             }
+            LoudAuto();
             return;
         }
 
@@ -592,6 +603,63 @@ namespace AVASMENA
             if (result == DialogResult.No)
             {
                 e.Cancel = true; // Отменяем закрытие формы
+            }
+        }
+
+
+        private void ZpVeiw_Click(object sender, EventArgs e)
+        {
+            ExcelHelper.ExcelViewer(dataGridViewZp, ZpExcelSheet, 1);
+        }
+        private void ZpSave_Click(object sender, EventArgs e)
+        {
+            string selectedSheetName = ZpExcelSheet.SelectedItem.ToString();
+            ExcelHelper.SaveDataToExcel(selectedSheetName, dataGridViewZp, 1);
+            ExcelHelper.ExcelViewer(dataGridViewZp, ZpExcelSheet, 1);
+            ZpPopravka.Checked = false;
+        }
+        private void ZpExcelSheet_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedSheetName = ZpExcelSheet.SelectedItem.ToString();
+            // Загружаем данные из выбранного листа Excel в DataGridView
+            ExcelHelper.LoadGrindSheet(dataGridViewZp, selectedSheetName, 1);
+        }
+         private void ZpPopravka_CheckedChanged(object sender, EventArgs e)
+        {
+            ChekedPopravka(dataGridViewZp, ZpPopravka);
+        }
+
+        private void LoadSeyfExcel_Click(object sender, EventArgs e)
+        {
+            ExcelHelper.ExcelViewer(dataGridViewSeyfExcel, SeyfExcelBox, 3);
+        }
+        private void SaveSeyfExcel_Click(object sender, EventArgs e)
+        {
+            string selectedSheetName = SeyfExcelBox.SelectedItem.ToString();
+            ExcelHelper.SaveDataToExcel(selectedSheetName, dataGridViewSeyfExcel, 3);
+            ExcelHelper.ExcelViewer(dataGridViewSeyfExcel, SeyfExcelBox, 3);
+            PopravkaSeyf.Checked = false;
+        }
+        private void SeyfExcelBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedSheetName = SeyfExcelBox.SelectedItem.ToString();
+            // Загружаем данные из выбранного листа Excel в DataGridView
+            ExcelHelper.LoadGrindSheet(dataGridViewSeyfExcel, selectedSheetName, 3);
+        }
+        private void PopravkaSeyf_CheckedChanged(object sender, EventArgs e)
+        {
+            ChekedPopravka(dataGridViewSeyfExcel, PopravkaSeyf);
+        }
+
+        private void ChekedPopravka(DataGridView dataGrid, MaterialCheckbox checkbox)
+        {
+            if (checkbox.Checked == true)
+            {
+                dataGrid.ReadOnly = false;
+            }
+            else
+            {
+                dataGrid.ReadOnly = true;
             }
         }
     }
