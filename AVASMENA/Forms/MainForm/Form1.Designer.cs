@@ -138,6 +138,7 @@ namespace AVASMENA
             this.label13 = new System.Windows.Forms.Label();
             this.dataGridViewSeyfExcel = new System.Windows.Forms.DataGridView();
             this.ExitBtn = new MaterialSkin.Controls.MaterialButton();
+            this.BnAvansCheck = new MaterialSkin.Controls.MaterialCheckbox();
             this.materialTabControl1.SuspendLayout();
             this.AutherPage.SuspendLayout();
             this.OtchetPage.SuspendLayout();
@@ -686,6 +687,7 @@ namespace AVASMENA
             // AvansPage
             // 
             this.AvansPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.AvansPage.Controls.Add(this.BnAvansCheck);
             this.AvansPage.Controls.Add(this.Аванс);
             this.AvansPage.Controls.Add(this.label17);
             this.AvansPage.Controls.Add(this.label16);
@@ -1513,6 +1515,17 @@ namespace AVASMENA
             this.ExitBtn.UseVisualStyleBackColor = false;
             this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
             // 
+            // BnAvansCheck
+            // 
+            resources.ApplyResources(this.BnAvansCheck, "BnAvansCheck");
+            this.BnAvansCheck.Depth = 0;
+            this.BnAvansCheck.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.BnAvansCheck.MouseState = MaterialSkin.MouseState.HOVER;
+            this.BnAvansCheck.Name = "BnAvansCheck";
+            this.BnAvansCheck.ReadOnly = false;
+            this.BnAvansCheck.Ripple = true;
+            this.BnAvansCheck.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AcceptButton = this.AuthBtn;
@@ -1660,5 +1673,6 @@ namespace AVASMENA
         private MaterialCheckbox ZpPopravka;
         private MaterialCheckbox PopravkaSeyf;
         private MaterialButton SaveBtnSeyf;
+        private MaterialCheckbox BnAvansCheck;
     }
 }

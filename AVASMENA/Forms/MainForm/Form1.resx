@@ -1158,6 +1158,36 @@
   <data name="&gt;&gt;OtchetPage.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="BnAvansCheck.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="BnAvansCheck.Location" type="System.Drawing.Point, System.Drawing">
+    <value>75, 152</value>
+  </data>
+  <data name="BnAvansCheck.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="BnAvansCheck.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 37</value>
+  </data>
+  <data name="BnAvansCheck.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="BnAvansCheck.Text" xml:space="preserve">
+    <value> Б/Н</value>
+  </data>
+  <data name="&gt;&gt;BnAvansCheck.Name" xml:space="preserve">
+    <value>BnAvansCheck</value>
+  </data>
+  <data name="&gt;&gt;BnAvansCheck.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialCheckbox, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;BnAvansCheck.Parent" xml:space="preserve">
+    <value>AvansPage</value>
+  </data>
+  <data name="&gt;&gt;BnAvansCheck.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="Аванс.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -1189,7 +1219,7 @@
     <value>AvansPage</value>
   </data>
   <data name="&gt;&gt;Аванс.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="label17.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1222,7 +1252,7 @@
     <value>AvansPage</value>
   </data>
   <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="label16.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1255,7 +1285,7 @@
     <value>AvansPage</value>
   </data>
   <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="materialTextBox23.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>None</value>
@@ -1288,7 +1318,7 @@
     <value>AvansPage</value>
   </data>
   <data name="&gt;&gt;materialTextBox23.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="materialComboBox2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14px, style=Bold</value>
@@ -1321,7 +1351,7 @@
     <value>AvansPage</value>
   </data>
   <data name="&gt;&gt;materialComboBox2.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="AvansPage.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>

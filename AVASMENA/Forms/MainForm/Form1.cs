@@ -471,6 +471,7 @@ namespace AVASMENA
 
         private async void Штраф_Click(object sender, EventArgs e)
         {
+            Аванс.Enabled = false;
             if (string.IsNullOrEmpty(WhoVipisl.Text) || WhoVipisl.Text == "нет")
             {
                 MessageBox.Show("Укажите кто выписывает");
@@ -486,23 +487,27 @@ namespace AVASMENA
 
             if (names.ContainsKey(name))
                 await bot.SendTextMessageAsync(chatID, message, replyToMessageId: names[name]);
-            return;
+            Аванс.Enabled = true;
         }
 
         private async void Аванс_Click(object sender, EventArgs e)
         {
+            Аванс.Enabled = false;
             string name = materialComboBox2.Text;
             int.TryParse(materialTextBox23.Text, out int summa);
             summa *= -1;
             var message = $"{summa} аванс {name}";
 
-            await bot.SendTextMessageAsync(forwardChatId, message, replyToMessageId: 2);
+            if (BnAvansCheck.Checked)
+            {
+                await bot.SendTextMessageAsync(forwardChatId, message, replyToMessageId: 2);
+                await ExcelHelper.SeyfMinus(summa);
+            }
             if (names.ContainsKey(name))
                 await bot.SendTextMessageAsync(chatID, message, replyToMessageId: names[name]);
             await ExcelHelper.AvansExcel(name, summa);
-            await ExcelHelper.SeyfMinus(summa);
             LoudAuto();
-            return;
+            Аванс.Enabled = true;
         }
 
         private async void Расход_Click(object sender, EventArgs e)
@@ -517,7 +522,7 @@ namespace AVASMENA
 
                 return;
             }
-
+            Аванс.Enabled = false;
             string selectedName = comboBoxNameRas.SelectedItem?.ToString();
             long userId = users[selectedName];
             int TredID = 22513;
@@ -545,7 +550,7 @@ namespace AVASMENA
                 await ExcelHelper.SeyfMinus(summ);
             }
             LoudAuto();
-            return;
+            Аванс.Enabled = true;
         }
 
         private async void InventBTN_Click(object sender, EventArgs e)
@@ -566,7 +571,7 @@ namespace AVASMENA
                 MessageBox.Show("Выберите хотя бы одно имя.");
                 return;
             }
-
+            Аванс.Enabled = true;
             // Расчет результата деления
             int result = inventSum / selectedCount;
             result *= -1;
@@ -581,6 +586,7 @@ namespace AVASMENA
             }
             Telegrame.SendMessageToSelectedNames(selectedNames, message);
             await ExcelHelper.ЗаполнениеExcelInvent(result, listBoxNameInv);
+            Аванс.Enabled = true;
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -594,7 +600,6 @@ namespace AVASMENA
                 e.Cancel = true; // Отменяем закрытие формы
             }
         }
-
 
         private void ZpVeiw_Click(object sender, EventArgs e)
         {
@@ -613,7 +618,7 @@ namespace AVASMENA
             // Загружаем данные из выбранного листа Excel в DataGridView
             ExcelHelper.LoadGrindSheet(dataGridViewZp, selectedSheetName, 1);
         }
-         private void ZpPopravka_CheckedChanged(object sender, EventArgs e)
+        private void ZpPopravka_CheckedChanged(object sender, EventArgs e)
         {
             ChekedPopravka(dataGridViewZp, ZpPopravka);
         }
