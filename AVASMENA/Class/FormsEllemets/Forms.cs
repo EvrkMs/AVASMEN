@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using jsonData;
+using MaterialSkin;
 using MaterialSkin.Controls;
 
 namespace AVASMENA
@@ -70,7 +71,7 @@ namespace AVASMENA
         public static void LoadItemsToListBox(ListBox list)
         {
             // Путь к текстовому файлу с пунктами
-            string filePath = "forms\\files\\shtraph.txt";
+            string filePath = "Class\\forms\\files\\shtraph.txt";
 
             try
             {

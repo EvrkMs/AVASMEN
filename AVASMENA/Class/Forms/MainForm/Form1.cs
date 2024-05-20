@@ -20,7 +20,8 @@ namespace AVASMENA
         private readonly Dictionary<string, long> users = UserDataLoader.LoadFromFile().Users;
         private static readonly Dictionary<string, int> names = UserDataLoader.LoadFromFile().Names;
         //по екселю
-        private readonly string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Documents", "excel", "itog.xlsx");
+        private static readonly string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Documents\\AVASMENA\\excel");
+        private static readonly string filePath = Path.Combine(folderPath, "itog.xlsx");
         //по форме
         private readonly Timer timer = new Timer();
         private static readonly string token = UserDataLoader.LoadFromFile().TokenBot;

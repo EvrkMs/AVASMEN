@@ -165,93 +165,117 @@ namespace Excel
         //Отправка скрины Ексель
         public static async Task ScreenExcel(string path)
         {
-            using (var workbook = new XLWorkbook(path))
+            try
             {
-                var worksheet = workbook.Worksheets.LastOrDefault();
-                Console.WriteLine("Приступаем к переавда в png");
-                // Получаем размеры таблицы Excel
-                int width = worksheet.ColumnsUsed().Count() + 1;
-                int height = worksheet.RowsUsed().Count();
-
-                // Создаем новый Bitmap
-                Bitmap screenshot = new Bitmap(1, 1);
-
-                // Создаем Graphics из Bitmap
-                using (Graphics graphics = Graphics.FromImage(screenshot))
+                if (!File.Exists(path))
                 {
-                    // Определяем шрифт для содержимого ячеек (можно настроить по вашему желанию)
-                    System.Drawing.Font cellFont = new System.Drawing.Font("Arial", 12);
-
-                    // Инициализируем максимальные размеры ячеек
-                    int maxWidth = 0;
-                    int maxHeight = 0;
-
-                    // Определяем максимальные размеры ячеек
-                    for (int row = 1; row <= height; row++)
-                    {
-                        for (int col = 1; col <= width; col++)
-                        {
-                            // Получаем значение ячейки
-                            string cellValue = worksheet.Cell(row, col).Value.ToString();
-
-                            // Измеряем размеры текста в ячейке
-                            SizeF textSize = graphics.MeasureString(cellValue, cellFont);
-
-                            // Обновляем максимальные размеры ячеек
-                            maxWidth = Math.Max(maxWidth, (int)textSize.Width);
-                            maxHeight = Math.Max(maxHeight, (int)textSize.Height);
-                        }
-                    }
-
-                    // Определяем размеры изображения с учетом содержимого ячеек
-                    int cellWidth = maxWidth + 10; // Добавляем немного запаса
-                    int cellHeight = maxHeight + 10; // Добавляем немного запаса
-
-                    // Создаем новый Bitmap с размерами таблицы
-                    screenshot = new Bitmap(width * cellWidth, (height + 1) * cellHeight); // +1 для заголовка
-                    // Задаем белый фон
-                    using (Graphics g = Graphics.FromImage(screenshot))
-                    {
-                        g.Clear(System.Drawing.Color.White);
-                    }
-                    // Задаем шрифт для ячеек
-                    using (System.Drawing.Font font = new System.Drawing.Font("Arial", 12))
-                    {
-                        // Заполняем ячейки таблицы
-                        for (int row = 1; row <= height; row++)
-                        {
-                            for (int col = 1; col <= width; col++)
-                            {
-                                // Получаем значение ячейки
-                                string cellValue = worksheet.Cell(row, col).Value.ToString();
-
-                                // Определяем координаты и размеры прямоугольника для текущей ячейки
-                                RectangleF cellRect = new RectangleF((col - 1) * cellWidth, (row - 1) * cellHeight, cellWidth, cellHeight);
-
-                                // Заполняем ячейку
-                                using (Graphics g = Graphics.FromImage(screenshot))
-                                {
-                                    g.DrawString(cellValue, font, Brushes.Black, cellRect);
-                                }
-                            }
-                        }
-                    }
+                    Console.WriteLine($"Файл не найден: {path}");
+                    return;
                 }
 
-                // Сохраняем скриншот в файл
-                string screenshotPath = Path.Combine(folderPath, "excel_table_screenshot.png");
-                screenshot.Save(screenshotPath, ImageFormat.Png);
+                using (var workbook = new XLWorkbook(path))
+                {
+                    var worksheet = workbook.Worksheets.LastOrDefault();
+                    if (worksheet == null)
+                    {
+                        Console.WriteLine("Не удалось найти рабочий лист.");
+                        return;
+                    }
 
-                // Выводим сообщение о завершении операции
-                Console.WriteLine("Скриншот таблицы успешно сохранен.");
+                    Console.WriteLine("Приступаем к преобразованию в png");
 
-                await Telegrame.PhotoExcel(screenshotPath);
+                    // Получаем размеры таблицы Excel
+                    int width = worksheet.ColumnsUsed().Count();
+                    int height = worksheet.RowsUsed().Count();
 
-                // Выводим сообщение о завершении операции
-                Console.WriteLine("Скриншот таблицы успешно отправлен в Telegram.");
+                    // Определяем шрифт для содержимого ячеек
+                    Font cellFont = new Font("Arial", 12);
+
+                    // Массив для хранения ширины каждого столбца
+                    int[] columnWidths = new int[width];
+
+                    // Создаем Graphics из временного Bitmap для измерения текста
+                    using (Bitmap tempBitmap = new Bitmap(1, 1))
+                    using (Graphics tempGraphics = Graphics.FromImage(tempBitmap))
+                    {
+                        // Определяем максимальные размеры ячеек по столбцам
+                        for (int col = 1; col <= width; col++)
+                        {
+                            int maxWidth = 0;
+                            for (int row = 1; row <= height; row++)
+                            {
+                                // Получаем значение ячейки
+                                string cellValue = worksheet.Cell(row, col).GetValue<string>();
+
+                                // Измеряем размеры текста в ячейке
+                                SizeF textSize = tempGraphics.MeasureString(cellValue, cellFont);
+
+                                // Обновляем максимальную ширину для текущего столбца
+                                maxWidth = Math.Max(maxWidth, (int)textSize.Width);
+                            }
+                            // Сохраняем максимальную ширину для текущего столбца
+                            columnWidths[col - 1] = maxWidth + 10; // Добавляем немного запаса
+                        }
+                    }
+
+                    // Определяем общую ширину и высоту изображения
+                    int totalWidth = columnWidths.Sum();
+                    int cellHeight = new Font(cellFont.FontFamily, cellFont.Size, cellFont.Style).Height + 10; // Высота строки с запасом
+                    int totalHeight = height * cellHeight;
+
+                    // Создаем новый Bitmap с размерами таблицы
+                    using (Bitmap screenshot = new Bitmap(totalWidth, totalHeight))
+                    using (Graphics graphics = Graphics.FromImage(screenshot))
+                    {
+                        // Задаем белый фон
+                        graphics.Clear(Color.White);
+
+                        // Заполняем ячейки таблицы
+                        using (Font font = new Font("Arial", 12))
+                        {
+                            int xOffset = 0;
+                            for (int col = 1; col <= width; col++)
+                            {
+                                int yOffset = 0;
+                                for (int row = 1; row <= height; row++)
+                                {
+                                    // Получаем значение ячейки
+                                    string cellValue = worksheet.Cell(row, col).GetValue<string>();
+
+                                    // Определяем координаты и размеры прямоугольника для текущей ячейки
+                                    RectangleF cellRect = new RectangleF(xOffset, yOffset, columnWidths[col - 1], cellHeight);
+
+                                    // Заполняем ячейку
+                                    graphics.DrawString(cellValue, font, Brushes.Black, cellRect);
+
+                                    // Переходим к следующей строке
+                                    yOffset += cellHeight;
+                                }
+                                // Переходим к следующему столбцу
+                                xOffset += columnWidths[col - 1];
+                            }
+                        }
+
+                        // Сохраняем скриншот в файл
+                        string screenshotPath = Path.Combine(folderPath, "excel_table_screenshot.png");
+                        screenshot.Save(screenshotPath, ImageFormat.Png);
+
+                        // Выводим сообщение о завершении операции
+                        Console.WriteLine("Скриншот таблицы успешно сохранен.");
+
+                        await Telegrame.PhotoExcel(screenshotPath);
+
+                        // Выводим сообщение о завершении операции
+                        Console.WriteLine("Скриншот таблицы успешно отправлен в Telegram.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Произошла ошибка: {ex.Message}");
+                Console.WriteLine(ex.StackTrace);
             }
         }
-        //Создание Ексель таблицы
         public static Task ExcelCreated()
         {
             // Создаем папку, если она не существует
@@ -366,10 +390,10 @@ namespace Excel
 
                 // Записываем значение в ячейку
                 worksheet.Cell(lastRow, 1).Value = "_";
-                worksheet.Cell(lastRow, 1).Value = "_";
-                worksheet.Cell(lastRow, 1).Value = "_";
-                worksheet.Cell(lastRow, 1).Value = inventSum;
-                worksheet.Cell(lastRow, 1).Value = $"Аванс {name}";
+                worksheet.Cell(lastRow, 2).Value = "_";
+                worksheet.Cell(lastRow, 3).Value = "_";
+                worksheet.Cell(lastRow, 4).Value = inventSum;
+                worksheet.Cell(lastRow, 5).Value = $"Аванс {name}";
 
                 workbook.Save();
             }
