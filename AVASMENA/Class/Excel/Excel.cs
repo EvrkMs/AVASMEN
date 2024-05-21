@@ -17,8 +17,8 @@ namespace Excel
 {
     public static class ExcelHelper
     {
-        private static readonly string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Documents\\AVASMENA\\excel");
-        private static readonly string filePath = Path.Combine(folderPath, "itog.xlsx");
+        private static readonly string folderPath = "\\\\192.168.88.254\\AVASMENAUpdate\\Needed\\excel";
+        private static readonly string filePath = $"{folderPath}\\itog.xlsx";
         private static readonly string pather = $"{folderPath}\\ZP.xlsx";
         private static readonly string patherSeyf = $"{folderPath}\\seyf.xlsx";
         private static readonly Dictionary<string, int> nameZP = UserDataLoader.LoadFromFile().NamesZP;
@@ -124,7 +124,7 @@ namespace Excel
             return Task.CompletedTask;
         }
         //Заполнение Ексаль по Расходу
-        public static Task UpdateExlel2(int summ)
+        public static Task RashodExcel(int summ)
         {
             try
             {

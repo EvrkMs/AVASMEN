@@ -20,8 +20,8 @@ namespace AVASMENA
         private readonly Dictionary<string, long> users = UserDataLoader.LoadFromFile().Users;
         private static readonly Dictionary<string, int> names = UserDataLoader.LoadFromFile().Names;
         //по екселю
-        private static readonly string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Documents\\AVASMENA\\excel");
-        private static readonly string filePath = Path.Combine(folderPath, "itog.xlsx");
+        private static readonly string folderPath = "\\\\192.168.88.254\\AVASMENAUpdate\\Needed\\excel";
+        private static readonly string filePath = $"{folderPath}\\itog.xlsx";
         //по форме
         private readonly Timer timer = new Timer();
         private static readonly string token = UserDataLoader.LoadFromFile().TokenBot;
@@ -542,7 +542,8 @@ namespace AVASMENA
             {
                 await Telegrame.ProcessUpdates(userId, TredID, selectedName, listBoxRas, Расход);
             }
-            await ExcelHelper.UpdateExlel2(summ);
+            int sum = summ * -1;
+            await ExcelHelper.RashodExcel(sum);
             await bot.SendTextMessageAsync(forwardChatId, message, replyToMessageId: TredID);
             if (SeyfRasHod.Checked)
             {

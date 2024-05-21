@@ -18,7 +18,7 @@ namespace jsonData
         public long ChatId { get; set; }
 
         private static readonly string jsonReserv = "Class\\JSON\\userData.json";
-        private static readonly string jsonPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Documents", "AVASMENA", "Config");
+        private static readonly string jsonPath = "\\\\192.168.88.254\\AVASMENAUpdate\\Needed\\Config";
         private static readonly string jsonFilePath = $"{jsonPath}\\userData.json";
         public UserDataLoader()
         {

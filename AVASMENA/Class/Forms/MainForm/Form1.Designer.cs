@@ -75,6 +75,7 @@ namespace AVASMENA
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.AvansPage = new System.Windows.Forms.TabPage();
+            this.BnAvansCheck = new MaterialSkin.Controls.MaterialCheckbox();
             this.Аванс = new MaterialSkin.Controls.MaterialButton();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -138,7 +139,9 @@ namespace AVASMENA
             this.label13 = new System.Windows.Forms.Label();
             this.dataGridViewSeyfExcel = new System.Windows.Forms.DataGridView();
             this.ExitBtn = new MaterialSkin.Controls.MaterialButton();
-            this.BnAvansCheck = new MaterialSkin.Controls.MaterialCheckbox();
+            this.materialCheckbox2 = new MaterialSkin.Controls.MaterialCheckbox();
+            this.materialCheckbox3 = new MaterialSkin.Controls.MaterialCheckbox();
+            this.materialCheckbox4 = new MaterialSkin.Controls.MaterialCheckbox();
             this.materialTabControl1.SuspendLayout();
             this.AutherPage.SuspendLayout();
             this.OtchetPage.SuspendLayout();
@@ -687,6 +690,9 @@ namespace AVASMENA
             // AvansPage
             // 
             this.AvansPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.AvansPage.Controls.Add(this.materialCheckbox4);
+            this.AvansPage.Controls.Add(this.materialCheckbox3);
+            this.AvansPage.Controls.Add(this.materialCheckbox2);
             this.AvansPage.Controls.Add(this.BnAvansCheck);
             this.AvansPage.Controls.Add(this.Аванс);
             this.AvansPage.Controls.Add(this.label17);
@@ -695,6 +701,17 @@ namespace AVASMENA
             this.AvansPage.Controls.Add(this.materialComboBox2);
             resources.ApplyResources(this.AvansPage, "AvansPage");
             this.AvansPage.Name = "AvansPage";
+            // 
+            // BnAvansCheck
+            // 
+            resources.ApplyResources(this.BnAvansCheck, "BnAvansCheck");
+            this.BnAvansCheck.Depth = 0;
+            this.BnAvansCheck.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.BnAvansCheck.MouseState = MaterialSkin.MouseState.HOVER;
+            this.BnAvansCheck.Name = "BnAvansCheck";
+            this.BnAvansCheck.ReadOnly = false;
+            this.BnAvansCheck.Ripple = true;
+            this.BnAvansCheck.UseVisualStyleBackColor = true;
             // 
             // Аванс
             // 
@@ -1515,16 +1532,38 @@ namespace AVASMENA
             this.ExitBtn.UseVisualStyleBackColor = false;
             this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
             // 
-            // BnAvansCheck
+            // materialCheckbox2
             // 
-            resources.ApplyResources(this.BnAvansCheck, "BnAvansCheck");
-            this.BnAvansCheck.Depth = 0;
-            this.BnAvansCheck.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.BnAvansCheck.MouseState = MaterialSkin.MouseState.HOVER;
-            this.BnAvansCheck.Name = "BnAvansCheck";
-            this.BnAvansCheck.ReadOnly = false;
-            this.BnAvansCheck.Ripple = true;
-            this.BnAvansCheck.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.materialCheckbox2, "materialCheckbox2");
+            this.materialCheckbox2.Depth = 0;
+            this.materialCheckbox2.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.materialCheckbox2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCheckbox2.Name = "materialCheckbox2";
+            this.materialCheckbox2.ReadOnly = false;
+            this.materialCheckbox2.Ripple = true;
+            this.materialCheckbox2.UseVisualStyleBackColor = true;
+            // 
+            // materialCheckbox3
+            // 
+            resources.ApplyResources(this.materialCheckbox3, "materialCheckbox3");
+            this.materialCheckbox3.Depth = 0;
+            this.materialCheckbox3.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.materialCheckbox3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCheckbox3.Name = "materialCheckbox3";
+            this.materialCheckbox3.ReadOnly = false;
+            this.materialCheckbox3.Ripple = true;
+            this.materialCheckbox3.UseVisualStyleBackColor = true;
+            // 
+            // materialCheckbox4
+            // 
+            resources.ApplyResources(this.materialCheckbox4, "materialCheckbox4");
+            this.materialCheckbox4.Depth = 0;
+            this.materialCheckbox4.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.materialCheckbox4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCheckbox4.Name = "materialCheckbox4";
+            this.materialCheckbox4.ReadOnly = false;
+            this.materialCheckbox4.Ripple = true;
+            this.materialCheckbox4.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -1674,5 +1713,8 @@ namespace AVASMENA
         private MaterialCheckbox PopravkaSeyf;
         private MaterialButton SaveBtnSeyf;
         private MaterialCheckbox BnAvansCheck;
+        private MaterialCheckbox materialCheckbox4;
+        private MaterialCheckbox materialCheckbox3;
+        private MaterialCheckbox materialCheckbox2;
     }
 }
