@@ -45,7 +45,6 @@ namespace Excel
                         existingRow.Cell(1).Value = date;
                         existingRow.Cell(2).Value = itog;
                         existingRow.Cell(3).Value = viruchka;
-                        existingRow.Cell(4).Value = 0;
                     }
                     else
                     {
@@ -56,7 +55,6 @@ namespace Excel
                         worksheet.Cell(row, 1).Value = date;
                         worksheet.Cell(row, 2).Value = itog;
                         worksheet.Cell(row, 3).Value = viruchka;
-                        worksheet.Cell(row, 4).Value = 0;
                     }
 
                     // Сохранение файла Excel
@@ -124,7 +122,7 @@ namespace Excel
             return Task.CompletedTask;
         }
         //Заполнение Ексаль по Расходу
-        public static Task RashodExcel(int summ)
+        public static Task RashodExcel(int summ, string comm)
         {
             try
             {
@@ -144,6 +142,7 @@ namespace Excel
                     worksheet.Cell(row, 2).Value = "_";
                     worksheet.Cell(row, 3).Value = "_";
                     worksheet.Cell(row, 4).Value = summ;
+                    worksheet.Cell(row, 4).Value = comm;
 
                     // Формулы для суммирования значений
                     worksheet.Cell(2, 6).FormulaA1 = $"=SUM(B2:B{row + 1})";

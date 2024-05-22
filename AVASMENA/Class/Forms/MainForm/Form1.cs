@@ -114,7 +114,12 @@ namespace AVASMENA
             if (LoginBox.Text == "Admin")
             {
                 RemoveDa = true;
+                MinusPoSeyf.Visible = false;
                 RemoveTabPage(materialTabControl1, _RootList);
+            }
+            else
+            {
+                MinusPoSeyf.Visible = true;
             }
             RemoveTabPage(materialTabControl1, _Auth);
             HideShowSelector(materialTabSelector1, true);
@@ -151,6 +156,29 @@ namespace AVASMENA
             timer.Stop();
         }
 
+        private void CheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox changedCheckBox = sender as CheckBox;
+
+            if (changedCheckBox.Checked)
+            {
+                if (changedCheckBox == AvansCheack)
+                {
+                    ZPcheak.Checked = false;
+                    MinusPoSeyf.Checked = false;
+                }
+                else if (changedCheckBox == ZPcheak)
+                {
+                    AvansCheack.Checked = false;
+                    MinusPoSeyf.Checked = false;
+                }
+                else if (changedCheckBox == MinusPoSeyf)
+                {
+                    AvansCheack.Checked = false;
+                    ZPcheak.Checked = false;
+                }
+            }
+        }
 
         private void ListBox5_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -496,10 +524,12 @@ namespace AVASMENA
             Аванс.Enabled = false;
             string name = materialComboBox2.Text;
             int.TryParse(materialTextBox23.Text, out int summa);
-            summa *= -1;
-            var message = $"{summa} аванс {name}";
+            string type = AvansCheack.Checked ? "аванс" : ZPcheak.Checked ? "зп" : MinusPoSeyf.Checked ? "был минус по сейфу у" : "";
 
-            if (BnAvansCheck.Checked)
+            summa *= -1;
+            var message = $"{summa} {type} {name}";
+
+            if (!BnAvansCheck.Checked)
             {
                 await bot.SendTextMessageAsync(forwardChatId, message, replyToMessageId: 2);
                 await ExcelHelper.SeyfMinus(summa);
@@ -536,14 +566,14 @@ namespace AVASMENA
             int.TryParse(materialTextBox25.Text, out int summ);
             summ *= -1;
             string message = $"{summ} {materialTextBox26.Text}";
-
+            string comm = $"{materialTextBox26.Text}";
             // Call the method
             if (PhotoMessageRashod.Checked)
             {
                 await Telegrame.ProcessUpdates(userId, TredID, selectedName, listBoxRas, Расход);
             }
             int sum = summ * -1;
-            await ExcelHelper.RashodExcel(sum);
+            await ExcelHelper.RashodExcel(sum, comm);
             await bot.SendTextMessageAsync(forwardChatId, message, replyToMessageId: TredID);
             if (SeyfRasHod.Checked)
             {

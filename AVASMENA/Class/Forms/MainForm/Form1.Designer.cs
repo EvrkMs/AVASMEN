@@ -37,9 +37,9 @@ namespace AVASMENA
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.materialButton2 = new MaterialSkin.Controls.MaterialButton();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
@@ -75,6 +75,9 @@ namespace AVASMENA
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.AvansPage = new System.Windows.Forms.TabPage();
+            this.MinusPoSeyf = new MaterialSkin.Controls.MaterialCheckbox();
+            this.ZPcheak = new MaterialSkin.Controls.MaterialCheckbox();
+            this.AvansCheack = new MaterialSkin.Controls.MaterialCheckbox();
             this.BnAvansCheck = new MaterialSkin.Controls.MaterialCheckbox();
             this.Аванс = new MaterialSkin.Controls.MaterialButton();
             this.label17 = new System.Windows.Forms.Label();
@@ -139,9 +142,6 @@ namespace AVASMENA
             this.label13 = new System.Windows.Forms.Label();
             this.dataGridViewSeyfExcel = new System.Windows.Forms.DataGridView();
             this.ExitBtn = new MaterialSkin.Controls.MaterialButton();
-            this.materialCheckbox2 = new MaterialSkin.Controls.MaterialCheckbox();
-            this.materialCheckbox3 = new MaterialSkin.Controls.MaterialCheckbox();
-            this.materialCheckbox4 = new MaterialSkin.Controls.MaterialCheckbox();
             this.materialTabControl1.SuspendLayout();
             this.AutherPage.SuspendLayout();
             this.OtchetPage.SuspendLayout();
@@ -690,9 +690,9 @@ namespace AVASMENA
             // AvansPage
             // 
             this.AvansPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.AvansPage.Controls.Add(this.materialCheckbox4);
-            this.AvansPage.Controls.Add(this.materialCheckbox3);
-            this.AvansPage.Controls.Add(this.materialCheckbox2);
+            this.AvansPage.Controls.Add(this.MinusPoSeyf);
+            this.AvansPage.Controls.Add(this.ZPcheak);
+            this.AvansPage.Controls.Add(this.AvansCheack);
             this.AvansPage.Controls.Add(this.BnAvansCheck);
             this.AvansPage.Controls.Add(this.Аванс);
             this.AvansPage.Controls.Add(this.label17);
@@ -701,6 +701,42 @@ namespace AVASMENA
             this.AvansPage.Controls.Add(this.materialComboBox2);
             resources.ApplyResources(this.AvansPage, "AvansPage");
             this.AvansPage.Name = "AvansPage";
+            // 
+            // MinusPoSeyf
+            // 
+            resources.ApplyResources(this.MinusPoSeyf, "MinusPoSeyf");
+            this.MinusPoSeyf.Depth = 0;
+            this.MinusPoSeyf.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.MinusPoSeyf.MouseState = MaterialSkin.MouseState.HOVER;
+            this.MinusPoSeyf.Name = "MinusPoSeyf";
+            this.MinusPoSeyf.ReadOnly = false;
+            this.MinusPoSeyf.Ripple = true;
+            this.MinusPoSeyf.UseVisualStyleBackColor = true;
+            this.MinusPoSeyf.CheckedChanged += new System.EventHandler(this.CheckBox_CheckedChanged);
+            // 
+            // ZPcheak
+            // 
+            resources.ApplyResources(this.ZPcheak, "ZPcheak");
+            this.ZPcheak.Depth = 0;
+            this.ZPcheak.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.ZPcheak.MouseState = MaterialSkin.MouseState.HOVER;
+            this.ZPcheak.Name = "ZPcheak";
+            this.ZPcheak.ReadOnly = false;
+            this.ZPcheak.Ripple = true;
+            this.ZPcheak.UseVisualStyleBackColor = true;
+            this.ZPcheak.CheckedChanged += new System.EventHandler(this.CheckBox_CheckedChanged);
+            // 
+            // AvansCheack
+            // 
+            resources.ApplyResources(this.AvansCheack, "AvansCheack");
+            this.AvansCheack.Depth = 0;
+            this.AvansCheack.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.AvansCheack.MouseState = MaterialSkin.MouseState.HOVER;
+            this.AvansCheack.Name = "AvansCheack";
+            this.AvansCheack.ReadOnly = false;
+            this.AvansCheack.Ripple = true;
+            this.AvansCheack.UseVisualStyleBackColor = true;
+            this.AvansCheack.CheckedChanged += new System.EventHandler(this.CheckBox_CheckedChanged);
             // 
             // BnAvansCheck
             // 
@@ -780,7 +816,7 @@ namespace AVASMENA
             // 
             // SeyfPlusPage
             // 
-            this.SeyfPlusPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(0)))), ((int)(((byte)(170)))));
+            this.SeyfPlusPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.SeyfPlusPage.Controls.Add(this.materialCheckbox1);
             this.SeyfPlusPage.Controls.Add(this.listBox3);
             this.SeyfPlusPage.Controls.Add(this.PlusSeyf);
@@ -1142,7 +1178,7 @@ namespace AVASMENA
             // 
             // InventPage
             // 
-            this.InventPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(46)))));
+            this.InventPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.InventPage.Controls.Add(this.listBoxNameInv);
             this.InventPage.Controls.Add(this.InventBTN);
             this.InventPage.Controls.Add(this.InventSum);
@@ -1316,34 +1352,34 @@ namespace AVASMENA
             this.dataGridViewJson.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewJson.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridViewJson.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewJson.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewJson.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dataGridViewJson.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.InfoText;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewJson.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.InfoText;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewJson.DefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridViewJson.GridColor = System.Drawing.SystemColors.ControlDarkDark;
             resources.ApplyResources(this.dataGridViewJson, "dataGridViewJson");
             this.dataGridViewJson.Name = "dataGridViewJson";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewJson.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewJson.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             // 
             // ZpPage
             // 
@@ -1532,39 +1568,6 @@ namespace AVASMENA
             this.ExitBtn.UseVisualStyleBackColor = false;
             this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
             // 
-            // materialCheckbox2
-            // 
-            resources.ApplyResources(this.materialCheckbox2, "materialCheckbox2");
-            this.materialCheckbox2.Depth = 0;
-            this.materialCheckbox2.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialCheckbox2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialCheckbox2.Name = "materialCheckbox2";
-            this.materialCheckbox2.ReadOnly = false;
-            this.materialCheckbox2.Ripple = true;
-            this.materialCheckbox2.UseVisualStyleBackColor = true;
-            // 
-            // materialCheckbox3
-            // 
-            resources.ApplyResources(this.materialCheckbox3, "materialCheckbox3");
-            this.materialCheckbox3.Depth = 0;
-            this.materialCheckbox3.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialCheckbox3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialCheckbox3.Name = "materialCheckbox3";
-            this.materialCheckbox3.ReadOnly = false;
-            this.materialCheckbox3.Ripple = true;
-            this.materialCheckbox3.UseVisualStyleBackColor = true;
-            // 
-            // materialCheckbox4
-            // 
-            resources.ApplyResources(this.materialCheckbox4, "materialCheckbox4");
-            this.materialCheckbox4.Depth = 0;
-            this.materialCheckbox4.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialCheckbox4.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialCheckbox4.Name = "materialCheckbox4";
-            this.materialCheckbox4.ReadOnly = false;
-            this.materialCheckbox4.Ripple = true;
-            this.materialCheckbox4.UseVisualStyleBackColor = true;
-            // 
             // MainForm
             // 
             this.AcceptButton = this.AuthBtn;
@@ -1713,8 +1716,8 @@ namespace AVASMENA
         private MaterialCheckbox PopravkaSeyf;
         private MaterialButton SaveBtnSeyf;
         private MaterialCheckbox BnAvansCheck;
-        private MaterialCheckbox materialCheckbox4;
-        private MaterialCheckbox materialCheckbox3;
-        private MaterialCheckbox materialCheckbox2;
+        private MaterialCheckbox MinusPoSeyf;
+        private MaterialCheckbox ZPcheak;
+        private MaterialCheckbox AvansCheack;
     }
 }
