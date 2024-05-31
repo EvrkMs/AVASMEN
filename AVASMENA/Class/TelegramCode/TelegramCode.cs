@@ -17,7 +17,7 @@ namespace TelegramCode
         private static readonly Dictionary<string, long> users = UserDataLoader.LoadFromFile().Users;
         private static readonly Dictionary<string, int> names = UserDataLoader.LoadFromFile().Names;
         private static readonly string token = UserDataLoader.LoadFromFile().TokenBot;
-
+        
         private static bool isSending = false;  
         private static readonly Telegram.Bot.TelegramBotClient bot = new Telegram.Bot.TelegramBotClient(token);
         private static  long forwardChatId = UserDataLoader.LoadFromFile().ForwardChat;

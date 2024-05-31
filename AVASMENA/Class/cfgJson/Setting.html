@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON Config Editor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 300px;
+        }
+
+        button {
+            margin-top: 10px;
+        }
+
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>JSON Config Editor</h1>
+    <label for="folderPath">Select Folder: </label>
+    <input type="text" id="folderPath" readonly />
+    <button onclick="selectFolder()">Browse...</button>
+    <br>
+    <button onclick="saveConfig()">Save Path to Config</button>
+    <br><br>
+    <textarea id="jsonInput"></textarea>
+    <button onclick="saveJSON()">Save JSON</button>
+    <pre id="jsonOutput"></pre>
+
+    <script>
+        let configFileHandle;
+        let jsonFileHandle;
+        let config;
+
+        window.onload = async function () {
+            await loadConfig();
+        };
+
+        async function loadConfig() {
+            try {
+                const response = await fetch('config.json');
+                config = await response.json();
+                document.getElementById('jsonInput').value = JSON.stringify(config, null, 2);
+                displayJSON();
+            } catch (error) {
+                alert("Failed to load config: " + error);
+            }
+        }
+
+        async function selectFolder() {
+            try {
+                const folderHandle = await window.showDirectoryPicker();
+                document.getElementById('folderPath').value = folderHandle.name;
+                jsonFileHandle = folderHandle;
+            } catch (error) {
+                alert("Failed to select folder: " + error);
+            }
+        }
+
+        async function saveConfig() {
+            try {
+                if (!jsonFileHandle) {
+                    alert("Please select a folder first.");
+                    return;
+                }
+
+                config.JsonFilePath = `${jsonFileHandle.name}/Config/userData.json`;
+                document.getElementById('jsonInput').value = JSON.stringify(config, null, 2);
+                displayJSON();
+
+                const writable = await configFileHandle.createWritable();
+                await writable.write(JSON.stringify(config, null, 2));
+                await writable.close();
+            } catch (error) {
+                alert("Failed to save config: " + error);
+            }
+        }
+
+        async function saveJSON() {
+            try {
+                if (!jsonFileHandle) {
+                    alert("Please select a folder first.");
+                    return;
+                }
+
+                const jsonFilePath = `${jsonFileHandle.name}/Config/userData.json`;
+                const jsonFile = await jsonFileHandle.getFileHandle(jsonFilePath, { create: true });
+                const writable = await jsonFile.createWritable();
+                await writable.write(document.getElementById('jsonInput').value);
+                await writable.close();
+                displayJSON();
+            } catch (error) {
+                alert("Failed to save JSON: " + error);
+            }
+        }
+
+        function displayJSON() {
+            const jsonText = document.getElementById('jsonInput').value;
+            try {
+                const jsonObj = JSON.parse(jsonText);
+                document.getElementById('jsonOutput').textContent = JSON.stringify(jsonObj, null, 2);
+            } catch (e) {
+                document.getElementById('jsonOutput').textContent = 'Invalid JSON';
+            }
+        }
+    </script>
+</body>
+</html>

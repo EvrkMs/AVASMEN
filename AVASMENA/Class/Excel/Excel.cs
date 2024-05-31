@@ -142,7 +142,7 @@ namespace Excel
                     worksheet.Cell(row, 2).Value = "_";
                     worksheet.Cell(row, 3).Value = "_";
                     worksheet.Cell(row, 4).Value = summ;
-                    worksheet.Cell(row, 4).Value = comm;
+                    worksheet.Cell(row, 5).Value = comm;
 
                     // Формулы для суммирования значений
                     worksheet.Cell(2, 6).FormulaA1 = $"=SUM(B2:B{row + 1})";
