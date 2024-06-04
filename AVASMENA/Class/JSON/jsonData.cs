@@ -11,7 +11,6 @@ namespace jsonData
     {
         public Dictionary<string, long> Users { get; set; }
         public Dictionary<string, int> Names { get; set; }
-        public Dictionary<string, int> NamesZP { get; set; }
         public List<string> NameList { get; set; }
         public string TokenBot { get; set; }
         public long ForwardChat {  get; set; }
@@ -25,7 +24,6 @@ namespace jsonData
             CreateJsonIfNotExists();
             Users = new Dictionary<string, long>();
             Names = new Dictionary<string, int>();
-            NamesZP = new Dictionary<string, int>();
             NameList = new List<string>();
             TokenBot = string.Empty;
         }
@@ -99,7 +97,6 @@ namespace jsonData
                 row.Cells["Name"].Value = name;
                 row.Cells["Users"].Value = dataLoader.Users.ContainsKey(name) ? dataLoader.Users[name].ToString() : string.Empty;
                 row.Cells["Names"].Value = dataLoader.Names.ContainsKey(name) ? dataLoader.Names[name].ToString() : string.Empty;
-                row.Cells["NamesZP"].Value = dataLoader.NamesZP.ContainsKey(name) ? dataLoader.NamesZP[name].ToString() : string.Empty;
             }
             var rowЫ = dataGrid.Rows[0];
             rowЫ.Cells["ForwardChat"].Value = dataLoader.ForwardChat; // Вывод ForwardChat
@@ -114,7 +111,6 @@ namespace jsonData
             dataLoader.NameList.Clear();
             dataLoader.Users.Clear();
             dataLoader.Names.Clear();
-            dataLoader.NamesZP.Clear();
 
             foreach (DataGridViewRow row in dataGrid.Rows)
             {
@@ -133,11 +129,6 @@ namespace jsonData
                 if (int.TryParse(row.Cells["Names"].Value?.ToString(), out int nameValue))
                 {
                     dataLoader.Names[name] = nameValue;
-                }
-
-                if (int.TryParse(row.Cells["NamesZP"].Value?.ToString(), out int nameZPValue))
-                {
-                    dataLoader.NamesZP[name] = nameZPValue;
                 }
             }
             DataGridViewRow rows = dataGrid.Rows[0];

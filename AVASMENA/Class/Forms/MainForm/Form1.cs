@@ -345,12 +345,12 @@ namespace AVASMENA
                 foreach (var item in listBox1.Items)
                     listBox1StringBuilder.AppendLine(item.ToString());
             });
-            await Telegrame.ProcessUpdates(userId, TredID, selectedName, listBox2, Отправить);
-            await Telegrame.SendMessageAsync(zp1, zp2, values.name, values.name2, Отправить);
+            //await Telegrame.ProcessUpdates(userId, TredID, selectedName, listBox2, Отправить);
+            //await Telegrame.SendMessageAsync(zp1, zp2, values.name, values.name2, Отправить);
 
-            await bot.SendTextMessageAsync(forwardChatId, listBox1StringBuilder.ToString(), replyToMessageId: TredID);
+            //await bot.SendTextMessageAsync(forwardChatId, listBox1StringBuilder.ToString(), replyToMessageId: TredID);
 
-            await ExcelHelper.UpdateExcel(values.viruchka, values.itog);
+            //await ExcelHelper.UpdateExcel(values.viruchka, values.itog);
             await ExcelHelper.ScreenExcel(filePath);
             await ExcelHelper.ZPexcelОтчет(values.zarp1, values.zarp2, NameComboBoxOtchet, SecondComboBoxNameOtchet, Minus2);
             int Seyf = values.nalf - 1000;
@@ -522,20 +522,21 @@ namespace AVASMENA
         {
             Аванс.Enabled = false;
             string name = materialComboBox2.Text;
-            int.TryParse(materialTextBox23.Text, out int summa);
+            int.TryParse(materialTextBox23.Text, out int summ);
             string type = AvansCheack.Checked ? "аванс" : ZPcheak.Checked ? "зп" : MinusPoSeyf.Checked ? "был минус по сейфу у" : "";
 
-            summa *= -1;
-            var message = $"{summa} {type} {name}";
+            var message = $"{summ} {type} {name}";
 
             if (!BnAvansCheck.Checked)
             {
                 await bot.SendTextMessageAsync(forwardChatId, message, replyToMessageId: 2);
-                await ExcelHelper.SeyfMinus(summa);
+                await ExcelHelper.SeyfMinus(summ);
             }
             if (names.ContainsKey(name))
                 await bot.SendTextMessageAsync(chatID, message, replyToMessageId: names[name]);
-            await ExcelHelper.AvansExcel(name, summa);
+
+            string comm = $"Аванс {name}";
+            await ExcelHelper.AddRecordToExcel(summ, comm, true);
             LoudAuto();
             Аванс.Enabled = true;
         }
@@ -563,7 +564,7 @@ namespace AVASMENA
             }
 
             int.TryParse(materialTextBox25.Text, out int summ);
-            summ *= -1;
+            
             string message = $"{summ} {materialTextBox26.Text}";
             string comm = $"{materialTextBox26.Text}";
             // Call the method
@@ -571,8 +572,8 @@ namespace AVASMENA
             {
                 await Telegrame.ProcessUpdates(userId, TredID, selectedName, listBoxRas, Расход);
             }
-            int sum = summ * -1;
-            await ExcelHelper.RashodExcel(sum, comm);
+
+            await ExcelHelper.AddRecordToExcel(summ, comm, false);
             await bot.SendTextMessageAsync(forwardChatId, message, replyToMessageId: TredID);
             if (SeyfRasHod.Checked)
             {

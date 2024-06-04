@@ -1,4 +1,3 @@
-// Excel.cs
 using ClosedXML.Excel;
 using jsonData;
 using MaterialSkin.Controls;
@@ -12,156 +11,317 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TelegramCode;
+using Color = System.Drawing.Color;
+using Font = System.Drawing.Font;
 
 namespace Excel
 {
     public static class ExcelHelper
     {
         private static readonly string folderPath = "\\\\192.168.88.254\\AVASMENAUpdate\\Needed\\excel";
-        private static readonly string filePath = $"{folderPath}\\itog.xlsx";
-        private static readonly string pather = $"{folderPath}\\ZP.xlsx";
-        private static readonly string patherSeyf = $"{folderPath}\\seyf.xlsx";
-        private static readonly Dictionary<string, int> nameZP = UserDataLoader.LoadFromFile().NamesZP;
+        private static readonly string filePath = Path.Combine(folderPath, "itog.xlsx");
+        private static readonly string pather = Path.Combine(folderPath, "ZP.xlsx");
+        private static readonly string patherSeyf = Path.Combine(folderPath, "seyf.xlsx");
+        private static readonly List<string> nameList = UserDataLoader.LoadFromFile().NameList;
+
+        public static Task ExcelCreated()
+        {
+            EnsureDirectoryExists(folderPath);
+            CreateExcelFileIfNotExists(pather, nameList);
+            CreateSeyfFileIfNotExists(patherSeyf);
+            CreateMonthlyFileIfNotExists(filePath);
+            EnsureWorksheetExists(filePath, $"{DateTime.Now.Year}.{DateTime.Now:MM}");
+            EnsureWorksheetExists(patherSeyf, "seyf");
+
+            return Task.CompletedTask;
+        }
+
+        private static void EnsureDirectoryExists(string path)
+        {
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+        }
+
+        private static void CreateExcelFileIfNotExists(string path, List<string> names)
+        {
+            if (!File.Exists(path))
+            {
+                using (var workbook = new XLWorkbook())
+                {
+                    foreach (var name in names)
+                    {
+                        var worksheet = workbook.Worksheets.Add(name);
+                        SetupSeyfAndZpWorksheet(worksheet);
+                    }
+                    workbook.SaveAs(path);
+                }
+            }
+        }
+
+        private static void CreateSeyfFileIfNotExists(string path)
+        {
+            if (!File.Exists(path))
+            {
+                using (var workbook = new XLWorkbook())
+                {
+                    var worksheet = workbook.Worksheets.Add("seyf");
+                    SetupSeyfAndZpWorksheet(worksheet);
+                    workbook.SaveAs(path);
+                }
+            }
+        }
+
+        private static void SetupSeyfAndZpWorksheet(IXLWorksheet worksheet)
+        {
+            worksheet.Cell(1, 1).Value = "дата";
+            worksheet.Cell(1, 2).Value = "суммы";
+            worksheet.Cell(1, 3).Value = "сумма";
+            worksheet.Cell(2, 2).Value = 0;
+            worksheet.Cell(2, 3).FormulaA1 = "=SUM(B:B)";
+        }
+
+        private static void CreateMonthlyFileIfNotExists(string path)
+        {
+            if (!File.Exists(path))
+            {
+                using (var workbook = new XLWorkbook())
+                {
+                    var worksheet = workbook.Worksheets.Add($"{DateTime.Now.Year}.{DateTime.Now:MM}");
+                    SetupMonthlyWorksheetHeaders(worksheet);
+                    workbook.SaveAs(path);
+                }
+            }
+        }
+
+        private static void SetupMonthlyWorksheetHeaders(IXLWorksheet worksheet)
+        {
+            worksheet.Cell(1, 1).Value = "Дата и время";
+            worksheet.Cell(1, 2).Value = "итоги дней";
+            worksheet.Cell(1, 3).Value = "выручка дней";
+            worksheet.Cell(1, 4).Value = "расходы";
+            worksheet.Cell(1, 5).Value = "_";
+            worksheet.Cell(1, 6).Value = "Выручка за месяц";
+            worksheet.Cell(1, 7).Value = "Расходы";
+            worksheet.Cell(1, 8).Value = "Итог";
+
+            worksheet.Cell(2, 6).FormulaA1 = "=SUM(C:C)";
+            worksheet.Cell(2, 7).FormulaA1 = "=SUM(D:D)";
+            worksheet.Cell(2, 8).FormulaA1 = "=F2-G2";
+        }
+
+        private static void EnsureWorksheetExists(string path, string sheetName)
+        {
+            using (var workbook = new XLWorkbook(path))
+            {
+                if (!workbook.Worksheets.TryGetWorksheet(sheetName, out var worksheet))
+                {
+                    worksheet = workbook.Worksheets.Add(sheetName);
+                    if (sheetName.Contains("."))
+                    {
+                        SetupMonthlyWorksheetHeaders(worksheet);
+                    }
+                    else
+                    {
+                        SetupSeyfAndZpWorksheet(worksheet);
+                    }
+                    workbook.Save();
+                }
+            }
+        }
+
         public static Task UpdateExcel(int itog, int viruchka)
         {
             try
             {
-                // Открытие существующего файла Excel
                 using (var workbook = new XLWorkbook(filePath))
                 {
                     var worksheet = workbook.Worksheet($"{DateTime.Now.Year}.{DateTime.Now:MM}");
 
-                    // Определение смены
                     string shift = DateTime.Now.Hour >= 9 && DateTime.Now.Hour < 21 ? "ночная" : "дневная";
-                    // Добавление информации о смене к дате
-                    string date = $"{DateTime.Now: dd} {shift}";
+                    string date = $"{DateTime.Now:dd} {shift}";
 
-                    // Поиск существующей строки с аналогичной датой и временем (без секунд)
-                    var existingRow = worksheet.RowsUsed().Skip(1).FirstOrDefault(row => row.Cell(1).Value.ToString() == date);
+                    var existingRow = worksheet.RowsUsed().Skip(1).FirstOrDefault(row => row.Cell(1).GetString() == date);
 
                     if (existingRow != null)
                     {
-                        // Обновление информации в существующей строке
-                        existingRow.Cell(1).Value = date;
                         existingRow.Cell(2).Value = itog;
                         existingRow.Cell(3).Value = viruchka;
                     }
                     else
                     {
-                        // Поиск первой пустой строки
                         int row = worksheet.LastRowUsed().RowNumber() + 1;
-
-                        // Добавление данных в новую строку
                         worksheet.Cell(row, 1).Value = date;
                         worksheet.Cell(row, 2).Value = itog;
                         worksheet.Cell(row, 3).Value = viruchka;
                     }
 
-                    // Сохранение файла Excel
                     workbook.Save();
                 }
             }
             catch (Exception ex)
             {
-                // Обрабатываем и выводим ошибку
                 Console.WriteLine($"Ошибка: {ex.Message}");
             }
 
             return Task.CompletedTask;
         }
-        //Заполнение ZP excelq
+
         public static Task ZPexcelОтчет(int zrp1, int zrp2, MaterialComboBox NameBox1, MaterialComboBox NameBox2, MaterialTextBox2 MinusBox)
         {
             using (var workbook = new XLWorkbook(pather))
             {
-                var worksheet = workbook.Worksheets.LastOrDefault();
-                // Получаем имя из NameBox1
                 string name1 = NameBox1.Text;
+                var worksheet1 = workbook.Worksheet(name1);
+                string date = $"{DateTime.Now:dd/MM/HH}";
 
-                // Проверяем, есть ли такое имя в словаре nameZP
-                if (nameZP.TryGetValue(name1, out int nameColl1))
+                // Проверка существования строки с текущей датой
+                var existingRow1 = worksheet1.RowsUsed().FirstOrDefault(row => row.Cell(1).GetString() == date);
+
+                if (existingRow1 != null)
                 {
-
-                    // Находим следующую пустую строку в столбце NameColl1
-                    int emptyRowNameColl1 = worksheet.Column(nameColl1).CellsUsed().Count() + 1;
-
-                    // Заполняем новую строку в столбце NameColl1 (zrp1)
-                    worksheet.Cell(emptyRowNameColl1, nameColl1).Value = zrp1;
-                    worksheet.Cell(emptyRowNameColl1, nameColl1 + 1).Value = "_";
-
-                    // Обновляем формулу в первой строке для столбца NameColl1 (zrp1)
-                    worksheet.Cell(1, nameColl1 + 1).FormulaA1 = $"SUM({worksheet.Column(nameColl1).FirstCell().Address}:{worksheet.Cell(emptyRowNameColl1, nameColl1).Address})";
+                    existingRow1.Cell(2).Value = zrp1;
                 }
+                else
+                {
+                    int emptyRowNameColl1 = worksheet1.LastRowUsed()?.RowNumber() + 1 ?? 1;
+                    worksheet1.Cell(emptyRowNameColl1, 1).Value = date;
+                    worksheet1.Cell(emptyRowNameColl1, 2).Value = zrp1;
+                }
+                worksheet1.Cell(2, 3).FormulaA1 = $"=SUM(B:B)";
 
-                // Если MinusBox не видим, то добавляем только в NameColl1
                 if (!MinusBox.Visible)
                 {
                     workbook.Save();
                     return Task.CompletedTask;
                 }
 
-                // Получаем имя из NameBox2
                 string name2 = NameBox2.Text;
+                var worksheet2 = workbook.Worksheet(name2);
 
-                // Проверяем, есть ли такое имя в словаре nameZP
-                if (nameZP.TryGetValue(name2, out int nameColl2))
+                // Проверка существования строки с текущей датой
+                var existingRow2 = worksheet2.RowsUsed().FirstOrDefault(row => row.Cell(1).GetString() == date);
+
+                if (existingRow2 != null)
                 {
-                    // Находим следующую пустую строку в столбце NameColl2
-                    int emptyRowNameColl2 = worksheet.Column(nameColl2).CellsUsed().Count() + 1;
-
-                    // Заполняем новую строку в столбце NameColl2 (zrp2)
-                    worksheet.Cell(emptyRowNameColl2, nameColl2).Value = zrp2;
-
-                    // Обновляем формулу в первой строке для столбца NameColl2 (zrp2)
-                    worksheet.Cell(1, nameColl2 + 1).FormulaA1 = $"SUM({worksheet.Column(nameColl2).FirstCell().Address}:{worksheet.Cell(emptyRowNameColl2, nameColl2).Address})";
+                    existingRow2.Cell(2).Value = zrp2;
                 }
+                else
+                {
+                    int emptyRowNameColl2 = worksheet2.LastRowUsed()?.RowNumber() + 1 ?? 1;
+                    worksheet2.Cell(emptyRowNameColl2, 1).Value = date;
+                    worksheet2.Cell(emptyRowNameColl2, 2).Value = zrp2;
+                }
+                worksheet2.Cell(2, 3).FormulaA1 = $"=SUM(B:B)";
 
                 workbook.Save();
             }
 
             return Task.CompletedTask;
         }
-        //Заполнение Ексаль по Расходу
-        public static Task RashodExcel(int summ, string comm)
+
+        public static Task AddRecordToExcel(int amount, string comment, bool isAvans)
         {
+            // Проверка и преобразование отрицательных значений
+            if (amount < 0)
+                amount += -1;
+
             try
             {
-                // Открытие существующего файла Excel
                 using (var workbook = new XLWorkbook(filePath))
                 {
                     var worksheet = workbook.Worksheet($"{DateTime.Now.Year}.{DateTime.Now:MM}");
-
                     string date = $"{DateTime.Now:dd} {DateTime.Now:HH}:{DateTime.Now:mm}";
 
-                    date = $"{DateTime.Now:dd} {DateTime.Now.Hour}:{DateTime.Now.Minute}";
-                    // Поиск первой пустой строки
-                    int row = worksheet.LastRowUsed().RowNumber() + 1;
+                    // Проверка существования строки с текущей датой
+                    var existingRow = worksheet.RowsUsed().FirstOrDefault(row => row.Cell(1).GetString() == date);
 
-                    // Добавление данных в новую строку
-                    worksheet.Cell(row, 1).Value = date;
-                    worksheet.Cell(row, 2).Value = "_";
-                    worksheet.Cell(row, 3).Value = "_";
-                    worksheet.Cell(row, 4).Value = summ;
-                    worksheet.Cell(row, 5).Value = comm;
+                    if (existingRow != null && isAvans)
+                    {
+                        existingRow.Cell(4).Value = amount;
+                        existingRow.Cell(5).Value = comment;
+                    }
+                    else
+                    {
+                        int row = worksheet.LastRowUsed()?.RowNumber() + 1 ?? 1;
+                        worksheet.Cell(row, 1).Value = date;
+                        worksheet.Cell(row, 4).Value = amount;
+                        worksheet.Cell(row, 5).Value = comment;
+                    }
 
-                    // Формулы для суммирования значений
-                    worksheet.Cell(2, 6).FormulaA1 = $"=SUM(B2:B{row + 1})";
-                    worksheet.Cell(2, 7).FormulaA1 = $"=SUM(D2:D{row + 1})";
-                    worksheet.Cell(2, 8).FormulaA1 = "=F2-G2";
-
-                    // Сохранение файла Excel
                     workbook.Save();
                 }
             }
             catch (Exception ex)
             {
-                // Обрабатываем и выводим ошибку
                 Console.WriteLine($"Ошибка: {ex.Message}");
             }
 
             return Task.CompletedTask;
         }
-        //Отправка скрины Ексель
+
+        public static Task ЗаполнениеExcelInvent(int inventSum, ListBox listBoxNameInv)
+        {
+            using (var workbook = new XLWorkbook(pather))
+            {
+                foreach (var selectedItem in listBoxNameInv.SelectedItems)
+                {
+                    string name = selectedItem.ToString();
+                    var worksheet = workbook.Worksheet(name);
+
+                    string date = $"{DateTime.Now:dd/MM/HH}";
+
+                    // Проверка существования строки с текущей датой
+                    var existingRow = worksheet.RowsUsed().FirstOrDefault(row => row.Cell(1).GetString() == date);
+
+                    if (existingRow != null)
+                    {
+                        existingRow.Cell(2).Value = inventSum;
+                    }
+                    else
+                    {
+                        int lastRow = worksheet.LastRowUsed()?.RowNumber() + 1 ?? 1;
+                        worksheet.Cell(lastRow, 1).Value = date;
+                        worksheet.Cell(lastRow, 2).Value = inventSum;
+                    }
+                    worksheet.Cell(2, 3).FormulaA1 = $"=SUM(B:B)";
+                }
+
+                workbook.Save();
+            }
+
+            return ScreenExcel(pather);
+        }
+
+        public static Task SeyfMinus(int PlusSeyf)
+        {
+            using (var workbook = new XLWorkbook(patherSeyf))
+            {
+                var worksheet = workbook.Worksheets.Worksheet("seyf");
+                string date = $"{DateTime.Now:dd/MM/HH}";
+
+                // Проверка существования строки с текущей датой
+                var existingRow = worksheet.RowsUsed().FirstOrDefault(row => row.Cell(1).GetString() == date);
+
+                if (existingRow != null)
+                {
+                    existingRow.Cell(2).Value = PlusSeyf;
+                }
+                else
+                {
+                    int row = worksheet.LastRowUsed().RowNumber() + 1;
+                    worksheet.Cell(row, 1).Value = date;
+                    worksheet.Cell(row, 2).Value = PlusSeyf;
+                }
+                worksheet.Cell(2, 3).FormulaA1 = $"=SUM(B:B)";
+
+                workbook.Save();
+            }
+
+            return Task.CompletedTask;
+        }
+
         public static async Task ScreenExcel(string path)
         {
             try
@@ -181,55 +341,36 @@ namespace Excel
                         return;
                     }
 
-                    Console.WriteLine("Приступаем к преобразованию в png");
-
-                    // Получаем размеры таблицы Excel
                     int width = worksheet.ColumnsUsed().Count();
                     int height = worksheet.RowsUsed().Count();
-
-                    // Определяем шрифт для содержимого ячеек
                     Font cellFont = new Font("Arial", 12);
-
-                    // Массив для хранения ширины каждого столбца
                     int[] columnWidths = new int[width];
 
-                    // Создаем Graphics из временного Bitmap для измерения текста
                     using (Bitmap tempBitmap = new Bitmap(1, 1))
                     using (Graphics tempGraphics = Graphics.FromImage(tempBitmap))
                     {
-                        // Определяем максимальные размеры ячеек по столбцам
                         for (int col = 1; col <= width; col++)
                         {
                             int maxWidth = 0;
                             for (int row = 1; row <= height; row++)
                             {
-                                // Получаем значение ячейки
-                                string cellValue = worksheet.Cell(row, col).GetValue<string>();
-
-                                // Измеряем размеры текста в ячейке
+                                string cellValue = worksheet.Cell(row, col).GetString();
                                 SizeF textSize = tempGraphics.MeasureString(cellValue, cellFont);
-
-                                // Обновляем максимальную ширину для текущего столбца
                                 maxWidth = Math.Max(maxWidth, (int)textSize.Width);
                             }
-                            // Сохраняем максимальную ширину для текущего столбца
-                            columnWidths[col - 1] = maxWidth + 10; // Добавляем немного запаса
+                            columnWidths[col - 1] = maxWidth + 10;
                         }
                     }
 
-                    // Определяем общую ширину и высоту изображения
                     int totalWidth = columnWidths.Sum();
-                    int cellHeight = new Font(cellFont.FontFamily, cellFont.Size, cellFont.Style).Height + 10; // Высота строки с запасом
+                    int cellHeight = new Font(cellFont.FontFamily, cellFont.Size, cellFont.Style).Height + 10;
                     int totalHeight = height * cellHeight;
 
-                    // Создаем новый Bitmap с размерами таблицы
                     using (Bitmap screenshot = new Bitmap(totalWidth, totalHeight))
                     using (Graphics graphics = Graphics.FromImage(screenshot))
                     {
-                        // Задаем белый фон
                         graphics.Clear(Color.White);
 
-                        // Заполняем ячейки таблицы
                         using (Font font = new Font("Arial", 12))
                         {
                             int xOffset = 0;
@@ -238,33 +379,19 @@ namespace Excel
                                 int yOffset = 0;
                                 for (int row = 1; row <= height; row++)
                                 {
-                                    // Получаем значение ячейки
-                                    string cellValue = worksheet.Cell(row, col).GetValue<string>();
-
-                                    // Определяем координаты и размеры прямоугольника для текущей ячейки
+                                    string cellValue = worksheet.Cell(row, col).GetString();
                                     RectangleF cellRect = new RectangleF(xOffset, yOffset, columnWidths[col - 1], cellHeight);
-
-                                    // Заполняем ячейку
                                     graphics.DrawString(cellValue, font, Brushes.Black, cellRect);
-
-                                    // Переходим к следующей строке
                                     yOffset += cellHeight;
                                 }
-                                // Переходим к следующему столбцу
                                 xOffset += columnWidths[col - 1];
                             }
                         }
 
-                        // Сохраняем скриншот в файл
                         string screenshotPath = Path.Combine(folderPath, "excel_table_screenshot.png");
                         screenshot.Save(screenshotPath, ImageFormat.Png);
-
-                        // Выводим сообщение о завершении операции
                         Console.WriteLine("Скриншот таблицы успешно сохранен.");
-
                         await Telegrame.PhotoExcel(screenshotPath);
-
-                        // Выводим сообщение о завершении операции
                         Console.WriteLine("Скриншот таблицы успешно отправлен в Telegram.");
                     }
                 }
@@ -275,260 +402,50 @@ namespace Excel
                 Console.WriteLine(ex.StackTrace);
             }
         }
-        public static Task ExcelCreated()
-        {
-            // Создаем папку, если она не существует
-            if (!Directory.Exists(folderPath))
-            {
-                Directory.CreateDirectory(folderPath);
-            }
-            // Проверяем существование файла
-            if (!File.Exists(pather))
-            {
-                using (var workbook = new XLWorkbook())
-                {
-                    // Создаем новый лист в книге Excel
-                    var worksheet = workbook.Worksheets.Add("1");
 
-                    // Заполняем столбцы по указанным именам и добавляем формулы суммирования
-                    foreach (var name in nameZP)
-                    {
-                        string currentName = name.Key;
-                        int columnNumber = name.Value;
-
-                        // Заполняем столбец именами
-                        worksheet.Cell(1, columnNumber).Value = currentName;
-
-                        string sumColumnAddress = worksheet.Cell(2, columnNumber).Address.ColumnLetter;
-                        worksheet.Cell(1, columnNumber + 1).FormulaA1 = $"SUM({sumColumnAddress}:{sumColumnAddress})";
-                    }
-
-                    // Сохраняем книгу Excel
-                    workbook.SaveAs(pather);
-                }
-            }
-            if (!File.Exists(patherSeyf))
-            {
-                using (var workbook = new XLWorkbook())
-                {
-                    // Создаем новый лист в книге Excel
-                    var worksheet = workbook.Worksheets.Add("seyf");
-
-                    worksheet.Cell(1, 1).Value = 0;
-                    worksheet.Cell(1, 2).FormulaA1 = "=SUM(A1:A2)";
-
-                    // Сохраняем книгу Excel
-                    workbook.SaveAs(patherSeyf);
-                }
-            }
-            if (!System.IO.File.Exists(filePath))
-            {
-                // Создание нового файла Excel
-                using (var workbook = new XLWorkbook())
-                {
-                    // Добавление листа с текущим годом и месяцем
-                    var now = DateTime.Now;
-                    var worksheet = workbook.Worksheets.Add($"{now.Year}.{now:MM}");
-
-                    // Установка заголовков
-                    worksheet.Cell(1, 1).Value = "Дата и время";
-                    worksheet.Cell(1, 2).Value = "итоги дней";
-                    worksheet.Cell(1, 3).Value = "выручка дней";
-                    worksheet.Cell(1, 4).Value = "расходы";
-                    worksheet.Cell(1, 5).Value = "_";
-                    worksheet.Cell(1, 6).Value = "Выручка за месяц";
-                    worksheet.Cell(1, 7).Value = "Расходы";
-                    worksheet.Cell(1, 8).Value = "Итог";
-
-                    //заполнение пропусков
-                    worksheet.Cell(2, 1).Value = "_";
-                    worksheet.Cell(2, 2).Value = "_";
-                    worksheet.Cell(2, 3).Value = "_";
-                    worksheet.Cell(2, 4).Value = "_";
-                    worksheet.Cell(2, 5).Value = "_";
-
-                    // Формулы для суммирования значений
-                    worksheet.Cell(2, 6).FormulaA1 = "=SUM(C2:C320)";
-                    worksheet.Cell(2, 7).FormulaA1 = "=SUM(D2:D320)";
-                    worksheet.Cell(2, 8).FormulaA1 = "=F2-G2";
-
-
-                    // Сохранение файла Excel
-                    workbook.SaveAs(filePath);
-                }
-            }
-            using (var workbook = new XLWorkbook(filePath))
-            {
-                var now = DateTime.Now;
-                // Проверяем существование листа
-                if (!workbook.Worksheets.TryGetWorksheet($"{now.Year}.{now:MM}", out var worksheet))
-                {
-                    workbook.Worksheets.Add($"{now.Year}.{now:MM}");
-                }
-            }
-            using (var workbook = new XLWorkbook(patherSeyf))
-            {
-                var now = DateTime.Now;
-                // Проверяем существование листа
-                if (!workbook.Worksheets.TryGetWorksheet($"seyf", out var worksheet))
-                {
-                    workbook.Worksheets.Add($"seyf");
-                }
-            }
-
-            return Task.CompletedTask;
-        }
-        //Заполнение ексель если аванс
-        public static Task AvansExcel(string name, int inventSum)
-        {
-            using (var workbook = new XLWorkbook(filePath))
-            {
-                // Получаем последний лист в книге или создаем новый, если листов нет
-                var worksheet = workbook.Worksheet($"{DateTime.Now.Year}.{DateTime.Now:MM}");
-                int lastRow = worksheet.LastRowUsed()?.RowNumber() + 1 ?? 1;
-
-                // Записываем значение в ячейку
-                worksheet.Cell(lastRow, 1).Value = "_";
-                worksheet.Cell(lastRow, 2).Value = "_";
-                worksheet.Cell(lastRow, 3).Value = "_";
-                worksheet.Cell(lastRow, 4).Value = inventSum;
-                worksheet.Cell(lastRow, 5).Value = $"Аванс {name}";
-
-                workbook.Save();
-            }
-            using (var workbook = new XLWorkbook(pather))
-            {
-                // Получаем последний лист в книге или создаем новый, если листов нет
-                var worksheet = workbook.Worksheets.LastOrDefault();
-                if (nameZP.TryGetValue(name, out int columnNumber))
-                {
-                    int lastRow = worksheet.LastRowUsed()?.RowNumber() + 1 ?? 1;
-
-                    // Записываем значение в ячейку
-                    worksheet.Cell(lastRow, columnNumber).Value = inventSum;
-                    worksheet.Cell(lastRow, columnNumber + 1).Value = "_";
-
-                    // Обновляем формулу суммирования
-                    worksheet.Cell(1, columnNumber + 1).FormulaA1 = $"SUM({worksheet.Column(columnNumber).FirstCell().Address}:{worksheet.Cell(lastRow, columnNumber).Address})";
-                }
-                workbook.Save();
-            }
-            return Task.CompletedTask;
-        }
-        //Заполнение ексель таблицы по Инаенту
-        public static async Task ЗаполнениеExcelInvent(int inventSum, ListBox listBoxNameInv)
-        {
-            using (var workbook = new XLWorkbook(pather))
-            {
-                // Получаем последний лист в книге или создаем новый, если листов нет
-                var worksheet = workbook.Worksheets.LastOrDefault();
-
-                foreach (var selectedItem in listBoxNameInv.SelectedItems)
-                {
-                    string name = selectedItem.ToString();
-
-                    if (nameZP.TryGetValue(name, out int columnNumber))
-                    {
-                        int lastRow = worksheet.LastRowUsed()?.RowNumber() + 1 ?? 1;
-
-                        // Записываем значение в ячейку
-                        worksheet.Cell(lastRow, columnNumber).Value = inventSum;
-                        worksheet.Cell(lastRow, columnNumber + 1).Value = "_";
-
-                        // Обновляем формулу суммирования
-                        worksheet.Cell(1, columnNumber + 1).FormulaA1 = $"SUM({worksheet.Column(columnNumber).FirstCell().Address}:{worksheet.Cell(lastRow, columnNumber).Address})";
-                    }
-                    else
-                    {
-                        MessageBox.Show($"Столбец для имени {name} не найден в словаре nameZP.");
-                    }
-                }
-
-                workbook.Save();
-            }
-
-            await ScreenExcel(pather);
-        }
-        //Отображение Excel таблицы во вкладук "Проверка отчетов"
         public static Task ExcelViewer(DataGridView dataGridView, ComboBox comboBox, int i)
         {
-            string path = "non";
-            if (i == 0)
-            {
-                path = filePath;
-            }
-            else if (i == 1)
-            {
-                path = pather;
-            }
-            else if (i == 3)
-            {
-                path = patherSeyf;
-            }
+            string path = GetPathByIndex(i);
 
-            // Очищаем существующие данные в DataGridView
             if (dataGridView.DataSource != null)
             {
                 dataGridView.DataSource = null;
             }
 
-            // Создаем новый DataTable
             DataTable dt = new DataTable();
 
-            // Загружаем данные из Excel файла в DataTable с помощью ClosedXML
-            using (XLWorkbook workBook = new XLWorkbook(path))
+            using (var workbook = new XLWorkbook(path))
             {
-                // Выбираем лист Excel, выбранный в ComboBox
-                IXLWorksheet workSheet = workBook.Worksheet(comboBox.SelectedItem.ToString());
-
-                // Инициализируем столбцы DataTable
+                var worksheet = workbook.Worksheet(comboBox.SelectedItem.ToString());
                 bool columnsInitialized = false;
 
-                // Проходимся по всем строкам в листе Excel, начиная с первой строки
-                foreach (IXLRow row in workSheet.RowsUsed())
+                foreach (var row in worksheet.RowsUsed())
                 {
-                    // Если это первая строка, добавляем столбцы в DataTable
                     if (!columnsInitialized)
                     {
-                        foreach (IXLCell cell in row.Cells())
+                        foreach (var cell in row.Cells())
                         {
-                            string columnName = cell.Value.ToString();
-                            if (!dt.Columns.Contains(columnName))
-                            {
-                                dt.Columns.Add(columnName);
-                            }
-                            else
-                            {
-                                // Добавляем уникальное имя столбца, если дубликат найден
-                                int suffix = 1;
-                                while (dt.Columns.Contains($"{columnName}_{suffix}"))
-                                {
-                                    suffix++;
-                                }
-                                dt.Columns.Add($"{columnName}_{suffix}");
-                            }
+                            string columnName = cell.GetString();
+                            dt.Columns.Add(dt.Columns.Contains(columnName) ? $"{columnName}_{dt.Columns.Count}" : columnName);
                         }
                         columnsInitialized = true;
                     }
                     else
                     {
-                        // Создаем новую строку в DataTable
-                        DataRow newRow = dt.NewRow();
-
-                        // Заполняем данные ячеек DataTable данными из Excel
+                        var newRow = dt.NewRow();
                         int colIndex = 0;
-                        foreach (IXLCell cell in row.CellsUsed())
+
+                        foreach (var cell in row.CellsUsed())
                         {
                             while (colIndex < cell.Address.ColumnNumber - 1)
                             {
                                 newRow[colIndex] = "_";
                                 colIndex++;
                             }
-                            newRow[colIndex] = cell.IsEmpty() ? "_" : cell.Value;
+                            newRow[colIndex] = cell.GetString();
                             colIndex++;
                         }
 
-                        // Заполняем оставшиеся ячейки пустыми значениями, если колонок больше, чем ячеек в строке
                         while (colIndex < dt.Columns.Count)
                         {
                             newRow[colIndex] = "_";
@@ -540,71 +457,70 @@ namespace Excel
                 }
             }
 
-            // Задаем DataTable в качестве источника данных для DataGridView
+            Console.WriteLine($"Columns in DataTable: {dt.Columns.Count}");
+            foreach (DataColumn column in dt.Columns)
+            {
+                Console.WriteLine($"Column: {column.ColumnName}");
+            }
+
             dataGridView.DataSource = dt;
-
-            // Устанавливаем черный цвет текста в таблице
-            dataGridView.ForeColor = System.Drawing.Color.Black;
-
-            // Запрещаем редактирование ячеек в таблице
+            dataGridView.ForeColor = Color.Black;
             dataGridView.ReadOnly = true;
-
-            // Запрещаем изменение размеров столбцов пользователем
             dataGridView.AllowUserToResizeColumns = false;
-
-            // Запрещаем изменение размеров строк пользователем
             dataGridView.AllowUserToResizeRows = false;
-
-            // Запрещаем выделение ячеек пользователем
             dataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             return Task.CompletedTask;
         }
+
         public static Task SaveDataToExcel(string selectedSheetName, DataGridView dataGridViewExcel, int i)
         {
-            string path = "non";
-            if (i == 0)
-            {
-                path = filePath;
-            }
-            if (i == 1)
-            {
-                path = pather;
-            }
-            if (i == 3)
-            {
-                path = patherSeyf;
-            }
-            // Проверяем, что выбранное имя листа не пустое и DataGridView не пуст
+            string path = GetPathByIndex(i);
+
             if (!string.IsNullOrEmpty(selectedSheetName) && dataGridViewExcel.Rows.Count > 0)
             {
                 try
                 {
-                    // Загружаем книгу Excel
-                    using (var workbook = new XLWorkbook())
+                    using (var workbook = new XLWorkbook(path))
                     {
-                        // Создаем новый лист
-                        var worksheet = workbook.Worksheets.Add(selectedSheetName);
+                        // Получаем лист по имени
+                        var worksheet = workbook.Worksheet(selectedSheetName);
 
-                        // Вставляем заголовки столбцов
                         for (int columnIndex = 0; columnIndex < dataGridViewExcel.Columns.Count; columnIndex++)
                         {
                             worksheet.Cell(1, columnIndex + 1).Value = dataGridViewExcel.Columns[columnIndex].HeaderText;
                         }
 
-                        // Добавляем данные из DataGridView в Excel
                         for (int rowIndex = 0; rowIndex < dataGridViewExcel.Rows.Count; rowIndex++)
                         {
                             for (int columnIndex = 0; columnIndex < dataGridViewExcel.Columns.Count; columnIndex++)
                             {
                                 var cellValue = dataGridViewExcel.Rows[rowIndex].Cells[columnIndex].Value;
-
                                 if (cellValue != null)
                                 {
-                                    // Преобразуем значение в числовой формат, если возможно
-                                    if (int.TryParse(cellValue.ToString(), out int intValue))
+                                    // Проверка на числовое значение и установка формата для столбца B в seyf и ZP
+                                    if ((i == 1 || i == 3) && columnIndex == 1)
                                     {
-                                        worksheet.Cell(rowIndex + 2, columnIndex + 1).SetValue(intValue);
+                                        if (int.TryParse(cellValue.ToString(), out int intValue))
+                                        {
+                                            worksheet.Cell(rowIndex + 2, columnIndex + 1).SetValue(intValue);
+                                        }
+                                        else
+                                        {
+                                            worksheet.Cell(rowIndex + 2, columnIndex + 1).SetValue(cellValue.ToString());
+                                        }
+                                    }
+                                    // Проверка на числовое значение и установка формата для столбцов C и D в itog.xlsx
+                                    else if (i == 0 && (columnIndex == 2 || columnIndex == 3))
+                                    {
+                                        if (int.TryParse(cellValue.ToString(), out int intValue))
+                                        {
+                                            worksheet.Cell(rowIndex + 2, columnIndex + 1).SetValue(intValue);
+                                        }
+                                        else
+                                        {
+                                            worksheet.Cell(rowIndex + 2, columnIndex + 1).SetValue(cellValue.ToString());
+                                        }
                                     }
                                     else
                                     {
@@ -613,35 +529,18 @@ namespace Excel
                                 }
                             }
                         }
-                        if(i == 0)
+
+                        if (i == 0)
                         {
-                            // Формулы для суммирования значений
-                            worksheet.Cell(2, 6).FormulaA1 = $"=SUM(B2:B{dataGridViewExcel.Rows.Count + 1})";
-                            worksheet.Cell(2, 7).FormulaA1 = $"=SUM(D2:D{dataGridViewExcel.Rows.Count + 1})";
+                            worksheet.Cell(2, 6).FormulaA1 = $"=SUM(C:C)";
+                            worksheet.Cell(2, 7).FormulaA1 = $"=SUM(D:D)";
                             worksheet.Cell(2, 8).FormulaA1 = "=F2-G2";
                         }
-                        if (i == 1)
+                        else if (i == 1 || i == 3)
                         {
-                            foreach (var name in nameZP)
-                            {
-                                string currentName = name.Key;
-                                int columnNumber = name.Value;
-
-                                // Заполняем столбец именами
-                                worksheet.Cell(1, columnNumber).Value = currentName;
-
-                                string sumColumnAddress = worksheet.Cell(2, columnNumber).Address.ColumnLetter;
-                                worksheet.Cell(1, columnNumber + 1).FormulaA1 = $"SUM({sumColumnAddress}:{sumColumnAddress})";
-                            }
+                            worksheet.Cell(2, 3).FormulaA1 = $"=SUM(B:B)";
                         }
-                        if(i == 3)
-                        {
-                            int lastRow = worksheet.LastRowUsed()?.RowNumber() + 1 ?? 1;
-                            worksheet.Cell(1, 2).FormulaA1 = $"=SUM(A2:A{lastRow})";
-                        }
-                        
 
-                        // Сохраняем изменения
                         workbook.SaveAs(path);
                     }
 
@@ -656,68 +555,49 @@ namespace Excel
             {
                 MessageBox.Show("Выберите лист Excel и убедитесь, что есть данные для сохранения.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
             return Task.CompletedTask;
         }
+
         public static Task LoadGrindSheet(DataGridView dataGrid, string selectedSheetName, int i)
         {
-            string path = "non";
-            if (i == 0)
-            {
-                path = filePath;
-            }
-            if (i == 1)
-            {
-                path = pather;
-            }
-            if (i == 3)
-            {
-                path = patherSeyf;
-            }
+            string path = GetPathByIndex(i);
+
             using (var workbook = new XLWorkbook(path))
             {
                 var worksheet = workbook.Worksheet(selectedSheetName);
                 dataGrid.DataSource = worksheet.RangeUsed().AsTable();
-                // Автоматическое заполнение столбцов DataGridView
                 dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
+
             return Task.CompletedTask;
         }
+
         public static Task LoadSheet(MaterialComboBox ComBox, int i)
         {
-            string path = "non";
-            if (i == 0) path = filePath;
-            if (i == 1) path = pather;
-            if (i == 3) path = patherSeyf;
+            string path = GetPathByIndex(i);
 
             List<string> sheetNames = new List<string>();
 
-            using (XLWorkbook workBook = new XLWorkbook(path))
+            using (var workbook = new XLWorkbook(path))
             {
-                foreach (IXLWorksheet worksheet in workBook.Worksheets)
-                {
-                    sheetNames.Add(worksheet.Name);
-                }
+                sheetNames.AddRange(workbook.Worksheets.Select(worksheet => worksheet.Name));
             }
 
             ComBox.DataSource = sheetNames;
 
             return Task.CompletedTask;
         }
-        public static Task SeyfMinus(int PlusSeyf)
+
+        private static string GetPathByIndex(int index)
         {
-            using (XLWorkbook workbook = new XLWorkbook(patherSeyf))
+            switch (index)
             {
-                var worksheet = workbook.Worksheets.Worksheet("seyf");
-
-                int row = worksheet.LastRowUsed().RowNumber() + 1;
-                worksheet.Cell(row, 1).Value = PlusSeyf;
-
-                worksheet.Cell(1, 2).FormulaA1 = $"=SUM(A2:A{row})";
-
-                workbook.Save();
-
+                case 0: return filePath;
+                case 1: return pather;
+                case 3: return patherSeyf;
+                default: throw new ArgumentOutOfRangeException();
             }
-            return Task.CompletedTask;
         }
     }
 }
