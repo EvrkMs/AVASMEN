@@ -124,7 +124,6 @@ namespace AVASMENA
             dataGridViewJson.Columns.Add("Name", "Имя");
             dataGridViewJson.Columns.Add("Users", "Телеграм Id");
             dataGridViewJson.Columns.Add("Names", "Топик в чате ЗП");
-            dataGridViewJson.Columns.Add("NamesZP", "Столбец в эксель зп");
             dataGridViewJson.Columns.Add("ForwardChat", "Основной час");
             dataGridViewJson.Columns.Add("ChatId", "Чат с зп");
             dataGridViewJson.Columns.Add("TokenBot", "Токен бота");

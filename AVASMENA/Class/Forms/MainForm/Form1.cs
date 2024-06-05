@@ -345,12 +345,12 @@ namespace AVASMENA
                 foreach (var item in listBox1.Items)
                     listBox1StringBuilder.AppendLine(item.ToString());
             });
-            //await Telegrame.ProcessUpdates(userId, TredID, selectedName, listBox2, Отправить);
-            //await Telegrame.SendMessageAsync(zp1, zp2, values.name, values.name2, Отправить);
+            await Telegrame.ProcessUpdates(userId, TredID, selectedName, listBox2, Отправить);
+            await Telegrame.SendMessageAsync(zp1, zp2, values.name, values.name2, Отправить);
 
-            //await bot.SendTextMessageAsync(forwardChatId, listBox1StringBuilder.ToString(), replyToMessageId: TredID);
+            await bot.SendTextMessageAsync(forwardChatId, listBox1StringBuilder.ToString(), replyToMessageId: TredID);
 
-            //await ExcelHelper.UpdateExcel(values.viruchka, values.itog);
+            await ExcelHelper.UpdateExcel(values.viruchka, values.itog);
             await ExcelHelper.ScreenExcel(filePath);
             await ExcelHelper.ZPexcelОтчет(values.zarp1, values.zarp2, NameComboBoxOtchet, SecondComboBoxNameOtchet, Minus2);
             int Seyf = values.nalf - 1000;
