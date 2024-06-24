@@ -539,7 +539,7 @@ namespace AVASMENA
 
             string comm = $"Аванс {name}";
             await ExcelHelper.AddRecordToExcel(summ, comm, true);
-            await ExcelHelper.AvansMinus(summ);
+            await ExcelHelper.AvansMinus(summ, name);
             LoudAuto();
             Аванс.Enabled = true;
         }

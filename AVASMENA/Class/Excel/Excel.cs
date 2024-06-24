@@ -347,13 +347,13 @@ namespace Excel
             return Task.CompletedTask;
         }
 
-        public static Task AvansMinus(int summ)
+        public static Task AvansMinus(int summ, string name)
         {
             if (summ < 0)
                 summ *= -1;
             using (var workbook = new XLWorkbook(pather))
             {
-                var worksheet = workbook.Worksheets.Worksheet("seyf");
+                var worksheet = workbook.Worksheets.Worksheet(name);
                 string date = $"{DateTime.Now:dd/MM/HH}";
 
                 int row = worksheet.LastRowUsed().RowNumber() + 1;
