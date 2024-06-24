@@ -32,8 +32,33 @@ namespace Excel
             CreateMonthlyFileIfNotExists(filePath);
             EnsureWorksheetExists(filePath, $"{DateTime.Now.Year}.{DateTime.Now:MM}");
             EnsureWorksheetExists(patherSeyf, "seyf");
+            EnsureWorksheetExistsName(pather, nameList);
 
             return Task.CompletedTask;
+        }
+
+        private static void EnsureWorksheetExistsName(string path, List<string> sheetNames)
+        {
+            foreach(var sheetName in sheetNames)
+            {
+                using (var workbook = new XLWorkbook(path))
+                {
+                    if (!workbook.Worksheets.TryGetWorksheet(sheetName, out var worksheet))
+                    {
+                        worksheet = workbook.Worksheets.Add(sheetName);
+                        if (sheetName.Contains("."))
+                        {
+                            SetupMonthlyWorksheetHeaders(worksheet);
+                        }
+                        else
+                        {
+                            SetupSeyfAndZpWorksheet(worksheet);
+                        }
+                        workbook.Save();
+                    }
+                }
+            }
+            
         }
 
         private static void EnsureDirectoryExists(string path)

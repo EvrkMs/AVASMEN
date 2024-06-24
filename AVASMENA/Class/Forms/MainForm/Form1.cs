@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TelegramCode;
+using Telegram.Bot;
+using Telegram.Bot.Types.InputFiles;
 
 namespace AVASMENA
 {

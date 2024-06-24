@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.InputFiles;
 
@@ -17,19 +18,19 @@ namespace TelegramCode
         private static readonly Dictionary<string, long> users = UserDataLoader.LoadFromFile().Users;
         private static readonly Dictionary<string, int> names = UserDataLoader.LoadFromFile().Names;
         private static readonly string token = UserDataLoader.LoadFromFile().TokenBot;
-        
-        private static bool isSending = false;  
-        private static readonly Telegram.Bot.TelegramBotClient bot = new Telegram.Bot.TelegramBotClient(token);
-        private static  long forwardChatId = UserDataLoader.LoadFromFile().ForwardChat;
+
+        private static bool isSending = false;
+        private static readonly ITelegramBotClient bot = new TelegramBotClient(token);
+        private static readonly long forwardChatId = UserDataLoader.LoadFromFile().ForwardChat;
         private static readonly long chatID = UserDataLoader.LoadFromFile().ChatId;
 
         public static async Task ProcessUpdates(long userId, int TredID, string selectedName, ListBox listBox, MaterialButton button)
         {
-
             int offset = 0;
             DateTime requestTimestamp = DateTime.UtcNow;
             var photosToBeSent = new List<IAlbumInputMedia>();
             DateTime waitForPhotosTimestamp = DateTime.MinValue;
+
             // Проверка, если уже сохранен offset для текущего пользователя, используйте его
             if (userOffsets.ContainsKey(selectedName))
             {
@@ -81,7 +82,7 @@ namespace TelegramCode
                     {
                         Console.WriteLine("2");
                         string fileId = update.Message.Photo.Last().FileId;
-                        photosToBeSent.Add(new InputMediaPhoto(new InputMedia(fileId)));
+                        photosToBeSent.Add(new InputMediaPhoto(fileId));
                         Console.WriteLine("3");
                     }
                     // Обновление offset для текущего пользователя
@@ -95,13 +96,12 @@ namespace TelegramCode
 
                 if (photosToBeSent.Count > 0)
                 {
-
                     listBox.Invoke((MethodInvoker)delegate
                     {
                         listBox.Items.Add($"Получено {photosToBeSent.Count} фотографий. Отправляю в чат...");
                     });
 
-                    var mediaItems = photosToBeSent.Select(photo => new InputMediaPhoto(photo.Media.FileId)).ToList<IAlbumInputMedia>();
+                    var mediaItems = photosToBeSent.Select(photo => (IAlbumInputMedia)photo).ToList();
                     await bot.SendMediaGroupAsync(forwardChatId, mediaItems, replyToMessageId: TredID);
 
                     listBox.Invoke((MethodInvoker)delegate
@@ -119,6 +119,7 @@ namespace TelegramCode
             isSending = false;
             return;
         }
+
         public static async Task SendMessageAsync(string zp1, string zp2, string name, string name2, MaterialButton button)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -133,14 +134,20 @@ namespace TelegramCode
             isSending = false;
             button.Enabled = true;
         }
+
         public static async Task PhotoExcel(string screenshotPath)
         {
             // Отправляем скриншот в Telegram
             using (var stream = new MemoryStream(System.IO.File.ReadAllBytes(screenshotPath)))
             {
-                await bot.SendPhotoAsync(forwardChatId, new InputOnlineFile(stream, "excel_table_screenshot.png"));
+                await bot.SendPhotoAsync(
+                     chatId: -1002198769956,
+                     photo: new InputOnlineFile(stream, "excel_table_screenshot.png"),
+                     replyToMessageId: 27
+                );
             }
         }
+
         public static async void SendMessageToSelectedNames(List<string> selectedNames, string message)
         {
             foreach (var name in selectedNames)
@@ -151,6 +158,5 @@ namespace TelegramCode
                 }
             }
         }
-
     }
 }
