@@ -34,7 +34,7 @@
     <SuiteName>AVA</SuiteName>
     <MinimumRequiredVersion>1.0.4.0</MinimumRequiredVersion>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>30</ApplicationRevision>
+    <ApplicationRevision>31</ApplicationRevision>
     <ApplicationVersion>1.0.7.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -95,7 +95,8 @@
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x64\Debug\</OutputPath>
     <OutDir>bin\x64\Debug\</OutDir>
-    <DocumentationFile>bin\x64\Debug\$(AssemblyName).xml</DocumentationFile>
+    <DocumentationFile>
+    </DocumentationFile>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>full</DebugType>
