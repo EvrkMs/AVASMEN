@@ -524,7 +524,7 @@ namespace AVASMENA
             string name = materialComboBox2.Text;
             int.TryParse(materialTextBox23.Text, out int summ);
             string type = AvansCheack.Checked ? "аванс" : ZPcheak.Checked ? "зп" : MinusPoSeyf.Checked ? "был минус по сейфу у" : "";
-
+            summ *= -1;
             var message = $"{summ} {type} {name}";
 
             if (!BnAvansCheck.Checked)
@@ -537,6 +537,7 @@ namespace AVASMENA
 
             string comm = $"Аванс {name}";
             await ExcelHelper.AddRecordToExcel(summ, comm, true);
+            await ExcelHelper.AvansMinus(summ);
             LoudAuto();
             Аванс.Enabled = true;
         }

@@ -225,7 +225,7 @@ namespace Excel
         {
             // Проверка и преобразование отрицательных значений
             if (amount < 0)
-                amount += -1;
+                amount *= -1;
 
             try
             {
@@ -321,6 +321,28 @@ namespace Excel
 
             return Task.CompletedTask;
         }
+
+        public static Task AvansMinus(int summ)
+        {
+            if (summ < 0)
+                summ *= -1;
+            using (var workbook = new XLWorkbook(pather))
+            {
+                var worksheet = workbook.Worksheets.Worksheet("seyf");
+                string date = $"{DateTime.Now:dd/MM/HH}";
+
+                int row = worksheet.LastRowUsed().RowNumber() + 1;
+                worksheet.Cell(row, 1).Value = date;
+                worksheet.Cell(row, 2).Value = summ;
+
+                worksheet.Cell(2, 3).FormulaA1 = $"=SUM(B:B)";
+
+                workbook.Save();
+            }
+
+            return Task.CompletedTask;
+        }
+
 
         public static async Task ScreenExcel(string path)
         {
