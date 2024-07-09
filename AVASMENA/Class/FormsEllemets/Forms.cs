@@ -1,9 +1,8 @@
-﻿using System;
+﻿using jsonData;
+using MaterialSkin.Controls;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using jsonData;
-using MaterialSkin;
-using MaterialSkin.Controls;
 
 namespace AVASMENA
 {
@@ -43,7 +42,7 @@ namespace AVASMENA
         }
         public static void SetupListBox(params ListBox[] listBox)
         {
-            foreach(var box in listBox)
+            foreach (var box in listBox)
             {
                 box.ForeColor = System.Drawing.Color.LawnGreen;
                 box.BackColor = System.Drawing.Color.FromArgb(25, 0, 64);
@@ -95,11 +94,11 @@ namespace AVASMENA
         }
         public static void RemoveTabPage(MaterialTabControl TabC, List<TabPage> tabs)
         {
-                foreach (var tab in tabs)
-                {
-                    if (TabC.TabPages.Contains(tab))
-                        TabC.TabPages.Remove(tab);
-                }
+            foreach (var tab in tabs)
+            {
+                if (TabC.TabPages.Contains(tab))
+                    TabC.TabPages.Remove(tab);
+            }
         }
         public static void SetupComBox(MaterialComboBox ComBox)
         {
@@ -127,6 +126,8 @@ namespace AVASMENA
             dataGridViewJson.Columns.Add("ForwardChat", "Основной час");
             dataGridViewJson.Columns.Add("ChatId", "Чат с зп");
             dataGridViewJson.Columns.Add("TokenBot", "Токен бота");
+            dataGridViewJson.Columns.Add("StopsAvans", "кто на стопе");
+
 
             dataGridViewJson.AllowUserToAddRows = true;
             dataGridViewJson.AllowUserToDeleteRows = true;

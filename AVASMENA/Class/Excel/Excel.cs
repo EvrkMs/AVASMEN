@@ -39,7 +39,7 @@ namespace Excel
 
         private static void EnsureWorksheetExistsName(string path, List<string> sheetNames)
         {
-            foreach(var sheetName in sheetNames)
+            foreach (var sheetName in sheetNames)
             {
                 using (var workbook = new XLWorkbook(path))
                 {
@@ -58,7 +58,7 @@ namespace Excel
                     }
                 }
             }
-            
+
         }
 
         private static void EnsureDirectoryExists(string path)

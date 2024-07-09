@@ -9,9 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TelegramCode;
 using Telegram.Bot;
-using Telegram.Bot.Types.InputFiles;
+using TelegramCode;
 
 namespace AVASMENA
 {
@@ -29,6 +28,7 @@ namespace AVASMENA
         private readonly Telegram.Bot.TelegramBotClient bot = new Telegram.Bot.TelegramBotClient(token);
         private readonly long forwardChatId = UserDataLoader.LoadFromFile().ForwardChat;
         private readonly long chatID = UserDataLoader.LoadFromFile().ChatId;
+        private static readonly List<string> stopsAvans = UserDataLoader.LoadFromFile().StopsAvans;
         // Установите ваш пароль здесь
         private const string CorrectPassword = "238384";
         private bool RemoveDa = false;
@@ -42,7 +42,7 @@ namespace AVASMENA
 
             InitializeComponent();
             //лист вкладок доступных только админу
-            _RootList = new List<TabPage> { ShtraphPage, InventPage, PravkaItogPage, ManPage, ZpPage, SeyfExcel};
+            _RootList = new List<TabPage> { ShtraphPage, InventPage, PravkaItogPage, ManPage, ZpPage, SeyfExcel };
             //вкладка аунтификации
             _Auth = new List<TabPage> { AutherPage };
             //лист текстов
@@ -71,11 +71,12 @@ namespace AVASMENA
         }
         private void LoadButton_Click(object sender, EventArgs e)
         {
-            UserDataLoader.SaveBttn(dataGridViewJson);
+            UserDataLoader.LoadBttn(dataGridViewJson);
         }
         private void SaveButton_Click(object sender, EventArgs e)
         {
             UserDataLoader.SaveButton_Click(dataGridViewJson);
+            ExcelHelper.ExcelCreated();
         }
 
         public void LoginBox_SelectedIndex(object sender, EventArgs e)
@@ -464,7 +465,8 @@ namespace AVASMENA
                     listBox2.Items.Add($"Error removing webhook: {ex.Message}");
                 });
             }
-            UserDataLoader.SaveBttn(dataGridViewJson);
+            UserDataLoader.LoadBttn(dataGridViewJson);
+            AvansCheack.Checked = true;
             return;
         }
 
@@ -522,8 +524,13 @@ namespace AVASMENA
 
         private async void Аванс_Click(object sender, EventArgs e)
         {
-            Аванс.Enabled = false;
             string name = materialComboBox2.Text;
+            if (stopsAvans.Contains(name))
+            {
+                MessageBox.Show("Пока что вы в стопе.");
+                return;
+            }
+            Аванс.Enabled = false;
             int.TryParse(materialTextBox23.Text, out int summ);
             string type = AvansCheack.Checked ? "аванс" : ZPcheak.Checked ? "зп" : MinusPoSeyf.Checked ? "был минус по сейфу у" : "";
             summ *= -1;
@@ -567,7 +574,7 @@ namespace AVASMENA
             }
 
             int.TryParse(materialTextBox25.Text, out int summ);
-            
+
             string message = $"{summ} {materialTextBox26.Text}";
             string comm = $"{materialTextBox26.Text}";
             // Call the method
@@ -580,6 +587,8 @@ namespace AVASMENA
             await bot.SendTextMessageAsync(forwardChatId, message, replyToMessageId: TredID);
             if (SeyfRasHod.Checked)
             {
+                if (summ > 0)
+                    summ *= -1;
                 var messag = $"{summ} {materialTextBox26.Text}";
                 await bot.SendTextMessageAsync(forwardChatId, messag, replyToMessageId: 2);
                 await ExcelHelper.SeyfMinus(summ);
