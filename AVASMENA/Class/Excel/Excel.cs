@@ -138,14 +138,15 @@ namespace Excel
             worksheet.Cell(2, 7).FormulaA1 = "=SUM(D:D)";
             worksheet.Cell(2, 8).FormulaA1 = "=F2-G2";
 
-            int row = 2; // Начальная строка для добавления дней
+            int row = 3; // Начальная строка для добавления дней
             int daysInMonth = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
 
             for (int day = 1; day <= daysInMonth; day++)
             {
-                worksheet.Cell(row, 1).Value = $"{day} ночная";
+                string dayString = day.ToString("D2"); // Форматирование дня в двухзначный формат
+                worksheet.Cell(row, 1).Value = $"{dayString} ночная";
                 row++;
-                worksheet.Cell(row, 1).Value = $"{day} дневная";
+                worksheet.Cell(row, 1).Value = $"{dayString} дневная";
                 row++;
             }
             int rowAvans = 64;
