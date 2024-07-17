@@ -637,15 +637,15 @@ namespace AVASMENA
             Аванс.Enabled = true;
         }
 
-        private async void Avans_Click(object sender, EventArgs e)
+        private async void Аванс_Click(object sender, EventArgs e)
         {
-            string name = materialComboBox2.Text; // Иницилизирует имя
+            string name = materialComboBox2.Text; // Инициализирует имя
             if (stopsAvans.Contains(name)) // Проверяет имя в стопе
             {
                 MessageBox.Show("Пока что вы в стопе.");
                 return;
             }
-            Avans.Enabled = false; // Блокирует кнопку, чтобы повторно не нажали
+            Аванс.Enabled = false; // Блокирует кнопку, чтобы повторно не нажали
 
             // Переводит CheckBox'ы в переменные
             bool premia = Premia.Checked;
@@ -653,13 +653,13 @@ namespace AVASMENA
             bool zp = ZPcheak.Checked;
             bool minusPoSeyf = MinusPoSeyf.Checked;
 
-            // Определяет тип выписывание по CheckBox'ам
-            string type = avans ? "аванс" : zp ? "зп" : minusPoSeyf ? "был минус по сейфу у" : premia ? "Премия" : "";
+            // Определяет тип выписывания по CheckBox'ам
+            string type = avans ? "Аванс" : zp ? "ЗП" : minusPoSeyf ? "Был минус по сейфу у" : premia ? "Премия" : "";
 
             if (!int.TryParse(materialTextBox23.Text, out int summ))
             {
                 MessageBox.Show("Неверная сумма.");
-                Avans.Enabled = true;
+                Аванс.Enabled = true;
                 return;
             }
 
@@ -668,8 +668,9 @@ namespace AVASMENA
 
             var message = $"{summ} {type} {name}"; // Составление сообщения для Telegram
             if (premia)
-                message = $"+{summ} {type} {name}"
-            var comm = $"{type} {name}"; // Составление сообщения для Excel
+                message = $"+{summ} {type} {name}";
+
+            string comm = $"{type} {name}"; // Составление сообщения для Excel
 
             try
             {
@@ -680,10 +681,9 @@ namespace AVASMENA
                 }
                 if (names.ContainsKey(name))
                 {
-                    await bot.SendTextMessageAsync(chatID, message, replyToMessageId: names[name]);
+                    // await bot.SendTextMessageAsync(chatID, message, replyToMessageId: names[name]);
                 }
-
-                await ExcelHelper.AddRecordToExcel(summ, comm, avans);
+                await ExcelHelper.AddRecordToExcel(summ, comm, avans, name); // Добавили параметр name
                 await ExcelHelper.AvansMinus(summ, name, premia);
 
                 LoudAuto();
@@ -694,7 +694,7 @@ namespace AVASMENA
             }
             finally
             {
-                Avans.Enabled = true;
+                Аванс.Enabled = true;
             }
         }
 
@@ -730,7 +730,7 @@ namespace AVASMENA
                 await Telegrame.ProcessUpdates(userId, TredID, selectedName, listBoxRas, Расход);
             }
 
-            await ExcelHelper.AddRecordToExcel(summ, comm, false);
+            await ExcelHelper.AddRecordToExcel(summ, comm, false, "false");
             await bot.SendTextMessageAsync(forwardChatId, message, replyToMessageId: TredID);
             if (SeyfRasHod.Checked)
             {

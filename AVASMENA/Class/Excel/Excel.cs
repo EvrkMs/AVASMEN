@@ -134,6 +134,10 @@ namespace Excel
             worksheet.Cell(2, 6).FormulaA1 = "=SUM(C:C)";
             worksheet.Cell(2, 7).FormulaA1 = "=SUM(D:D)";
             worksheet.Cell(2, 8).FormulaA1 = "=F2-G2";
+
+            int row = 2;
+            int zpColum = 4;
+            int nameColumn = 5;
         }
 
         private static void EnsureWorksheetExists(string path, string sheetName)
@@ -257,23 +261,26 @@ namespace Excel
 
                     // Проверка существования строки с текущей датой
                     var existingRow = worksheet.RowsUsed().FirstOrDefault(row => row.Cell(1).GetString() == date);
-
-                    if (existingRow != null && isAvans)
+                    if (!isAvans)
                     {
-                        existingRow.Cell(4).Value = amount;
-                        existingRow.Cell(5).Value = comment;
-                    }
-                    else
-                    {
-                        int row = worksheet.LastRowUsed()?.RowNumber() + 1 ?? 1;
-                        worksheet.Cell(row, 1).Value = date;
-                        worksheet.Cell(row, 4).Value = amount;
-                        worksheet.Cell(row, 5).Value = comment;
+                        if (existingRow != null)
+                        {
+                            existingRow.Cell(4).Value = amount;
+                            existingRow.Cell(5).Value = comment;
+                        }
+                        else
+                        {
+                            int row = worksheet.LastRowUsed()?.RowNumber() + 1 ?? 1;
+                            worksheet.Cell(row, 1).Value = date;
+                            worksheet.Cell(row, 4).Value = amount;
+                            worksheet.Cell(row, 5).Value = comment;
+                        }
                     }
 
                     // Обновление авансов для указанного имени
                     if (isAvans)
                     {
+                        amount *= -1;
                         UpdateAvansRecord(workbook, name, amount);
                     }
 
@@ -286,6 +293,25 @@ namespace Excel
             }
 
             return Task.CompletedTask;
+        }
+        private static void UpdateAvansRecord(XLWorkbook workbook, string name, int amount)
+        {
+            var worksheet = workbook.Worksheet($"{DateTime.Now.Year}.{DateTime.Now:MM}");
+            var avansRow = worksheet.RowsUsed().FirstOrDefault(row => row.Cell(5).GetString() == $"{name} Аванс");
+
+            if (avansRow != null)
+            {
+                // Извлекаем текущее значение и добавляем новое значение
+                int currentAmount = avansRow.Cell(4).GetValue<int>();
+                avansRow.Cell(4).Value = currentAmount + amount;
+            }
+            else
+            {
+                // Добавляем новую строку, если она не существует
+                int lastRow = worksheet.LastRowUsed()?.RowNumber() + 1 ?? 1;
+                worksheet.Cell(lastRow, 5).Value = $"{name} Аванс";
+                worksheet.Cell(lastRow, 4).Value = amount;
+            }
         }
 
         public static Task ЗаполнениеExcelInvent(int inventSum, ListBox listBoxNameInv)
