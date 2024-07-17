@@ -246,18 +246,14 @@ namespace Excel
             return Task.CompletedTask;
         }
 
-        public static Task AddRecordToExcel(int amount, string comment, bool isAvans)
+        public static Task AddRecordToExcel(int amount, string comment, bool isAvans, string name)
         {
-            // Проверка и преобразование отрицательных значений
-            if (amount < 0)
-                amount *= -1;
-
             try
             {
                 using (var workbook = new XLWorkbook(filePath))
                 {
                     var worksheet = workbook.Worksheet($"{DateTime.Now.Year}.{DateTime.Now:MM}");
-                    string date = $"{DateTime.Now:dd} {DateTime.Now:HH}:{DateTime.Now:mm}";
+                    string date = $"{DateTime.Now:dd HH:mm}";
 
                     // Проверка существования строки с текущей датой
                     var existingRow = worksheet.RowsUsed().FirstOrDefault(row => row.Cell(1).GetString() == date);
@@ -273,6 +269,12 @@ namespace Excel
                         worksheet.Cell(row, 1).Value = date;
                         worksheet.Cell(row, 4).Value = amount;
                         worksheet.Cell(row, 5).Value = comment;
+                    }
+
+                    // Обновление авансов для указанного имени
+                    if (isAvans)
+                    {
+                        UpdateAvansRecord(workbook, name, amount);
                     }
 
                     workbook.Save();
@@ -319,50 +321,62 @@ namespace Excel
             return ScreenExcel(pather);
         }
 
-        public static Task SeyfMinus(int PlusSeyf)
+        public static Task SeyfMinus(int plusSeyf)
         {
-            using (var workbook = new XLWorkbook(patherSeyf))
+            try
             {
-                var worksheet = workbook.Worksheets.Worksheet("seyf");
-                string date = $"{DateTime.Now:dd/MM/HH}";
-
-                // Проверка существования строки с текущей датой
-                var existingRow = worksheet.RowsUsed().FirstOrDefault(row => row.Cell(1).GetString() == date);
-
-                if (existingRow != null)
+                using (var workbook = new XLWorkbook(patherSeyf))
                 {
-                    existingRow.Cell(2).Value = PlusSeyf;
-                }
-                else
-                {
-                    int row = worksheet.LastRowUsed().RowNumber() + 1;
-                    worksheet.Cell(row, 1).Value = date;
-                    worksheet.Cell(row, 2).Value = PlusSeyf;
-                }
-                worksheet.Cell(2, 3).FormulaA1 = $"=SUM(B:B)";
+                    var worksheet = workbook.Worksheet("seyf");
+                    string date = $"{DateTime.Now:dd/MM/HH}";
 
-                workbook.Save();
+                    // Проверка существования строки с текущей датой
+                    var existingRow = worksheet.RowsUsed().FirstOrDefault(row => row.Cell(1).GetString() == date);
+
+                    if (existingRow != null)
+                    {
+                        existingRow.Cell(2).Value = plusSeyf;
+                    }
+                    else
+                    {
+                        int row = worksheet.LastRowUsed().RowNumber() + 1;
+                        worksheet.Cell(row, 1).Value = date;
+                        worksheet.Cell(row, 2).Value = plusSeyf;
+                    }
+                    worksheet.Cell(2, 3).FormulaA1 = $"=SUM(B:B)";
+
+                    workbook.Save();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка: {ex.Message}");
             }
 
             return Task.CompletedTask;
         }
 
-        public static Task AvansMinus(int summ, string name)
+        public static Task AvansMinus(int summ, string name, bool premia)
         {
-            if (summ < 0)
-                summ *= -1;
-            using (var workbook = new XLWorkbook(pather))
+            try
             {
-                var worksheet = workbook.Worksheets.Worksheet(name);
-                string date = $"{DateTime.Now:dd/MM/HH}";
+                using (var workbook = new XLWorkbook(pather))
+                {
+                    var worksheet = workbook.Worksheet(name);
+                    string date = $"{DateTime.Now:dd/MM/HH}";
 
-                int row = worksheet.LastRowUsed().RowNumber() + 1;
-                worksheet.Cell(row, 1).Value = date;
-                worksheet.Cell(row, 2).Value = summ;
+                    int row = worksheet.LastRowUsed().RowNumber() + 1;
+                    worksheet.Cell(row, 1).Value = date;
+                    worksheet.Cell(row, 2).Value = summ;
 
-                worksheet.Cell(2, 3).FormulaA1 = $"=SUM(B:B)";
+                    worksheet.Cell(2, 3).FormulaA1 = $"=SUM(B:B)";
 
-                workbook.Save();
+                    workbook.Save();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка: {ex.Message}");
             }
 
             return Task.CompletedTask;

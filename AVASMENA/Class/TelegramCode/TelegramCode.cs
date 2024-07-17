@@ -29,7 +29,6 @@ namespace TelegramCode
             int offset = 0;
             DateTime requestTimestamp = DateTime.UtcNow;
             var photosToBeSent = new List<IAlbumInputMedia>();
-            DateTime waitForPhotosTimestamp = DateTime.MinValue;
 
             // Проверка, если уже сохранен offset для текущего пользователя, используйте его
             if (userOffsets.ContainsKey(selectedName))
@@ -66,7 +65,6 @@ namespace TelegramCode
             }
 
             var message = await bot.SendTextMessageAsync(userId, "Ожидаю ваши фотографии...");
-            waitForPhotosTimestamp = DateTime.UtcNow;
 
             Console.WriteLine("TaskRun");
             while (true)
@@ -81,9 +79,13 @@ namespace TelegramCode
                     if (update.Message != null && update.Message.Photo != null && update.Message.Chat.Id == userId)
                     {
                         Console.WriteLine("2");
-                        string fileId = update.Message.Photo.Last().FileId;
-                        photosToBeSent.Add(new InputMediaPhoto(fileId));
-                        Console.WriteLine("3");
+                        // Проверяем время отправки фотографии
+                        if (update.Message.Date > requestTimestamp)
+                        {
+                            string fileId = update.Message.Photo.Last().FileId;
+                            photosToBeSent.Add(new InputMediaPhoto(fileId));
+                            Console.WriteLine("3");
+                        }
                     }
                     // Обновление offset для текущего пользователя
                     if (updates.Any())
@@ -120,7 +122,7 @@ namespace TelegramCode
             return;
         }
 
-        public static async Task SendMessageAsync(string zp1, string zp2, string name, string name2, MaterialButton button)
+        public static async Task SendMessageAsync(string zp1, string zp2, string name, string name2, string name3, MaterialButton button)
         {
             if (string.IsNullOrWhiteSpace(name))
                 return;
@@ -130,6 +132,8 @@ namespace TelegramCode
 
             if (!string.IsNullOrWhiteSpace(name2) && names.ContainsKey(name2))
                 await bot.SendTextMessageAsync(chatID, zp2, replyToMessageId: names[name2]);
+            if (!string.IsNullOrWhiteSpace(name3) && names.ContainsKey(name3))
+                await bot.SendTextMessageAsync(chatID, zp2, replyToMessageId: names[name3]);
 
             isSending = false;
             button.Enabled = true;

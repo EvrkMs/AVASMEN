@@ -47,7 +47,7 @@ namespace AVASMENA
             _Auth = new List<TabPage> { AutherPage };
             //лист текстов
             _labelList = new List<Label> { label1, label2, label3, label4, label5, label6, label7, label8,
-                label9, label10, label11, label12, label13, label14, label15, label16, label17, label18, label21 };
+                label9, label10, label11, label12, label13, label14, label15, label16, label17, label18, label21};
             //лис чекбоксов для правки эксель
             _labelPopravka = new List<MaterialCheckbox> { PopravkaDa, ZpPopravka, PopravkaSeyf };
 
@@ -61,12 +61,13 @@ namespace AVASMENA
             SetupListBox(listBox1, listBox2, listBox3, listBoxRas, listBoxNameInv);
             SetupTabPage(AutherPage, OtchetPage, AvansPage, SeyfPlusPage, RashodPage, ShtraphPage, InventPage, PravkaItogPage, ManPage, ZpPage, SeyfExcel);
             Setup1(_labelList);
-            Setup2(label19, label20);
+            Setup2(label19, label20, label22);
             SetupComBox(LoginBox);
             LoginBox.Text = "Admin";
-            SetupComboBoxes(NameComboBoxOtchet, KtoVipisal, materialComboBox2, SecondComboBoxNameOtchet, WhoVipisl, comboBoxNameRas);
+            SetupComboBoxes(NameComboBoxOtchet, KtoVipisal, materialComboBox2, SecondComboBoxNameOtchet, WhoVipisl, comboBoxNameRas, ThertyComboBox);
             SecondComboBoxNameOtchet.Items.Add("нет");
             WhoVipisl.Items.Add("нет");
+            ThertyComboBox.Items.Add("нет");
             SetupTimer();
         }
         private void LoadButton_Click(object sender, EventArgs e)
@@ -117,10 +118,12 @@ namespace AVASMENA
             {
                 RemoveDa = true;
                 MinusPoSeyf.Visible = false;
+                Premia.Visible = false;
                 RemoveTabPage(materialTabControl1, _RootList);
             }
             else
             {
+                Premia.Visible = true;
                 MinusPoSeyf.Visible = true;
             }
             RemoveTabPage(materialTabControl1, _Auth);
@@ -160,37 +163,46 @@ namespace AVASMENA
 
         private void CheckBox_CheckedChanged(object sender, EventArgs e)
         {
+            List<CheckBox> list = new List<CheckBox> { AvansCheack, ZPcheak, MinusPoSeyf, Premia };
             CheckBox changedCheckBox = sender as CheckBox;
 
             if (changedCheckBox.Checked)
             {
-                if (changedCheckBox == AvansCheack)
+                foreach (var checkBox in list)
                 {
-                    ZPcheak.Checked = false;
-                    MinusPoSeyf.Checked = false;
+                    if (checkBox != changedCheckBox)
+                    {
+                        checkBox.Checked = false;
+                    }
                 }
-                else if (changedCheckBox == ZPcheak)
+            }
+            else
+            {
+                // Проверка, если все CheckBox установлены в false, то AvansCheack устанавливается в true
+                if (list.All(cb => !cb.Checked))
                 {
-                    AvansCheack.Checked = false;
-                    MinusPoSeyf.Checked = false;
-                }
-                else if (changedCheckBox == MinusPoSeyf)
-                {
-                    AvansCheack.Checked = false;
-                    ZPcheak.Checked = false;
+                    AvansCheack.Checked = true;
                 }
             }
         }
-
         private void ListBox5_SelectedIndexChanged(object sender, EventArgs e)
         {
             ShtraphBox(listBox4, listBox5);
         }
-
+        
+        private void CheakPlsHaurs()
+        {
+            if (materialTextBox1 == null || materialTextBox24 == null || Hours3 == null)
+            {
+                MessageBox.Show("Укажи сначало отработанное время, пожадуйста(а то будет ошибка)");
+                return;
+            }
+        }
         private void TextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // проверяем, откуда пришло событие KeyPress
-            // если это не textbox8 - запрещаем ввод букв
+            CheakPlsHaurs();
+            // Проверяем, откуда пришло событие KeyPress
+            // Если это не TextBox8 - запрещаем ввод букв
             if (sender != TextBox8)
             {
                 if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
@@ -199,6 +211,61 @@ namespace AVASMENA
                 }
             }
         }
+
+        private void ChengedHaurs(object sender, EventArgs e)
+        {
+            CheackHaurs();
+        }
+
+        private void MessageMaxHaurs()
+        {
+            ResetHours();
+            MessageBox.Show("Борщанул с часами, указываешь меньше часов чем дозволено (12 часов)");
+        }
+        private void CheackHaurs()
+        {
+                // Преобразуем текстовые значения в числа
+                int.TryParse(materialTextBox1.Text, out int hours1);
+                int.TryParse(materialTextBox24.Text, out int hours2);
+                int.TryParse(Hours3.Text, out int hours3);
+
+                // Проверка видимости Hours3 и суммы часов
+                if (Hours3.Visible)
+                {
+                    if (hours1 + hours2 + hours3 > 12)
+                    {
+                        MessageMaxHaurs();
+                        return;
+                    }
+                }
+                // Проверка видимости materialTextBox24 и суммы часов
+                if (materialTextBox24.Visible)
+                {
+                    if (hours1 + hours2 > 12)
+                    {
+                        MessageMaxHaurs();
+                        return;
+                    }
+                }
+                // Проверка только первого текстбокса
+                if(!materialTextBox24.Visible && !Hours3.Visible)
+                {
+                    if (hours1 > 12)
+                    {
+                        MessageMaxHaurs();
+                        return;
+                    }
+                }
+        }
+
+        private void ResetHours()
+        {
+            // Сбрасываем значения текстбоксов в 0
+            materialTextBox1.Text = "0";
+            materialTextBox24.Text = "0";
+            Hours3.Text = "0";
+        }
+
         private void MaterialComboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Проверяем, что выбранное значение не равно null
@@ -211,6 +278,18 @@ namespace AVASMENA
                 VisibleBox(false);
             }
         }
+
+        private void materialComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ThertyComboBox.SelectedItem != null && ThertyComboBox.SelectedItem.ToString() != "нет")
+            {
+                VisibleBox3(true);
+            }
+            else
+            {
+                VisibleBox3(false);
+            }
+        }
         private void VisibleBox(bool i)
         {
             Minus1.Visible = i;
@@ -218,16 +297,29 @@ namespace AVASMENA
             label19.Visible = i;
             label20.Visible = i;
             materialTextBox24.Visible = i;
+            ThertyComboBox.Visible = i;
+            if (i == false)
+                SecondComboBoxNameOtchet.Text = "нет";
+        }
+
+        private void VisibleBox3(bool i)
+        {
+            Minus3.Visible = i;
+            label22.Visible = i;
+            Hours3.Visible = i;
+            if (i == false)
+                ThertyComboBox.Text = "нет";
         }
 
         private
             (int nalf, int bnf, int nalp, int bnp, int seyf, int minus, int zp,
              int haurs, int zp4, int seyfEnd, int viruchka, int itog,
-             int zarp1, int zarp2, string name, string name2, int minus1, int minus2)
+             int zarp1, int zarp2, int zarp3, string name, string name2, string name3, int minus1, int minus2, int minus3)
             GetValues()
         {
             string name = NameComboBoxOtchet.Text;
             string name2 = SecondComboBoxNameOtchet.Text;
+            string name3 = ThertyComboBox.Text;
 
             int.TryParse(textBox2.Text, out int nalf);
             int.TryParse(textBox3.Text, out int bnf);
@@ -236,8 +328,10 @@ namespace AVASMENA
             int.TryParse(textBox7.Text, out int seyf);
             int.TryParse(Minus1.Text, out int minus1);
             int.TryParse(Minus2.Text, out int minus2);
+            int.TryParse(Minus3.Text, out int minus3);
             int.TryParse(materialTextBox1.Text, out int hours1);
             int.TryParse(materialTextBox24.Text, out int hours2);
+            int.TryParse(Hours3.Text, out int hours3);
 
             int minus = (nalf - nalp) + (bnf - bnp);
             if (minus > 0)
@@ -255,33 +349,52 @@ namespace AVASMENA
             //для ДляButton2 далее
             int zarp1 = 0;
             int zarp2 = 0;
+            int zarp3 = 0;
 
             if (!string.IsNullOrWhiteSpace(SecondComboBoxNameOtchet.Text) && SecondComboBoxNameOtchet.Text != "нет")
             {
-                zarp1 = zp * hours1 + (-1 * minus1);
-                zarp2 = zp * hours2 + (-1 * minus2);
+                zarp1 = zp * hours1 - minus1;
+                zarp2 = zp * hours2 - minus2;
+            }
+            else if (!string.IsNullOrWhiteSpace(ThertyComboBox.Text) && ThertyComboBox.Text != "нет")
+            {
+                zarp1 = zp * hours1 - minus1;
+                zarp2 = zp * hours2 - minus2;
+                zarp3 = zp * hours2 - minus3;
             }
             else
             {
-                zarp1 = zp * hours1 + minus;
+                zarp1 = zp * hours1 - minus;
             }
-            return (nalf, bnf, nalp, bnp, seyf, minus, zp, haurs, zp4, seyfEnd, viruchka, itog, zarp1, zarp2, name, name2, minus1, minus2);
+
+            return (nalf, bnf, nalp, bnp, seyf, minus, zp, haurs, zp4, seyfEnd, viruchka, itog, zarp1, zarp2, zarp3, name, name2, name3, minus1, minus2, minus3);
         }
         private void Button1_Click(object sender, EventArgs e)
         {
-            UpdateAndButton1(1);
+            UpdateAndButton1(1, sender);
         }
         private void UpdateListBox5(object sender, EventArgs e)
         {
-            UpdateAndButton1(0);
+            UpdateAndButton1(0, sender);
         }
-        private void UpdateAndButton1(int prov)
+        private void VisableReset(List<MaterialTextBox2> Boxs)
+        {
+            foreach(var box in Boxs)
+            {
+                if (!box.Visible)
+                    box.Text = "0";
+            }
+        }
+        private void UpdateAndButton1(int prov, object sender)
         {
             if (string.IsNullOrWhiteSpace(NameComboBoxOtchet.Text))
             {
                 MessageBox.Show("Вы забыли имя");
                 return;
             }
+            CheakPlsHaurs();
+            List<MaterialTextBox2> _listHaursBox = new List<MaterialTextBox2> { materialTextBox1, materialTextBox24, Hours3 };
+            VisableReset(_listHaursBox);
 
             SetDefaultValuesAndTextBoxes(materialTextBox1, materialTextBox24, textBox2, textBox3, textBox4, textBox5, textBox7);
 
@@ -305,6 +418,8 @@ namespace AVASMENA
 
             if (!string.IsNullOrWhiteSpace(SecondComboBoxNameOtchet.Text) && SecondComboBoxNameOtchet.Text != "нет")
                 name = $"{name}/{SecondComboBoxNameOtchet.Text}";
+            if (!string.IsNullOrWhiteSpace(ThertyComboBox.Text) && ThertyComboBox.Text != "нет")
+                name = $"{name}/{ThertyComboBox.Text}";
 
             listBox1.Items.Add($"ДАТА: {DateTime.Now:yyyy.MM.dd HH:mm:ss}");
             listBox1.Items.Add($"{name}\n");
@@ -349,7 +464,7 @@ namespace AVASMENA
                     listBox1StringBuilder.AppendLine(item.ToString());
             });
             await Telegrame.ProcessUpdates(userId, TredID, selectedName, listBox2, Отправить);
-            await Telegrame.SendMessageAsync(zp1, zp2, values.name, values.name2, Отправить);
+            await Telegrame.SendMessageAsync(zp1, zp2, values.name, values.name2, values.name3, Отправить);
 
             await bot.SendTextMessageAsync(forwardChatId, listBox1StringBuilder.ToString(), replyToMessageId: TredID);
 
@@ -448,8 +563,8 @@ namespace AVASMENA
             await ExcelHelper.LoadSheet(ZpExcelSheet, 1);
             await ExcelHelper.LoadSheet(SeyfExcelBox, 3);
             VisibleBox(false);
-            materialTextBox24.Text = "0";
-            materialTextBox1.Text = "0";
+            VisibleBox3(false);
+            ResetHours();
             try
             {
                 await bot.DeleteWebhookAsync();
@@ -522,33 +637,65 @@ namespace AVASMENA
             Аванс.Enabled = true;
         }
 
-        private async void Аванс_Click(object sender, EventArgs e)
+        private async void Avans_Click(object sender, EventArgs e)
         {
-            string name = materialComboBox2.Text;
-            if (stopsAvans.Contains(name))
+            string name = materialComboBox2.Text; // Иницилизирует имя
+            if (stopsAvans.Contains(name)) // Проверяет имя в стопе
             {
                 MessageBox.Show("Пока что вы в стопе.");
                 return;
             }
-            Аванс.Enabled = false;
-            int.TryParse(materialTextBox23.Text, out int summ);
-            string type = AvansCheack.Checked ? "аванс" : ZPcheak.Checked ? "зп" : MinusPoSeyf.Checked ? "был минус по сейфу у" : "";
-            summ *= -1;
-            var message = $"{summ} {type} {name}";
+            Avans.Enabled = false; // Блокирует кнопку, чтобы повторно не нажали
 
-            if (!BnAvansCheck.Checked)
+            // Переводит CheckBox'ы в переменные
+            bool premia = Premia.Checked;
+            bool avans = AvansCheack.Checked;
+            bool zp = ZPcheak.Checked;
+            bool minusPoSeyf = MinusPoSeyf.Checked;
+
+            // Определяет тип выписывание по CheckBox'ам
+            string type = avans ? "аванс" : zp ? "зп" : minusPoSeyf ? "был минус по сейфу у" : premia ? "Премия" : "";
+
+            if (!int.TryParse(materialTextBox23.Text, out int summ))
             {
-                await bot.SendTextMessageAsync(forwardChatId, message, replyToMessageId: 2);
-                await ExcelHelper.SeyfMinus(summ);
+                MessageBox.Show("Неверная сумма.");
+                Avans.Enabled = true;
+                return;
             }
-            if (names.ContainsKey(name))
-                await bot.SendTextMessageAsync(chatID, message, replyToMessageId: names[name]);
 
-            string comm = $"Аванс {name}";
-            await ExcelHelper.AddRecordToExcel(summ, comm, true);
-            await ExcelHelper.AvansMinus(summ, name);
-            LoudAuto();
-            Аванс.Enabled = true;
+            if (!premia) // Если не премия, то будет минус
+                summ *= -1;
+
+            var message = $"{summ} {type} {name}"; // Составление сообщения для Telegram
+            if (premia)
+                message = $"+{summ} {type} {name}"
+            var comm = $"{type} {name}"; // Составление сообщения для Excel
+
+            try
+            {
+                if (!BnAvansCheck.Checked && !premia) // Выписывает с сейфа, если не Б/Н и не премия
+                {
+                    await bot.SendTextMessageAsync(forwardChatId, message, replyToMessageId: 2);
+                    await ExcelHelper.SeyfMinus(summ);
+                }
+                if (names.ContainsKey(name))
+                {
+                    await bot.SendTextMessageAsync(chatID, message, replyToMessageId: names[name]);
+                }
+
+                await ExcelHelper.AddRecordToExcel(summ, comm, avans);
+                await ExcelHelper.AvansMinus(summ, name, premia);
+
+                LoudAuto();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}");
+            }
+            finally
+            {
+                Avans.Enabled = true;
+            }
         }
 
         private async void Расход_Click(object sender, EventArgs e)
