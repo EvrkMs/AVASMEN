@@ -30,35 +30,11 @@ namespace Excel
             CreateExcelFileIfNotExists(pather, nameList);
             CreateSeyfFileIfNotExists(patherSeyf);
             CreateMonthlyFileIfNotExists(filePath);
-            EnsureWorksheetExists(filePath, $"{DateTime.Now.Year}.{DateTime.Now:MM}");
-            EnsureWorksheetExists(patherSeyf, "seyf");
+            EnsureWorksheetExists(filePath, $"{DateTime.Now.Year}.{DateTime.Now:MM}", true); // Передаем true для создания таблицы
+            EnsureWorksheetExists(patherSeyf, "seyf", true); // Передаем true для создания таблицы
             EnsureWorksheetExistsName(pather, nameList);
 
             return Task.CompletedTask;
-        }
-
-        private static void EnsureWorksheetExistsName(string path, List<string> sheetNames)
-        {
-            foreach (var sheetName in sheetNames)
-            {
-                using (var workbook = new XLWorkbook(path))
-                {
-                    if (!workbook.Worksheets.TryGetWorksheet(sheetName, out var worksheet))
-                    {
-                        worksheet = workbook.Worksheets.Add(sheetName);
-                        if (sheetName.Contains("."))
-                        {
-                            SetupMonthlyWorksheetHeaders(worksheet);
-                        }
-                        else
-                        {
-                            SetupSeyfAndZpWorksheet(worksheet);
-                        }
-                        workbook.Save();
-                    }
-                }
-            }
-
         }
 
         private static void EnsureDirectoryExists(string path)
@@ -98,15 +74,6 @@ namespace Excel
             }
         }
 
-        private static void SetupSeyfAndZpWorksheet(IXLWorksheet worksheet)
-        {
-            worksheet.Cell(1, 1).Value = "дата";
-            worksheet.Cell(1, 2).Value = "суммы";
-            worksheet.Cell(1, 3).Value = "сумма";
-            worksheet.Cell(2, 2).Value = 0;
-            worksheet.Cell(2, 3).FormulaA1 = "=SUM(B:B)";
-        }
-
         private static void CreateMonthlyFileIfNotExists(string path)
         {
             if (!File.Exists(path))
@@ -114,8 +81,44 @@ namespace Excel
                 using (var workbook = new XLWorkbook())
                 {
                     var worksheet = workbook.Worksheets.Add($"{DateTime.Now.Year}.{DateTime.Now:MM}");
-                    SetupMonthlyWorksheetHeaders(worksheet);
+                    SetupMonthlyWorksheetHeaders(worksheet); // Передаем true для создания таблицы
                     workbook.SaveAs(path);
+                }
+            }
+        }
+
+        private static void EnsureWorksheetExists(string path, string sheetName, bool isCreating)
+        {
+            using (var workbook = new XLWorkbook(path))
+            {
+                if (!workbook.Worksheets.TryGetWorksheet(sheetName, out var worksheet))
+                {
+                    worksheet = workbook.Worksheets.Add(sheetName);
+                    if (sheetName.Contains("."))
+                    {
+                        SetupMonthlyWorksheetHeaders(worksheet); // Передаем true, потому что создаем таблицу
+                    }
+                    else
+                    {
+                        SetupSeyfAndZpWorksheet(worksheet);
+                    }
+                    workbook.Save();
+                }
+            }
+        }
+
+        private static void EnsureWorksheetExistsName(string path, List<string> sheetNames)
+        {
+            foreach (var sheetName in sheetNames)
+            {
+                using (var workbook = new XLWorkbook(path))
+                {
+                    if (!workbook.Worksheets.TryGetWorksheet(sheetName, out var worksheet))
+                    {
+                        worksheet = workbook.Worksheets.Add(sheetName);
+                        SetupSeyfAndZpWorksheet(worksheet);
+                        workbook.Save();
+                    }
                 }
             }
         }
@@ -135,30 +138,40 @@ namespace Excel
             worksheet.Cell(2, 7).FormulaA1 = "=SUM(D:D)";
             worksheet.Cell(2, 8).FormulaA1 = "=F2-G2";
 
-            int row = 2;
-            int zpColum = 4;
-            int nameColumn = 5;
-        }
+            int row = 2; // Начальная строка для добавления дней
+            int daysInMonth = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
 
-        private static void EnsureWorksheetExists(string path, string sheetName)
-        {
-            using (var workbook = new XLWorkbook(path))
+            for (int day = 1; day <= daysInMonth; day++)
             {
-                if (!workbook.Worksheets.TryGetWorksheet(sheetName, out var worksheet))
-                {
-                    worksheet = workbook.Worksheets.Add(sheetName);
-                    if (sheetName.Contains("."))
-                    {
-                        SetupMonthlyWorksheetHeaders(worksheet);
-                    }
-                    else
-                    {
-                        SetupSeyfAndZpWorksheet(worksheet);
-                    }
-                    workbook.Save();
-                }
+                worksheet.Cell(row, 1).Value = $"{day} ночная";
+                row++;
+                worksheet.Cell(row, 1).Value = $"{day} дневная";
+                row++;
+            }
+            int rowAvans = 64;
+            int AvansColumn = 4;
+            int nameColumn = 5;
+            foreach(var name in nameList)
+            {
+                worksheet.Cell(rowAvans, AvansColumn).Value = 0;
+                worksheet.Cell(rowAvans, nameColumn).Value = $"{name} Аванс";
+                rowAvans += 1;
             }
         }
+
+        private static void SetupSeyfAndZpWorksheet(IXLWorksheet worksheet)
+        {
+            worksheet.Cell(1, 1).Value = "дата";
+            worksheet.Cell(1, 2).Value = "суммы";
+            worksheet.Cell(1, 3).Value = "сумма";
+            worksheet.Cell(2, 2).Value = 0;
+            worksheet.Cell(2, 3).FormulaA1 = "=SUM(B:B)";
+        }
+
+
+
+
+
 
         public static Task UpdateExcel(int itog, int viruchka)
         {

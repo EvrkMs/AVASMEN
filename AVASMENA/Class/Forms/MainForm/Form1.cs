@@ -652,6 +652,7 @@ namespace AVASMENA
             bool avans = AvansCheack.Checked;
             bool zp = ZPcheak.Checked;
             bool minusPoSeyf = MinusPoSeyf.Checked;
+            bool isAvans = false;
 
             // Определяет тип выписывания по CheckBox'ам
             string type = avans ? "Аванс" : zp ? "ЗП" : minusPoSeyf ? "Был минус по сейфу у" : premia ? "Премия" : "";
@@ -681,9 +682,12 @@ namespace AVASMENA
                 }
                 if (names.ContainsKey(name))
                 {
-                    // await bot.SendTextMessageAsync(chatID, message, replyToMessageId: names[name]);
+                    await bot.SendTextMessageAsync(chatID, message, replyToMessageId: names[name]);
                 }
-                await ExcelHelper.AddRecordToExcel(summ, comm, avans, name); // Добавили параметр name
+
+                if(avans || zp)
+                    isAvans = true;
+                await ExcelHelper.AddRecordToExcel(summ, comm, isAvans, name); // Добавили параметр name
                 await ExcelHelper.AvansMinus(summ, name, premia);
 
                 LoudAuto();
