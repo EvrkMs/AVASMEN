@@ -37,9 +37,9 @@ namespace AVASMENA
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.materialButton2 = new MaterialSkin.Controls.MaterialButton();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
@@ -79,6 +79,7 @@ namespace AVASMENA
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.AvansPage = new System.Windows.Forms.TabPage();
+            this.Premia = new MaterialSkin.Controls.MaterialCheckbox();
             this.MinusPoSeyf = new MaterialSkin.Controls.MaterialCheckbox();
             this.ZPcheak = new MaterialSkin.Controls.MaterialCheckbox();
             this.AvansCheack = new MaterialSkin.Controls.MaterialCheckbox();
@@ -146,7 +147,6 @@ namespace AVASMENA
             this.label13 = new System.Windows.Forms.Label();
             this.dataGridViewSeyfExcel = new System.Windows.Forms.DataGridView();
             this.ExitBtn = new MaterialSkin.Controls.MaterialButton();
-            this.Premia = new MaterialSkin.Controls.MaterialCheckbox();
             this.materialTabControl1.SuspendLayout();
             this.AutherPage.SuspendLayout();
             this.OtchetPage.SuspendLayout();
@@ -784,6 +784,18 @@ namespace AVASMENA
             resources.ApplyResources(this.AvansPage, "AvansPage");
             this.AvansPage.Name = "AvansPage";
             // 
+            // Premia
+            // 
+            resources.ApplyResources(this.Premia, "Premia");
+            this.Premia.Depth = 0;
+            this.Premia.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.Premia.MouseState = MaterialSkin.MouseState.HOVER;
+            this.Premia.Name = "Premia";
+            this.Premia.ReadOnly = false;
+            this.Premia.Ripple = true;
+            this.Premia.UseVisualStyleBackColor = true;
+            this.Premia.CheckedChanged += new System.EventHandler(this.CheckBox_CheckedChanged);
+            // 
             // MinusPoSeyf
             // 
             resources.ApplyResources(this.MinusPoSeyf, "MinusPoSeyf");
@@ -1355,34 +1367,34 @@ namespace AVASMENA
             this.dataGridViewJson.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewJson.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridViewJson.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewJson.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewJson.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewJson.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.InfoText;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewJson.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.InfoText;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewJson.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewJson.GridColor = System.Drawing.SystemColors.ControlDarkDark;
             resources.ApplyResources(this.dataGridViewJson, "dataGridViewJson");
             this.dataGridViewJson.Name = "dataGridViewJson";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewJson.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewJson.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             // 
             // PravkaItogPage
             // 
@@ -1649,18 +1661,6 @@ namespace AVASMENA
             this.ExitBtn.UseAccentColor = true;
             this.ExitBtn.UseVisualStyleBackColor = false;
             this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
-            // 
-            // Premia
-            // 
-            resources.ApplyResources(this.Premia, "Premia");
-            this.Premia.Depth = 0;
-            this.Premia.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.Premia.MouseState = MaterialSkin.MouseState.HOVER;
-            this.Premia.Name = "Premia";
-            this.Premia.ReadOnly = false;
-            this.Premia.Ripple = true;
-            this.Premia.UseVisualStyleBackColor = true;
-            this.Premia.CheckedChanged += new System.EventHandler(this.CheckBox_CheckedChanged);
             // 
             // MainForm
             // 

@@ -11,8 +11,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TelegramCode;
+using OfficeOpenXml;
+using OfficeOpenXml.Drawing.Chart;
 using Color = System.Drawing.Color;
 using Font = System.Drawing.Font;
+using DocumentFormat.OpenXml.Spreadsheet;
+using Telegram.Bot;
+using Telegram.Bot.Types;
+using Telegram.Bot.Types.Enums;
+using Telegram.Bot.Types.InputFiles;
 
 namespace Excel
 {
@@ -23,13 +30,15 @@ namespace Excel
         private static readonly string pather = Path.Combine(folderPath, "ZP.xlsx");
         private static readonly string patherSeyf = Path.Combine(folderPath, "seyf.xlsx");
         private static readonly List<string> nameList = UserDataLoader.LoadFromFile().NameList;
+        private static readonly string token = UserDataLoader.LoadFromFile().TokenBot;
+        private static readonly ITelegramBotClient bot = new TelegramBotClient(token);
 
         public static Task ExcelCreated()
         {
             EnsureDirectoryExists(folderPath);
             CreateExcelFileIfNotExists(pather, nameList);
             CreateSeyfFileIfNotExists(patherSeyf);
-            CreateMonthlyFileIfNotExists(filePath);
+            CreateMonthlyFileIfNotExists(filePath, $"{DateTime.Now.Year}.{DateTime.Now:MM}");
             EnsureWorksheetExists(filePath, $"{DateTime.Now.Year}.{DateTime.Now:MM}", true); // Передаем true для создания таблицы
             EnsureWorksheetExists(patherSeyf, "seyf", true); // Передаем true для создания таблицы
             EnsureWorksheetExistsName(pather, nameList);
@@ -44,10 +53,9 @@ namespace Excel
                 Directory.CreateDirectory(path);
             }
         }
-
         private static void CreateExcelFileIfNotExists(string path, List<string> names)
         {
-            if (!File.Exists(path))
+            if (!System.IO.File.Exists(path))
             {
                 using (var workbook = new XLWorkbook())
                 {
@@ -60,10 +68,9 @@ namespace Excel
                 }
             }
         }
-
         private static void CreateSeyfFileIfNotExists(string path)
         {
-            if (!File.Exists(path))
+            if (!System.IO.File.Exists(path))
             {
                 using (var workbook = new XLWorkbook())
                 {
@@ -73,40 +80,6 @@ namespace Excel
                 }
             }
         }
-
-        private static void CreateMonthlyFileIfNotExists(string path)
-        {
-            if (!File.Exists(path))
-            {
-                using (var workbook = new XLWorkbook())
-                {
-                    var worksheet = workbook.Worksheets.Add($"{DateTime.Now.Year}.{DateTime.Now:MM}");
-                    SetupMonthlyWorksheetHeaders(worksheet); // Передаем true для создания таблицы
-                    workbook.SaveAs(path);
-                }
-            }
-        }
-
-        private static void EnsureWorksheetExists(string path, string sheetName, bool isCreating)
-        {
-            using (var workbook = new XLWorkbook(path))
-            {
-                if (!workbook.Worksheets.TryGetWorksheet(sheetName, out var worksheet))
-                {
-                    worksheet = workbook.Worksheets.Add(sheetName);
-                    if (sheetName.Contains("."))
-                    {
-                        SetupMonthlyWorksheetHeaders(worksheet); // Передаем true, потому что создаем таблицу
-                    }
-                    else
-                    {
-                        SetupSeyfAndZpWorksheet(worksheet);
-                    }
-                    workbook.Save();
-                }
-            }
-        }
-
         private static void EnsureWorksheetExistsName(string path, List<string> sheetNames)
         {
             foreach (var sheetName in sheetNames)
@@ -122,21 +95,24 @@ namespace Excel
                 }
             }
         }
-
         private static void SetupMonthlyWorksheetHeaders(IXLWorksheet worksheet)
         {
             worksheet.Cell(1, 1).Value = "Дата и время";
-            worksheet.Cell(1, 2).Value = "итоги дней";
-            worksheet.Cell(1, 3).Value = "выручка дней";
+            worksheet.Cell(1, 2).Value = "выручка дней";
+            worksheet.Cell(1, 3).Value = "итоги дней";
             worksheet.Cell(1, 4).Value = "расходы";
             worksheet.Cell(1, 5).Value = "_";
-            worksheet.Cell(1, 6).Value = "Выручка за месяц";
-            worksheet.Cell(1, 7).Value = "Расходы";
-            worksheet.Cell(1, 8).Value = "Итог";
+            worksheet.Cell(1, 6).Value = "Категория";
+            worksheet.Cell(1, 7).Value = "Значение";
+            worksheet.Cell(1, 8).Value = "Выручка месяц";
+            worksheet.Cell(2, 8).FormulaA1 = "=SUM(B:B)";
 
-            worksheet.Cell(2, 6).FormulaA1 = "=SUM(C:C)";
-            worksheet.Cell(2, 7).FormulaA1 = "=SUM(D:D)";
-            worksheet.Cell(2, 8).FormulaA1 = "=F2-G2";
+            worksheet.Cell(2, 6).Value = "Расходы";
+            worksheet.Cell(2, 7).FormulaA1 = "=SUM(D65:D10000)"; // Расходы начинаются с 65 строки и далее
+            worksheet.Cell(3, 6).Value = "Авансы";
+            worksheet.Cell(3, 7).FormulaA1 = "=SUM(D3:D64)";
+            worksheet.Cell(4, 6).Value = "Итог";
+            worksheet.Cell(4, 7).FormulaA1 = "=H2-G2-G3";
 
             int row = 3; // Начальная строка для добавления дней
             int daysInMonth = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
@@ -149,17 +125,94 @@ namespace Excel
                 worksheet.Cell(row, 1).Value = $"{dayString} дневная";
                 row++;
             }
-            int rowAvans = 64;
-            int AvansColumn = 4;
+
+            int rowAvans = 3; // Начальная строка для добавления авансов
+            int avansColumn = 4;
             int nameColumn = 5;
-            foreach(var name in nameList)
+            foreach (var name in nameList)
             {
-                worksheet.Cell(rowAvans, AvansColumn).Value = 0;
+                worksheet.Cell(rowAvans, avansColumn).Value = 0;
                 worksheet.Cell(rowAvans, nameColumn).Value = $"{name} Аванс";
                 rowAvans += 1;
             }
-        }
 
+            // Автоматически подстраиваем высоту строк
+            AutoFitColumnsAndRows(worksheet);
+        }
+        private static void CreateChartWithEPPlus(string filePath, string sheetName)
+        {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial; // Установите лицензию на некоммерческое использование
+            using (var package = new ExcelPackage(new FileInfo(filePath)))
+            {
+                var worksheet = package.Workbook.Worksheets[sheetName];
+
+                // Удаление существующих диаграмм с таким же именем, если они существуют
+                var existingChart = worksheet.Drawings.FirstOrDefault(d => d.Name == "Круговая диаграмма");
+                if (existingChart != null)
+                {
+                    worksheet.Drawings.Remove(existingChart);
+                }
+
+                var chart = worksheet.Drawings.AddChart("Круговая диаграмма", eChartType.Pie) as ExcelPieChart;
+                chart.Title.Text = "Категория и Значение";
+                chart.Series.Add(worksheet.Cells["G2:G4"], worksheet.Cells["F2:F4"]);
+                chart.SetPosition(5, 0, 5, 0); // Позиционируем диаграмму на F6
+                chart.SetSize(600, 400); // Устанавливаем размер диаграммы
+
+                // Настройка меток данных для отображения процентов
+                foreach (var series in chart.Series.Cast<ExcelPieChartSerie>())
+                {
+                    series.DataLabel.ShowPercent = true;
+                }
+
+                package.Save();
+            }
+        }
+        private static void AutoFitColumnsAndRows(IXLWorksheet worksheet)
+        {
+            worksheet.Columns().AdjustToContents(); // Автоматическое подстраивание ширины столбцов
+            worksheet.Rows().AdjustToContents(); // Автоматическое подстраивание высоты строк
+        }
+        private static void CreateMonthlyFileIfNotExists(string path, string sheetName)
+        {
+            if (!System.IO.File.Exists(path))
+            {
+                using (var workbook = new XLWorkbook())
+                {
+                    var worksheet = workbook.Worksheets.Add(sheetName);
+                    SetupMonthlyWorksheetHeaders(worksheet);
+                    workbook.SaveAs(path);
+                }
+
+                // Создание диаграммы с использованием EPPlus
+                CreateChartWithEPPlus(path, sheetName);
+            }
+        }
+        private static void EnsureWorksheetExists(string path, string sheetName, bool isCreating)
+        {
+            using (var workbook = new XLWorkbook(path))
+            {
+                if (!workbook.Worksheets.TryGetWorksheet(sheetName, out var worksheet))
+                {
+                    worksheet = workbook.Worksheets.Add(sheetName);
+                    if (sheetName.Contains("."))
+                    {
+                        SetupMonthlyWorksheetHeaders(worksheet);
+                    }
+                    else
+                    {
+                        SetupSeyfAndZpWorksheet(worksheet);
+                    }
+                    workbook.SaveAs(path);
+                }
+            }
+
+            // Создание диаграммы с использованием EPPlus
+            if (isCreating)
+            {
+                CreateChartWithEPPlus(path, sheetName);
+            }
+        }
         private static void SetupSeyfAndZpWorksheet(IXLWorksheet worksheet)
         {
             worksheet.Cell(1, 1).Value = "дата";
@@ -195,7 +248,7 @@ namespace Excel
                         worksheet.Cell(row, 2).Value = itog;
                         worksheet.Cell(row, 3).Value = viruchka;
                     }
-
+                    AutoFitColumnsAndRows(worksheet);
                     workbook.Save();
                 }
             }
@@ -293,6 +346,7 @@ namespace Excel
                         amount *= -1;
                         UpdateAvansRecord(workbook, name, amount);
                     }
+                    AutoFitColumnsAndRows(worksheet);
 
                     workbook.Save();
                 }
@@ -421,23 +475,35 @@ namespace Excel
 
         public static async Task ScreenExcel(string path)
         {
+            Console.WriteLine("Метод ScreenExcel вызван.");
+
             try
             {
-                if (!File.Exists(path))
+                Console.WriteLine($"Проверка существования файла: {path}");
+                if (!System.IO.File.Exists(path))
                 {
                     Console.WriteLine($"Файл не найден: {path}");
                     return;
                 }
 
+                string dataImagePath = Path.Combine(Path.GetTempPath(), "data_image.png");
+                string chartImagePath = Path.Combine(Path.GetTempPath(), "chart_image.png");
+                string avansTablePath;
+                string categoryValueTablePath;
+                string dnevnaya;
+                string rashod;
+
                 using (var workbook = new XLWorkbook(path))
                 {
-                    var worksheet = workbook.Worksheets.LastOrDefault();
+                    var worksheet = workbook.Worksheets.FirstOrDefault();
                     if (worksheet == null)
                     {
                         Console.WriteLine("Не удалось найти рабочий лист.");
                         return;
                     }
 
+                    Console.WriteLine("Начинается сохранение данных рабочего листа в изображение.");
+                    // Сохранение данных рабочего листа в изображение
                     int width = worksheet.ColumnsUsed().Count();
                     int height = worksheet.RowsUsed().Count();
                     Font cellFont = new Font("Arial", 12);
@@ -463,8 +529,8 @@ namespace Excel
                     int cellHeight = new Font(cellFont.FontFamily, cellFont.Size, cellFont.Style).Height + 10;
                     int totalHeight = height * cellHeight;
 
-                    using (Bitmap screenshot = new Bitmap(totalWidth, totalHeight))
-                    using (Graphics graphics = Graphics.FromImage(screenshot))
+                    using (Bitmap dataBitmap = new Bitmap(totalWidth, totalHeight))
+                    using (Graphics graphics = Graphics.FromImage(dataBitmap))
                     {
                         graphics.Clear(Color.White);
 
@@ -485,12 +551,42 @@ namespace Excel
                             }
                         }
 
-                        string screenshotPath = Path.Combine(folderPath, "excel_table_screenshot.png");
-                        screenshot.Save(screenshotPath, ImageFormat.Png);
-                        Console.WriteLine("Скриншот таблицы успешно сохранен.");
-                        await Telegrame.PhotoExcel(screenshotPath);
-                        Console.WriteLine("Скриншот таблицы успешно отправлен в Telegram.");
+                        dataBitmap.Save(dataImagePath, ImageFormat.Png);
+                        Console.WriteLine("Скриншот данных таблицы успешно сохранен.");
                     }
+
+                    Console.WriteLine("Создание и сохранение изображения диаграммы.");
+                    // Создание и отправка изображения диаграммы
+                    var categoryRange = worksheet.Range("F2:F4");
+                    var valueRange = worksheet.Range("G2:G4");
+
+                    string[] categories = categoryRange.Cells().Select(cell => cell.GetString()).ToArray();
+                    float[] values = valueRange.Cells().Select(cell => float.Parse(cell.GetString())).ToArray();
+
+                    var chartBitmap = new Bitmap(600, 400);
+                    using (var chartGraphics = Graphics.FromImage(chartBitmap))
+                    {
+                        chartGraphics.Clear(Color.White);
+
+                        // Рисуем круговую диаграмму
+                        DrawPieChart(chartGraphics, categories, values, new Rectangle(50, 50, 500, 300));
+                    }
+
+                    chartBitmap.Save(chartImagePath, ImageFormat.Png);
+                    Console.WriteLine("Скриншот диаграммы успешно сохранен.");
+
+                    // Сохранение изображений таблиц
+                    Console.WriteLine("Сохранение изображений таблиц.");
+                    avansTablePath = SaveTableAsImage(worksheet.Range("D3:E64").RangeUsed(), "avans_table.png");
+                    categoryValueTablePath = SaveTableAsImage(worksheet.Range("F1:G4").RangeUsed(), "category_value_table.png");
+                    dnevnaya = SaveTableAsImage(worksheet.Range("A3:C64").RangeUsed(), "dnevnaya.png");
+                    rashod = SaveTableAsImage(worksheet.Range("A65:E700").RangeUsed(), "rashod.png");
+
+                    // Отправка всех изображений в виде альбома
+                    Console.WriteLine("Отправка всех изображений в виде альбома.");
+                    await bot.SendTextMessageAsync(-1002198769956, $"{DateTime.Now: yyyy.MM.dd}", replyToMessageId: 27);
+                    await SendPhotosInOneMessage(new[] { dataImagePath, dnevnaya, rashod, avansTablePath, categoryValueTablePath, chartImagePath });
+                    Console.WriteLine("Изображения успешно отправлены.");
                 }
             }
             catch (Exception ex)
@@ -498,6 +594,99 @@ namespace Excel
                 Console.WriteLine($"Произошла ошибка: {ex.Message}");
                 Console.WriteLine(ex.StackTrace);
             }
+        }
+
+        private static void DrawPieChart(Graphics graphics, string[] categories, float[] values, Rectangle rect)
+        {
+            if (categories.Length != values.Length || categories.Length == 0) return;
+
+            float total = values.Sum();
+            float[] angles = values.Select(v => v / total * 360).ToArray();
+            Color[] colors = { Color.Red, Color.Green, Color.Blue };
+
+            float startAngle = 0;
+            for (int i = 0; i < angles.Length; i++)
+            {
+                graphics.FillPie(new SolidBrush(colors[i % colors.Length]), rect, startAngle, angles[i]);
+                startAngle += angles[i];
+            }
+
+            // Рисуем легенду
+            for (int i = 0; i < categories.Length; i++)
+            {
+                graphics.FillRectangle(new SolidBrush(colors[i % colors.Length]), 10, 10 + i * 20, 10, 10);
+                float percentage = (values[i] / total) * 100;
+                graphics.DrawString($"{categories[i]} ({percentage:F2}%)", new Font("Arial", 12), Brushes.Black, 30, 10 + i * 20);
+            }
+        }
+
+        private static string SaveTableAsImage(IXLRange range, string fileName)
+        {
+            int width = range.ColumnCount();
+            int height = range.RowCount();  // Используем только используемые строки
+            Font cellFont = new Font("Arial", 12);
+            int[] columnWidths = new int[width];
+
+            using (Bitmap tempBitmap = new Bitmap(1, 1))
+            using (Graphics tempGraphics = Graphics.FromImage(tempBitmap))
+            {
+                for (int col = 1; col <= width; col++)
+                {
+                    int maxWidth = 0;
+                    for (int row = 1; row <= height; row++)
+                    {
+                        string cellValue = range.Cell(row, col).GetString();
+                        SizeF textSize = tempGraphics.MeasureString(cellValue, cellFont);
+                        maxWidth = Math.Max(maxWidth, (int)textSize.Width);
+                    }
+                    columnWidths[col - 1] = maxWidth + 10;
+                }
+            }
+
+            int totalWidth = columnWidths.Sum();
+            int cellHeight = new Font(cellFont.FontFamily, cellFont.Size, cellFont.Style).Height + 10;
+            int totalHeight = height * cellHeight;
+
+            using (Bitmap tableBitmap = new Bitmap(totalWidth, totalHeight))
+            using (Graphics graphics = Graphics.FromImage(tableBitmap))
+            {
+                graphics.Clear(Color.White);
+
+                using (Font font = new Font("Arial", 12))
+                {
+                    int xOffset = 0;
+                    for (int col = 1; col <= width; col++)
+                    {
+                        int yOffset = 0;
+                        for (int row = 1; row <= height; row++)
+                        {
+                            string cellValue = range.Cell(row, col).GetString();
+                            RectangleF cellRect = new RectangleF(xOffset, yOffset, columnWidths[col - 1], cellHeight);
+                            graphics.DrawString(cellValue, font, Brushes.Black, cellRect);
+                            yOffset += cellHeight;
+                        }
+                        xOffset += columnWidths[col - 1];
+                    }
+                }
+
+                string imagePath = Path.Combine(Path.GetTempPath(), fileName);
+                tableBitmap.Save(imagePath, ImageFormat.Png);
+                return imagePath;
+            }
+        }
+
+        private static async Task SendPhotosInOneMessage(string[] photoPaths)
+        {
+            var mediaGroup = new List<IAlbumInputMedia>();
+
+            foreach (var path in photoPaths)
+            {
+                var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
+                var inputFile = new InputMedia(stream, Path.GetFileName(path));
+                mediaGroup.Add(new InputMediaPhoto(inputFile));
+            }
+
+            await bot.SendMediaGroupAsync(new ChatId(-1002198769956), mediaGroup, replyToMessageId: 27);
         }
 
         public static Task ExcelViewer(DataGridView dataGridView, ComboBox comboBox, int i)

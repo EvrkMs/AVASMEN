@@ -139,19 +139,6 @@ namespace TelegramCode
             button.Enabled = true;
         }
 
-        public static async Task PhotoExcel(string screenshotPath)
-        {
-            // Отправляем скриншот в Telegram
-            using (var stream = new MemoryStream(System.IO.File.ReadAllBytes(screenshotPath)))
-            {
-                await bot.SendPhotoAsync(
-                     chatId: -1002198769956,
-                     photo: new InputOnlineFile(stream, "excel_table_screenshot.png"),
-                     replyToMessageId: 27
-                );
-            }
-        }
-
         public static async void SendMessageToSelectedNames(List<string> selectedNames, string message)
         {
             foreach (var name in selectedNames)
