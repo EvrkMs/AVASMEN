@@ -468,9 +468,9 @@ namespace AVASMENA
 
             await bot.SendTextMessageAsync(forwardChatId, listBox1StringBuilder.ToString(), replyToMessageId: TredID);
 
-            await ExcelHelper.UpdateExcel(values.viruchka, values.itog);
+            await ExcelHelper.UpdateExcel(values.viruchka);
             await ExcelHelper.ScreenExcel(filePath);
-            await ExcelHelper.ZPexcelОтчет(values.zarp1, values.zarp2, NameComboBoxOtchet, SecondComboBoxNameOtchet, Minus2);
+            await ExcelHelper.ZPexcelОтчет(values.zarp1, values.zarp2, values.zarp3, NameComboBoxOtchet, SecondComboBoxNameOtchet, ThertyComboBox, Minus2, Minus3);
             int Seyf = values.nalf - 1000;
             await ExcelHelper.SeyfMinus(Seyf);
             LoudAuto();

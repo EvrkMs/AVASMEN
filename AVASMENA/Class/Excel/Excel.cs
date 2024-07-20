@@ -230,7 +230,7 @@ namespace Excel
         }
 
 
-        public static Task UpdateExcel(int itog, int viruchka)
+        public static Task UpdateExcel(int viruchka)
         {
             try
             {
@@ -245,14 +245,12 @@ namespace Excel
 
                     if (existingRow != null)
                     {
-                        existingRow.Cell(2).Value = itog;
                         existingRow.Cell(3).Value = viruchka;
                     }
                     else
                     {
                         int row = worksheet.LastRowUsed().RowNumber() + 1;
                         worksheet.Cell(row, 1).Value = date;
-                        worksheet.Cell(row, 2).Value = itog;
                         worksheet.Cell(row, 3).Value = viruchka;
                     }
                     AutoFitColumnsAndRows(worksheet);
@@ -267,7 +265,7 @@ namespace Excel
             return Task.CompletedTask;
         }
 
-        public static Task ZPexcelОтчет(int zrp1, int zrp2, MaterialComboBox NameBox1, MaterialComboBox NameBox2, MaterialTextBox2 MinusBox)
+        public static Task ZPexcelОтчет(int zrp1, int zrp2, int zrp3, MaterialComboBox NameBox1, MaterialComboBox NameBox2, MaterialComboBox NameBox3, MaterialTextBox2 MinusBox, MaterialTextBox2 Minus3)
         {
             using (var workbook = new XLWorkbook(pather))
             {
@@ -311,6 +309,30 @@ namespace Excel
                     int emptyRowNameColl2 = worksheet2.LastRowUsed()?.RowNumber() + 1 ?? 1;
                     worksheet2.Cell(emptyRowNameColl2, 1).Value = date;
                     worksheet2.Cell(emptyRowNameColl2, 2).Value = zrp2;
+                }
+                worksheet2.Cell(2, 3).FormulaA1 = $"=SUM(B:B)";
+
+                if (!Minus3.Visible)
+                {
+                    workbook.Save();
+                    return Task.CompletedTask;
+                }
+
+                string name3 = NameBox3.Text;
+                var worksheet3 = workbook.Worksheet(name3);
+
+                // Проверка существования строки с текущей датой
+                var existingRow3 = worksheet3.RowsUsed().FirstOrDefault(row => row.Cell(1).GetString() == date);
+
+                if (existingRow3 != null)
+                {
+                    existingRow3.Cell(2).Value = zrp3;
+                }
+                else
+                {
+                    int emptyRowNameColl3 = worksheet3.LastRowUsed()?.RowNumber() + 1 ?? 1;
+                    worksheet3.Cell(emptyRowNameColl3, 1).Value = date;
+                    worksheet3.Cell(emptyRowNameColl3, 2).Value = zrp3;
                 }
                 worksheet2.Cell(2, 3).FormulaA1 = $"=SUM(B:B)";
 
