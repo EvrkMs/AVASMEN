@@ -189,7 +189,7 @@ namespace AVASMENA
         {
             ShtraphBox(listBox4, listBox5);
         }
-        
+
         private void CheakPlsHaurs()
         {
             if (materialTextBox1 == null || materialTextBox24 == null || Hours3 == null)
@@ -224,38 +224,38 @@ namespace AVASMENA
         }
         private void CheackHaurs()
         {
-                // Преобразуем текстовые значения в числа
-                int.TryParse(materialTextBox1.Text, out int hours1);
-                int.TryParse(materialTextBox24.Text, out int hours2);
-                int.TryParse(Hours3.Text, out int hours3);
+            // Преобразуем текстовые значения в числа
+            int.TryParse(materialTextBox1.Text, out int hours1);
+            int.TryParse(materialTextBox24.Text, out int hours2);
+            int.TryParse(Hours3.Text, out int hours3);
 
-                // Проверка видимости Hours3 и суммы часов
-                if (Hours3.Visible)
+            // Проверка видимости Hours3 и суммы часов
+            if (Hours3.Visible)
+            {
+                if (hours1 + hours2 + hours3 > 12)
                 {
-                    if (hours1 + hours2 + hours3 > 12)
-                    {
-                        MessageMaxHaurs();
-                        return;
-                    }
+                    MessageMaxHaurs();
+                    return;
                 }
-                // Проверка видимости materialTextBox24 и суммы часов
-                if (materialTextBox24.Visible)
+            }
+            // Проверка видимости materialTextBox24 и суммы часов
+            if (materialTextBox24.Visible)
+            {
+                if (hours1 + hours2 > 12)
                 {
-                    if (hours1 + hours2 > 12)
-                    {
-                        MessageMaxHaurs();
-                        return;
-                    }
+                    MessageMaxHaurs();
+                    return;
                 }
-                // Проверка только первого текстбокса
-                if(!materialTextBox24.Visible && !Hours3.Visible)
+            }
+            // Проверка только первого текстбокса
+            if (!materialTextBox24.Visible && !Hours3.Visible)
+            {
+                if (hours1 > 12)
                 {
-                    if (hours1 > 12)
-                    {
-                        MessageMaxHaurs();
-                        return;
-                    }
+                    MessageMaxHaurs();
+                    return;
                 }
+            }
         }
 
         private void ResetHours()
@@ -379,7 +379,7 @@ namespace AVASMENA
         }
         private void VisableReset(List<MaterialTextBox2> Boxs)
         {
-            foreach(var box in Boxs)
+            foreach (var box in Boxs)
             {
                 if (!box.Visible)
                     box.Text = "0";
@@ -685,7 +685,7 @@ namespace AVASMENA
                     await bot.SendTextMessageAsync(chatID, message, replyToMessageId: names[name]);
                 }
 
-                if(avans || zp)
+                if (avans || zp)
                     isAvans = true;
                 await ExcelHelper.AddRecordToExcel(summ, comm, isAvans, name); // Добавили параметр name
                 await ExcelHelper.AvansMinus(summ, name, premia);

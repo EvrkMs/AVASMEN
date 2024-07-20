@@ -1,6 +1,8 @@
 using ClosedXML.Excel;
 using jsonData;
 using MaterialSkin.Controls;
+using OfficeOpenXml;
+using OfficeOpenXml.Drawing.Chart;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,16 +12,10 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TelegramCode;
-using OfficeOpenXml;
-using OfficeOpenXml.Drawing.Chart;
-using Color = System.Drawing.Color;
-using Font = System.Drawing.Font;
-using DocumentFormat.OpenXml.Spreadsheet;
 using Telegram.Bot;
 using Telegram.Bot.Types;
-using Telegram.Bot.Types.Enums;
-using Telegram.Bot.Types.InputFiles;
+using Color = System.Drawing.Color;
+using Font = System.Drawing.Font;
 
 namespace Excel
 {
@@ -99,20 +95,20 @@ namespace Excel
         {
             worksheet.Cell(1, 1).Value = "Дата и время";
             worksheet.Cell(1, 2).Value = "выручка дней";
-            worksheet.Cell(1, 3).Value = "итоги дней";
-            worksheet.Cell(1, 4).Value = "расходы";
-            worksheet.Cell(1, 5).Value = "_";
-            worksheet.Cell(1, 6).Value = "Категория";
-            worksheet.Cell(1, 7).Value = "Значение";
-            worksheet.Cell(1, 8).Value = "Выручка месяц";
-            worksheet.Cell(2, 8).FormulaA1 = "=SUM(B:B)";
+            worksheet.Cell(1, 3).Value = "расходы";
+            worksheet.Cell(1, 4).Value = "_";
+            worksheet.Cell(1, 5).Value = "Категория";
+            worksheet.Cell(1, 6).Value = "Значение";
+            worksheet.Cell(1, 7).Value = "Выручка месяц";
+            worksheet.Cell(2, 7).FormulaA1 = "=SUM(B:B)";
+            worksheet.Cell(2, 1).Value = "Доход по отчётам";
 
-            worksheet.Cell(2, 6).Value = "Расходы";
-            worksheet.Cell(2, 7).FormulaA1 = "=SUM(D65:D10000)"; // Расходы начинаются с 65 строки и далее
-            worksheet.Cell(3, 6).Value = "Авансы";
-            worksheet.Cell(3, 7).FormulaA1 = "=SUM(D3:D64)";
-            worksheet.Cell(4, 6).Value = "Итог";
-            worksheet.Cell(4, 7).FormulaA1 = "=H2-G2-G3";
+            worksheet.Cell(2, 5).Value = "Расходы";
+            worksheet.Cell(2, 6).FormulaA1 = "=SUM(C65:C10000)"; // Расходы начинаются с 65 строки и далее
+            worksheet.Cell(3, 5).Value = "Авансы";
+            worksheet.Cell(3, 6).FormulaA1 = "=SUM(C3:C64)";
+            worksheet.Cell(4, 5).Value = "Итог";
+            worksheet.Cell(4, 6).FormulaA1 = "=G2-F2-F3";
 
             int row = 3; // Начальная строка для добавления дней
             int daysInMonth = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
@@ -125,20 +121,31 @@ namespace Excel
                 worksheet.Cell(row, 1).Value = $"{dayString} дневная";
                 row++;
             }
+            worksheet.Cell(65, 1).Value = "Выписанные расходы";
 
             int rowAvans = 3; // Начальная строка для добавления авансов
-            int avansColumn = 4;
-            int nameColumn = 5;
+            int avansColumn = 3;
+            int nameColumn = 4;
             foreach (var name in nameList)
             {
                 worksheet.Cell(rowAvans, avansColumn).Value = 0;
-                worksheet.Cell(rowAvans, nameColumn).Value = $"{name} Аванс";
+                var cell = worksheet.Cell(rowAvans, nameColumn);
+                cell.Value = $"{name} Аванс";
+                cell.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Right;
                 rowAvans += 1;
             }
+
+            // Применение цвета к диапазонам ячеек
+            worksheet.Range("A1:J1").Style.Fill.BackgroundColor = XLColor.Green;
+            worksheet.Range("A2:B2").Style.Fill.BackgroundColor = XLColor.Green;
+            worksheet.Range("A3:B64").Style.Fill.BackgroundColor = XLColor.LightBlue;
+            worksheet.Range("A65:D100").Style.Fill.BackgroundColor = XLColor.LightPink;
+            worksheet.Range("C3:D12").Style.Fill.BackgroundColor = XLColor.LightPink;
 
             // Автоматически подстраиваем высоту строк
             AutoFitColumnsAndRows(worksheet);
         }
+
         private static void CreateChartWithEPPlus(string filePath, string sheetName)
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial; // Установите лицензию на некоммерческое использование
@@ -155,7 +162,7 @@ namespace Excel
 
                 var chart = worksheet.Drawings.AddChart("Круговая диаграмма", eChartType.Pie) as ExcelPieChart;
                 chart.Title.Text = "Категория и Значение";
-                chart.Series.Add(worksheet.Cells["G2:G4"], worksheet.Cells["F2:F4"]);
+                chart.Series.Add(worksheet.Cells["F2:F4"], worksheet.Cells["E2:E4"]);
                 chart.SetPosition(5, 0, 5, 0); // Позиционируем диаграмму на F6
                 chart.SetSize(600, 400); // Устанавливаем размер диаграммы
 
@@ -473,16 +480,18 @@ namespace Excel
         }
 
 
+
+
         public static async Task ScreenExcel(string path)
         {
-            Console.WriteLine("Метод ScreenExcel вызван.");
+            Logger.Log("Метод ScreenExcel вызван.");
 
             try
             {
-                Console.WriteLine($"Проверка существования файла: {path}");
+                Logger.Log($"Проверка существования файла: {path}");
                 if (!System.IO.File.Exists(path))
                 {
-                    Console.WriteLine($"Файл не найден: {path}");
+                    Logger.Log($"Файл не найден: {path}");
                     return;
                 }
 
@@ -498,11 +507,11 @@ namespace Excel
                     var worksheet = workbook.Worksheets.FirstOrDefault();
                     if (worksheet == null)
                     {
-                        Console.WriteLine("Не удалось найти рабочий лист.");
+                        Logger.Log("Не удалось найти рабочий лист.");
                         return;
                     }
 
-                    Console.WriteLine("Начинается сохранение данных рабочего листа в изображение.");
+                    Logger.Log("Начинается сохранение данных рабочего листа в изображение.");
                     // Сохранение данных рабочего листа в изображение
                     int width = worksheet.ColumnsUsed().Count();
                     int height = worksheet.RowsUsed().Count();
@@ -517,7 +526,7 @@ namespace Excel
                             int maxWidth = 0;
                             for (int row = 1; row <= height; row++)
                             {
-                                string cellValue = worksheet.Cell(row, col).GetString();
+                                string cellValue = worksheet.Cell(row, col).GetFormattedString();
                                 SizeF textSize = tempGraphics.MeasureString(cellValue, cellFont);
                                 maxWidth = Math.Max(maxWidth, (int)textSize.Width);
                             }
@@ -542,8 +551,20 @@ namespace Excel
                                 int yOffset = 0;
                                 for (int row = 1; row <= height; row++)
                                 {
-                                    string cellValue = worksheet.Cell(row, col).GetString();
-                                    RectangleF cellRect = new RectangleF(xOffset, yOffset, columnWidths[col - 1], cellHeight);
+                                    var cell = worksheet.Cell(row, col);
+                                    string cellValue = cell.GetFormattedString();
+                                    var cellRect = new RectangleF(xOffset, yOffset, columnWidths[col - 1], cellHeight);
+
+                                    // Закрашиваем ячейку, если есть заливка
+                                    if (cell.Style.Fill.BackgroundColor.ColorType == XLColorType.Color)
+                                    {
+                                        var backgroundColor = XLColorToColor(cell.Style.Fill.BackgroundColor);
+                                        using (Brush brush = new SolidBrush(backgroundColor))
+                                        {
+                                            graphics.FillRectangle(brush, cellRect);
+                                        }
+                                    }
+
                                     graphics.DrawString(cellValue, font, Brushes.Black, cellRect);
                                     yOffset += cellHeight;
                                 }
@@ -552,16 +573,27 @@ namespace Excel
                         }
 
                         dataBitmap.Save(dataImagePath, ImageFormat.Png);
-                        Console.WriteLine("Скриншот данных таблицы успешно сохранен.");
+                        Logger.Log("Скриншот данных таблицы успешно сохранен.");
                     }
 
-                    Console.WriteLine("Создание и сохранение изображения диаграммы.");
+                    Logger.Log("Создание и сохранение изображения диаграммы.");
                     // Создание и отправка изображения диаграммы
-                    var categoryRange = worksheet.Range("F2:F4");
-                    var valueRange = worksheet.Range("G2:G4");
+                    var categoryRange = worksheet.Range("E2:E4");
+                    var valueRange = worksheet.Range("F2:F4");
 
                     string[] categories = categoryRange.Cells().Select(cell => cell.GetString()).ToArray();
-                    float[] values = valueRange.Cells().Select(cell => float.Parse(cell.GetString())).ToArray();
+                    float[] values = valueRange.Cells().Select(cell =>
+                    {
+                        if (float.TryParse(cell.GetString(), out float result))
+                        {
+                            return result;
+                        }
+                        else
+                        {
+                            Logger.Log($"Не удалось преобразовать значение '{cell.GetString()}' в число.");
+                            return 0; // Или выберите другой способ обработки некорректных данных
+                        }
+                    }).ToArray();
 
                     var chartBitmap = new Bitmap(600, 400);
                     using (var chartGraphics = Graphics.FromImage(chartBitmap))
@@ -573,26 +605,26 @@ namespace Excel
                     }
 
                     chartBitmap.Save(chartImagePath, ImageFormat.Png);
-                    Console.WriteLine("Скриншот диаграммы успешно сохранен.");
+                    Logger.Log("Скриншот диаграммы успешно сохранен.");
 
                     // Сохранение изображений таблиц
-                    Console.WriteLine("Сохранение изображений таблиц.");
-                    avansTablePath = SaveTableAsImage(worksheet.Range("D3:E64").RangeUsed(), "avans_table.png");
-                    categoryValueTablePath = SaveTableAsImage(worksheet.Range("F1:G4").RangeUsed(), "category_value_table.png");
-                    dnevnaya = SaveTableAsImage(worksheet.Range("A3:C64").RangeUsed(), "dnevnaya.png");
+                    Logger.Log("Сохранение изображений таблиц.");
+                    avansTablePath = SaveTableAsImage(worksheet.Range("C3:D64").RangeUsed(), "avans_table.png");
+                    categoryValueTablePath = SaveTableAsImage(worksheet.Range("E1:F4").RangeUsed(), "category_value_table.png");
+                    dnevnaya = SaveTableAsImage(worksheet.Range("A1:B64").RangeUsed(), "dnevnaya.png");
                     rashod = SaveTableAsImage(worksheet.Range("A65:E700").RangeUsed(), "rashod.png");
 
                     // Отправка всех изображений в виде альбома
-                    Console.WriteLine("Отправка всех изображений в виде альбома.");
+                    Logger.Log("Отправка всех изображений в виде альбома.");
                     await bot.SendTextMessageAsync(-1002198769956, $"{DateTime.Now: yyyy.MM.dd}", replyToMessageId: 27);
                     await SendPhotosInOneMessage(new[] { dataImagePath, dnevnaya, rashod, avansTablePath, categoryValueTablePath, chartImagePath });
-                    Console.WriteLine("Изображения успешно отправлены.");
+                    Logger.Log("Изображения успешно отправлены.");
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Произошла ошибка: {ex.Message}");
-                Console.WriteLine(ex.StackTrace);
+                Logger.Log($"Произошла ошибка: {ex.Message}");
+                Logger.Log(ex.StackTrace);
             }
         }
 
@@ -635,7 +667,7 @@ namespace Excel
                     int maxWidth = 0;
                     for (int row = 1; row <= height; row++)
                     {
-                        string cellValue = range.Cell(row, col).GetString();
+                        string cellValue = range.Cell(row, col).GetFormattedString();
                         SizeF textSize = tempGraphics.MeasureString(cellValue, cellFont);
                         maxWidth = Math.Max(maxWidth, (int)textSize.Width);
                     }
@@ -660,8 +692,20 @@ namespace Excel
                         int yOffset = 0;
                         for (int row = 1; row <= height; row++)
                         {
-                            string cellValue = range.Cell(row, col).GetString();
-                            RectangleF cellRect = new RectangleF(xOffset, yOffset, columnWidths[col - 1], cellHeight);
+                            var cell = range.Cell(row, col);
+                            string cellValue = cell.GetFormattedString();
+                            var cellRect = new RectangleF(xOffset, yOffset, columnWidths[col - 1], cellHeight);
+
+                            // Закрашиваем ячейку, если есть заливка
+                            if (cell.Style.Fill.BackgroundColor.ColorType == XLColorType.Color)
+                            {
+                                var backgroundColor = XLColorToColor(cell.Style.Fill.BackgroundColor);
+                                using (Brush brush = new SolidBrush(backgroundColor))
+                                {
+                                    graphics.FillRectangle(brush, cellRect);
+                                }
+                            }
+
                             graphics.DrawString(cellValue, font, Brushes.Black, cellRect);
                             yOffset += cellHeight;
                         }
@@ -673,6 +717,11 @@ namespace Excel
                 tableBitmap.Save(imagePath, ImageFormat.Png);
                 return imagePath;
             }
+        }
+
+        private static Color XLColorToColor(XLColor xlColor)
+        {
+            return Color.FromArgb(xlColor.Color.R, xlColor.Color.G, xlColor.Color.B);
         }
 
         private static async Task SendPhotosInOneMessage(string[] photoPaths)
@@ -688,6 +737,7 @@ namespace Excel
 
             await bot.SendMediaGroupAsync(new ChatId(-1002198769956), mediaGroup, replyToMessageId: 27);
         }
+
 
 
 

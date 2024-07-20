@@ -1,5 +1,4 @@
-﻿using DocumentFormat.OpenXml.Spreadsheet;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,7 +15,7 @@ namespace jsonData
         public string TokenBot { get; set; }
         public long ForwardChat { get; set; }
         public long ChatId { get; set; }
-        public List<string> StopsAvans {  get; set; }
+        public List<string> StopsAvans { get; set; }
 
         private static readonly string jsonReserv = "Class\\JSON\\userData.json";
         private static readonly string jsonPath = "\\\\192.168.88.254\\AVASMENAUpdate\\Needed\\Config";
