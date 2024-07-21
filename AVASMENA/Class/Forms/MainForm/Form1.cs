@@ -34,7 +34,6 @@ namespace AVASMENA
         private bool RemoveDa = false;
         public List<TabPage> _RootList;
         public List<TabPage> _Auth;
-        public List<MaterialCheckbox> _labelPopravka;
         public List<Label> _labelList;
 
         public MainForm()
@@ -72,6 +71,10 @@ namespace AVASMENA
             WhoVipisl.Items.Add("нет");
             ThertyComboBox.Items.Add("нет");
             SetupTimer();
+        }
+        static async Task<bool> CheckForUpdatesAsync()
+        {
+            return await UpdateChecker.CheckForUpdatesAsync();
         }
         private void LoadButton_Click(object sender, EventArgs e)
         {
@@ -481,10 +484,6 @@ namespace AVASMENA
             await ExcelHelper.ZPexcelОтчет(values.zarp1, values.zarp2, values.zarp3, NameComboBoxOtchet, SecondComboBoxNameOtchet, ThertyComboBox, Minus2, Minus3);
             int Seyf = values.nalf - 1000;
             await ExcelHelper.SeyfMinus(Seyf);
-            foreach (var i in _labelPopravka)
-            {
-                i.Checked = false;
-            }
             return;
         }
 
@@ -557,13 +556,6 @@ namespace AVASMENA
 
         private async void MainForm_Load(object sender, EventArgs e)
         {
-            bool shouldClose = await UpdateChecker.CheckForUpdatesAsync();
-            if (shouldClose)
-            {
-                this.Close();
-                return;
-            }
-
             materialTabControl1.SelectedTab = AutherPage;
             await ExcelHelper.ExcelCreated();
             VisibleBox(false);
@@ -675,10 +667,6 @@ namespace AVASMENA
 
         private async void Расход_Click(object sender, EventArgs e)
         {
-            foreach (var i in _labelPopravka)
-            {
-                i.Checked = false;
-            }
             if (string.IsNullOrWhiteSpace(materialTextBox25.Text) || string.IsNullOrWhiteSpace(materialTextBox26.Text) || string.IsNullOrWhiteSpace(comboBoxNameRas.Text))
             {
                 MessageBox.Show("Вы заполнели не все поля");
@@ -756,9 +744,6 @@ namespace AVASMENA
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // Проверяем, действительно ли пользователь хочет закрыть программу, кроме случая обновления
-            if (!UpdateChecker.ShouldCloseApp)
-            {
                 DialogResult result = MessageBox.Show("Вы уверены, что хотите закрыть программу?", "Подтверждение закрытия", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 // Если пользователь выбрал "Нет", отменяем закрытие программы
@@ -766,7 +751,6 @@ namespace AVASMENA
                 {
                     e.Cancel = true; // Отменяем закрытие формы
                 }
-            }
         }
     }
 }

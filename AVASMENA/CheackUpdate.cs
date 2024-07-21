@@ -1,19 +1,20 @@
 ﻿using System;
 using System.IO;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json.Linq;
 
 public class UpdateChecker
 {
-    // Путь к файлу version.json на сетевом диске
-    private static readonly string VersionCheckPath = @"\\192.168.88.254\AVASMENAUpdate\publisher\version.json";
+    // URL API для проверки версии
+    private static readonly string VersionCheckUrl = "http://192.168.88.116:3001/api/version?apiKey=853ac29b5540bc9f72df1cda971d24bb1e349cd2de7319661f442c538d79dfdd";
 
-    // Путь к папке с обновлениями на сетевом диске
-    private static readonly string UpdatePath = @"\\192.168.88.254\AVASMENAUpdate\publisher\Output\";
+    // URL для загрузки обновления
+    private static readonly string DownloadUrl = "http://192.168.88.116:3001/api/download?apiKey=853ac29b5540bc9f72df1cda971d24bb1e349cd2de7319661f442c538d79dfdd";
 
     // Текущая версия установленной программы
-    private static readonly string CurrentVersion = "1.0.2";
+    private static readonly string CurrentVersion = "1.0.5";
 
     public static bool ShouldCloseApp { get; private set; } = false;
 
@@ -21,11 +22,12 @@ public class UpdateChecker
     {
         try
         {
-            // Проверка наличия файла version.json
-            if (File.Exists(VersionCheckPath))
+            using (HttpClient client = new HttpClient())
             {
-                // Чтение содержимого файла version.json
-                var jsonContent = File.ReadAllText(VersionCheckPath);
+                // Запрос версии с сервера
+                HttpResponseMessage response = await client.GetAsync(VersionCheckUrl);
+                response.EnsureSuccessStatusCode();
+                string jsonContent = await response.Content.ReadAsStringAsync();
                 var json = JObject.Parse(jsonContent);
 
                 // Извлечение версии и имени файла обновления из файла
@@ -35,26 +37,13 @@ public class UpdateChecker
                 // Сравнение текущей версии программы с последней доступной версией
                 if (latestVersion != CurrentVersion)
                 {
-                    string setupFilePath = Path.Combine(UpdatePath, setupFileName);
-
-                    if (File.Exists(setupFilePath))
-                    {
-                        ShowUpdateDialog(setupFilePath);
-                        return true;
-                    }
-                    else
-                    {
-                        Logger.Log($"Файл {setupFileName} не найден по пути {UpdatePath}.");
-                    }
+                    ShowUpdateDialog();
+                    return false;
                 }
                 else
                 {
                     Logger.Log("У вас установлена последняя версия.");
                 }
-            }
-            else
-            {
-                Logger.Log("Файл version.json не найден.");
             }
         }
         catch (Exception ex)
@@ -62,10 +51,10 @@ public class UpdateChecker
             Logger.Log($"Ошибка при проверке обновлений: {ex.Message}");
         }
 
-        return false;
+        return true;
     }
 
-    private static void ShowUpdateDialog(string setupFilePath)
+    private static void ShowUpdateDialog()
     {
         DialogResult result = MessageBox.Show(
             "Сначала нужно обновить, чтобы продолжить работу.",
@@ -75,25 +64,33 @@ public class UpdateChecker
 
         if (result == DialogResult.OK)
         {
-            ShouldCloseApp = true;
-            DownloadAndInstallUpdate(setupFilePath);
+            DownloadAndInstallUpdate().GetAwaiter().GetResult();
         }
     }
 
-    private static void DownloadAndInstallUpdate(string setupFilePath)
+    private static async Task DownloadAndInstallUpdate()
     {
         try
         {
             // Локальный путь для сохранения установочного файла
-            string localSetupFilePath = Path.Combine(Path.GetTempPath(), Path.GetFileName(setupFilePath));
+            string localSetupFilePath = Path.Combine(Path.GetTempPath(), "setup.exe");
 
-            // Копирование файла с сетевого пути на локальный компьютер
-            File.Copy(setupFilePath, localSetupFilePath, true);
-            Logger.Log("Файл успешно скачан.");
+            using (HttpClient client = new HttpClient())
+            {
+                // Загрузка файла обновления
+                HttpResponseMessage response = await client.GetAsync(DownloadUrl);
+                response.EnsureSuccessStatusCode();
 
-            // Запуск установочного файла
-            System.Diagnostics.Process.Start(localSetupFilePath);
-            Logger.Log("Запуск установочного файла...");
+                using (var fs = new FileStream(localSetupFilePath, FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    await response.Content.CopyToAsync(fs);
+                }
+                Logger.Log("Файл успешно скачан.");
+
+                // Запуск установочного файла
+                System.Diagnostics.Process.Start(localSetupFilePath);
+                Logger.Log("Запуск установочного файла...");
+            }
         }
         catch (Exception ex)
         {

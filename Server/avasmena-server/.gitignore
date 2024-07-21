@@ -1,3 +1,4 @@
 node_modules/
 certs/client/*
 certs/server.*
+.env

@@ -391,7 +391,7 @@ namespace Excel
         private static void UpdateAvansRecord(XLWorkbook workbook, string name, int amount)
         {
             var worksheet = workbook.Worksheet($"{DateTime.Now.Year}.{DateTime.Now:MM}");
-            var avansRow = worksheet.RowsUsed().FirstOrDefault(row => row.Cell(5).GetString() == $"{name} Аванс");
+            var avansRow = worksheet.RowsUsed().FirstOrDefault(row => row.Cell(4).GetString() == $"{name} Аванс");
 
             if (avansRow != null)
             {
