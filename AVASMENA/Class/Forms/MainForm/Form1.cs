@@ -557,6 +557,13 @@ namespace AVASMENA
 
         private async void MainForm_Load(object sender, EventArgs e)
         {
+            bool shouldClose = await UpdateChecker.CheckForUpdatesAsync();
+            if (shouldClose)
+            {
+                this.Close();
+                return;
+            }
+
             materialTabControl1.SelectedTab = AutherPage;
             await ExcelHelper.ExcelCreated();
             VisibleBox(false);
@@ -579,7 +586,6 @@ namespace AVASMENA
             }
             UserDataLoader.LoadBttn(dataGridViewJson);
             AvansCheack.Checked = true;
-            return;
         }
 
         private async void Штраф_Click(object sender, EventArgs e)
@@ -750,13 +756,16 @@ namespace AVASMENA
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // Проверяем, действительно ли пользователь хочет закрыть программу
-            DialogResult result = MessageBox.Show("Вы уверены, что хотите закрыть программу?", "Подтверждение закрытия", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            // Если пользователь выбрал "Нет", отменяем закрытие программы
-            if (result == DialogResult.No)
+            // Проверяем, действительно ли пользователь хочет закрыть программу, кроме случая обновления
+            if (!UpdateChecker.ShouldCloseApp)
             {
-                e.Cancel = true; // Отменяем закрытие формы
+                DialogResult result = MessageBox.Show("Вы уверены, что хотите закрыть программу?", "Подтверждение закрытия", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                // Если пользователь выбрал "Нет", отменяем закрытие программы
+                if (result == DialogResult.No)
+                {
+                    e.Cancel = true; // Отменяем закрытие формы
+                }
             }
         }
     }
