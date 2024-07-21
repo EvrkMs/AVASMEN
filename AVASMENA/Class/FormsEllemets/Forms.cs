@@ -2,39 +2,47 @@
 using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace AVASMENA
 {
     public partial class MainForm
     {
+        private const string ShtraphFilePath = "Class\\forms\\files\\shtraph.txt";
+        private const string FontFamily = "Microsoft Sans Serif";
+        private const int FontSizeLarge = 17;
+        private const int FontSizeSmall = 10;
+        private const string TransparentColor = "Transparent";
+        private const string ForeColor = "LimeGreen";
         private static readonly List<string> namesList = UserDataLoader.LoadFromFile().NameList;
         private static readonly List<string> Login = new List<string> { "Admin", "Root" };
-        private static List<Label> _labelList;
-        public List<TabPage> _RootList;
-        public List<TabPage> _Auth;
-        public List<MaterialCheckbox> _labelPopravka;
 
-        public static void Setup1(List<Label> labels)
+        public static void SetupComBox(ComboBox box)
+        {
+            foreach (var name in Login)
+                box.Items.Add(name);
+        }
+        public static void SetupLabels(List<Label> labels, float fontSize, Color foreColor)
         {
             foreach (var label in labels)
             {
-                label.BackColor = System.Drawing.Color.Transparent;
-                label.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F);
+                label.BackColor = Color.Transparent;
+                label.Font = new Font(FontFamily, fontSize);
                 label.AutoSize = true;
-                label.ForeColor = System.Drawing.Color.LimeGreen;
+                label.ForeColor = foreColor;
             }
+        }
+        public static void Setup1(List<Label> labels)
+        {
+            SetupLabels(labels, FontSizeLarge, Color.LimeGreen);
         }
         public static void Setup2(params Label[] labels)
         {
-            foreach (var label in labels)
-            {
-                label.BackColor = System.Drawing.Color.Transparent;
-                label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-                label.AutoSize = true;
-                label.ForeColor = System.Drawing.Color.LimeGreen;
-            }
+            SetupLabels(labels.ToList(), FontSizeSmall, Color.LimeGreen);
         }
+
         public static void SetupTabPage(params TabPage[] tabPage)
         {
             foreach (var tab in tabPage)
@@ -69,18 +77,10 @@ namespace AVASMENA
         }
         public static void LoadItemsToListBox(ListBox list)
         {
-            // Путь к текстовому файлу с пунктами
-            string filePath = "Class\\forms\\files\\shtraph.txt";
-
             try
             {
-                // Читаем содержимое файла
-                string[] lines = System.IO.File.ReadAllLines(filePath);
-
-                // Очищаем ListBox5 перед загрузкой новых данных
+                string[] lines = System.IO.File.ReadAllLines(ShtraphFilePath);
                 list.Items.Clear();
-
-                // Добавляем каждую строку из файла в ListBox5
                 foreach (string line in lines)
                 {
                     list.Items.Add(line);
@@ -88,8 +88,7 @@ namespace AVASMENA
             }
             catch (Exception ex)
             {
-                // Если возникла ошибка при чтении файла, выводим сообщение об ошибке
-                MessageBox.Show("Ошибка при загрузке пунктов из файла: " + ex.Message);
+                MessageBox.Show($"Ошибка при загрузке пунктов из файла {ShtraphFilePath}: {ex.Message}", "Ошибка загрузки", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         public static void RemoveTabPage(MaterialTabControl TabC, List<TabPage> tabs)
@@ -100,12 +99,12 @@ namespace AVASMENA
                     TabC.TabPages.Remove(tab);
             }
         }
-        public static void SetupComBox(MaterialComboBox ComBox)
+        public static void SetupComboBoxes(MaterialComboBox comboBox, List<string> names)
         {
-            ComBox.Items.Clear();
-            foreach (var name in Login)
+            comboBox.Items.Clear();
+            foreach (var name in names)
             {
-                ComBox.Items.Add(name);
+                comboBox.Items.Add(name);
             }
         }
         public static void PasswordBoxText(MaterialTextBox2 PasswordBox, bool i)
@@ -116,6 +115,7 @@ namespace AVASMENA
         {
             TabSel.Visible = i;
         }
+
         public static void InitializedataGrid(DataGridView dataGridViewJson)
         {
             dataGridViewJson.Columns.Clear();

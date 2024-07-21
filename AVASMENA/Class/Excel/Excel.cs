@@ -245,13 +245,13 @@ namespace Excel
 
                     if (existingRow != null)
                     {
-                        existingRow.Cell(3).Value = viruchka;
+                        existingRow.Cell(2).Value = viruchka;
                     }
                     else
                     {
                         int row = worksheet.LastRowUsed().RowNumber() + 1;
                         worksheet.Cell(row, 1).Value = date;
-                        worksheet.Cell(row, 3).Value = viruchka;
+                        worksheet.Cell(row, 2).Value = viruchka;
                     }
                     AutoFitColumnsAndRows(worksheet);
                     workbook.Save();
@@ -260,11 +260,12 @@ namespace Excel
             catch (Exception ex)
             {
                 Console.WriteLine($"Ошибка: {ex.Message}");
+                // Логирование ошибки
+                Logger.Log($"Ошибка в методе UpdateExcel: {ex.Message}");
             }
 
             return Task.CompletedTask;
         }
-
         public static Task ZPexcelОтчет(int zrp1, int zrp2, int zrp3, MaterialComboBox NameBox1, MaterialComboBox NameBox2, MaterialComboBox NameBox3, MaterialTextBox2 MinusBox, MaterialTextBox2 Minus3)
         {
             using (var workbook = new XLWorkbook(pather))
@@ -357,15 +358,15 @@ namespace Excel
                     {
                         if (existingRow != null)
                         {
-                            existingRow.Cell(4).Value = amount;
-                            existingRow.Cell(5).Value = comment;
+                            existingRow.Cell(3).Value = amount;
+                            existingRow.Cell(4).Value = comment;
                         }
                         else
                         {
                             int row = worksheet.LastRowUsed()?.RowNumber() + 1 ?? 1;
                             worksheet.Cell(row, 1).Value = date;
-                            worksheet.Cell(row, 4).Value = amount;
-                            worksheet.Cell(row, 5).Value = comment;
+                            worksheet.Cell(row, 3).Value = amount;
+                            worksheet.Cell(row, 4).Value = comment;
                         }
                     }
 
@@ -395,15 +396,15 @@ namespace Excel
             if (avansRow != null)
             {
                 // Извлекаем текущее значение и добавляем новое значение
-                int currentAmount = avansRow.Cell(4).GetValue<int>();
-                avansRow.Cell(4).Value = currentAmount + amount;
+                int currentAmount = avansRow.Cell(3).GetValue<int>();
+                avansRow.Cell(3).Value = currentAmount + amount;
             }
             else
             {
                 // Добавляем новую строку, если она не существует
                 int lastRow = worksheet.LastRowUsed()?.RowNumber() + 1 ?? 1;
-                worksheet.Cell(lastRow, 5).Value = $"{name} Аванс";
-                worksheet.Cell(lastRow, 4).Value = amount;
+                worksheet.Cell(lastRow, 4).Value = $"{name} Аванс";
+                worksheet.Cell(lastRow, 3).Value = amount;
             }
         }
 
