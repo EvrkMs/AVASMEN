@@ -36,6 +36,7 @@ namespace AVASMENA
         public List<TabPage> _Auth;
         public List<Label> _labelList;
 
+
         public MainForm()
         {
             var materialSkinManager = MaterialSkinManager.Instance;
@@ -46,7 +47,7 @@ namespace AVASMENA
 
             InitializeComponent();
             //лист вкладок доступных только админу
-            _RootList = new List<TabPage> { ShtraphPage, InventPage, ManPage };
+            _RootList = new List<TabPage> { ShtraphPage, InventPage, ManPage, AvansPage };
             //вкладка аунтификации
             _Auth = new List<TabPage> { AutherPage };
             //лист текстов
@@ -61,7 +62,7 @@ namespace AVASMENA
             InitializeListBox(listBoxNameInv);
 
             SetupListBox(listBox1, listBox2, listBox3, listBoxRas, listBoxNameInv);
-            SetupTabPage(AutherPage, OtchetPage, AvansPage, SeyfPlusPage, RashodPage, ShtraphPage, InventPage,ManPage);
+            SetupTabPage(AutherPage, OtchetPage, AvansPage, SeyfPlusPage, RashodPage, ShtraphPage, InventPage, ManPage);
             Setup1(_labelList);
             Setup2(label19, label20, label22);
             SetupComBox(LoginBox);
@@ -137,14 +138,7 @@ namespace AVASMENA
             if (LoginBox.Text == "Admin")
             {
                 RemoveDa = true;
-                MinusPoSeyf.Visible = false;
-                Premia.Visible = false;
                 RemoveTabPage(materialTabControl1, _RootList);
-            }
-            else
-            {
-                Premia.Visible = true;
-                MinusPoSeyf.Visible = true;
             }
         }
 
@@ -365,6 +359,8 @@ namespace AVASMENA
             int itog = viruchka - zp4;
 
             int zarp1 = CalculateZarp(hours1, zp, minus1);
+            if (!Minus1.Visible)
+                zarp1 = CalculateZarp(hours1, zp, minus);
             int zarp2 = CalculateZarp(hours2, zp, minus2);
             int zarp3 = CalculateZarp(hours3, zp, minus3);
 
@@ -465,9 +461,6 @@ namespace AVASMENA
             long userId = users[selectedName];
             int TredID = 2;
 
-            var zp1 = $"{DateTime.Now:yyyy.MM.dd}\n+{values.zarp1}p";
-            var zp2 = $"{DateTime.Now:yyyy.MM.dd}\n+{values.zarp2}p";
-
             StringBuilder listBox1StringBuilder = new StringBuilder();
             listBox1.Invoke((MethodInvoker)delegate
             {
@@ -475,7 +468,7 @@ namespace AVASMENA
                     listBox1StringBuilder.AppendLine(item.ToString());
             });
             await Telegrame.ProcessUpdates(userId, TredID, selectedName, listBox2, Отправить);
-            await Telegrame.SendMessageAsync(zp1, zp2, values.name, values.name2, values.name3, Отправить);
+            await Telegrame.SendMessageAsync(values.zarp1, values.zarp2, values.zarp3, values.name, values.name2, values.name3, Отправить);
 
             await bot.SendTextMessageAsync(forwardChatId, listBox1StringBuilder.ToString(), replyToMessageId: TredID);
 
@@ -744,13 +737,13 @@ namespace AVASMENA
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-                DialogResult result = MessageBox.Show("Вы уверены, что хотите закрыть программу?", "Подтверждение закрытия", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Вы уверены, что хотите закрыть программу?", "Подтверждение закрытия", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                // Если пользователь выбрал "Нет", отменяем закрытие программы
-                if (result == DialogResult.No)
-                {
-                    e.Cancel = true; // Отменяем закрытие формы
-                }
+            // Если пользователь выбрал "Нет", отменяем закрытие программы
+            if (result == DialogResult.No)
+            {
+                e.Cancel = true; // Отменяем закрытие формы
+            }
         }
     }
 }

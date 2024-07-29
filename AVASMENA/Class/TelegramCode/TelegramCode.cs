@@ -1,4 +1,6 @@
-﻿using jsonData;
+﻿using DocumentFormat.OpenXml.Bibliography;
+using Excel;
+using jsonData;
 using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
@@ -10,7 +12,7 @@ using Telegram.Bot.Types;
 
 namespace TelegramCode
 {
-    public static class Telegrame
+    public class Telegrame
     {
         private static readonly Dictionary<string, int> userOffsets = new Dictionary<string, int>();
         private static readonly Dictionary<string, long> users = UserDataLoader.LoadFromFile().Users;
@@ -120,18 +122,31 @@ namespace TelegramCode
             return;
         }
 
-        public static async Task SendMessageAsync(string zp1, string zp2, string name, string name2, string name3, MaterialButton button)
+        public static async Task SendMessageAsync(int zap1, int zap2, int zap3, string name, string name2, string name3, MaterialButton button)
         {
             if (string.IsNullOrWhiteSpace(name))
                 return;
 
+            var zp1 = $"{DateTime.Now:yyyy.MM.dd}\n+{zap1}p";
+            var zp2 = $"{DateTime.Now:yyyy.MM.dd}\n+{zap2}p";
+            var zp3 = $"{DateTime.Now:yyyy.MM.dd}\n+{zap3}p";
+
+            int value1 = ExcelHelper.GetCellValueAsInt(name);
+
             if (names.ContainsKey(name))
-                await bot.SendTextMessageAsync(chatID, zp1, replyToMessageId: names[name]);
+                await bot.SendTextMessageAsync(chatID, $"Было: {value1}\n{zp1}", replyToMessageId: names[name]);
 
             if (!string.IsNullOrWhiteSpace(name2) && names.ContainsKey(name2))
-                await bot.SendTextMessageAsync(chatID, zp2, replyToMessageId: names[name2]);
+            {
+                int value2 = ExcelHelper.GetCellValueAsInt(name2);
+                await bot.SendTextMessageAsync(chatID, $"{zp2}\n теперь: {value2 + zap2}", replyToMessageId: names[name2]);
+            }
+
             if (!string.IsNullOrWhiteSpace(name3) && names.ContainsKey(name3))
-                await bot.SendTextMessageAsync(chatID, zp2, replyToMessageId: names[name3]);
+            {
+                int value3 = ExcelHelper.GetCellValueAsInt(name3);
+                await bot.SendTextMessageAsync(chatID, $"{zp3}\n теперь: {value3 + zap3}", replyToMessageId: names[name3]);
+            }
 
             isSending = false;
             button.Enabled = true;

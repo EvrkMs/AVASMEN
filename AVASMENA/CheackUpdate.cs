@@ -1,20 +1,20 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Newtonsoft.Json.Linq;
 
 public class UpdateChecker
 {
     // URL API для проверки версии
-    private static readonly string VersionCheckUrl = "http://192.168.88.116:3001/api/version?apiKey=853ac29b5540bc9f72df1cda971d24bb1e349cd2de7319661f442c538d79dfdd";
+    private static readonly string VersionCheckUrl = "http://192.168.88.254:3001/api/version?apiKey=853ac29b5540bc9f72df1cda971d24bb1e349cd2de7319661f442c538d79dfdd";
 
     // URL для загрузки обновления
-    private static readonly string DownloadUrl = "http://192.168.88.116:3001/api/download?apiKey=853ac29b5540bc9f72df1cda971d24bb1e349cd2de7319661f442c538d79dfdd";
+    private static readonly string DownloadUrl = "http://192.168.88.254:3001/api/download?apiKey=853ac29b5540bc9f72df1cda971d24bb1e349cd2de7319661f442c538d79dfdd";
 
     // Текущая версия установленной программы
-    private static readonly string CurrentVersion = "1.0.5";
+    private static readonly string CurrentVersion = "1.0.9";
 
     public static bool ShouldCloseApp { get; private set; } = false;
 

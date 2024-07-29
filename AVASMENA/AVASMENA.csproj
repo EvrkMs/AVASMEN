@@ -50,14 +50,12 @@
   <ItemGroup>
     <None Remove="Class\cfgJson\**" />
     <None Remove="Dll\**" />
-    <None Remove="Excel\**" />
     <None Remove="FormsEllemets\**" />
     <None Remove="Forms\**" />
     <None Remove="JSON\**" />
     <None Remove="TelegramCode\**" />
     <Page Remove="Class\cfgJson\**" />
     <Page Remove="Dll\**" />
-    <Page Remove="Excel\**" />
     <Page Remove="FormsEllemets\**" />
     <Page Remove="Forms\**" />
     <Page Remove="JSON\**" />
@@ -70,6 +68,9 @@
     </Reference>
     <Reference Include="DocumentFormat.OpenXml, Version=2.16.0.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
       <HintPath>..\packages\DocumentFormat.OpenXml.2.16.0\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelLib2">
+      <HintPath>..\ExcelLib2\bin\Debug\ExcelLib2.dll</HintPath>
     </Reference>
     <Reference Include="ExcelNumberFormat, Version=1.1.0.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
       <HintPath>..\packages\ExcelNumberFormat.1.1.0\lib\net20\ExcelNumberFormat.dll</HintPath>
@@ -162,6 +163,10 @@
   <ItemGroup>
     <Compile Include="CheackUpdate.cs" />
     <Compile Include="Class\Excel\Excel.cs" />
+    <Compile Include="Class\Excel\ExcelCreater.cs" />
+    <Compile Include="Class\Excel\ExcelItog.cs" />
+    <Compile Include="Class\Excel\ExcelPhotoItog.cs" />
+    <Compile Include="Class\Excel\ExcelZP.cs" />
     <Compile Include="Class\Forms\MainForm\Form1.cs" />
     <Compile Include="Class\Forms\MainForm\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -230,9 +235,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="ClosedXML" Version="0.102.2" />
-    <PackageReference Include="EPPlus" Version="7.2.1" />
+    <PackageReference Include="ClosedXML" Version="0.102.3" />
+    <PackageReference Include="EPPlus" Version="7.2.2" />
     <PackageReference Include="MaterialSkin.2" Version="2.3.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Telegram.Bot" Version="18.0.0" />
   </ItemGroup>
 
