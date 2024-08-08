@@ -2520,37 +2520,37 @@
   <data name="&gt;&gt;listBox5.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="KtoVipisal.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="KomuVipisal.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 17px, style=Bold</value>
   </data>
-  <data name="KtoVipisal.IntegralHeight" type="System.Boolean, mscorlib">
+  <data name="KomuVipisal.IntegralHeight" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="KtoVipisal.ItemHeight" type="System.Int32, mscorlib">
+  <data name="KomuVipisal.ItemHeight" type="System.Int32, mscorlib">
     <value>43</value>
   </data>
-  <data name="KtoVipisal.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="KomuVipisal.Location" type="System.Drawing.Point, System.Drawing">
     <value>55, 50</value>
   </data>
-  <data name="KtoVipisal.MaxDropDownItems" type="System.Int32, mscorlib">
+  <data name="KomuVipisal.MaxDropDownItems" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="KtoVipisal.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="KomuVipisal.Size" type="System.Drawing.Size, System.Drawing">
     <value>220, 49</value>
   </data>
-  <data name="KtoVipisal.TabIndex" type="System.Int32, mscorlib">
+  <data name="KomuVipisal.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;KtoVipisal.Name" xml:space="preserve">
-    <value>KtoVipisal</value>
+  <data name="&gt;&gt;KomuVipisal.Name" xml:space="preserve">
+    <value>KomuVipisal</value>
   </data>
-  <data name="&gt;&gt;KtoVipisal.Type" xml:space="preserve">
+  <data name="&gt;&gt;KomuVipisal.Type" xml:space="preserve">
     <value>MaterialSkin.Controls.MaterialComboBox, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;KtoVipisal.Parent" xml:space="preserve">
+  <data name="&gt;&gt;KomuVipisal.Parent" xml:space="preserve">
     <value>ShtraphPage</value>
   </data>
-  <data name="&gt;&gt;KtoVipisal.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;KomuVipisal.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
   <data name="ShtraphPage.Location" type="System.Drawing.Point, System.Drawing">

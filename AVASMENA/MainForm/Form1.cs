@@ -21,7 +21,6 @@ namespace AVASMENA
         private static readonly string filePath = $"{folderPath}\\itog.xlsx";
         //по форме
         private readonly Timer timer = new Timer();
-        private static List<string> stopsAvans = new List<string> { "" };
         // Установите ваш пароль здесь
         private const string CorrectPassword = "238384";
         private bool RemoveDa = false;
@@ -59,6 +58,8 @@ namespace AVASMENA
             Setup2(label19, label20, label22);
             SetupComBox(LoginBox);
             LoginBox.Text = "Admin";
+            InitializeListBox(listBoxNameInv);
+            SetupComboBoxes(NameComboBoxOtchet, KomuVipisal, materialComboBox2, SecondComboBoxNameOtchet, WhoVipisl, comboBoxNameRas, ThertyComboBox);
             SecondComboBoxNameOtchet.Items.Add("нет");
             WhoVipisl.Items.Add("нет");
             ThertyComboBox.Items.Add("нет");
@@ -533,8 +534,6 @@ namespace AVASMENA
             VisibleBox(false);
             VisibleBox3(false);
             ResetHours();
-            InitializeListBox(listBoxNameInv);
-            SetupComboBoxes(NameComboBoxOtchet, KtoVipisal, materialComboBox2, SecondComboBoxNameOtchet, WhoVipisl, comboBoxNameRas, ThertyComboBox);
             try
             {
                 var bot = new TelegramBotClient(DataStore.TokenBot);
@@ -564,25 +563,32 @@ namespace AVASMENA
                 return;
             }
             var messag = string.Join(Environment.NewLine, listBox4.Items.Cast<string>());
-            var name = KtoVipisal.Text;
-            var syu = materialTextBox2.Text;
+            var name = KomuVipisal.Text;
+            int.TryParse(textBox2.Text, out int syu);
             var nameVipi = WhoVipisl.Text;
             var message = $"Выписал: {nameVipi}\n\n{name}\n\n{messag}\n\n-{syu}";
 
             await bot.SendTextMessageAsync(DataStore.ForwardChat, message, replyToMessageId: 3);
-
+            int summ = CalculateShtraph(syu);
+            await ExcelHelper.AvansMinus(summ, name);
             if (DataStore.Names.ContainsKey(name))
                 await bot.SendTextMessageAsync(DataStore.ChatId, message, replyToMessageId: DataStore.Names[name]);
             Аванс.Enabled = true;
+        }
+        private int CalculateShtraph(int syu)
+        {
+            if (syu > 0)
+                return syu *= -1;
+            return syu;
         }
 
         private async void Аванс_Click(object sender, EventArgs e)
         {
             ITelegramBotClient bot = new TelegramBotClient(DataStore.TokenBot);
             string name = materialComboBox2.Text; // Инициализирует имя
-            if (stopsAvans.Contains(name)) // Проверяет имя в стопе
+            if (name == null)
             {
-                MessageBox.Show("Пока что вы в стопе.");
+                MessageBox.Show("Выберите имя");
                 return;
             }
             Аванс.Enabled = false; // Блокирует кнопку, чтобы повторно не нажали

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using APIData;
+using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
 using System.Net.Http;
@@ -7,17 +8,18 @@ using System.Windows.Forms;
 
 public class UpdateChecker
 {
+    private static readonly string BaseURL = ApiService.ApiBaseUrl;
     // URL API для проверки версии
-    private static readonly string VersionCheckUrl = "http://localhost:5000/api/Version";
+    private static readonly string VersionCheckUrl = $"{BaseURL}/Version";
 
     // URL для загрузки обновления
-    private static readonly string DownloadUrl = "http://localhost:5000/api/Version/download";
+    private static readonly string DownloadUrl = $"{BaseURL}/Version/download";
 
     // Текущая версия установленной программы
     private static readonly string CurrentVersion = "1.0.17";
 
     // Новый API-ключ
-    private static readonly string ApiKey = "833731b78e76e4e4c54984e89b14a9aff6df20439f924a900c024a1df2114059";
+    private static readonly string ApiKey = ApiService.ApiKey;
 
     public static bool ShouldCloseApp { get; private set; } = false;
 

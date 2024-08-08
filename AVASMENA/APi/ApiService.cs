@@ -8,8 +8,8 @@ namespace APIData
 {
     public static class ApiService
     {
-        private static readonly string ApiBaseUrl = ConfigurationManager.AppSettings["ApiBaseUrl"];
-        private static readonly string ApiKey = ConfigurationManager.AppSettings["ApiKey"];
+        public static readonly string ApiBaseUrl = ConfigurationManager.AppSettings["ApiBaseUrl"];
+        public static readonly string ApiKey = ConfigurationManager.AppSettings["ApiKey"];
 
         public static void LoadData()
         {

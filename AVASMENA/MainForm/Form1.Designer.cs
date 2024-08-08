@@ -115,7 +115,7 @@ namespace AVASMENA
             this.materialTextBox2 = new MaterialSkin.Controls.MaterialTextBox();
             this.Штраф = new MaterialSkin.Controls.MaterialButton();
             this.listBox5 = new System.Windows.Forms.ListBox();
-            this.KtoVipisal = new MaterialSkin.Controls.MaterialComboBox();
+            this.KomuVipisal = new MaterialSkin.Controls.MaterialComboBox();
             this.InventPage = new System.Windows.Forms.TabPage();
             this.listBoxNameInv = new System.Windows.Forms.ListBox();
             this.InventBTN = new MaterialSkin.Controls.MaterialButton();
@@ -1145,7 +1145,7 @@ namespace AVASMENA
             this.ShtraphPage.Controls.Add(this.materialTextBox2);
             this.ShtraphPage.Controls.Add(this.Штраф);
             this.ShtraphPage.Controls.Add(this.listBox5);
-            this.ShtraphPage.Controls.Add(this.KtoVipisal);
+            this.ShtraphPage.Controls.Add(this.KomuVipisal);
             this.ShtraphPage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             resources.ApplyResources(this.ShtraphPage, "ShtraphPage");
             this.ShtraphPage.Name = "ShtraphPage";
@@ -1228,21 +1228,21 @@ namespace AVASMENA
             this.listBox5.TabStop = false;
             this.listBox5.SelectedIndexChanged += new System.EventHandler(this.ListBox5_SelectedIndexChanged);
             // 
-            // KtoVipisal
+            // KomuVipisal
             // 
-            this.KtoVipisal.AutoResize = false;
-            this.KtoVipisal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.KtoVipisal.Depth = 0;
-            this.KtoVipisal.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.KtoVipisal.DropDownHeight = 174;
-            this.KtoVipisal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.KtoVipisal.DropDownWidth = 121;
-            resources.ApplyResources(this.KtoVipisal, "KtoVipisal");
-            this.KtoVipisal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.KtoVipisal.FormattingEnabled = true;
-            this.KtoVipisal.MouseState = MaterialSkin.MouseState.OUT;
-            this.KtoVipisal.Name = "KtoVipisal";
-            this.KtoVipisal.StartIndex = 0;
+            this.KomuVipisal.AutoResize = false;
+            this.KomuVipisal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.KomuVipisal.Depth = 0;
+            this.KomuVipisal.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.KomuVipisal.DropDownHeight = 174;
+            this.KomuVipisal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.KomuVipisal.DropDownWidth = 121;
+            resources.ApplyResources(this.KomuVipisal, "KomuVipisal");
+            this.KomuVipisal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.KomuVipisal.FormattingEnabled = true;
+            this.KomuVipisal.MouseState = MaterialSkin.MouseState.OUT;
+            this.KomuVipisal.Name = "KomuVipisal";
+            this.KomuVipisal.StartIndex = 0;
             // 
             // InventPage
             // 
@@ -1432,7 +1432,7 @@ namespace AVASMENA
         private MaterialTextBox materialTextBox2;
         private MaterialButton Штраф;
         private ListBox listBox5;
-        private MaterialComboBox KtoVipisal;
+        private MaterialComboBox KomuVipisal;
         private TabPage InventPage;
         private ListBox listBoxNameInv;
         private MaterialButton InventBTN;
