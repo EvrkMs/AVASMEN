@@ -16,7 +16,7 @@ public class UpdateChecker
     private static readonly string DownloadUrl = $"{BaseURL}/Version/download";
 
     // Текущая версия установленной программы
-    private static readonly string CurrentVersion = "1.0.17";
+    private static readonly string CurrentVersion = "1.0.18";
 
     // Новый API-ключ
     private static readonly string ApiKey = ApiService.ApiKey;

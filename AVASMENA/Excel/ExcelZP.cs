@@ -165,8 +165,7 @@ namespace Excel
 
                 workbook.Save();
             }
-
-            return ScreenExcel(pather);
+            return Task.CompletedTask;
         }
     }
 }

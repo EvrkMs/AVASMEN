@@ -31,11 +31,11 @@ namespace AVASMENA
                 label.ForeColor = foreColor;
             }
         }
-        public static void Setup1(List<Label> labels)
+        public static void SetupLabelBigV(List<Label> labels)
         {
             SetupLabels(labels, FontSizeLarge, Color.LimeGreen);
         }
-        public static void Setup2(params Label[] labels)
+        public static void SetupLabelSmallV(params Label[] labels)
         {
             SetupLabels(labels.ToList(), FontSizeSmall, Color.LimeGreen);
         }
@@ -43,15 +43,15 @@ namespace AVASMENA
         public static void SetupTabPage(params TabPage[] tabPage)
         {
             foreach (var tab in tabPage)
-                tab.BackColor = System.Drawing.Color.FromArgb(64, 0, 64);
+                tab.BackColor = Color.FromArgb(64, 0, 64);
         }
         public static void SetupListBox(params ListBox[] listBox)
         {
             foreach (var box in listBox)
             {
-                box.ForeColor = System.Drawing.Color.LawnGreen;
-                box.BackColor = System.Drawing.Color.FromArgb(25, 0, 64);
-                box.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F);
+                box.ForeColor = Color.LawnGreen;
+                box.BackColor = Color.FromArgb(25, 0, 64);
+                box.Font = new Font("Microsoft Sans Serif", 17F);
             }
         }
         public static void SetupComboBoxes(params MaterialComboBox[] Box)
@@ -111,23 +111,6 @@ namespace AVASMENA
         public static void HideShowSelector(MaterialTabSelector TabSel, bool i)
         {
             TabSel.Visible = i;
-        }
-
-        public static void InitializedataGrid(DataGridView dataGridViewJson)
-        {
-            dataGridViewJson.Columns.Clear();
-            // Настройка DataGridView для работы с данными
-            dataGridViewJson.Columns.Add("Name", "Имя");
-            dataGridViewJson.Columns.Add("Users", "Телеграм Id");
-            dataGridViewJson.Columns.Add("Names", "Топик в чате ЗП");
-            dataGridViewJson.Columns.Add("ForwardChat", "Основной час");
-            dataGridViewJson.Columns.Add("ChatId", "Чат с зп");
-            dataGridViewJson.Columns.Add("TokenBot", "Токен бота");
-            dataGridViewJson.Columns.Add("StopsAvans", "кто на стопе");
-
-
-            dataGridViewJson.AllowUserToAddRows = true;
-            dataGridViewJson.AllowUserToDeleteRows = true;
         }
         public static void ShtraphBox(ListBox listBox4, ListBox listBox5)
         {

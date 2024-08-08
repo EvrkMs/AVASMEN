@@ -14,8 +14,9 @@ namespace Excel
     public partial class ExcelHelper
     {
         //метод для запуска скрина основной таблцы
-        public static async Task ScreenExcel(string path)
+        public static async Task ScreenExcel()
         {
+            string path = filePath;
             Logger.Log("Метод ScreenExcel вызван.");
 
             try

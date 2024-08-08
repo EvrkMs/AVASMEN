@@ -48,7 +48,7 @@ namespace AVASMENA
             this.label22 = new System.Windows.Forms.Label();
             this.Minus3 = new MaterialSkin.Controls.MaterialTextBox2();
             this.ThertyComboBox = new MaterialSkin.Controls.MaterialComboBox();
-            this.Hours3 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.HaursBox3 = new MaterialSkin.Controls.MaterialTextBox2();
             this.Расчитать = new MaterialSkin.Controls.MaterialButton();
             this.Отправить = new MaterialSkin.Controls.MaterialButton();
             this.label20 = new System.Windows.Forms.Label();
@@ -56,9 +56,9 @@ namespace AVASMENA
             this.Minus2 = new MaterialSkin.Controls.MaterialTextBox2();
             this.Minus1 = new MaterialSkin.Controls.MaterialTextBox2();
             this.label18 = new System.Windows.Forms.Label();
-            this.materialTextBox1 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.HaursBox1 = new MaterialSkin.Controls.MaterialTextBox2();
             this.SecondComboBoxNameOtchet = new MaterialSkin.Controls.MaterialComboBox();
-            this.materialTextBox24 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.HaursBox2 = new MaterialSkin.Controls.MaterialTextBox2();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.NameComboBoxOtchet = new MaterialSkin.Controls.MaterialComboBox();
@@ -242,7 +242,7 @@ namespace AVASMENA
             this.OtchetPage.Controls.Add(this.label22);
             this.OtchetPage.Controls.Add(this.Minus3);
             this.OtchetPage.Controls.Add(this.ThertyComboBox);
-            this.OtchetPage.Controls.Add(this.Hours3);
+            this.OtchetPage.Controls.Add(this.HaursBox3);
             this.OtchetPage.Controls.Add(this.Расчитать);
             this.OtchetPage.Controls.Add(this.Отправить);
             this.OtchetPage.Controls.Add(this.label20);
@@ -250,9 +250,9 @@ namespace AVASMENA
             this.OtchetPage.Controls.Add(this.Minus2);
             this.OtchetPage.Controls.Add(this.Minus1);
             this.OtchetPage.Controls.Add(this.label18);
-            this.OtchetPage.Controls.Add(this.materialTextBox1);
+            this.OtchetPage.Controls.Add(this.HaursBox1);
             this.OtchetPage.Controls.Add(this.SecondComboBoxNameOtchet);
-            this.OtchetPage.Controls.Add(this.materialTextBox24);
+            this.OtchetPage.Controls.Add(this.HaursBox2);
             this.OtchetPage.Controls.Add(this.listBox2);
             this.OtchetPage.Controls.Add(this.listBox1);
             this.OtchetPage.Controls.Add(this.NameComboBoxOtchet);
@@ -299,6 +299,7 @@ namespace AVASMENA
             this.Minus3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.Minus3.TrailingIcon = null;
             this.Minus3.UseSystemPasswordChar = false;
+            this.Minus3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // ThertyComboBox
             // 
@@ -317,29 +318,29 @@ namespace AVASMENA
             this.ThertyComboBox.StartIndex = 0;
             this.ThertyComboBox.SelectedIndexChanged += new System.EventHandler(this.MaterialComboBox1_SelectedIndexChanged);
             // 
-            // Hours3
+            // HaursBox3
             // 
-            this.Hours3.AnimateReadOnly = false;
-            resources.ApplyResources(this.Hours3, "Hours3");
-            this.Hours3.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.Hours3.Depth = 0;
-            this.Hours3.HideSelection = true;
-            this.Hours3.LeadingIcon = null;
-            this.Hours3.MaxLength = 32767;
-            this.Hours3.MouseState = MaterialSkin.MouseState.OUT;
-            this.Hours3.Name = "Hours3";
-            this.Hours3.PasswordChar = '\0';
-            this.Hours3.ReadOnly = false;
-            this.Hours3.SelectedText = "";
-            this.Hours3.SelectionLength = 0;
-            this.Hours3.SelectionStart = 0;
-            this.Hours3.ShortcutsEnabled = true;
-            this.Hours3.TabStop = false;
-            this.Hours3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.Hours3.TrailingIcon = null;
-            this.Hours3.UseSystemPasswordChar = false;
-            this.Hours3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
-            this.Hours3.TextChanged += new System.EventHandler(this.ChengedHaurs);
+            this.HaursBox3.AnimateReadOnly = false;
+            resources.ApplyResources(this.HaursBox3, "HaursBox3");
+            this.HaursBox3.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.HaursBox3.Depth = 0;
+            this.HaursBox3.HideSelection = true;
+            this.HaursBox3.LeadingIcon = null;
+            this.HaursBox3.MaxLength = 32767;
+            this.HaursBox3.MouseState = MaterialSkin.MouseState.OUT;
+            this.HaursBox3.Name = "HaursBox3";
+            this.HaursBox3.PasswordChar = '\0';
+            this.HaursBox3.ReadOnly = false;
+            this.HaursBox3.SelectedText = "";
+            this.HaursBox3.SelectionLength = 0;
+            this.HaursBox3.SelectionStart = 0;
+            this.HaursBox3.ShortcutsEnabled = true;
+            this.HaursBox3.TabStop = false;
+            this.HaursBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.HaursBox3.TrailingIcon = null;
+            this.HaursBox3.UseSystemPasswordChar = false;
+            this.HaursBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
+            this.HaursBox3.TextChanged += new System.EventHandler(this.ChengedHaurs);
             // 
             // Расчитать
             // 
@@ -404,6 +405,7 @@ namespace AVASMENA
             this.Minus2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.Minus2.TrailingIcon = null;
             this.Minus2.UseSystemPasswordChar = false;
+            this.Minus2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // Minus1
             // 
@@ -426,6 +428,7 @@ namespace AVASMENA
             this.Minus1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.Minus1.TrailingIcon = null;
             this.Minus1.UseSystemPasswordChar = false;
+            this.Minus1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // label18
             // 
@@ -433,29 +436,29 @@ namespace AVASMENA
             this.label18.ForeColor = System.Drawing.Color.LimeGreen;
             this.label18.Name = "label18";
             // 
-            // materialTextBox1
+            // HaursBox1
             // 
-            this.materialTextBox1.AnimateReadOnly = false;
-            resources.ApplyResources(this.materialTextBox1, "materialTextBox1");
-            this.materialTextBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.materialTextBox1.Depth = 0;
-            this.materialTextBox1.HideSelection = true;
-            this.materialTextBox1.LeadingIcon = null;
-            this.materialTextBox1.MaxLength = 32767;
-            this.materialTextBox1.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox1.Name = "materialTextBox1";
-            this.materialTextBox1.PasswordChar = '\0';
-            this.materialTextBox1.ReadOnly = false;
-            this.materialTextBox1.SelectedText = "";
-            this.materialTextBox1.SelectionLength = 0;
-            this.materialTextBox1.SelectionStart = 0;
-            this.materialTextBox1.ShortcutsEnabled = true;
-            this.materialTextBox1.TabStop = false;
-            this.materialTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.materialTextBox1.TrailingIcon = null;
-            this.materialTextBox1.UseSystemPasswordChar = false;
-            this.materialTextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
-            this.materialTextBox1.TextChanged += new System.EventHandler(this.ChengedHaurs);
+            this.HaursBox1.AnimateReadOnly = false;
+            resources.ApplyResources(this.HaursBox1, "HaursBox1");
+            this.HaursBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.HaursBox1.Depth = 0;
+            this.HaursBox1.HideSelection = true;
+            this.HaursBox1.LeadingIcon = null;
+            this.HaursBox1.MaxLength = 32767;
+            this.HaursBox1.MouseState = MaterialSkin.MouseState.OUT;
+            this.HaursBox1.Name = "HaursBox1";
+            this.HaursBox1.PasswordChar = '\0';
+            this.HaursBox1.ReadOnly = false;
+            this.HaursBox1.SelectedText = "";
+            this.HaursBox1.SelectionLength = 0;
+            this.HaursBox1.SelectionStart = 0;
+            this.HaursBox1.ShortcutsEnabled = true;
+            this.HaursBox1.TabStop = false;
+            this.HaursBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.HaursBox1.TrailingIcon = null;
+            this.HaursBox1.UseSystemPasswordChar = false;
+            this.HaursBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
+            this.HaursBox1.TextChanged += new System.EventHandler(this.ChengedHaurs);
             // 
             // SecondComboBoxNameOtchet
             // 
@@ -474,29 +477,29 @@ namespace AVASMENA
             this.SecondComboBoxNameOtchet.StartIndex = 0;
             this.SecondComboBoxNameOtchet.SelectedIndexChanged += new System.EventHandler(this.MaterialComboBox3_SelectedIndexChanged);
             // 
-            // materialTextBox24
+            // HaursBox2
             // 
-            this.materialTextBox24.AnimateReadOnly = false;
-            resources.ApplyResources(this.materialTextBox24, "materialTextBox24");
-            this.materialTextBox24.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.materialTextBox24.Depth = 0;
-            this.materialTextBox24.HideSelection = true;
-            this.materialTextBox24.LeadingIcon = null;
-            this.materialTextBox24.MaxLength = 32767;
-            this.materialTextBox24.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox24.Name = "materialTextBox24";
-            this.materialTextBox24.PasswordChar = '\0';
-            this.materialTextBox24.ReadOnly = false;
-            this.materialTextBox24.SelectedText = "";
-            this.materialTextBox24.SelectionLength = 0;
-            this.materialTextBox24.SelectionStart = 0;
-            this.materialTextBox24.ShortcutsEnabled = true;
-            this.materialTextBox24.TabStop = false;
-            this.materialTextBox24.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.materialTextBox24.TrailingIcon = null;
-            this.materialTextBox24.UseSystemPasswordChar = false;
-            this.materialTextBox24.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
-            this.materialTextBox24.TextChanged += new System.EventHandler(this.ChengedHaurs);
+            this.HaursBox2.AnimateReadOnly = false;
+            resources.ApplyResources(this.HaursBox2, "HaursBox2");
+            this.HaursBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.HaursBox2.Depth = 0;
+            this.HaursBox2.HideSelection = true;
+            this.HaursBox2.LeadingIcon = null;
+            this.HaursBox2.MaxLength = 32767;
+            this.HaursBox2.MouseState = MaterialSkin.MouseState.OUT;
+            this.HaursBox2.Name = "HaursBox2";
+            this.HaursBox2.PasswordChar = '\0';
+            this.HaursBox2.ReadOnly = false;
+            this.HaursBox2.SelectedText = "";
+            this.HaursBox2.SelectionLength = 0;
+            this.HaursBox2.SelectionStart = 0;
+            this.HaursBox2.ShortcutsEnabled = true;
+            this.HaursBox2.TabStop = false;
+            this.HaursBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.HaursBox2.TrailingIcon = null;
+            this.HaursBox2.UseSystemPasswordChar = false;
+            this.HaursBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
+            this.HaursBox2.TextChanged += new System.EventHandler(this.ChengedHaurs);
             // 
             // listBox2
             // 
@@ -865,6 +868,7 @@ namespace AVASMENA
             this.materialTextBox23.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.materialTextBox23.TrailingIcon = null;
             this.materialTextBox23.UseSystemPasswordChar = false;
+            this.materialTextBox23.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // materialComboBox2
             // 
@@ -905,7 +909,7 @@ namespace AVASMENA
             this.materialCheckbox1.ReadOnly = false;
             this.materialCheckbox1.Ripple = true;
             this.materialCheckbox1.UseVisualStyleBackColor = true;
-            this.materialCheckbox1.CheckedChanged += new System.EventHandler(this.Update3);
+            this.materialCheckbox1.CheckedChanged += new System.EventHandler(this.UpdateInPagesSeyfPlus);
             // 
             // listBox3
             // 
@@ -964,7 +968,7 @@ namespace AVASMENA
             this.materialTextBox22.TrailingIcon = null;
             this.materialTextBox22.UseSystemPasswordChar = false;
             this.materialTextBox22.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
-            this.materialTextBox22.TextChanged += new System.EventHandler(this.Update3);
+            this.materialTextBox22.TextChanged += new System.EventHandler(this.UpdateInPagesSeyfPlus);
             // 
             // materialTextBox21
             // 
@@ -987,7 +991,7 @@ namespace AVASMENA
             this.materialTextBox21.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.materialTextBox21.TrailingIcon = null;
             this.materialTextBox21.UseSystemPasswordChar = false;
-            this.materialTextBox21.TextChanged += new System.EventHandler(this.Update3);
+            this.materialTextBox21.TextChanged += new System.EventHandler(this.UpdateInPagesSeyfPlus);
             // 
             // RashodPage
             // 
@@ -1133,6 +1137,7 @@ namespace AVASMENA
             this.materialTextBox25.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.materialTextBox25.TrailingIcon = null;
             this.materialTextBox25.UseSystemPasswordChar = false;
+            this.materialTextBox25.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // ShtraphPage
             // 
@@ -1203,6 +1208,7 @@ namespace AVASMENA
             this.materialTextBox2.MouseState = MaterialSkin.MouseState.OUT;
             this.materialTextBox2.Name = "materialTextBox2";
             this.materialTextBox2.TrailingIcon = null;
+            this.materialTextBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // Штраф
             // 
@@ -1296,6 +1302,7 @@ namespace AVASMENA
             this.InventSum.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.InventSum.TrailingIcon = null;
             this.InventSum.UseSystemPasswordChar = false;
+            this.InventSum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // ExitBtn
             // 
@@ -1366,7 +1373,7 @@ namespace AVASMENA
         private Label label22;
         private MaterialTextBox2 Minus3;
         private MaterialComboBox ThertyComboBox;
-        private MaterialTextBox2 Hours3;
+        private MaterialTextBox2 HaursBox3;
         private MaterialButton Расчитать;
         private MaterialButton Отправить;
         private Label label20;
@@ -1374,9 +1381,9 @@ namespace AVASMENA
         private MaterialTextBox2 Minus2;
         private MaterialTextBox2 Minus1;
         private Label label18;
-        private MaterialTextBox2 materialTextBox1;
+        private MaterialTextBox2 HaursBox1;
         private MaterialComboBox SecondComboBoxNameOtchet;
-        private MaterialTextBox2 materialTextBox24;
+        private MaterialTextBox2 HaursBox2;
         private ListBox listBox2;
         private ListBox listBox1;
         private MaterialComboBox NameComboBoxOtchet;

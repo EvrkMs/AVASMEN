@@ -1,8 +1,10 @@
 ﻿// ApiService
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace APIData
 {
@@ -21,7 +23,18 @@ namespace APIData
                 LoadSettingData(client);
             }
         }
+        public static string GetApiResponse(HttpClient client, string endpoint, string queryParams)
+        {
+            string url = $"{ApiBaseUrl}/{endpoint}?{queryParams}";
+            HttpResponseMessage response = client.GetAsync(url).Result;
 
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new HttpRequestException($"Request to {url} failed with status code {response.StatusCode}");
+            }
+
+            return response.Content.ReadAsStringAsync().Result;
+        }
         private static void LoadUserData(HttpClient client)
         {
             try
@@ -67,6 +80,45 @@ namespace APIData
             catch (Exception ex)
             {
                 Console.WriteLine($"Ошибка при запросе данных Setting: {ex.Message}");
+            }
+        }
+        public static bool SendStartupRequest(List<string> nameList)
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    client.DefaultRequestHeaders.Add("X-API-KEY", ApiService.ApiKey);
+
+                    // Сериализация nameList в JSON
+                    string jsonContent = Newtonsoft.Json.JsonConvert.SerializeObject(nameList);
+                    var content = new StringContent(jsonContent, System.Text.Encoding.UTF8, "application/json");
+
+                    HttpResponseMessage response = client.PostAsync($"{ApiService.ApiBaseUrl}/admin/startup", content).Result;
+
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        throw new HttpRequestException($"Request failed with status code {response.StatusCode}");
+                    }
+
+                    // Чтение ответа от сервера
+                    string responseBody = response.Content.ReadAsStringAsync().Result;
+                    if (responseBody.Contains("Excel file processed successfully."))
+                    {
+                        Console.WriteLine("Startup notification sent and processed successfully.");
+                        return true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Unexpected response from server.");
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error sending startup notification: {ex.Message}");
+                return false;
             }
         }
     }

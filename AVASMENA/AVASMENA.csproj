@@ -153,6 +153,7 @@
   <ItemGroup>
     <Compile Include="APi\CheackUpdate.cs" />
     <Compile Include="Excel\Excel.cs" />
+    <Compile Include="Excel\ExcelApi.cs" />
     <Compile Include="Excel\ExcelCreater.cs" />
     <Compile Include="Excel\ExcelItog.cs" />
     <Compile Include="Excel\ExcelPhotoItog.cs" />
@@ -163,7 +164,9 @@
     <Compile Include="MainForm\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormsEllemets\Forms.cs" />
+    <Compile Include="MainForm\MainFormCalculate.cs" />
+    <Compile Include="MainForm\MainFormUpdateElements.cs" />
+    <Compile Include="MainForm\SettingInitializ.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Program.cs" />
@@ -171,7 +174,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="FormsEllemets\Forms.resx" />
+    <EmbeddedResource Include="MainForm\SettingInitializ.resx" />
     <EmbeddedResource Include="MainForm\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

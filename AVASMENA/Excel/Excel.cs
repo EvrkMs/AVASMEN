@@ -1,16 +1,21 @@
 using APIData;
 using ClosedXML.Excel;
+using Newtonsoft.Json.Linq;
 using System;
+using System.Configuration;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Forms.Design;
 using Telegram.Bot;
 
 namespace Excel
 {
     public partial class ExcelHelper
     {
-        private static readonly string folderPath = "\\\\192.168.88.254\\AVASMENAUpdate\\Needed\\excel";
+        private static readonly string folderPath = ConfigurationManager.AppSettings["ExcelFolder"];
         private static readonly string patherSeyf = Path.Combine(folderPath, "seyf.xlsx");
         private static ITelegramBotClient bot;
 
@@ -61,33 +66,35 @@ namespace Excel
 
         public static int GetCellValueAsInt(string fileName, string sheetName)
         {
-            if (fileName == "ZP")
-                fileName = pather;
-            else if(fileName == "s")
-                fileName = patherSeyf;
-            else
-                fileName = filePath;
-
-            using (var workbook = new XLWorkbook(fileName))
-            {
-                var worksheet = workbook.Worksheet(sheetName) ?? throw new ArgumentException($"Sheet with name {sheetName} does not exist.");
-                var cell = worksheet.Cell(2, 3);
-                var cellValue = cell.GetValue<string>(); // Получаем значение ячейки как строку
-
-                if (int.TryParse(cellValue, out int result))
-                {
-                    return result;
-                }
-                else if (double.TryParse(cellValue, out double doubleResult))
-                {
-                    return (int)doubleResult; // Преобразуем из double в int
-                }
-                else
-                {
-                    throw new InvalidDataException($"Cell at row {2}, column {3} does not contain a valid integer.");
-                }
-            }
+            return GetCellValue(fileName, sheetName);
         }
 
+        public static int GetCellValue(string fileName, string sheetName)
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    client.DefaultRequestHeaders.Add("X-API-KEY", ApiService.ApiKey);
+                    string queryParams = $"fileName={fileName}&sheetName={sheetName}";
+                    string responseContent = ApiService.GetApiResponse(client, "Excel/getcellvalue", queryParams);
+
+                    var responseObject = JObject.Parse(responseContent);
+                    if (responseObject["value"] != null) // Замена 'Value' на 'value'
+                    {
+                        return responseObject["value"].Value<int>(); // Корректный ключ в нижнем регистре
+                    }
+                    else
+                    {
+                        throw new Exception("Invalid response format");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                return -1; // Или любое другое значение, указывающее на ошибку
+            }
+        }   
     }
 }
