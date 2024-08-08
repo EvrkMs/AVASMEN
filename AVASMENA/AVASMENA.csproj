@@ -154,7 +154,6 @@
     <Compile Include="APi\CheackUpdate.cs" />
     <Compile Include="Excel\Excel.cs" />
     <Compile Include="Excel\ExcelApi.cs" />
-    <Compile Include="Excel\ExcelCreater.cs" />
     <Compile Include="Excel\ExcelItog.cs" />
     <Compile Include="Excel\ExcelPhotoItog.cs" />
     <Compile Include="Excel\ExcelZP.cs" />

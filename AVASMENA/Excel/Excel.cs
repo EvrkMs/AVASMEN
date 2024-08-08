@@ -95,6 +95,11 @@ namespace Excel
                 Console.WriteLine($"Error: {ex.Message}");
                 return -1; // Или любое другое значение, указывающее на ошибку
             }
-        }   
+        }
+        private static void AutoFitColumnsAndRows(IXLWorksheet worksheet)
+        {
+            worksheet.Columns().AdjustToContents(); // Автоматическое подстраивание ширины столбцов
+            worksheet.Rows().AdjustToContents(); // Автоматическое подстраивание высоты строк
+        }
     }
 }
